@@ -14,7 +14,7 @@ struct 📍AnchorSystem: System {
         self.setUpSession()
     }
     
-    func setUpSession() {
+    private func setUpSession() {
         Task { try! await self.arkitSession.run([self.worldTrackingProvider]) }
     }
     

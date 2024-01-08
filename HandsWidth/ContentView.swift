@@ -42,7 +42,12 @@ struct ContentView: View {
                 entity.position = (p1 + p2) / 2
             }
         } attachments: {
-            Attachment(id: "Attachment") { self.attachmentView() }
+            Attachment(id: "Attachment") {
+                Text(self.text)
+                    .font(.system(size: 54).bold())
+                    .padding(24)
+                    .glassBackgroundEffect()
+            }
         }
         .onTapGesture {
             self.setPoints()
@@ -53,12 +58,6 @@ struct ContentView: View {
 }
 
 private extension ContentView {
-    func attachmentView() -> some View {
-        Text(self.text)
-            .font(.system(size: 54).bold())
-            .padding(24)
-            .glassBackgroundEffect()
-    }
     func setPoints() {
         guard let pointer = rootEntity?.findEntity(named: "POINTER") else { return }
         if rootEntity?.findEntity(named: "1") == nil {
