@@ -7,20 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		165ADB4D2B4B71B0008A756F /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 165ADB4C2B4B71B0008A756F /* RealityKitContent */; };
+		160ED7982B4B74C5002AD987 /* 📍AnchorComponent&System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ED7972B4B74C5002AD987 /* 📍AnchorComponent&System.swift */; };
 		165ADB4F2B4B71B0008A756F /* HandsWidthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ADB4E2B4B71B0008A756F /* HandsWidthApp.swift */; };
 		165ADB512B4B71B0008A756F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ADB502B4B71B0008A756F /* ContentView.swift */; };
 		165ADB532B4B71B2008A756F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 165ADB522B4B71B2008A756F /* Assets.xcassets */; };
-		165ADB562B4B71B2008A756F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 165ADB552B4B71B2008A756F /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160ED7972B4B74C5002AD987 /* 📍AnchorComponent&System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📍AnchorComponent&System.swift"; sourceTree = "<group>"; };
 		165ADB472B4B71B0008A756F /* HandsWidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandsWidth.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		165ADB4B2B4B71B0008A756F /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		165ADB4E2B4B71B0008A756F /* HandsWidthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsWidthApp.swift; sourceTree = "<group>"; };
 		165ADB502B4B71B0008A756F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		165ADB522B4B71B2008A756F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		165ADB552B4B71B2008A756F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		165ADB572B4B71B2008A756F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -29,7 +27,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				165ADB4D2B4B71B0008A756F /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,7 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				165ADB492B4B71B0008A756F /* HandsWidth */,
-				165ADB4A2B4B71B0008A756F /* Packages */,
 				165ADB482B4B71B0008A756F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,27 +54,11 @@
 			children = (
 				165ADB4E2B4B71B0008A756F /* HandsWidthApp.swift */,
 				165ADB502B4B71B0008A756F /* ContentView.swift */,
+				160ED7972B4B74C5002AD987 /* 📍AnchorComponent&System.swift */,
 				165ADB522B4B71B2008A756F /* Assets.xcassets */,
 				165ADB572B4B71B2008A756F /* Info.plist */,
-				165ADB542B4B71B2008A756F /* Preview Content */,
 			);
 			path = HandsWidth;
-			sourceTree = "<group>";
-		};
-		165ADB4A2B4B71B0008A756F /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				165ADB4B2B4B71B0008A756F /* RealityKitContent */,
-			);
-			path = Packages;
-			sourceTree = "<group>";
-		};
-		165ADB542B4B71B2008A756F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				165ADB552B4B71B2008A756F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,7 +78,6 @@
 			);
 			name = HandsWidth;
 			packageProductDependencies = (
-				165ADB4C2B4B71B0008A756F /* RealityKitContent */,
 			);
 			productName = HandsWidth;
 			productReference = 165ADB472B4B71B0008A756F /* HandsWidth.app */;
@@ -126,6 +105,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 165ADB3E2B4B71B0008A756F;
 			productRefGroup = 165ADB482B4B71B0008A756F /* Products */;
@@ -142,7 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				165ADB562B4B71B2008A756F /* Preview Assets.xcassets in Resources */,
 				165ADB532B4B71B2008A756F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				160ED7982B4B74C5002AD987 /* 📍AnchorComponent&System.swift in Sources */,
 				165ADB512B4B71B0008A756F /* ContentView.swift in Sources */,
 				165ADB4F2B4B71B0008A756F /* HandsWidthApp.swift in Sources */,
 			);
@@ -288,11 +268,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HandsWidth/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,11 +295,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HandsWidth/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -355,13 +337,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		165ADB4C2B4B71B0008A756F /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 165ADB3F2B4B71B0008A756F /* Project object */;
 }
