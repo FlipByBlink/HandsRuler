@@ -5,6 +5,7 @@ import ARKit
 struct ContentView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.scenePhase) var scenePhase
     @State private var rootEntity: Entity?
     @State private var text: String = "placeholder"
@@ -61,6 +62,11 @@ struct ContentView: View {
             switch newValue {
                 case .inactive, .background: self.model.presentImmersiveSpace = false
                 default: break
+            }
+        }
+        .onChange(of: self.model.presentSettingWindow) { _, newValue in
+            if newValue == false {
+                Task { await self.dismissImmersiveSpace() }
             }
         }
     }
