@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
+    @Environment(\.dismissWindow) var dismissWindow
     var body: some View {
         NavigationStack {
             List {
@@ -11,14 +12,22 @@ struct SettingView: View {
                         Text($0.rawValue)
                     }
                 }
-                Button("Start measure") {
-                    Task {
-                        await self.openImmersiveSpace(id: "measure")
+                if !self.model.presentImmersiveSpace {
+                    Section {
+                        Button("Restart measurement") {
+                            Task {
+                                await self.openImmersiveSpace(id: "measure")
+                            }
+                        }
                     }
                 }
             }
             .font(.title)
             .navigationTitle("Setting")
+            .animation(.default, value: self.model.presentImmersiveSpace)
+        }
+        .onChange(of: self.model.presentImmersiveSpace) { _, newValue in
+            if newValue == false { self.dismissWindow() }
         }
     }
 }

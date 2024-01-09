@@ -3,7 +3,9 @@ import RealityKit
 import ARKit
 
 struct ContentView: View {
+    @EnvironmentObject var model: AppModel
     @Environment(\.openWindow) var openWindow
+    @Environment(\.scenePhase) var scenePhase
     @State private var rootEntity: Entity?
     @State private var text: String = "placeholder"
     var body: some View {
@@ -50,7 +52,16 @@ struct ContentView: View {
         }
         .task {
             try? await Task.sleep(for: .seconds(2))
-            self.openWindow(id: "setting")
+            if !self.model.presentSettingWindow {
+                self.openWindow(id: "setting")
+            }
+        }
+        .onAppear { self.model.presentImmersiveSpace = true }
+        .onChange(of: self.scenePhase) { _, newValue in
+            switch newValue {
+                case .inactive, .background: self.model.presentImmersiveSpace = false
+                default: break
+            }
         }
     }
 }
