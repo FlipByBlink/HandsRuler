@@ -3,8 +3,9 @@ import RealityKit
 import ARKit
 
 struct ContentView: View {
-    @State var rootEntity: Entity?
-    @State var text: String = "placeholder"
+    @Environment(\.openWindow) var openWindow
+    @State private var rootEntity: Entity?
+    @State private var text: String = "placeholder"
     var body: some View {
         RealityView { content, _ in
             let rootEntity = Entity()
@@ -19,13 +20,6 @@ struct ContentView: View {
             entity.components.set(ModelComponent(mesh: .generateSphere(radius: 0.02),
                                                  materials: [SimpleMaterial(color: .white, isMetallic: false)]))
             rootEntity.addChild(entity)
-            do {
-                let entity = Entity()
-                entity.position = [-0.5, 1.5, -1]
-                entity.components.set(ModelComponent(mesh: .generateBox(size: 0.4),
-                                                     materials: [SimpleMaterial(color: .yellow, isMetallic: false)]))
-                rootEntity.addChild(entity)
-            }
             do {
                 let entity = Entity()
                 entity.name = "LINE"
@@ -53,6 +47,10 @@ struct ContentView: View {
             self.setPoints()
             self.setText()
             self.setLine()
+        }
+        .task {
+            try? await Task.sleep(for: .seconds(2))
+            self.openWindow(id: "setting")
         }
     }
 }
