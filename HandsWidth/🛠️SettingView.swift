@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct SettingView: View {
-    @EnvironmentObject var model: AppModel
+struct 🛠️SettingView: View {
+    @EnvironmentObject var model: 📱AppModel
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissWindow) var dismissWindow
     @Environment(\.scenePhase) var scenePhase

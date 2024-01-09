@@ -1,13 +1,13 @@
 import SwiftUI
 
-class AppModel: ObservableObject {
+class 📱AppModel: ObservableObject {
     @Published var unit: 📏Unit = .meters
     @Published var presentImmersiveSpace: Bool = false
     @Published var presentSettingWindow: Bool = false
 }
 
-extension AppModel {
+extension 📱AppModel {
 }
 
-fileprivate extension AppModel {
+fileprivate extension 📱AppModel {
 }
