@@ -7,7 +7,7 @@ struct 👆MeasureView: View {
     var body: some View {
         RealityView { content, _ in
             content.add(self.model.setupRootEntity())
-        } update: { content, attachments in
+        } update: { _, attachments in
             guard let resultLabelEntity = attachments.entity(for: "resultLabel") else {
                 assertionFailure()
                 return
@@ -24,7 +24,6 @@ struct 👆MeasureView: View {
                     .glassBackgroundEffect()
             }
         }
-        .onTapGesture {}
         .task { await self.model.runSession() }
         .task { await self.model.processHandUpdates() }
     }

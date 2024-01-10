@@ -6,13 +6,22 @@ class 📱AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
     @Published var presentImmersiveSpace: Bool = false
     @Published var presentSettingWindow: Bool = false
+    
     private let session = ARKitSession()
     private let handTracking = HandTrackingProvider()
-    var rootEntity = Entity()
-    let fingerEntities: [HandAnchor.Chirality: ModelEntity] = [
-        .left: createFingertip,
-        .right: createFingertip
-    ]
+    
+    let rootEntity = Entity()
+    let lineEntity = {
+        let value = Entity()
+        value.name = "line"
+        value.components.set(OpacityComponent(opacity: 0.9))
+        return value
+    }()
+    let fingerEntities: [HandAnchor.Chirality: ModelEntity] = {
+        let entity = ModelEntity(mesh: .generateSphere(radius: 0.05),
+                                 materials: [SimpleMaterial(color: .white, isMetallic: false)])
+        return [.left: entity, .right: entity]
+    }()
 }
 
 extension 📱AppModel {
@@ -53,15 +62,6 @@ extension 📱AppModel {
     }
     
     var resultLabelPosition: SIMD3<Float> {
-        self.fingerEntities.values.reduce(into: .zero) { $0 += $1.position }
-        /
-        2
-    }
-}
-
-fileprivate extension 📱AppModel {
-    static var createFingertip: ModelEntity {
-        .init(mesh: .generateSphere(radius: 0.05),
-              materials: [SimpleMaterial(color: .white, isMetallic: false)])
+        self.fingerEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
     }
 }
