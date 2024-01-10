@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		160ED7982B4B74C5002AD987 /* 📍AnchorComponent&System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ED7972B4B74C5002AD987 /* 📍AnchorComponent&System.swift */; };
+		16253CFB2B4E2FCB0028F0E2 /* 📏Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */; };
 		1642FAB52B4D54A60084F9ED /* 🛠️SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1642FAB42B4D54A60084F9ED /* 🛠️SettingView.swift */; };
 		1642FAB72B4D5AC40084F9ED /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1642FAB62B4D5AC40084F9ED /* 📱AppModel.swift */; };
 		1642FAB92B4D6CAA0084F9ED /* 👆MeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1642FAB82B4D6CAA0084F9ED /* 👆MeasureView.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		160ED7972B4B74C5002AD987 /* 📍AnchorComponent&System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📍AnchorComponent&System.swift"; sourceTree = "<group>"; };
+		16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏Unit.swift"; sourceTree = "<group>"; };
 		1642FAB42B4D54A60084F9ED /* 🛠️SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️SettingView.swift"; sourceTree = "<group>"; };
 		1642FAB62B4D5AC40084F9ED /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		1642FAB82B4D6CAA0084F9ED /* 👆MeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆MeasureView.swift"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				1642FAB62B4D5AC40084F9ED /* 📱AppModel.swift */,
 				1642FAB42B4D54A60084F9ED /* 🛠️SettingView.swift */,
 				160ED7972B4B74C5002AD987 /* 📍AnchorComponent&System.swift */,
+				16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */,
 				1642FABA2B4E15C00084F9ED /* 👆DebugView.swift */,
 				165ADB522B4B71B2008A756F /* Assets.xcassets */,
 				165ADB572B4B71B2008A756F /* Info.plist */,
@@ -148,6 +151,7 @@
 				160ED7982B4B74C5002AD987 /* 📍AnchorComponent&System.swift in Sources */,
 				1642FAB92B4D6CAA0084F9ED /* 👆MeasureView.swift in Sources */,
 				1642FAB52B4D54A60084F9ED /* 🛠️SettingView.swift in Sources */,
+				16253CFB2B4E2FCB0028F0E2 /* 📏Unit.swift in Sources */,
 				165ADB512B4B71B0008A756F /* ContentView.swift in Sources */,
 				1642FAB72B4D5AC40084F9ED /* 📱AppModel.swift in Sources */,
 				165ADB4F2B4B71B0008A756F /* App.swift in Sources */,

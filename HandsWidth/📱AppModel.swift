@@ -3,7 +3,7 @@ import RealityKit
 import ARKit
 
 class 📱AppModel: ObservableObject {
-    @Published var unit: 📏Unit = .meters
+    @AppStorage("unit") var unit: 📏Unit = .meters
     @Published var presentImmersiveSpace: Bool = false
     @Published var presentSettingWindow: Bool = false
     private let session = ARKitSession()

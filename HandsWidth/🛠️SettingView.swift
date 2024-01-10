@@ -39,15 +39,3 @@ struct 🛠️SettingView: View {
         }
     }
 }
-
-enum 📏Unit: String, CaseIterable, Identifiable {
-    case meters, centiMeters, inches
-    var id: Self { self }
-    var value: UnitLength {
-        switch self {
-            case .meters: .meters
-            case .centiMeters: .centimeters
-            case .inches: .inches
-        }
-    }
-}
