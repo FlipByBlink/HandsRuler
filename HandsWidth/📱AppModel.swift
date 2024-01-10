@@ -6,6 +6,7 @@ class 📱AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
     @Published var presentImmersiveSpace: Bool = false
     @Published var presentSettingWindow: Bool = false
+    @Published var resultText: String = ""
     
     private let session = ARKitSession()
     private let handTracking = HandTrackingProvider()
@@ -56,12 +57,26 @@ extension 📱AppModel {
             let originFromIndex = originFromWrist * wristFromIndex
             
             await fingerEntities[handAnchor.chirality]?
-                .setTransformMatrix(originFromIndex,
-                                    relativeTo: nil)
+                .setTransformMatrix(originFromIndex, relativeTo: nil)
+            
+            self.calculate()
         }
     }
     
     var resultLabelPosition: SIMD3<Float> {
         self.fingerEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
+    }
+}
+
+fileprivate extension 📱AppModel {
+    private func calculate() {
+        guard let leftPosition = self.fingerEntities[.left]?.position,
+              let rightPosition = self.fingerEntities[.right]?.position else {
+            assertionFailure(); return
+        }
+        let formatter = LengthFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 2
+        self.resultText = formatter.string(fromValue: .init(distance(leftPosition, rightPosition)),
+                                           unit: self.unit.formatterValue)
     }
 }

@@ -15,4 +15,13 @@ extension 📏Unit: CaseIterable, Identifiable {
             case .yards: .yards
         }
     }
+    var formatterValue: LengthFormatter.Unit {
+        switch self {
+            case .centiMeters: .centimeter
+            case .meters: .meter
+            case .inches: .inch
+            case .feet: .foot
+            case .yards: .yard
+        }
+    }
 }

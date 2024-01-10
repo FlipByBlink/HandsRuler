@@ -18,7 +18,7 @@ struct 👆MeasureView: View {
             self.model.rootEntity.addChild(resultLabelEntity)
         } attachments: {
             Attachment(id: "resultLabel") {
-                Text("placeholder")
+                Text(self.model.resultText)
                     .font(.system(size: 54).bold())
                     .padding(24)
                     .glassBackgroundEffect()
