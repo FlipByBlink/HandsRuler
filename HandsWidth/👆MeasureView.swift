@@ -7,6 +7,7 @@ struct 👆MeasureView: View {
     @State private var rootEntity: Entity?
     var body: some View {
         RealityView { content, _ in
+            content.add(self.model.setupContentEntity())
         } update: { content, attachments in
         } attachments: {
             Attachment(id: "Attachment") {
@@ -17,5 +18,7 @@ struct 👆MeasureView: View {
             }
         }
         .onTapGesture {}
+        .task { await self.model.runSession() }
+        .task { await self.model.processHandUpdates() }
     }
 }
