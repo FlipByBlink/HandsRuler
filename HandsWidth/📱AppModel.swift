@@ -8,16 +8,20 @@ class 📱AppModel: ObservableObject {
     @Published var presentSettingWindow: Bool = false
     private let session = ARKitSession()
     private let handTracking = HandTrackingProvider()
-    private var contentEntity = Entity()
-    private let fingerEntities: [HandAnchor.Chirality: ModelEntity] = [
+    var rootEntity = Entity()
+    let fingerEntities: [HandAnchor.Chirality: ModelEntity] = [
         .left: createFingertip,
         .right: createFingertip
     ]
 }
 
 extension 📱AppModel {
-    func setupContentEntity() -> Entity { self.contentEntity }
-//    func setupContentEntity() {}
+    func setupRootEntity() -> Entity {
+        self.fingerEntities.values.forEach {
+            self.rootEntity.addChild($0)
+        }
+        return self.rootEntity
+    }
     
     func runSession() async {
         do {
@@ -46,6 +50,12 @@ extension 📱AppModel {
                 .setTransformMatrix(originFromIndex,
                                     relativeTo: nil)
         }
+    }
+    
+    var resultLabelPosition: SIMD3<Float> {
+        self.fingerEntities.values.reduce(into: .zero) { $0 += $1.position }
+        /
+        2
     }
 }
 
