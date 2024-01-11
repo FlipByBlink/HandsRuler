@@ -58,7 +58,8 @@ extension 📱AppModel {
             await fingerEntities[handAnchor.chirality]?
                 .setTransformMatrix(originFromIndex, relativeTo: nil)
             
-            self.calculate()
+            self.updateResultLabel()
+            self.updateLine()
         }
     }
     
@@ -68,7 +69,7 @@ extension 📱AppModel {
 }
 
 fileprivate extension 📱AppModel {
-    private func calculate() {
+    private func updateResultLabel() {
         guard let leftPosition = self.fingerEntities[.left]?.position,
               let rightPosition = self.fingerEntities[.right]?.position else {
             assertionFailure(); return
@@ -77,5 +78,24 @@ fileprivate extension 📱AppModel {
         formatter.numberFormatter.maximumFractionDigits = 2
         self.resultText = formatter.string(fromValue: .init(distance(leftPosition, rightPosition)),
                                            unit: self.unit.formatterValue)
+    }
+    private func updateLine() {
+        guard let leftPosition = self.fingerEntities[.left]?.position,
+              let rightPosition = self.fingerEntities[.right]?.position else {
+            assertionFailure(); return
+        }
+        self.lineEntity.position = (leftPosition + rightPosition) / 2
+        self.lineEntity.components.set(
+            ModelComponent(mesh: .generateBox(width: 0.01,
+                                              height: 0.01,
+                                              depth: distance(leftPosition, rightPosition),
+                                              cornerRadius: 0.005),
+                           materials: [SimpleMaterial(color: .white, isMetallic: false)])
+        )
+        self.lineEntity.look(at: leftPosition,
+                             from: self.lineEntity.position,
+                             relativeTo: nil)
+        self.lineEntity.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
+                                             materials: [OcclusionMaterial()]))
     }
 }
