@@ -37,13 +37,12 @@ extension 📱AppModel {
         do {
             try await self.session.run([self.handTracking])
         } catch {
-            print(#function, error)
             assertionFailure()
         }
     }
     
     func processHandUpdates() async {
-        for await update in handTracking.anchorUpdates {
+        for await update in self.handTracking.anchorUpdates {
             let handAnchor = update.anchor
             
             guard handAnchor.isTracked,

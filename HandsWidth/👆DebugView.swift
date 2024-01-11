@@ -14,7 +14,7 @@ struct 👆DebugView: View {
             self.rootEntity = rootEntity
             let entity = Entity()
             entity.name = "POINTER"
-            entity.components.set(📍AnchorComponent())
+            entity.components.set(📍HeadAnchorComponent())
             entity.components.set(InputTargetComponent())
             entity.components.set(CollisionComponent(shapes: [.generateConvex(from: .generateSphere(radius: 0.1))]))
             entity.components.set(ModelComponent(mesh: .generateSphere(radius: 0.02),
@@ -27,16 +27,16 @@ struct 👆DebugView: View {
                 rootEntity.addChild(entity)
             }
         } update: { content, attachments in
-            let entity = attachments.entity(for: "Attachment")!
-            entity.components.set(📍AnchorComponent())
-            entity.name = "AttachmentName"
+            let entity = attachments.entity(for: "resultLabel")!
+            entity.components.set(📍HeadAnchorComponent())
+            entity.name = "resultLabel"
             rootEntity?.addChild(entity)
             if let p1 = rootEntity?.findEntity(named: "1")?.position,
                let p2 = rootEntity?.findEntity(named: "2")?.position {
                 entity.position = (p1 + p2) / 2
             }
         } attachments: {
-            Attachment(id: "Attachment") {
+            Attachment(id: "resultLabel") {
                 Text(self.text)
                     .font(.system(size: 54).bold())
                     .padding(24)
