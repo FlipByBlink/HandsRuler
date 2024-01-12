@@ -16,7 +16,7 @@ class 📱AppModel: ObservableObject {
     let lineEntity = {
         let value = Entity()
         value.name = "line"
-        value.components.set(OpacityComponent(opacity: 0.9))
+        value.components.set(OpacityComponent(opacity: 0.5))
         return value
     }()
     let indexTipEntities: [HandAnchor.Chirality: ModelEntity] = {
@@ -37,6 +37,7 @@ extension 📱AppModel {
         self.indexTipEntities.values.forEach {
             self.rootEntity.addChild($0)
         }
+        self.rootEntity.addChild(self.lineEntity)
         return self.rootEntity
     }
     
