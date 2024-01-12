@@ -2,6 +2,7 @@ import SwiftUI
 import RealityKit
 import ARKit
 
+@MainActor
 class 📱AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
     @Published var presentImmersiveSpace: Bool = false
@@ -19,10 +20,11 @@ class 📱AppModel: ObservableObject {
         return value
     }()
     let indexTipEntities: [HandAnchor.Chirality: ModelEntity] = {
-        let entity = ModelEntity(mesh: .generateSphere(radius: 0.05),
-                                 materials: [SimpleMaterial(color: .white, isMetallic: false)])
-        return [.left: entity, .right: entity]
-    }() 
+        return [.left: ModelEntity(mesh: .generateSphere(radius: 0.01),
+                                   materials: [SimpleMaterial(color: .blue, isMetallic: false)]),
+                .right: ModelEntity(mesh: .generateSphere(radius: 0.01),
+                                    materials: [SimpleMaterial(color: .red, isMetallic: false)])]
+    }()
 //    let thumbTipEntities: [HandAnchor.Chirality: ModelEntity] = {
 //        let entity = ModelEntity(mesh: .generateSphere(radius: 0.05),
 //                                 materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
@@ -62,7 +64,7 @@ extension 📱AppModel {
             
             let wristFromIndex = indexTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
-            await indexTipEntities[handAnchor.chirality]?
+            indexTipEntities[handAnchor.chirality]?
                 .setTransformMatrix(originFromIndex, relativeTo: nil)
             
 //            let wristFromThumb = thumbTip.anchorFromJointTransform
