@@ -1,3 +1,5 @@
+# 👆DebugView
+
 import SwiftUI
 import RealityKit
 import ARKit
@@ -102,5 +104,28 @@ fileprivate extension 👆DebugView {
                                                           materials: [OcclusionMaterial()]))
             entity.addChild(occlusionEntity)
         }
+    }
+}
+
+## system
+
+func update(context: SceneUpdateContext) {
+    guard let deviceAnchor = self.provider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else {
+        return
+    }
+    for entity in context.entities(matching: .init(where: .has(📍HeadAnchorComponent.self)), 
+                                   updatingSystemWhen: .rendering) {
+        if entity.name == "resultLabel" {
+            entity.look(at: Transform(matrix: deviceAnchor.originFromAnchorTransform).translation,
+                        from: entity.position(relativeTo: nil),
+                        relativeTo: nil,
+                        forward: .positiveZ)
+        }
+if DEBUG
+        if entity.name == "POINTER" {
+            entity.transform = Transform(matrix: deviceAnchor.originFromAnchorTransform)
+            entity.setPosition([0, 0, -1], relativeTo: entity)
+        }
+endif
     }
 }

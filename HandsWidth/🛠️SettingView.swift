@@ -8,10 +8,16 @@ struct 🛠️SettingView: View {
     var body: some View {
         NavigationStack {
             List {
-                Picker("Unit", selection: self.$model.unit) {
-                    ForEach(📏Unit.allCases) {
-                        Text($0.rawValue)
+                Section {
+                    Picker("Unit", selection: self.$model.unit) {
+                        ForEach(📏Unit.allCases) {
+                            Text($0.value.symbol)
+                        }
                     }
+                    .pickerStyle(.segmented)
+                    .listRowBackground(Color.clear)
+                } header: {
+                    Text("Unit")
                 }
                 if !self.model.presentImmersiveSpace {
                     Section {

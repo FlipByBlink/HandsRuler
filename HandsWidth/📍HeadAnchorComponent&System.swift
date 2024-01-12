@@ -36,12 +36,6 @@ struct 📍HeadAnchorSystem: System {
                             relativeTo: nil,
                             forward: .positiveZ)
             }
-#if DEBUG
-            if entity.name == "POINTER" {
-                entity.transform = Transform(matrix: deviceAnchor.originFromAnchorTransform)
-                entity.setPosition([0, 0, -1], relativeTo: entity)
-            }
-#endif
         }
     }
 }

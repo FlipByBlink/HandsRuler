@@ -6,7 +6,6 @@ struct ContentView: View {
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.scenePhase) var scenePhase
     var body: some View {
-        //👆DebugView()
         👆MeasureView()
             .task {
                 if !self.model.presentSettingWindow {
