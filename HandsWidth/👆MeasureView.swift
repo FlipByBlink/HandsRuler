@@ -9,8 +9,7 @@ struct 👆MeasureView: View {
             content.add(self.model.setupRootEntity())
         } update: { _, attachments in
             guard let resultLabelEntity = attachments.entity(for: "resultLabel") else {
-                assertionFailure()
-                return
+                assertionFailure(); return
             }
             resultLabelEntity.components.set(📍HeadAnchorComponent())
             resultLabelEntity.name = "resultLabel"

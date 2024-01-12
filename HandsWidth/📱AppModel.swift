@@ -18,16 +18,21 @@ class 📱AppModel: ObservableObject {
         value.components.set(OpacityComponent(opacity: 0.9))
         return value
     }()
-    let fingerEntities: [HandAnchor.Chirality: ModelEntity] = {
+    let indexTipEntities: [HandAnchor.Chirality: ModelEntity] = {
         let entity = ModelEntity(mesh: .generateSphere(radius: 0.05),
                                  materials: [SimpleMaterial(color: .white, isMetallic: false)])
         return [.left: entity, .right: entity]
-    }()
+    }() 
+//    let thumbTipEntities: [HandAnchor.Chirality: ModelEntity] = {
+//        let entity = ModelEntity(mesh: .generateSphere(radius: 0.05),
+//                                 materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
+//        return [.left: entity, .right: entity]
+//    }()
 }
 
 extension 📱AppModel {
     func setupRootEntity() -> Entity {
-        self.fingerEntities.values.forEach {
+        self.indexTipEntities.values.forEach {
             self.rootEntity.addChild($0)
         }
         return self.rootEntity
@@ -46,17 +51,24 @@ extension 📱AppModel {
             let handAnchor = update.anchor
             
             guard handAnchor.isTracked,
-                  let fingertip = handAnchor.handSkeleton?.joint(.indexFingerTip),
-                  fingertip.isTracked else {
+                  let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip),
+//                  let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip),
+                  indexTip.isTracked else {
+//                  thumbTip.isTracked else {
                 continue
             }
             
             let originFromWrist = handAnchor.originFromAnchorTransform
-            let wristFromIndex = fingertip.anchorFromJointTransform
-            let originFromIndex = originFromWrist * wristFromIndex
             
-            await fingerEntities[handAnchor.chirality]?
+            let wristFromIndex = indexTip.anchorFromJointTransform
+            let originFromIndex = originFromWrist * wristFromIndex
+            await indexTipEntities[handAnchor.chirality]?
                 .setTransformMatrix(originFromIndex, relativeTo: nil)
+            
+//            let wristFromThumb = thumbTip.anchorFromJointTransform
+//            let originFromThumb = originFromWrist * wristFromThumb
+//            await thumbTipEntities[handAnchor.chirality]?
+//                .setTransformMatrix(originFromThumb, relativeTo: nil)
             
             self.updateResultLabel()
             self.updateLine()
@@ -64,14 +76,14 @@ extension 📱AppModel {
     }
     
     var resultLabelPosition: SIMD3<Float> {
-        self.fingerEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
+        self.indexTipEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
     }
 }
 
 fileprivate extension 📱AppModel {
     private func updateResultLabel() {
-        guard let leftPosition = self.fingerEntities[.left]?.position,
-              let rightPosition = self.fingerEntities[.right]?.position else {
+        guard let leftPosition = self.indexTipEntities[.left]?.position,
+              let rightPosition = self.indexTipEntities[.right]?.position else {
             assertionFailure(); return
         }
         let formatter = LengthFormatter()
@@ -80,8 +92,8 @@ fileprivate extension 📱AppModel {
                                            unit: self.unit.formatterValue)
     }
     private func updateLine() {
-        guard let leftPosition = self.fingerEntities[.left]?.position,
-              let rightPosition = self.fingerEntities[.right]?.position else {
+        guard let leftPosition = self.indexTipEntities[.left]?.position,
+              let rightPosition = self.indexTipEntities[.right]?.position else {
             assertionFailure(); return
         }
         self.lineEntity.position = (leftPosition + rightPosition) / 2
