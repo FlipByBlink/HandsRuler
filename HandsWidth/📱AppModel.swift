@@ -25,6 +25,17 @@ class 📱AppModel: ObservableObject {
                 .right: ModelEntity(mesh: .generateSphere(radius: 0.01),
                                     materials: [SimpleMaterial(color: .red, isMetallic: false)])]
     }()
+    let heightLineEntity = Entity()
+    let groundEntity: Entity = {
+        let radius: Float = 0.03
+        let value = ModelEntity(mesh: .generateSphere(radius: radius),
+                                materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
+        let occlusion = ModelEntity(mesh: .generateCylinder(height: radius, radius: radius),
+                                    materials: [OcclusionMaterial()])
+        occlusion.position.y -= radius / 2
+        value.addChild(occlusion)
+        return value
+    }()
 }
 
 extension 📱AppModel {
@@ -111,11 +122,32 @@ fileprivate extension 📱AppModel {
 fileprivate extension 📱AppModel {
 #if targetEnvironment(simulator)
     func setUp_simulator() {
+        self.rootEntity.addChild(self.groundEntity)
+        self.rootEntity.addChild(self.heightLineEntity)
+        
         self.indexTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
         self.indexTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
+        self.groundEntity.position = .init(x: 0.3, y: 0, z: -1)
         
         self.updateResultLabel()
         self.updateLine()
+        
+        guard let rightPosition = self.indexTipEntities[.right]?.position else {
+            assertionFailure(); return
+        }
+        self.heightLineEntity.position = (self.groundEntity.position + rightPosition) / 2
+        self.heightLineEntity.components.set(
+            ModelComponent(mesh: .generateBox(width: 0.01,
+                                              height: 0.01,
+                                              depth: distance(self.groundEntity.position, rightPosition),
+                                              cornerRadius: 0.005),
+                           materials: [SimpleMaterial(color: .white, isMetallic: false)])
+        )
+        self.heightLineEntity.look(at: self.groundEntity.position,
+                                   from: self.heightLineEntity.position,
+                                   relativeTo: nil)
+        self.heightLineEntity.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
+                                                   materials: [OcclusionMaterial()]))
     }
 #endif
 }
