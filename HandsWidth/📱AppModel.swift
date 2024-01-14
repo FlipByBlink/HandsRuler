@@ -26,7 +26,7 @@ class 📱AppModel: ObservableObject {
                                     materials: [SimpleMaterial(color: .red, isMetallic: false)])]
     }()
     let heightLineEntity = Entity()
-    let groundEntity: Entity = {
+    let groundPointEntity: Entity = {
         let radius: Float = 0.03
         let value = ModelEntity(mesh: .generateSphere(radius: radius),
                                 materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
@@ -122,12 +122,12 @@ fileprivate extension 📱AppModel {
 fileprivate extension 📱AppModel {
 #if targetEnvironment(simulator)
     func setUp_simulator() {
-        self.rootEntity.addChild(self.groundEntity)
+        self.rootEntity.addChild(self.groundPointEntity)
         self.rootEntity.addChild(self.heightLineEntity)
         
         self.indexTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
         self.indexTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
-        self.groundEntity.position = .init(x: 0.3, y: 0, z: -1)
+        self.groundPointEntity.position = .init(x: 0.3, y: 0, z: -1)
         
         self.updateResultLabel()
         self.updateLine()
@@ -135,15 +135,15 @@ fileprivate extension 📱AppModel {
         guard let rightPosition = self.indexTipEntities[.right]?.position else {
             assertionFailure(); return
         }
-        self.heightLineEntity.position = (self.groundEntity.position + rightPosition) / 2
+        self.heightLineEntity.position = (self.groundPointEntity.position + rightPosition) / 2
         self.heightLineEntity.components.set(
             ModelComponent(mesh: .generateBox(width: 0.01,
                                               height: 0.01,
-                                              depth: distance(self.groundEntity.position, rightPosition),
+                                              depth: distance(self.groundPointEntity.position, rightPosition),
                                               cornerRadius: 0.005),
                            materials: [SimpleMaterial(color: .white, isMetallic: false)])
         )
-        self.heightLineEntity.look(at: self.groundEntity.position,
+        self.heightLineEntity.look(at: self.groundPointEntity.position,
                                    from: self.heightLineEntity.position,
                                    relativeTo: nil)
         self.heightLineEntity.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
