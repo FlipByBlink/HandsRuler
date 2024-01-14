@@ -25,11 +25,6 @@ class 📱AppModel: ObservableObject {
                 .right: ModelEntity(mesh: .generateSphere(radius: 0.01),
                                     materials: [SimpleMaterial(color: .red, isMetallic: false)])]
     }()
-//    let thumbTipEntities: [HandAnchor.Chirality: ModelEntity] = {
-//        let entity = ModelEntity(mesh: .generateSphere(radius: 0.05),
-//                                 materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
-//        return [.left: entity, .right: entity]
-//    }()
 }
 
 extension 📱AppModel {
@@ -43,7 +38,11 @@ extension 📱AppModel {
     
     func runSession() async {
         do {
+#if targetEnvironment(simulator)
+            print("Not support handTracking in simulator.")
+#else
             try await self.session.run([self.handTracking])
+#endif
         } catch {
             assertionFailure()
         }
@@ -55,9 +54,7 @@ extension 📱AppModel {
             
             guard handAnchor.isTracked,
                   let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip),
-//                  let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip),
                   indexTip.isTracked else {
-//                  thumbTip.isTracked else {
                 continue
             }
             
@@ -67,11 +64,6 @@ extension 📱AppModel {
             let originFromIndex = originFromWrist * wristFromIndex
             indexTipEntities[handAnchor.chirality]?
                 .setTransformMatrix(originFromIndex, relativeTo: nil)
-            
-//            let wristFromThumb = thumbTip.anchorFromJointTransform
-//            let originFromThumb = originFromWrist * wristFromThumb
-//            await thumbTipEntities[handAnchor.chirality]?
-//                .setTransformMatrix(originFromThumb, relativeTo: nil)
             
             self.updateResultLabel()
             self.updateLine()
