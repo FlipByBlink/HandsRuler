@@ -5,6 +5,7 @@ import ARKit
 @MainActor
 class 📱AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
+    @AppStorage("mode") var mode: 🪄Mode = .handToHand
     @Published var presentImmersiveSpace: Bool = false
     @Published var presentSettingWindow: Bool = false
     @Published var resultText: String = ""

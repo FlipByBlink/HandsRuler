@@ -9,6 +9,13 @@ struct 🛠️SettingView: View {
         NavigationStack {
             List {
                 Section {
+                    Picker("Mode", selection: self.$model.mode) {
+                        ForEach(🪄Mode.allCases) {
+                            Text($0.localizedTitle)
+                        }
+                    }
+                }
+                Section {
                     Picker("Unit", selection: self.$model.unit) {
                         ForEach(📏Unit.allCases) {
                             Text($0.value.symbol)
@@ -31,6 +38,7 @@ struct 🛠️SettingView: View {
             }
             .font(.title)
             .navigationTitle("Setting")
+            .navigationBarTitleDisplayMode(.inline)
             .animation(.default, value: self.model.presentImmersiveSpace)
         }
         .onAppear { self.model.presentSettingWindow = true }
