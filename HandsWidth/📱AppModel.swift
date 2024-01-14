@@ -33,6 +33,7 @@ extension 📱AppModel {
             self.rootEntity.addChild($0)
         }
         self.rootEntity.addChild(self.lineEntity)
+        self.setUp_simulator()
         return self.rootEntity
     }
     
@@ -62,8 +63,8 @@ extension 📱AppModel {
             
             let wristFromIndex = indexTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
-            indexTipEntities[handAnchor.chirality]?
-                .setTransformMatrix(originFromIndex, relativeTo: nil)
+            indexTipEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
+                                                                       relativeTo: nil)
             
             self.updateResultLabel()
             self.updateLine()
@@ -105,4 +106,16 @@ fileprivate extension 📱AppModel {
         self.lineEntity.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
                                              materials: [OcclusionMaterial()]))
     }
+}
+
+fileprivate extension 📱AppModel {
+#if targetEnvironment(simulator)
+    func setUp_simulator() {
+        self.indexTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
+        self.indexTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
+        
+        self.updateResultLabel()
+        self.updateLine()
+    }
+#endif
 }
