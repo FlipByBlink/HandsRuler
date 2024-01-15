@@ -21,10 +21,10 @@ class 📱AppModel: ObservableObject {
         return value
     }()
     let indexTipEntities: [HandAnchor.Chirality: ModelEntity] = {
-        return [.left: ModelEntity(mesh: .generateSphere(radius: 0.01),
-                                   materials: [SimpleMaterial(color: .blue, isMetallic: false)]),
-                .right: ModelEntity(mesh: .generateSphere(radius: 0.01),
-                                    materials: [SimpleMaterial(color: .red, isMetallic: false)])]
+        [.left: ModelEntity(mesh: .generateSphere(radius: 0.01),
+                            materials: [SimpleMaterial(color: .blue, isMetallic: false)]),
+         .right: ModelEntity(mesh: .generateSphere(radius: 0.01),
+                             materials: [SimpleMaterial(color: .red, isMetallic: false)])]
     }()
     let heightLineEntity = Entity()
     let groundPointEntity: Entity = {
