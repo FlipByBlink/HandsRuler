@@ -14,18 +14,8 @@ class 📱AppModel: ObservableObject {
     private let handTracking = HandTrackingProvider()
     
     let rootEntity = Entity()
-    let lineEntity = {
-        let value = Entity()
-        value.name = "line"
-        value.components.set(OpacityComponent(opacity: 0.5))
-        return value
-    }()
-    let indexTipEntities: [HandAnchor.Chirality: ModelEntity] = {
-        [.left: ModelEntity(mesh: .generateSphere(radius: 0.01),
-                            materials: [SimpleMaterial(color: .blue, isMetallic: false)]),
-         .right: ModelEntity(mesh: .generateSphere(radius: 0.01),
-                             materials: [SimpleMaterial(color: .red, isMetallic: false)])]
-    }()
+    let lineEntity = 🧩Entity.line()
+    let indexTipEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
     //let heightLineEntity = Entity()
     //let groundPointEntity: Entity = {
     //    let radius: Float = 0.03
@@ -118,8 +108,6 @@ fileprivate extension 📱AppModel {
         self.lineEntity.look(at: leftPosition,
                              from: self.lineEntity.position,
                              relativeTo: nil)
-        self.lineEntity.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
-                                             materials: [OcclusionMaterial()]))
     }
 }
 

@@ -23,6 +23,13 @@ struct 👆MeasureView: View {
                     .glassBackgroundEffect()
             }
         }
+        .gesture(
+            TapGesture()
+                .targetedToAnyEntity()
+                .onEnded {
+                    print("🖨️", Date.now.description, $0.entity.name)
+                }
+        )
         .task { await self.model.runSession() }
         .task { await self.model.processHandUpdates() }
     }
