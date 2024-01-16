@@ -21,6 +21,9 @@ struct 🛠️SettingView: View {
                 }
                 .pickerStyle(.segmented)
                 .listRowBackground(Color.clear)
+                .onChange(of: self.model.unit) { _, _ in
+                    self.model.updateResultLabel()
+                }
             }
             .font(.title)
             .navigationTitle("Unit")

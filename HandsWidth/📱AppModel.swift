@@ -86,19 +86,22 @@ extension 📱AppModel {
     var resultLabelPosition: SIMD3<Float> {
         self.indexTipEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
     }
-}
-
-fileprivate extension 📱AppModel {
-    private func updateResultLabel() {
+    
+    func updateResultLabel() {
         guard let leftPosition = self.indexTipEntities[.left]?.position,
               let rightPosition = self.indexTipEntities[.right]?.position else {
             assertionFailure(); return
         }
-        let formatter = LengthFormatter()
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
         formatter.numberFormatter.maximumFractionDigits = 2
-        self.resultText = formatter.string(fromValue: .init(distance(leftPosition, rightPosition)),
-                                           unit: self.unit.formatterValue)
+        let measurement: Measurement = .init(value: .init(distance(leftPosition, rightPosition)),
+                                             unit: UnitLength.meters)
+        self.resultText = formatter.string(from: measurement.converted(to: self.unit.value))
     }
+}
+
+fileprivate extension 📱AppModel {
     private func updateLine() {
         guard let leftPosition = self.indexTipEntities[.left]?.position,
               let rightPosition = self.indexTipEntities[.right]?.position else {
