@@ -14,20 +14,16 @@ struct 🛠️SettingView: View {
                 //        }
                 //    }
                 //}
-                Section {
-                    Picker("Unit", selection: self.$model.unit) {
-                        ForEach(📏Unit.allCases) {
-                            Text($0.value.symbol)
-                        }
+                Picker("Unit", selection: self.$model.unit) {
+                    ForEach(📏Unit.allCases) {
+                        Text($0.value.symbol)
                     }
-                    .pickerStyle(.segmented)
-                    .listRowBackground(Color.clear)
-                } header: {
-                    Text("Unit")
                 }
+                .pickerStyle(.segmented)
+                .listRowBackground(Color.clear)
             }
             .font(.title)
-            .navigationTitle("Setting")
+            .navigationTitle("Unit")
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear { self.model.presentSettingWindow = true }

@@ -45,7 +45,7 @@ extension 📱AppModel {
             self.rootEntity.addChild($0)
         }
         self.rootEntity.addChild(self.lineEntity)
-        //self.setUp_simulator()
+        self.setUp_simulator()
         return self.rootEntity
     }
     
@@ -122,17 +122,17 @@ fileprivate extension 📱AppModel {
 
 fileprivate extension 📱AppModel {
 #if targetEnvironment(simulator)
-//    func setUp_simulator() {
+    func setUp_simulator() {
 //        self.rootEntity.addChild(self.groundPointEntity)
 //        self.rootEntity.addChild(self.heightLineEntity)
-//        
-//        self.indexTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
-//        self.indexTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
+        
+        self.indexTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
+        self.indexTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
 //        self.groundPointEntity.position = .init(x: 0.3, y: 0, z: -1)
-//        
-//        self.updateResultLabel()
-//        self.updateLine()
-//        
+        
+        self.updateResultLabel()
+        self.updateLine()
+        
 //        guard let rightPosition = self.indexTipEntities[.right]?.position else {
 //            assertionFailure(); return
 //        }
@@ -149,6 +149,6 @@ fileprivate extension 📱AppModel {
 //                                   relativeTo: nil)
 //        self.heightLineEntity.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
 //                                                   materials: [OcclusionMaterial()]))
-//    }
+    }
 #endif
 }

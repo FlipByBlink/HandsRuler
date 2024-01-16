@@ -12,7 +12,7 @@ struct HandsWidthApp: App {
             🛠️SettingView()
                 .environmentObject(self.model)
         }
-        .defaultSize(width: 400, height: 400)
+        .defaultSize(width: 400, height: 260)
     }
     init() {
         📍HeadAnchorComponent.registerComponent()
