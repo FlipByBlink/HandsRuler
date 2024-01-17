@@ -9,6 +9,8 @@ class 📱AppModel: ObservableObject {
     @Published var presentImmersiveSpace: Bool = false
     @Published var presentSettingWindow: Bool = false
     @Published var resultText: String = ""
+    @Published var selectedLeft: Bool = false
+    @Published var selectedRight: Bool = false
     
     private let session = ARKitSession()
     private let handTracking = HandTrackingProvider()

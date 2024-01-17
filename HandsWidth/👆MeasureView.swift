@@ -12,7 +12,7 @@ struct 👆MeasureView: View {
                 assertionFailure(); return
             }
             resultLabelEntity.components.set(📍HeadAnchorComponent())
-            resultLabelEntity.name = "resultLabel"
+            resultLabelEntity.name = "\(🧩Entity.Name.resultLabel)"
             resultLabelEntity.position = self.model.resultLabelPosition
             self.model.rootEntity.addChild(resultLabelEntity)
         } attachments: {

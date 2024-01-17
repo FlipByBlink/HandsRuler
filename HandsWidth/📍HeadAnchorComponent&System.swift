@@ -30,7 +30,7 @@ struct 📍HeadAnchorSystem: System {
         }
         for entity in context.entities(matching: .init(where: .has(📍HeadAnchorComponent.self)), 
                                        updatingSystemWhen: .rendering) {
-            if entity.name == "resultLabel" {
+            if entity.name == "\(🧩Entity.Name.resultLabel)" {
                 entity.look(at: Transform(matrix: deviceAnchor.originFromAnchorTransform).translation,
                             from: entity.position(relativeTo: nil),
                             relativeTo: nil,
