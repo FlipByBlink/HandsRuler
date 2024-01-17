@@ -2,7 +2,7 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct 👆MeasureView: View {
+struct 🌐RealityView: View {
     @EnvironmentObject var model: 📱AppModel
     var body: some View {
         RealityView { content, attachments in
@@ -48,6 +48,6 @@ struct 👆MeasureView: View {
     }
 }
 
-fileprivate extension 👆MeasureView {
+fileprivate extension 🌐RealityView {
     private static let attachmentID: String = "resultLabel"
 }
