@@ -46,17 +46,17 @@ extension 📱AppModel {
             let handAnchor = update.anchor
             
             guard handAnchor.isTracked,
-                  let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip),
-                  indexTip.isTracked else {
+                  let fingerTip = handAnchor.handSkeleton?.joint(.indexFingerTip),
+                  fingerTip.isTracked else {
                 continue
             }
             
             let originFromWrist = handAnchor.originFromAnchorTransform
             
-            let wristFromIndex = indexTip.anchorFromJointTransform
+            let wristFromIndex = fingerTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
             fingerTipEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
-                                                                       relativeTo: nil)
+                                                                        relativeTo: nil)
             
             self.updateResultLabel()
             self.updateLine()
