@@ -28,7 +28,7 @@ struct 📍HeadAnchorSystem: System {
         guard let deviceAnchor = self.provider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else {
             return
         }
-        for entity in context.entities(matching: .init(where: .has(📍HeadAnchorComponent.self)), 
+        for entity in context.entities(matching: .init(where: .has(📍HeadAnchorComponent.self)),
                                        updatingSystemWhen: .rendering) {
             if entity.name == 🧩Name.resultLabel {
                 entity.look(at: Transform(matrix: deviceAnchor.originFromAnchorTransform).translation,
