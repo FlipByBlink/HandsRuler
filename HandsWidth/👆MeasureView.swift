@@ -34,9 +34,9 @@ struct 👆MeasureView: View {
                 .targetedToAnyEntity()
                 .onEnded {
                     switch $0.entity.name {
-                        case 🧩Name.fingerTipLeft:
+                        case 🧩Name.fingerLeft:
                             self.model.selectedLeft.toggle()
-                        case 🧩Name.fingerTipRight:
+                        case 🧩Name.fingerRight:
                             self.model.selectedRight.toggle()
                         default:
                             break
