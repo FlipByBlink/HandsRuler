@@ -8,21 +8,21 @@ struct 👆MeasureView: View {
         RealityView { content, attachments in
             content.add(self.model.setupRootEntity())
             
-            let resultLabelEntity = attachments.entity(for: "resultLabel")!
+            let resultLabelEntity = attachments.entity(for: Self.attachmentID)!
             resultLabelEntity.components.set(📍HeadAnchorComponent())
             resultLabelEntity.name = 🧩Name.resultLabel
             self.model.rootEntity.addChild(resultLabelEntity)
         } update: { _, attachments in
-            attachments.entity(for: "resultLabel")!.position = self.model.resultLabelPosition
+            attachments.entity(for: Self.attachmentID)!.position = self.model.resultLabelPosition
             
-            self.model.fingerTipEntities[.left]?
+            self.model.fingerEntities[.left]?
                 .components
                 .set(🧩Model.fingerTip(self.model.selectedLeft))
-            self.model.fingerTipEntities[.right]?
+            self.model.fingerEntities[.right]?
                 .components
                 .set(🧩Model.fingerTip(self.model.selectedRight))
         } attachments: {
-            Attachment(id: "resultLabel") {
+            Attachment(id: Self.attachmentID) {
                 Text(self.model.resultText)
                     .font(.system(size: 54).bold())
                     .padding(24)
@@ -46,4 +46,8 @@ struct 👆MeasureView: View {
         .task { await self.model.runSession() }
         .task { await self.model.processHandUpdates() }
     }
+}
+
+fileprivate extension 👆MeasureView {
+    private static let attachmentID: String = "resultLabel"
 }

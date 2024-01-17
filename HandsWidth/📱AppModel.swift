@@ -16,12 +16,12 @@ class 📱AppModel: ObservableObject {
     
     let rootEntity = Entity()
     let lineEntity = 🧩Entity.line()
-    let fingerTipEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
+    let fingerEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
 }
 
 extension 📱AppModel {
     func setupRootEntity() -> Entity {
-        self.fingerTipEntities.values.forEach {
+        self.fingerEntities.values.forEach {
             self.rootEntity.addChild($0)
         }
         self.rootEntity.addChild(self.lineEntity)
@@ -55,7 +55,7 @@ extension 📱AppModel {
             
             let wristFromIndex = fingerTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
-            fingerTipEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
+            fingerEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
                                                                         relativeTo: nil)
             
             self.updateResultLabel()
@@ -64,12 +64,12 @@ extension 📱AppModel {
     }
     
     var resultLabelPosition: SIMD3<Float> {
-        self.fingerTipEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
+        self.fingerEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
     }
     
     func updateResultLabel() {
-        guard let leftPosition = self.fingerTipEntities[.left]?.position,
-              let rightPosition = self.fingerTipEntities[.right]?.position else {
+        guard let leftPosition = self.fingerEntities[.left]?.position,
+              let rightPosition = self.fingerEntities[.right]?.position else {
             assertionFailure(); return
         }
         let formatter = MeasurementFormatter()
@@ -83,8 +83,8 @@ extension 📱AppModel {
 
 fileprivate extension 📱AppModel {
     private func updateLine() {
-        guard let leftPosition = self.fingerTipEntities[.left]?.position,
-              let rightPosition = self.fingerTipEntities[.right]?.position else {
+        guard let leftPosition = self.fingerEntities[.left]?.position,
+              let rightPosition = self.fingerEntities[.right]?.position else {
             assertionFailure(); return
         }
         self.lineEntity.position = (leftPosition + rightPosition) / 2
