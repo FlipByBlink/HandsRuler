@@ -16,7 +16,6 @@
 		165ADB4F2B4B71B0008A756F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ADB4E2B4B71B0008A756F /* App.swift */; };
 		165ADB512B4B71B0008A756F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ADB502B4B71B0008A756F /* ContentView.swift */; };
 		165ADB532B4B71B2008A756F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 165ADB522B4B71B2008A756F /* Assets.xcassets */; };
-		167AF80C2B53FAC200F7347A /* 🪄Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AF80B2B53FAC200F7347A /* 🪄Mode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +31,7 @@
 		165ADB502B4B71B0008A756F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		165ADB522B4B71B2008A756F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		165ADB572B4B71B2008A756F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		167AF80B2B53FAC200F7347A /* 🪄Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪄Mode.swift"; sourceTree = "<group>"; };
+		16EE5E962B576B9F00D354ED /* HandToGround.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HandToGround.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				1638F80C2B50BC9700E0CAD2 /* README.md */,
+				16EE5E962B576B9F00D354ED /* HandToGround.md */,
 			);
 			path = Archive;
 			sourceTree = "<group>";
@@ -81,7 +81,6 @@
 				1642FAB42B4D54A60084F9ED /* 🛠️SettingView.swift */,
 				160ED7972B4B74C5002AD987 /* 📍HeadAnchorComponent&System.swift */,
 				16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */,
-				167AF80B2B53FAC200F7347A /* 🪄Mode.swift */,
 				1638F80B2B50BC8800E0CAD2 /* Archive */,
 				165ADB522B4B71B2008A756F /* Assets.xcassets */,
 				165ADB572B4B71B2008A756F /* Info.plist */,
@@ -162,7 +161,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				160ED7982B4B74C5002AD987 /* 📍HeadAnchorComponent&System.swift in Sources */,
-				167AF80C2B53FAC200F7347A /* 🪄Mode.swift in Sources */,
 				1642FAB92B4D6CAA0084F9ED /* 👆MeasureView.swift in Sources */,
 				1642FAB52B4D54A60084F9ED /* 🛠️SettingView.swift in Sources */,
 				16253CFB2B4E2FCB0028F0E2 /* 📏Unit.swift in Sources */,

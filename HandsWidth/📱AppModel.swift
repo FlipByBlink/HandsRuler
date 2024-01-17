@@ -5,7 +5,6 @@ import ARKit
 @MainActor
 class 📱AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
-    @AppStorage("mode") var mode: 🪄Mode = .handToHand
     @Published var presentImmersiveSpace: Bool = false
     @Published var presentSettingWindow: Bool = false
     @Published var resultText: String = ""
@@ -18,17 +17,6 @@ class 📱AppModel: ObservableObject {
     let rootEntity = Entity()
     let lineEntity = 🧩Entity.line()
     let fingerTipEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTipEntities()
-    //let heightLineEntity = Entity()
-    //let groundPointEntity: Entity = {
-    //    let radius: Float = 0.03
-    //    let value = ModelEntity(mesh: .generateSphere(radius: radius),
-    //                            materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
-    //    let occlusion = ModelEntity(mesh: .generateCylinder(height: radius, radius: radius),
-    //                                materials: [OcclusionMaterial()])
-    //    occlusion.position.y -= radius / 2
-    //    value.addChild(occlusion)
-    //    return value
-    //}()
 }
 
 extension 📱AppModel {
@@ -116,32 +104,11 @@ fileprivate extension 📱AppModel {
 fileprivate extension 📱AppModel {
 #if targetEnvironment(simulator)
     func setUp_simulator() {
-//        self.rootEntity.addChild(self.groundPointEntity)
-//        self.rootEntity.addChild(self.heightLineEntity)
-        
         self.fingerTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
         self.fingerTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
-//        self.groundPointEntity.position = .init(x: 0.3, y: 0, z: -1)
         
         self.updateResultLabel()
         self.updateLine()
-        
-//        guard let rightPosition = self.indexTipEntities[.right]?.position else {
-//            assertionFailure(); return
-//        }
-//        self.heightLineEntity.position = (self.groundPointEntity.position + rightPosition) / 2
-//        self.heightLineEntity.components.set(
-//            ModelComponent(mesh: .generateBox(width: 0.01,
-//                                              height: 0.01,
-//                                              depth: distance(self.groundPointEntity.position, rightPosition),
-//                                              cornerRadius: 0.005),
-//                           materials: [SimpleMaterial(color: .white, isMetallic: false)])
-//        )
-//        self.heightLineEntity.look(at: self.groundPointEntity.position,
-//                                   from: self.heightLineEntity.position,
-//                                   relativeTo: nil)
-//        self.heightLineEntity.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
-//                                                   materials: [OcclusionMaterial()]))
     }
 #endif
 }

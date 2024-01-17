@@ -7,13 +7,6 @@ struct 🛠️SettingView: View {
     var body: some View {
         NavigationStack {
             List {
-                //Section {
-                //    Picker("Mode", selection: self.$model.mode) {
-                //        ForEach(🪄Mode.allCases) {
-                //            Text($0.localizedTitle)
-                //        }
-                //    }
-                //}
                 Picker("Unit", selection: self.$model.unit) {
                     ForEach(📏Unit.allCases) {
                         Text($0.value.symbol)
