@@ -88,13 +88,7 @@ fileprivate extension 📱AppModel {
             assertionFailure(); return
         }
         self.lineEntity.position = (leftPosition + rightPosition) / 2
-        self.lineEntity.components.set(
-            ModelComponent(mesh: .generateBox(width: 0.01,
-                                              height: 0.01,
-                                              depth: distance(leftPosition, rightPosition),
-                                              cornerRadius: 0.005),
-                           materials: [SimpleMaterial(color: .white, isMetallic: false)])
-        )
+        self.lineEntity.components.set(🧩Model.line(leftPosition, rightPosition))
         self.lineEntity.look(at: leftPosition,
                              from: self.lineEntity.position,
                              relativeTo: nil)
