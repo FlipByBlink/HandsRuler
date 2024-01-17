@@ -16,7 +16,7 @@ class 📱AppModel: ObservableObject {
     
     let rootEntity = Entity()
     let lineEntity = 🧩Entity.line()
-    let fingerTipEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTipEntities()
+    let fingerTipEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
 }
 
 extension 📱AppModel {

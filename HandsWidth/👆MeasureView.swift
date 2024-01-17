@@ -10,17 +10,17 @@ struct 👆MeasureView: View {
             
             let resultLabelEntity = attachments.entity(for: "resultLabel")!
             resultLabelEntity.components.set(📍HeadAnchorComponent())
-            resultLabelEntity.name = 🧩Entity.Name.resultLabel
+            resultLabelEntity.name = 🧩Name.resultLabel
             self.model.rootEntity.addChild(resultLabelEntity)
         } update: { _, attachments in
             attachments.entity(for: "resultLabel")!.position = self.model.resultLabelPosition
             
             self.model.fingerTipEntities[.left]?
                 .components
-                .set(🧩Entity.fingerTipModel(self.model.selectedLeft))
+                .set(🧩Model.fingerTip(self.model.selectedLeft))
             self.model.fingerTipEntities[.right]?
                 .components
-                .set(🧩Entity.fingerTipModel(self.model.selectedRight))
+                .set(🧩Model.fingerTip(self.model.selectedRight))
         } attachments: {
             Attachment(id: "resultLabel") {
                 Text(self.model.resultText)
@@ -34,9 +34,9 @@ struct 👆MeasureView: View {
                 .targetedToAnyEntity()
                 .onEnded {
                     switch $0.entity.name {
-                        case 🧩Entity.Name.fingerTipLeft:
+                        case 🧩Name.fingerTipLeft:
                             self.model.selectedLeft.toggle()
-                        case 🧩Entity.Name.fingerTipRight:
+                        case 🧩Name.fingerTipRight:
                             self.model.selectedRight.toggle()
                         default:
                             break
