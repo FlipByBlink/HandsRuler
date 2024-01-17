@@ -55,8 +55,8 @@ extension 📱AppModel {
             
             let wristFromIndex = fingerTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
-            fingerEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
-                                                                        relativeTo: nil)
+            self.fingerEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
+                                                                          relativeTo: nil)
             
             self.updateResultLabel()
             self.updateLine()
