@@ -5,21 +5,22 @@ import ARKit
 struct 👆MeasureView: View {
     @EnvironmentObject var model: 📱AppModel
     var body: some View {
-        RealityView { content, _ in
+        RealityView { content, attachments in
             content.add(self.model.setupRootEntity())
-        } update: { content, attachments in
-            guard let resultLabelEntity = attachments.entity(for: "resultLabel") else {
-                assertionFailure(); return
-            }
+            
+            let resultLabelEntity = attachments.entity(for: "resultLabel")!
             resultLabelEntity.components.set(📍HeadAnchorComponent())
             resultLabelEntity.name = 🧩Entity.Name.resultLabel
-            resultLabelEntity.position = self.model.resultLabelPosition
             self.model.rootEntity.addChild(resultLabelEntity)
+        } update: { _, attachments in
+            attachments.entity(for: "resultLabel")!.position = self.model.resultLabelPosition
             
             self.model.fingerTipEntities[.left]?
-                .components.set(🧩Entity.fingerTipModel(self.model.selectedLeft))
+                .components
+                .set(🧩Entity.fingerTipModel(self.model.selectedLeft))
             self.model.fingerTipEntities[.right]?
-                .components.set(🧩Entity.fingerTipModel(self.model.selectedRight))
+                .components
+                .set(🧩Entity.fingerTipModel(self.model.selectedRight))
         } attachments: {
             Attachment(id: "resultLabel") {
                 Text(self.model.resultText)
