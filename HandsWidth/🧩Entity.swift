@@ -2,9 +2,9 @@ import RealityKit
 import ARKit
 
 enum 🧩Entity {
-    static func fingerTips() -> [HandAnchor.Chirality: Entity] {
-        [.left: Self.fingerTip(name: Self.Name.fingerTipLeft),
-         .right: Self.fingerTip(name: Self.Name.fingerTipRight)]
+    static func fingerTipEntities() -> [HandAnchor.Chirality: Entity] {
+        [.left: Self.fingerTipEntity(name: Self.Name.fingerTipLeft),
+         .right: Self.fingerTipEntity(name: Self.Name.fingerTipRight)]
     }
     static func line() -> Entity {
         let value = Entity()
@@ -20,10 +20,15 @@ enum 🧩Entity {
         static let line = "line"
         static let resultLabel = "resultLabel"
     }
+    static func fingerTipModel(_ selected: Bool) -> ModelComponent {
+        .init(mesh: .generateSphere(radius: 0.01),
+              materials: [SimpleMaterial(color: selected ? .red : .blue,
+                                         isMetallic: false)])
+    }
 }
 
 fileprivate extension 🧩Entity {
-    private static func fingerTip(name: String) -> Entity {
+    private static func fingerTipEntity(name: String) -> Entity {
         let value = ModelEntity(mesh: .generateSphere(radius: 0.01),
                                 materials: [SimpleMaterial(color: .blue, isMetallic: false)])
         value.name = name

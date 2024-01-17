@@ -17,7 +17,7 @@ class 📱AppModel: ObservableObject {
     
     let rootEntity = Entity()
     let lineEntity = 🧩Entity.line()
-    let indexTipEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
+    let fingerTipEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTipEntities()
     //let heightLineEntity = Entity()
     //let groundPointEntity: Entity = {
     //    let radius: Float = 0.03
@@ -33,7 +33,7 @@ class 📱AppModel: ObservableObject {
 
 extension 📱AppModel {
     func setupRootEntity() -> Entity {
-        self.indexTipEntities.values.forEach {
+        self.fingerTipEntities.values.forEach {
             self.rootEntity.addChild($0)
         }
         self.rootEntity.addChild(self.lineEntity)
@@ -67,7 +67,7 @@ extension 📱AppModel {
             
             let wristFromIndex = indexTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
-            indexTipEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
+            fingerTipEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
                                                                        relativeTo: nil)
             
             self.updateResultLabel()
@@ -76,12 +76,12 @@ extension 📱AppModel {
     }
     
     var resultLabelPosition: SIMD3<Float> {
-        self.indexTipEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
+        self.fingerTipEntities.values.reduce(into: .zero) { $0 += $1.position } / 2
     }
     
     func updateResultLabel() {
-        guard let leftPosition = self.indexTipEntities[.left]?.position,
-              let rightPosition = self.indexTipEntities[.right]?.position else {
+        guard let leftPosition = self.fingerTipEntities[.left]?.position,
+              let rightPosition = self.fingerTipEntities[.right]?.position else {
             assertionFailure(); return
         }
         let formatter = MeasurementFormatter()
@@ -95,8 +95,8 @@ extension 📱AppModel {
 
 fileprivate extension 📱AppModel {
     private func updateLine() {
-        guard let leftPosition = self.indexTipEntities[.left]?.position,
-              let rightPosition = self.indexTipEntities[.right]?.position else {
+        guard let leftPosition = self.fingerTipEntities[.left]?.position,
+              let rightPosition = self.fingerTipEntities[.right]?.position else {
             assertionFailure(); return
         }
         self.lineEntity.position = (leftPosition + rightPosition) / 2
@@ -119,8 +119,8 @@ fileprivate extension 📱AppModel {
 //        self.rootEntity.addChild(self.groundPointEntity)
 //        self.rootEntity.addChild(self.heightLineEntity)
         
-        self.indexTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
-        self.indexTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
+        self.fingerTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
+        self.fingerTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
 //        self.groundPointEntity.position = .init(x: 0.3, y: 0, z: -1)
         
         self.updateResultLabel()
