@@ -98,9 +98,6 @@ fileprivate extension 📱AppModel {
 fileprivate extension 📱AppModel {
 #if targetEnvironment(simulator)
     func setUp_simulator() {
-        self.fingerTipEntities[.left]?.position = .init(x: -0.3, y: 1.5, z: -1)
-        self.fingerTipEntities[.right]?.position = .init(x: 0.3, y: 1.5, z: -1)
-        
         self.updateResultLabel()
         self.updateLine()
     }

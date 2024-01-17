@@ -3,8 +3,8 @@ import ARKit
 
 enum 🧩Entity {
     static func fingerTips() -> [HandAnchor.Chirality: Entity] {
-        [.left: Self.fingerTip(name: 🧩Name.fingerLeft),
-         .right: Self.fingerTip(name: 🧩Name.fingerRight)]
+        [.left: Self.fingerTip(.left),
+         .right: Self.fingerTip(.right)]
     }
     static func line() -> Entity {
         let value = Entity()
@@ -17,9 +17,16 @@ enum 🧩Entity {
 }
 
 fileprivate extension 🧩Entity {
-    private static func fingerTip(name: String) -> Entity {
+    private static func fingerTip(_ chirality: HandAnchor.Chirality) -> Entity {
         let value = Entity()
-        value.name = name
+        switch chirality {
+            case .left:
+                value.name = 🧩Name.fingerLeft
+                value.position = .init(x: -0.3, y: 1.5, z: -1)
+            case .right:
+                value.name = 🧩Name.fingerRight
+                value.position = .init(x: 0.3, y: 1.5, z: -1)
+        }
         value.components.set([InputTargetComponent(),
                               CollisionComponent(shapes: [.generateSphere(radius: 0.04)]),
                               HoverEffectComponent(),
