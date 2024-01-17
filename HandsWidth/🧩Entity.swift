@@ -3,22 +3,22 @@ import ARKit
 
 enum 🧩Entity {
     static func fingerTips() -> [HandAnchor.Chirality: Entity] {
-        [.left: Self.fingerTip(name: "\(Self.Name.fingerTipLeft)"),
-         .right: Self.fingerTip(name: "\(Self.Name.fingerTipRight)")]
+        [.left: Self.fingerTip(name: Self.Name.fingerTipLeft),
+         .right: Self.fingerTip(name: Self.Name.fingerTipRight)]
     }
     static func line() -> Entity {
         let value = Entity()
-        value.name = "\(Self.Name.line)"
+        value.name = Self.Name.line
         value.components.set(OpacityComponent(opacity: 0.5))
         value.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
                                    materials: [OcclusionMaterial()]))
         return value
     }
     enum Name {
-        case fingerTipLeft,
-             fingerTipRight,
-             line,
-             resultLabel
+        static let fingerTipLeft = "fingerTipLeft"
+        static let fingerTipRight = "fingerTipRight"
+        static let line = "line"
+        static let resultLabel = "resultLabel"
     }
 }
 
