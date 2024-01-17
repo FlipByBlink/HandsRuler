@@ -10,16 +10,15 @@ struct 🛠️SettingView: View {
                 Picker("Unit", selection: self.$model.unit) {
                     ForEach(📏Unit.allCases) {
                         Text($0.value.symbol)
+                            .font(.largeTitle)
                     }
                 }
-                .pickerStyle(.segmented)
-                .listRowBackground(Color.clear)
                 .onChange(of: self.model.unit) { _, _ in
                     self.model.updateResultLabel()
                 }
             }
             .font(.title)
-            .navigationTitle("Unit")
+            .navigationTitle("HandsWidth")
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear { self.model.presentSettingWindow = true }
