@@ -4,7 +4,7 @@ import SwiftUI
 struct HandsWidthApp: App {
     @StateObject private var model: 📱AppModel = .init()
     var body: some Scene {
-        ImmersiveSpace(id: "measure") {
+        ImmersiveSpace {
             ContentView()
                 .environmentObject(self.model)
         }

@@ -28,7 +28,7 @@
 		16267B4F2B57D172000CA8AD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		16267B512B57D362000CA8AD /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		16267B532B57D387000CA8AD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		1638F80C2B50BC9700E0CAD2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1638F80C2B50BC9700E0CAD2 /* DebugView.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DebugView.md; sourceTree = "<group>"; };
 		1642FAB42B4D54A60084F9ED /* 🛠️SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️SettingView.swift"; sourceTree = "<group>"; };
 		1642FAB62B4D5AC40084F9ED /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		1642FAB82B4D6CAA0084F9ED /* 👆MeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆MeasureView.swift"; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		1638F80B2B50BC8800E0CAD2 /* Archive */ = {
 			isa = PBXGroup;
 			children = (
-				1638F80C2B50BC9700E0CAD2 /* README.md */,
+				1638F80C2B50BC9700E0CAD2 /* DebugView.md */,
 				16EE5E962B576B9F00D354ED /* HandToGround.md */,
 			);
 			path = Archive;
