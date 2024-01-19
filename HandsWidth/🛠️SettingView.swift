@@ -8,16 +8,27 @@ struct 🛠️SettingView: View {
     var body: some View {
         NavigationStack {
             List {
-                Picker("Unit", selection: self.$unit) {
-                    ForEach(📏Unit.allCases) {
-                        Text($0.value.symbol)
-                            .font(.largeTitle)
+                Section {
+                    Picker("Unit", selection: self.$unit) {
+                        ForEach(📏Unit.allCases) {
+                            Text($0.value.symbol)
+                        }
                     }
+                    .font(.title)
+                }
+                Section {
+                    VStack {
+                        Text("Tip")
+                            .font(.headline)
+                        Text("Fix a pointer by selection.")
+                            .font(.subheadline)
+                    }
+                    .foregroundStyle(.tertiary)
+                    .listRowBackground(Color.clear)
+                    .frame(maxWidth: .infinity)
                 }
             }
-            .font(.title)
             .navigationTitle("HandsWidth")
-            .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear { self.model.presentSettingWindow = true }
         .onChange(of: self.scenePhase) { _, newValue in

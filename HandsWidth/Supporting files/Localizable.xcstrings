@@ -1,12 +1,32 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Fix a pointer by selection." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポインターを選択して位置を固定できます。"
+          }
+        }
+      }
+    },
     "HandsWidth" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "手がメジャー"
+          }
+        }
+      }
+    },
+    "Tip" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テクニック"
           }
         }
       }
