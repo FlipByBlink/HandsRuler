@@ -19,8 +19,11 @@ struct 🌐RealityView: View {
             Attachment(id: Self.attachmentID) {
                 TimelineView(.periodic(from: .now, by: 0.2)) { _ in
                     Text(self.model.resultText)
-                        .font(.system(size: 54).bold())
-                        .padding(24)
+                        .font(.system(size: self.model.labelFontSize))
+                        .fontWeight(.bold)
+                        .monospacedDigit()
+                        .padding(12)
+                        .padding(.horizontal, 4)
                         .glassBackgroundEffect()
 #if targetEnvironment(simulator)
                         .onTapGesture { self.model.setRandomPosition_simulator() }

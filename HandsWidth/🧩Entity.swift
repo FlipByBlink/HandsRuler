@@ -10,7 +10,7 @@ enum 🧩Entity {
         let value = Entity()
         value.name = 🧩Name.line
         value.components.set(OpacityComponent(opacity: 0.75))
-        value.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
+        value.addChild(ModelEntity(mesh: .generateSphere(radius: 0.06),
                                    materials: [OcclusionMaterial()]))
         return value
     }

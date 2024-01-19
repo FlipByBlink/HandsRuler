@@ -46,6 +46,10 @@ extension 📏MeasureModel {
         return formatter.string(from: measurement.converted(to: self.unit.value))
     }
     
+    var labelFontSize: Double {
+        self.lineLength < 1.2 ? 24 : 42
+    }
+    
     func runSession() async {
         do {
 #if targetEnvironment(simulator)
@@ -66,13 +70,13 @@ extension 📏MeasureModel {
     }
     func setRandomPosition_simulator() {
         if !self.selectedLeft {
-            self.fingerEntities[.left]?.position = .init(x: -0.2,
-                                                         y: .random(in: 1 ..< 1.4),
+            self.fingerEntities[.left]?.position = .init(x: .random(in: -0.5 ..< -0.05),
+                                                         y: .random(in: 1 ..< 1.5),
                                                          z: .random(in: -1 ..< -0.5))
         }
         if !self.selectedRight {
-            self.fingerEntities[.right]?.position = .init(x: 0.2,
-                                                          y: .random(in: 1 ..< 1.4),
+            self.fingerEntities[.right]?.position = .init(x: .random(in: 0.05 ..< 0.5),
+                                                          y: .random(in: 1 ..< 1.5),
                                                           z: .random(in: -1 ..< -0.5))
         }
         self.updateLine()
