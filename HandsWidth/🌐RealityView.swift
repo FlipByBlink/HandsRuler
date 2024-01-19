@@ -16,7 +16,7 @@ struct 🌐RealityView: View {
             self.measureModel.rootEntity.addChild(resultLabelEntity)
             
             self.measureModel.setUp_simulator()
-        } update: { _, attachments in
+        } update: { _, _ in
             self.measureModel.updateFingerModel()
         } attachments: {
             Attachment(id: Self.attachmentID) {
@@ -25,6 +25,9 @@ struct 🌐RealityView: View {
                         .font(.system(size: 54).bold())
                         .padding(24)
                         .glassBackgroundEffect()
+#if targetEnvironment(simulator)
+                        .onTapGesture { self.measureModel.setRandomPosition_simulator() }
+#endif
                 }
             }
         }
@@ -33,10 +36,7 @@ struct 🌐RealityView: View {
                 .targetedToAnyEntity()
                 .onEnded { self.measureModel.changeSelection($0.entity) }
         )
-        .task {
-            await self.measureModel.runSession()
-            await self.measureModel.processHandUpdates()
-        }
+        .task { await self.measureModel.runSession() }
     }
     static let attachmentID: String = "resultLabel"
 }

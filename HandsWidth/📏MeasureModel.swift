@@ -4,7 +4,7 @@ import ARKit
 
 @MainActor
 class 📏MeasureModel: ObservableObject {
-    @AppStorage("unit") var unit: 📏Unit = .meters
+    @AppStorage("unit") private var unit: 📏Unit = .meters
     @Published var selectedLeft: Bool = false
     @Published var selectedRight: Bool = false
     
@@ -12,8 +12,8 @@ class 📏MeasureModel: ObservableObject {
     private let handTracking = HandTrackingProvider()
     
     let rootEntity = Entity()
-    let lineEntity = 🧩Entity.line()
-    let fingerEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
+    private let lineEntity = 🧩Entity.line()
+    private let fingerEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
 }
 
 extension 📏MeasureModel {
@@ -50,13 +50,37 @@ extension 📏MeasureModel {
             print("Not support handTracking in simulator.")
 #else
             try await self.session.run([self.handTracking])
+            await self.processHandUpdates()
 #endif
         } catch {
             assertionFailure()
         }
     }
     
-    func processHandUpdates() async {
+#if targetEnvironment(simulator)
+    func setUp_simulator() {
+        self.updateLine()
+        self.updateResultLabelPosition()
+    }
+    func setRandomPosition_simulator() {
+        if !self.selectedLeft {
+            self.fingerEntities[.left]?.position = .init(x: -0.3,
+                                                         y: .random(in: 1 ..< 2.0),
+                                                         z: .random(in: -1.25 ..< -0.75))
+        }
+        if !self.selectedRight {
+            self.fingerEntities[.right]?.position = .init(x: 0.3,
+                                                          y: .random(in: 1 ..< 2.0),
+                                                          z: .random(in: -1.25 ..< -0.75))
+        }
+        self.updateLine()
+        self.updateResultLabelPosition()
+    }
+#endif
+}
+
+fileprivate extension 📏MeasureModel {
+    private func processHandUpdates() async {
         for await update in self.handTracking.anchorUpdates {
             let handAnchor = update.anchor
             
@@ -78,19 +102,6 @@ extension 📏MeasureModel {
         }
     }
     
-    var centerPosition: SIMD3<Float> {
-        (self.leftPosition + self.rightPosition) / 2
-    }
-    
-#if targetEnvironment(simulator)
-    func setUp_simulator() {
-        self.updateLine()
-        self.updateResultLabelPosition()
-    }
-#endif
-}
-
-fileprivate extension 📏MeasureModel {
     private func updateLine() {
         self.lineEntity.position = self.centerPosition
         self.lineEntity.components.set(🧩Model.line(self.lineLength))
@@ -106,6 +117,10 @@ fileprivate extension 📏MeasureModel {
     
     private var lineLength: Float {
         distance(self.leftPosition, self.rightPosition)
+    }
+    
+    private var centerPosition: SIMD3<Float> {
+        (self.leftPosition + self.rightPosition) / 2
     }
     
     private var leftPosition: SIMD3<Float> {
