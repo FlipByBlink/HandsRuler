@@ -22,16 +22,16 @@ extension 📏MeasureModel {
         self.fingerEntities.values.forEach { self.rootEntity.addChild($0) }
     }
     
-    func updateFingerModel() {
-        self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
-        self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
-    }
-    
     func changeSelection(_ targetedEntity: Entity) {
         switch targetedEntity.name {
-            case 🧩Name.fingerLeft: self.selectedLeft.toggle()
-            case 🧩Name.fingerRight: self.selectedRight.toggle()
-            default: break
+            case 🧩Name.fingerLeft: 
+                self.selectedLeft.toggle()
+                self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
+            case 🧩Name.fingerRight:
+                self.selectedRight.toggle()
+                self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
+            default:
+                break
         }
     }
     

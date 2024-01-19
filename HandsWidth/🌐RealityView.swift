@@ -15,8 +15,6 @@ struct 🌐RealityView: View {
             self.model.rootEntity.addChild(resultLabelEntity)
             
             self.model.setUp_simulator()
-        } update: { _, _ in
-            self.model.updateFingerModel()
         } attachments: {
             Attachment(id: Self.attachmentID) {
                 TimelineView(.periodic(from: .now, by: 0.2)) { _ in
