@@ -27,9 +27,11 @@ extension 📏MeasureModel {
             case 🧩Name.fingerLeft: 
                 self.selectedLeft.toggle()
                 self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
+                targetedEntity.playAudio(self.sound(.left))
             case 🧩Name.fingerRight:
                 self.selectedRight.toggle()
                 self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
+                targetedEntity.playAudio(self.sound(.right))
             default:
                 break
         }
@@ -116,6 +118,15 @@ fileprivate extension 📏MeasureModel {
     private func updateResultLabelPosition() {
         self.rootEntity.findEntity(named: 🌐RealityView.attachmentID)?
             .position = self.centerPosition
+    }
+    
+    private func sound(_ chirality: HandAnchor.Chirality) -> AudioResource {
+        switch chirality {
+            case .left:
+                try! AudioFileResource.load(named: self.selectedLeft ? "sound1" : "sound2")
+            case .right:
+                try! AudioFileResource.load(named: self.selectedRight ? "sound1" : "sound2")
+        }
     }
     
     private var lineLength: Float {
