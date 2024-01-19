@@ -62,27 +62,6 @@ extension 📏MeasureModel {
             assertionFailure()
         }
     }
-    
-#if targetEnvironment(simulator)
-    func setUp_simulator() {
-        self.updateLine()
-        self.updateResultLabelPosition()
-    }
-    func setRandomPosition_simulator() {
-        if !self.selectedLeft {
-            self.fingerEntities[.left]?.position = .init(x: .random(in: -0.5 ..< -0.05),
-                                                         y: .random(in: 1 ..< 1.5),
-                                                         z: .random(in: -1 ..< -0.5))
-        }
-        if !self.selectedRight {
-            self.fingerEntities[.right]?.position = .init(x: .random(in: 0.05 ..< 0.5),
-                                                          y: .random(in: 1 ..< 1.5),
-                                                          z: .random(in: -1 ..< -0.5))
-        }
-        self.updateLine()
-        self.updateResultLabelPosition()
-    }
-#endif
 }
 
 fileprivate extension 📏MeasureModel {
@@ -147,5 +126,31 @@ fileprivate extension 📏MeasureModel {
     
     private var rightPosition: SIMD3<Float> {
         self.fingerEntities[.right]?.position ?? .zero
+    }
+}
+
+//MARK: Simulator
+extension 📏MeasureModel {
+    func setUp_simulator() {
+#if targetEnvironment(simulator)
+        self.updateLine()
+        self.updateResultLabelPosition()
+#endif
+    }
+    func setRandomPosition_simulator() {
+#if targetEnvironment(simulator)
+        if !self.selectedLeft {
+            self.fingerEntities[.left]?.position = .init(x: .random(in: -0.5 ..< -0.05),
+                                                         y: .random(in: 1 ..< 1.5),
+                                                         z: .random(in: -1 ..< -0.5))
+        }
+        if !self.selectedRight {
+            self.fingerEntities[.right]?.position = .init(x: .random(in: 0.05 ..< 0.5),
+                                                          y: .random(in: 1 ..< 1.5),
+                                                          z: .random(in: -1 ..< -0.5))
+        }
+        self.updateLine()
+        self.updateResultLabelPosition()
+#endif
     }
 }

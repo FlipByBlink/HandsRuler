@@ -25,9 +25,7 @@ struct 🌐RealityView: View {
                         .padding(12)
                         .padding(.horizontal, 4)
                         .glassBackgroundEffect()
-#if targetEnvironment(simulator)
                         .onTapGesture { self.model.setRandomPosition_simulator() }
-#endif
                 }
             }
         }
