@@ -26,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		160ED7972B4B74C5002AD987 /* 🧑HeadTrackingComponent&System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧑HeadTrackingComponent&System.swift"; sourceTree = "<group>"; };
+		160F46BB2B5A57AF001FE696 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		160F46BC2B5A57D4001FE696 /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏Unit.swift"; sourceTree = "<group>"; };
 		16267B4F2B57D172000CA8AD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		16267B512B57D362000CA8AD /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -58,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		160F46BA2B5A5613001FE696 /* README assets */ = {
+			isa = PBXGroup;
+			children = (
+				160F46BB2B5A57AF001FE696 /* icon.png */,
+				160F46BC2B5A57D4001FE696 /* appstore_badge.svg */,
+			);
+			path = "README assets";
+			sourceTree = "<group>";
+		};
 		16267B4E2B57D148000CA8AD /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +78,7 @@
 				165ADB572B4B71B2008A756F /* Info.plist */,
 				16267B4F2B57D172000CA8AD /* Localizable.xcstrings */,
 				16267B512B57D362000CA8AD /* InfoPlist.xcstrings */,
+				160F46BA2B5A5613001FE696 /* README assets */,
 				1638F80B2B50BC8800E0CAD2 /* Archive */,
 			);
 			path = "Supporting files";

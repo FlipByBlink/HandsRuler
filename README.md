@@ -15,9 +15,15 @@ Description
 ------------
 Measure index finger tip to index finger tip.
 
+### Unit option
+- centiMeters
+- meters
+- inches
+- feet
+- yards
 
-### Option
-- Unit
+### Tip
+Fix a pointer by selection.
 
 
 Source code link
@@ -41,8 +47,8 @@ sear_pandora_0x@icloud.com
 <br>
 
 
-Privacy Policy for AppStore
----------------------------
+Privacy Policy for App Store
+----------------------------
 2024-02-02
 
 ### Japanese
@@ -61,4 +67,4 @@ This application don't collect user infomation.
 <!-- URL "Support page for AppStore" -->
 <!-- https://flipbyblink.github.io/HandsWidth/ -->
 <!-- URL "Privacy Policy for AppStore" -->
-<!-- https://flipbyblink.github.io/HandsWidth/#privacy-policy-for-appstore -->
+<!-- https://flipbyblink.github.io/HandsWidth/#privacy-policy-for-app-store -->
