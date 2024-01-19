@@ -9,7 +9,7 @@ enum 🧩Entity {
     static func line() -> Entity {
         let value = Entity()
         value.name = 🧩Name.line
-        value.components.set(OpacityComponent(opacity: 0.5))
+        value.components.set(OpacityComponent(opacity: 0.75))
         value.addChild(ModelEntity(mesh: .generateSphere(radius: 0.08),
                                    materials: [OcclusionMaterial()]))
         return value
@@ -22,10 +22,10 @@ fileprivate extension 🧩Entity {
         switch chirality {
             case .left:
                 value.name = 🧩Name.fingerLeft
-                value.position = .init(x: -0.3, y: 1.5, z: -1)
+                value.position = .init(x: -0.2, y: 1.3, z: -0.7)
             case .right:
                 value.name = 🧩Name.fingerRight
-                value.position = .init(x: 0.3, y: 1.5, z: -1)
+                value.position = .init(x: 0.2, y: 1.3, z: -0.7)
         }
         value.components.set([InputTargetComponent(),
                               CollisionComponent(shapes: [.generateSphere(radius: 0.04)]),

@@ -64,14 +64,14 @@ extension 📏MeasureModel {
     }
     func setRandomPosition_simulator() {
         if !self.selectedLeft {
-            self.fingerEntities[.left]?.position = .init(x: -0.3,
-                                                         y: .random(in: 1 ..< 2.0),
-                                                         z: .random(in: -1.25 ..< -0.75))
+            self.fingerEntities[.left]?.position = .init(x: -0.2,
+                                                         y: .random(in: 1 ..< 1.4),
+                                                         z: .random(in: -1 ..< -0.5))
         }
         if !self.selectedRight {
-            self.fingerEntities[.right]?.position = .init(x: 0.3,
-                                                          y: .random(in: 1 ..< 2.0),
-                                                          z: .random(in: -1.25 ..< -0.75))
+            self.fingerEntities[.right]?.position = .init(x: 0.2,
+                                                          y: .random(in: 1 ..< 1.4),
+                                                          z: .random(in: -1 ..< -0.5))
         }
         self.updateLine()
         self.updateResultLabelPosition()
