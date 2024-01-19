@@ -3,30 +3,29 @@ import RealityKit
 import ARKit
 
 struct 🌐RealityView: View {
-    @EnvironmentObject var model: 📱AppModel
-    @StateObject var measureModel: 📏MeasureModel = .init()
+    @StateObject var model: 📏MeasureModel = .init()
     var body: some View {
         RealityView { content, attachments in
-            content.add(self.measureModel.rootEntity)
-            self.measureModel.setUpChildEntities()
+            content.add(self.model.rootEntity)
+            self.model.setUpChildEntities()
             
             let resultLabelEntity = attachments.entity(for: Self.attachmentID)!
             resultLabelEntity.components.set(🧑HeadTrackingComponent())
             resultLabelEntity.name = 🧩Name.resultLabel
-            self.measureModel.rootEntity.addChild(resultLabelEntity)
+            self.model.rootEntity.addChild(resultLabelEntity)
             
-            self.measureModel.setUp_simulator()
+            self.model.setUp_simulator()
         } update: { _, _ in
-            self.measureModel.updateFingerModel()
+            self.model.updateFingerModel()
         } attachments: {
             Attachment(id: Self.attachmentID) {
                 TimelineView(.periodic(from: .now, by: 0.2)) { _ in
-                    Text(self.measureModel.resultText)
+                    Text(self.model.resultText)
                         .font(.system(size: 54).bold())
                         .padding(24)
                         .glassBackgroundEffect()
 #if targetEnvironment(simulator)
-                        .onTapGesture { self.measureModel.setRandomPosition_simulator() }
+                        .onTapGesture { self.model.setRandomPosition_simulator() }
 #endif
                 }
             }
@@ -34,9 +33,9 @@ struct 🌐RealityView: View {
         .gesture(
             TapGesture()
                 .targetedToAnyEntity()
-                .onEnded { self.measureModel.changeSelection($0.entity) }
+                .onEnded { self.model.changeSelection($0.entity) }
         )
-        .task { await self.measureModel.runSession() }
+        .task { await self.model.runSession() }
     }
     static let attachmentID: String = "resultLabel"
 }

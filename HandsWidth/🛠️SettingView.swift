@@ -1,44 +1,65 @@
 import SwiftUI
 
 struct 🛠️SettingView: View {
-    @EnvironmentObject var model: 📱AppModel
     @AppStorage("unit") var unit: 📏Unit = .meters
-    @Environment(\.dismissWindow) var dismissWindow
-    @Environment(\.scenePhase) var scenePhase
+    @State private var minimized: Bool = false
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    Picker("Unit", selection: self.$unit) {
-                        ForEach(📏Unit.allCases) {
-                            Text($0.value.symbol)
-                        }
-                    }
-                    .font(.title)
-                }
-                Section {
-                    VStack {
-                        Text("Tip")
-                            .font(.headline)
-                        Text("Fix a pointer by selection.")
-                            .font(.subheadline)
-                    }
-                    .foregroundStyle(.tertiary)
-                    .listRowBackground(Color.clear)
-                    .frame(maxWidth: .infinity)
-                }
+        VStack(spacing: 48) {
+            HStack {
+                Spacer()
+                Text("Setting")
+                    .font(.largeTitle.weight(.semibold))
+                Spacer()
             }
-            .navigationTitle("HandsWidth")
-        }
-        .onAppear { self.model.presentSettingWindow = true }
-        .onChange(of: self.scenePhase) { _, newValue in
-            switch newValue {
-                case .inactive, .background: self.model.presentSettingWindow = false
-                default: break
+            .overlay(alignment: .trailing) {
+                Button {
+                    self.minimized = true
+                } label: {
+                    Image(systemName: "arrow.down.right.and.arrow.up.left")
+                        .padding()
+                }
+                .buttonBorderShape(.circle)
+                .buttonStyle(.plain)
             }
+            HStack(spacing: 24) {
+                Text("Unit")
+                Picker("Unit", selection: self.$unit) {
+                    ForEach(📏Unit.allCases) {
+                        Text($0.value.symbol)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 360)
+            }
+            .font(.title.weight(.medium))
+            VStack {
+                Text("Tip")
+                    .font(.headline)
+                Text("Fix a pointer by selection.")
+                    .font(.subheadline)
+            }
+            .foregroundStyle(.tertiary)
         }
-        .onChange(of: self.model.presentImmersiveSpace) { _, newValue in
-            if newValue == false { self.dismissWindow() }
+        .padding(32)
+        .padding(.horizontal)
+        .fixedSize()
+        .glassBackgroundEffect()
+        .opacity(self.minimized ? 0 : 1)
+        .overlay {
+            Button {
+                self.minimized = false
+            } label: {
+                Label("Setting", systemImage: "gearshape")
+                    .labelStyle(.iconOnly)
+                    .font(.largeTitle.weight(.light))
+                    .padding()
+                    .foregroundStyle(.secondary)
+            }
+            .disabled(!self.minimized)
+            .opacity(self.minimized ? 1 : 0)
         }
+        .offset(y: -2200)
+        .offset(z: -1000)
+        .animation(.default, value: self.minimized)
     }
 }
