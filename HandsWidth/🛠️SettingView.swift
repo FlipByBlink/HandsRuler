@@ -59,7 +59,7 @@ struct 🛠️SettingView: View {
             .opacity(self.minimized ? 1 : 0)
         }
         .offset(y: -2200)
-        .offset(z: -1000)
+        .offset(z: -700)
         .animation(.default, value: self.minimized)
     }
 }
