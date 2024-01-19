@@ -26,6 +26,11 @@ Measure index finger tip to index finger tip.
 Fix a pointer by selection.
 
 
+App Store link
+---------------
+https://apps.apple.com/app/id6475769879
+
+
 Source code link
 -----------------
 https://github.com/FlipByBlink/HandsWidth
@@ -51,20 +56,20 @@ Privacy Policy for App Store
 ----------------------------
 2024-02-02
 
-### Japanese
-このアプリ自身において、ユーザーの情報を一切収集しません。
-
 ### English
 This application don't collect user infomation.
 
-
-<br>
-<br>
-<br>
-<br>
+### Japanese
+このアプリ自身において、ユーザーの情報を一切収集しません。
 
 
-<!-- URL "Support page for AppStore" -->
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- URL "Support page for App Store" -->
 <!-- https://flipbyblink.github.io/HandsWidth/ -->
-<!-- URL "Privacy Policy for AppStore" -->
+<!-- URL "Privacy Policy for App Store" -->
 <!-- https://flipbyblink.github.io/HandsWidth/#privacy-policy-for-app-store -->
