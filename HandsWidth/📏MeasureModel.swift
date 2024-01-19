@@ -20,7 +20,6 @@ extension 📏MeasureModel {
     func setUpChildEntities() {
         self.rootEntity.addChild(self.lineEntity)
         self.fingerEntities.values.forEach { self.rootEntity.addChild($0) }
-        self.setUp_simulator()
     }
     
     func updateFingerModel() {
@@ -40,8 +39,8 @@ extension 📏MeasureModel {
         let formatter = MeasurementFormatter()
         formatter.unitOptions = .providedUnit
         formatter.numberFormatter.maximumFractionDigits = 2
-        let measurement: Measurement = .init(value: .init(distance(self.leftPosition, self.rightPosition)),
-                                             unit: UnitLength.meters)
+        let measurement = Measurement(value: .init(self.lineLength),
+                                      unit: UnitLength.meters)
         return formatter.string(from: measurement.converted(to: self.unit.value))
     }
     
@@ -75,21 +74,38 @@ extension 📏MeasureModel {
                                                                           relativeTo: nil)
             
             self.updateLine()
+            self.updateResultLabelPosition()
         }
     }
     
     var centerPosition: SIMD3<Float> {
         (self.leftPosition + self.rightPosition) / 2
     }
+    
+#if targetEnvironment(simulator)
+    func setUp_simulator() {
+        self.updateLine()
+        self.updateResultLabelPosition()
+    }
+#endif
 }
 
 fileprivate extension 📏MeasureModel {
     private func updateLine() {
         self.lineEntity.position = self.centerPosition
-        self.lineEntity.components.set(🧩Model.line(self.leftPosition, self.rightPosition))
+        self.lineEntity.components.set(🧩Model.line(self.lineLength))
         self.lineEntity.look(at: self.leftPosition,
                              from: self.centerPosition,
                              relativeTo: nil)
+    }
+    
+    private func updateResultLabelPosition() {
+        self.rootEntity.findEntity(named: 🌐RealityView.attachmentID)?
+            .position = self.centerPosition
+    }
+    
+    private var lineLength: Float {
+        distance(self.leftPosition, self.rightPosition)
     }
     
     private var leftPosition: SIMD3<Float> {
@@ -99,10 +115,4 @@ fileprivate extension 📏MeasureModel {
     private var rightPosition: SIMD3<Float> {
         self.fingerEntities[.right]?.position ?? .zero
     }
-    
-#if targetEnvironment(simulator)
-    private func setUp_simulator() {
-        self.updateLine()
-    }
-#endif
 }

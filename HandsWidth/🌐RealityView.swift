@@ -14,8 +14,9 @@ struct 🌐RealityView: View {
             resultLabelEntity.components.set(🧑HeadTrackingComponent())
             resultLabelEntity.name = 🧩Name.resultLabel
             self.measureModel.rootEntity.addChild(resultLabelEntity)
+            
+            self.measureModel.setUp_simulator()
         } update: { _, attachments in
-            attachments.entity(for: Self.attachmentID)!.position = self.measureModel.centerPosition
             self.measureModel.updateFingerModel()
         } attachments: {
             Attachment(id: Self.attachmentID) {
@@ -37,8 +38,5 @@ struct 🌐RealityView: View {
             await self.measureModel.processHandUpdates()
         }
     }
-}
-
-fileprivate extension 🌐RealityView {
-    private static let attachmentID: String = "resultLabel"
+    static let attachmentID: String = "resultLabel"
 }
