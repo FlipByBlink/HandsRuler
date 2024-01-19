@@ -42,6 +42,7 @@
 		165ADB522B4B71B2008A756F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		165ADB572B4B71B2008A756F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16688DE52B59F35F004CE12B /* 📏MeasureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏MeasureModel.swift"; sourceTree = "<group>"; };
+		168EA4552B5AA1FE00522F94 /* screenshot1200w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1200w.png; sourceTree = "<group>"; };
 		169D84AD2B5A319000BB5606 /* sound1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound1.m4a; sourceTree = "<group>"; };
 		169D84AE2B5A319400BB5606 /* sound2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound2.m4a; sourceTree = "<group>"; };
 		16EE5E962B576B9F00D354ED /* HandToGround.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HandToGround.md; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 			children = (
 				160F46BB2B5A57AF001FE696 /* icon.png */,
 				160F46BC2B5A57D4001FE696 /* appstore_badge.svg */,
+				168EA4552B5AA1FE00522F94 /* screenshot1200w.png */,
 			);
 			path = "README assets";
 			sourceTree = "<group>";
