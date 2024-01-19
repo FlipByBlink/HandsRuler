@@ -90,6 +90,9 @@ fileprivate extension 📏MeasureModel {
                 continue
             }
             
+            if self.selectedLeft, handAnchor.chirality == .left { continue }
+            if self.selectedRight, handAnchor.chirality == .right { continue }
+            
             let originFromWrist = handAnchor.originFromAnchorTransform
             
             let wristFromIndex = fingerTip.anchorFromJointTransform
