@@ -22,10 +22,10 @@ fileprivate extension 🧩Entity {
         switch chirality {
             case .left:
                 value.name = 🧩Name.fingerLeft
-                value.position = .init(x: -0.2, y: 1.3, z: -0.7)
+                value.position = .init(x: -0.2, y: 1.5, z: -0.7)
             case .right:
                 value.name = 🧩Name.fingerRight
-                value.position = .init(x: 0.2, y: 1.3, z: -0.7)
+                value.position = .init(x: 0.2, y: 1.5, z: -0.7)
         }
         value.components.set([InputTargetComponent(),
                               CollisionComponent(shapes: [.generateSphere(radius: 0.04)]),
