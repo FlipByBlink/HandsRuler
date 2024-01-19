@@ -2,19 +2,17 @@ import SwiftUI
 
 struct 🛠️SettingView: View {
     @EnvironmentObject var model: 📱AppModel
+    @AppStorage("unit") var unit: 📏Unit = .meters
     @Environment(\.dismissWindow) var dismissWindow
     @Environment(\.scenePhase) var scenePhase
     var body: some View {
         NavigationStack {
             List {
-                Picker("Unit", selection: self.$model.unit) {
+                Picker("Unit", selection: self.$unit) {
                     ForEach(📏Unit.allCases) {
                         Text($0.value.symbol)
                             .font(.largeTitle)
                     }
-                }
-                .onChange(of: self.model.unit) { _, _ in
-                    self.model.updateResultLabel()
                 }
             }
             .font(.title)

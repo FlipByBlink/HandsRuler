@@ -4,47 +4,38 @@ import ARKit
 
 struct 🌐RealityView: View {
     @EnvironmentObject var model: 📱AppModel
+    @StateObject var measureModel: 📏MeasureModel = .init()
     var body: some View {
         RealityView { content, attachments in
-            content.add(self.model.setupRootEntity())
+            content.add(self.measureModel.rootEntity)
+            self.measureModel.setUpChildEntities()
             
             let resultLabelEntity = attachments.entity(for: Self.attachmentID)!
             resultLabelEntity.components.set(🧑HeadTrackingComponent())
             resultLabelEntity.name = 🧩Name.resultLabel
-            self.model.rootEntity.addChild(resultLabelEntity)
+            self.measureModel.rootEntity.addChild(resultLabelEntity)
         } update: { _, attachments in
-            attachments.entity(for: Self.attachmentID)!.position = self.model.resultLabelPosition
-            
-            self.model.fingerEntities[.left]?
-                .components
-                .set(🧩Model.fingerTip(self.model.selectedLeft))
-            self.model.fingerEntities[.right]?
-                .components
-                .set(🧩Model.fingerTip(self.model.selectedRight))
+            attachments.entity(for: Self.attachmentID)!.position = self.measureModel.centerPosition
+            self.measureModel.updateFingerModel()
         } attachments: {
             Attachment(id: Self.attachmentID) {
-                Text(self.model.resultText)
-                    .font(.system(size: 54).bold())
-                    .padding(24)
-                    .glassBackgroundEffect()
+                TimelineView(.periodic(from: .now, by: 0.2)) { _ in
+                    Text(self.measureModel.resultText)
+                        .font(.system(size: 54).bold())
+                        .padding(24)
+                        .glassBackgroundEffect()
+                }
             }
         }
         .gesture(
             TapGesture()
                 .targetedToAnyEntity()
-                .onEnded {
-                    switch $0.entity.name {
-                        case 🧩Name.fingerLeft:
-                            self.model.selectedLeft.toggle()
-                        case 🧩Name.fingerRight:
-                            self.model.selectedRight.toggle()
-                        default:
-                            break
-                    }
-                }
+                .onEnded { self.measureModel.changeSelection($0.entity) }
         )
-        .task { await self.model.runSession() }
-        .task { await self.model.processHandUpdates() }
+        .task {
+            await self.measureModel.runSession()
+            await self.measureModel.processHandUpdates()
+        }
     }
 }
 
