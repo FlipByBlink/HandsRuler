@@ -23,7 +23,7 @@ Measure index finger tip to index finger tip.
 - yards
 
 ### Tip
-Fix a pointer by selection.
+Fix a pointer by tap.
 
 
 App Store link

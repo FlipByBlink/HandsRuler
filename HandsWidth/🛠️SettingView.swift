@@ -35,7 +35,7 @@ struct 🛠️SettingView: View {
             VStack {
                 Text("Tip")
                     .font(.headline)
-                Text("Fix a pointer by selection.")
+                Text("Fix a pointer by tap.")
                     .font(.subheadline)
             }
             .foregroundStyle(.tertiary)

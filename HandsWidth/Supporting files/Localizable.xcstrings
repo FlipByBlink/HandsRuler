@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Fix a pointer by selection." : {
+    "Fix a pointer by tap." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ポインターを選択して位置を固定できます。"
+            "value" : "ポインターを逆の手でタップして位置を固定できます。"
           }
         }
       }
