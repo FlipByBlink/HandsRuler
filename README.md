@@ -1,5 +1,7 @@
-HandsWidth for Apple Vision Pro
----------------------------------
+HandsWidth
+===========
+__Measure app for Apple Vision Pro__
+
 _Hands is measure._
 
 <img src="HandsWidth/Supporting files/README assets/icon.png" width="64">
@@ -28,15 +30,15 @@ Fix a pointer by tap.
 
 App Store link
 ---------------
-https://apps.apple.com/app/id6475769879
+[apps.apple.com/app/id6475769879](https://apps.apple.com/app/id6475769879)
 
 
 Source code link
 -----------------
-https://github.com/FlipByBlink/HandsWidth
+[github.com/FlipByBlink/HandsWidth](https://github.com/FlipByBlink/HandsWidth)
 
 ### Source code (Mirror) link
-https://gitlab.com/FlipByBlink/HandsWidth_Mirror
+[gitlab.com/FlipByBlink/HandsWidth_Mirror](https://gitlab.com/FlipByBlink/HandsWidth_Mirror)
 
 
 Contact
