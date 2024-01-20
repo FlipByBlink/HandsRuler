@@ -2,7 +2,7 @@ HandsWidth
 ===========
 __Measure app for Apple Vision Pro__
 
-_Hands is measure._
+_Hands is ruler._
 
 <img src="HandsWidth/Supporting files/README assets/icon.png" width="64">
 
@@ -15,17 +15,19 @@ _Hands is measure._
 
 Description
 ------------
-Measure index finger tip to index finger tip.
+Measure the distance between both hands intuitively.
 
-### Unit option
+App shows the measurement of the distance between the tips of the index fingers, from the left hand to the right hand.
+
+Unit option
 - centiMeters
 - meters
 - inches
 - feet
 - yards
 
-### Tip
-Fix a pointer by tap.
+Sub action
+- Fix a pointer by tap.
 
 
 App Store link
