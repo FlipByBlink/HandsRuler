@@ -26,7 +26,7 @@ Unit option
 - feet
 - yards
 
-Sub action
+Sub function
 - Fix a pointer by tap.
 
 
