@@ -27,7 +27,7 @@ fileprivate extension 🧩Entity {
                 value.name = 🧩Name.fingerRight
                 value.position = .init(x: 0.2, y: 1.5, z: -0.7)
         }
-        value.components.set([InputTargetComponent(),
+        value.components.set([InputTargetComponent(allowedInputTypes: .indirect),
                               CollisionComponent(shapes: [.generateSphere(radius: 0.04)]),
                               HoverEffectComponent(),
                               🧩Model.fingerTip()])
