@@ -1,7 +1,6 @@
 import SwiftUI
 
-struct 🛠️SettingView: View {
-    @AppStorage("unit") var unit: 📏Unit = .meters
+struct 🛠️SettingMenu: View {
     @State private var minimized: Bool = false
     var body: some View {
         VStack(spacing: 48) {
@@ -21,17 +20,7 @@ struct 🛠️SettingView: View {
                 .buttonBorderShape(.circle)
                 .buttonStyle(.plain)
             }
-            HStack(spacing: 24) {
-                Text("Unit")
-                Picker("Unit", selection: self.$unit) {
-                    ForEach(📏Unit.allCases) {
-                        Text($0.value.symbol)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .frame(width: 360)
-            }
-            .font(.title.weight(.medium))
+            🛠️UnitPicker()
             VStack {
                 Text("Tip")
                     .font(.headline)
@@ -45,21 +34,6 @@ struct 🛠️SettingView: View {
         .fixedSize()
         .glassBackgroundEffect()
         .opacity(self.minimized ? 0 : 1)
-        .overlay {
-            Button {
-                self.minimized = false
-            } label: {
-                Label("Setting", systemImage: "gearshape")
-                    .labelStyle(.iconOnly)
-                    .font(.largeTitle.weight(.light))
-                    .padding()
-                    .foregroundStyle(.secondary)
-            }
-            .disabled(!self.minimized)
-            .opacity(self.minimized ? 1 : 0)
-        }
-        .offset(y: -2200)
-        .offset(z: -700)
         .animation(.default, value: self.minimized)
     }
 }
