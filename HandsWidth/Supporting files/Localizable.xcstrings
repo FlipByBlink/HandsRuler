@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Close" : {
+
+    },
     "Fix a pointer by tap." : {
       "localizations" : {
         "ja" : {
@@ -11,6 +14,12 @@
         }
       }
     },
+    "HandsWidth" : {
+
+    },
+    "Info" : {
+
+    },
     "Setting" : {
       "localizations" : {
         "ja" : {
@@ -20,6 +29,9 @@
           }
         }
       }
+    },
+    "Start" : {
+
     },
     "Tip" : {
       "localizations" : {

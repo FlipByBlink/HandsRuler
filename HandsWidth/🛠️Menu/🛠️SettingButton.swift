@@ -1,8 +1,16 @@
-//
-//  🛠️SettingButton.swift
-//  HandsWidth
-//
-//  Created by FULLNAME on 2024/01/22.
-//
+import SwiftUI
 
-import Foundation
+struct 🛠️SettingButton: View {
+    var body: some View {
+        Button {
+        } label: {
+            Label("Setting", systemImage: "gearshape")
+                .labelStyle(.iconOnly)
+                .font(.title.weight(.light))
+                .padding()
+        }
+        .buttonBorderShape(.circle)
+        .glassBackgroundEffect()
+        .disabled(true)
+    }
+}

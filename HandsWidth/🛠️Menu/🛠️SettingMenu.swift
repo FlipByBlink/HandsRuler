@@ -10,16 +10,7 @@ struct 🛠️SettingMenu: View {
                     .font(.largeTitle.weight(.semibold))
                 Spacer()
             }
-            .overlay(alignment: .trailing) {
-                Button {
-                    self.minimized = true
-                } label: {
-                    Image(systemName: "arrow.down.right.and.arrow.up.left")
-                        .padding()
-                }
-                .buttonBorderShape(.circle)
-                .buttonStyle(.plain)
-            }
+            .frame(height: 60)
             🛠️UnitPicker()
             VStack {
                 Text("Tip")
@@ -29,11 +20,5 @@ struct 🛠️SettingMenu: View {
             }
             .foregroundStyle(.tertiary)
         }
-        .padding(32)
-        .padding(.horizontal)
-        .fixedSize()
-        .glassBackgroundEffect()
-        .opacity(self.minimized ? 0 : 1)
-        .animation(.default, value: self.minimized)
     }
 }
