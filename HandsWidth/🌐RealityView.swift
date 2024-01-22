@@ -25,7 +25,7 @@ struct 🌐RealityView: View {
                         .padding(12)
                         .padding(.horizontal, 4)
                         .glassBackgroundEffect()
-                        .onTapGesture { self.model.setRandomPosition_simulator() }
+                        .modifier(Self.SetRandomPositionOnSimulator(self.model))
                 }
             }
         }
@@ -37,4 +37,22 @@ struct 🌐RealityView: View {
         .task { await self.model.runSession() }
     }
     static let attachmentID: String = "resultLabel"
+}
+
+
+
+
+private extension 🌐RealityView {
+    private struct SetRandomPositionOnSimulator: ViewModifier {
+        var model: 📏MeasureModel
+        func body(content: Content) -> some View {
+            content
+#if targetEnvironment(simulator)
+                .onTapGesture { self.model.setRandomPosition_simulator() }
+#endif
+        }
+        init(_ model: 📏MeasureModel) {
+            self.model = model
+        }
+    }
 }
