@@ -33,6 +33,7 @@ extension 📏MeasureModel {
                 self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
                 targetedEntity.playAudio(self.sound(.right))
             default:
+                assertionFailure()
                 break
         }
     }
@@ -128,6 +129,9 @@ fileprivate extension 📏MeasureModel {
         self.fingerEntities[.right]?.position ?? .zero
     }
 }
+
+
+
 
 //MARK: Simulator
 extension 📏MeasureModel {

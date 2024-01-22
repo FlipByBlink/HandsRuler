@@ -42,6 +42,7 @@ struct 🌐RealityView: View {
 
 
 
+//MARK: Simulator
 private extension 🌐RealityView {
     private struct SetRandomPositionOnSimulator: ViewModifier {
         var model: 📏MeasureModel
