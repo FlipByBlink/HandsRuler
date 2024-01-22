@@ -31,7 +31,7 @@ extension 📏MeasureModel {
         guard !self.coolDownSelection else { return }
         self.coolDownSelection = true
         switch targetedEntity.name {
-            case 🧩Name.fingerLeft: 
+            case 🧩Name.fingerLeft:
                 self.selectedLeft.toggle()
                 self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
                 targetedEntity.playAudio(self.selectedLeft ? self.sound1 : self.sound2)
