@@ -29,7 +29,6 @@ extension 📏MeasureModel {
     
     func changeSelection(_ targetedEntity: Entity) {
         guard !self.coolDownSelection else { return }
-        self.coolDownSelection = true
         switch targetedEntity.name {
             case 🧩Name.fingerLeft:
                 self.selectedLeft.toggle()
@@ -44,6 +43,7 @@ extension 📏MeasureModel {
                 break
         }
         Task {
+            self.coolDownSelection = true
             try? await Task.sleep(for: .seconds(1))
             self.coolDownSelection = false
         }
@@ -62,7 +62,7 @@ extension 📏MeasureModel {
         self.lineLength < 1.2 ? 24 : 42
     }
     
-    func runSession() async {
+    func run() async {
         do {
 #if targetEnvironment(simulator)
             print("Not support handTracking in simulator.")

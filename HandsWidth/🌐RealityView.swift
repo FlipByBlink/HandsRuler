@@ -34,7 +34,7 @@ struct 🌐RealityView: View {
                 .targetedToAnyEntity()
                 .onEnded { self.model.changeSelection($0.entity) }
         )
-        .task { await self.model.runSession() }
+        .task { await self.model.run() }
     }
     static let attachmentID: String = "resultLabel"
 }
