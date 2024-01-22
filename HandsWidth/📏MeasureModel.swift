@@ -14,6 +14,9 @@ class 📏MeasureModel: ObservableObject {
     let rootEntity = Entity()
     private let lineEntity = 🧩Entity.line()
     private let fingerEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
+    
+    private let sound1: AudioFileResource = try! .load(named: "sound1")
+    private let sound2: AudioFileResource = try! .load(named: "sound2")
 }
 
 extension 📏MeasureModel {
@@ -27,11 +30,11 @@ extension 📏MeasureModel {
             case 🧩Name.fingerLeft: 
                 self.selectedLeft.toggle()
                 self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
-                targetedEntity.playAudio(self.sound(.left))
+                targetedEntity.playAudio(self.selectedLeft ? self.sound1 : self.sound2)
             case 🧩Name.fingerRight:
                 self.selectedRight.toggle()
                 self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
-                targetedEntity.playAudio(self.sound(.right))
+                targetedEntity.playAudio(self.selectedRight ? self.sound1 : self.sound2)
             default:
                 assertionFailure()
                 break
@@ -102,15 +105,6 @@ fileprivate extension 📏MeasureModel {
     private func updateResultLabelPosition() {
         self.rootEntity.findEntity(named: 🌐RealityView.attachmentID)?
             .position = self.centerPosition
-    }
-    
-    private func sound(_ chirality: HandAnchor.Chirality) -> AudioResource {
-        switch chirality {
-            case .left:
-                try! AudioFileResource.load(named: self.selectedLeft ? "sound1" : "sound2")
-            case .right:
-                try! AudioFileResource.load(named: self.selectedRight ? "sound1" : "sound2")
-        }
     }
     
     private var lineLength: Float {
