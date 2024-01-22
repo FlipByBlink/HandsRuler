@@ -17,6 +17,8 @@ class 📏MeasureModel: ObservableObject {
     
     private let sound1: AudioFileResource = try! .load(named: "sound1")
     private let sound2: AudioFileResource = try! .load(named: "sound2")
+    
+    private var coolDownSelection: Bool = false
 }
 
 extension 📏MeasureModel {
@@ -26,6 +28,8 @@ extension 📏MeasureModel {
     }
     
     func changeSelection(_ targetedEntity: Entity) {
+        guard !self.coolDownSelection else { return }
+        self.coolDownSelection = true
         switch targetedEntity.name {
             case 🧩Name.fingerLeft: 
                 self.selectedLeft.toggle()
@@ -38,6 +42,10 @@ extension 📏MeasureModel {
             default:
                 assertionFailure()
                 break
+        }
+        Task {
+            try? await Task.sleep(for: .seconds(1))
+            self.coolDownSelection = false
         }
     }
     
