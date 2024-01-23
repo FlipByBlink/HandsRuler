@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct 🛠️InfoMenu: View {
+struct 🛠️AboutMenu: View {
     var body: some View {
         VStack(spacing: 24) {
             HStack {
                 Spacer()
-                Text("HandsWidth")
+                Text("About HandsWidth")
                     .font(.largeTitle.weight(.semibold))
                 Spacer()
             }

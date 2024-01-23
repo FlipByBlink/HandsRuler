@@ -1,7 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Close" : {
+    "About" : {
+
+    },
+    "Exit" : {
 
     },
     "Fix a pointer by tap." : {
@@ -15,9 +18,6 @@
       }
     },
     "HandsWidth" : {
-
-    },
-    "Info" : {
 
     },
     "Setting" : {
