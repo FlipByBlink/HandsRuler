@@ -2,7 +2,7 @@ import SwiftUI
 
 struct 🛠️MenuTop: View {
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
-    @State private var presentPanel: Panel? = .about
+    @State private var presentPanel: 🛠️Panel? = .about
     var body: some View {
         VStack(spacing: 24) {
             HStack(spacing: 28) {
@@ -52,14 +52,14 @@ struct 🛠️MenuTop: View {
                 .glassBackgroundEffect()
             }
             ZStack(alignment: .top) {
-                🛠️SettingMenu()
+                🛠️SettingPanel()
                     .overlay(alignment: .topTrailing) { self.hideButton() }
                     .padding(32)
                     .padding(.horizontal)
                     .fixedSize()
                     .glassBackgroundEffect()
                     .opacity(self.presentPanel == .setting ? 1 : 0)
-                🛠️AboutMenu()
+                🛠️AboutPanel()
                     .overlay(alignment: .topTrailing) { self.hideButton() }
                     .padding(32)
                     .padding(.horizontal)
@@ -72,6 +72,9 @@ struct 🛠️MenuTop: View {
         .offset(y: -2200)
         .offset(z: -700)
     }
+}
+
+private extension 🛠️MenuTop {
     private func hideButton() -> some View {
         Button {
             self.presentPanel = nil
@@ -83,8 +86,4 @@ struct 🛠️MenuTop: View {
         .buttonStyle(.plain)
         .frame(width: 60, height: 60)
     }
-}
-
-enum Panel {
-    case setting, about
 }

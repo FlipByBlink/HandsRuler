@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 🛠️AboutMenu: View {
+struct 🛠️AboutPanel: View {
     var body: some View {
         VStack(spacing: 24) {
             HStack {

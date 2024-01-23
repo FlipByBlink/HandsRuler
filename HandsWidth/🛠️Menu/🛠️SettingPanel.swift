@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 🛠️SettingMenu: View {
+struct 🛠️SettingPanel: View {
     @State private var minimized: Bool = false
     var body: some View {
         VStack(spacing: 48) {
