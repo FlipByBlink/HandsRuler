@@ -16,7 +16,9 @@ struct 🛠️MenuTop: View {
                     }
                     .font(.title.weight(.regular))
                     .padding(.vertical, 12)
+                    .padding(.horizontal, 20)
                 }
+                .buttonStyle(.plain)
                 .glassBackgroundEffect()
                 Button {
                     self.presentPanel = .setting
@@ -28,7 +30,9 @@ struct 🛠️MenuTop: View {
                     }
                     .font(.title.weight(.regular))
                     .padding(.vertical, 12)
+                    .padding(.horizontal, 20)
                 }
+                .buttonStyle(.plain)
                 .disabled(self.presentPanel == .setting)
                 .glassBackgroundEffect()
                 Button {
@@ -41,7 +45,9 @@ struct 🛠️MenuTop: View {
                     }
                     .font(.title.weight(.regular))
                     .padding(.vertical, 12)
+                    .padding(.horizontal, 20)
                 }
+                .buttonStyle(.plain)
                 .disabled(self.presentPanel == .about)
                 .glassBackgroundEffect()
             }
@@ -61,8 +67,8 @@ struct 🛠️MenuTop: View {
                     .glassBackgroundEffect()
                     .opacity(self.presentPanel == .about ? 1 : 0)
             }
-            .animation(.default, value: self.presentPanel)
         }
+        .animation(.default, value: self.presentPanel)
         .offset(y: -2200)
         .offset(z: -700)
     }
