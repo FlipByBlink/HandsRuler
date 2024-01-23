@@ -3,7 +3,7 @@ import RealityKit
 import ARKit
 
 struct 🌐RealityView: View {
-    @StateObject var model: 📏MeasureModel = .init()
+    @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         RealityView { content, attachments in
             content.add(self.model.rootEntity)
@@ -45,14 +45,14 @@ struct 🌐RealityView: View {
 //MARK: Simulator
 private extension 🌐RealityView {
     private struct SetRandomPositionOnSimulator: ViewModifier {
-        var model: 📏MeasureModel
+        var model: 🥽AppModel
         func body(content: Content) -> some View {
             content
 #if targetEnvironment(simulator)
                 .onTapGesture { self.model.setRandomPosition_simulator() }
 #endif
         }
-        init(_ model: 📏MeasureModel) {
+        init(_ model: 🥽AppModel) {
             self.model = model
         }
     }

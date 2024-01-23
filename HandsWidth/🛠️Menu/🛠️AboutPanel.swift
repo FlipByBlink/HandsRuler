@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct 🛠️AboutPanel: View {
+    @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         VStack(spacing: 24) {
             HStack {

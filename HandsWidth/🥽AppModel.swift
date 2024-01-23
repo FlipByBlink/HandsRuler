@@ -3,8 +3,9 @@ import RealityKit
 import ARKit
 
 @MainActor
-class 📏MeasureModel: ObservableObject {
+class 🥽AppModel: ObservableObject {
     @AppStorage("unit") private var unit: 📏Unit = .meters
+    @Published var presentPanel: 🛠️Panel? = .about
     @Published var selectedLeft: Bool = false
     @Published var selectedRight: Bool = false
     
@@ -21,7 +22,7 @@ class 📏MeasureModel: ObservableObject {
     private var coolDownSelection: Bool = false
 }
 
-extension 📏MeasureModel {
+extension 🥽AppModel {
     func setUpChildEntities() {
         self.rootEntity.addChild(self.lineEntity)
         self.fingerEntities.values.forEach { self.rootEntity.addChild($0) }
@@ -76,7 +77,7 @@ extension 📏MeasureModel {
     }
 }
 
-fileprivate extension 📏MeasureModel {
+fileprivate extension 🥽AppModel {
     private func processHandUpdates() async {
         for await update in self.handTracking.anchorUpdates {
             let handAnchor = update.anchor
@@ -136,7 +137,7 @@ fileprivate extension 📏MeasureModel {
 
 
 //MARK: Simulator
-extension 📏MeasureModel {
+extension 🥽AppModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
         self.updateLine()
