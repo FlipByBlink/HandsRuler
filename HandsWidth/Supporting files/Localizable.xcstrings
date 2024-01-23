@@ -4,6 +4,9 @@
     "About" : {
 
     },
+    "About HandsWidth" : {
+
+    },
     "Exit" : {
 
     },
@@ -16,9 +19,6 @@
           }
         }
       }
-    },
-    "HandsWidth" : {
-
     },
     "Setting" : {
       "localizations" : {

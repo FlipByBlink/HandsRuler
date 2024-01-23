@@ -9,26 +9,38 @@ struct 🛠️MenuTop: View {
                 Button {
                     Task { await self.dismissImmersiveSpace() }
                 } label: {
-                    Label("Exit", systemImage: "escape")
-                        .font(.title.weight(.regular))
-                        .padding(.vertical, 12)
+                    HStack(spacing: 8) {
+                        Image(systemName: "escape")
+                            .imageScale(.small)
+                        Text("Exit")
+                    }
+                    .font(.title.weight(.regular))
+                    .padding(.vertical, 12)
                 }
                 .glassBackgroundEffect()
                 Button {
                     self.presentPanel = .setting
                 } label: {
-                    Label("Setting", systemImage: "gearshape")
-                        .font(.title.weight(.light))
-                        .padding(.vertical, 12)
+                    HStack(spacing: 8) {
+                        Image(systemName: "gearshape")
+                            .imageScale(.small)
+                        Text("Setting")
+                    }
+                    .font(.title.weight(.regular))
+                    .padding(.vertical, 12)
                 }
                 .disabled(self.presentPanel == .setting)
                 .glassBackgroundEffect()
                 Button {
                     self.presentPanel = .about
                 } label: {
-                    Label("About", systemImage: "questionmark")
-                        .font(.title.weight(.light))
-                        .padding(.vertical, 12)
+                    HStack(spacing: 8) {
+                        Image(systemName: "questionmark")
+                            .imageScale(.small)
+                        Text("About")
+                    }
+                    .font(.title.weight(.regular))
+                    .padding(.vertical, 12)
                 }
                 .disabled(self.presentPanel == .about)
                 .glassBackgroundEffect()
