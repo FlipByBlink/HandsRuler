@@ -3,7 +3,7 @@ import SwiftUI
 struct 🛠️SettingPanel: View {
     @EnvironmentObject var model: 🥽AppModel
     var body: some View {
-        VStack(spacing: 32) {
+        VStack(spacing: 24) {
             HStack {
                 Spacer()
                 Text("Unit")
@@ -17,6 +17,7 @@ struct 🛠️SettingPanel: View {
                 }
             }
             .pickerStyle(.segmented)
+            .frame(height: 60)
             .frame(width: 360)
         }
     }

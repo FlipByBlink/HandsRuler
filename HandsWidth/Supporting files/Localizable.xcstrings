@@ -2,30 +2,54 @@
   "sourceLanguage" : "en",
   "strings" : {
     "About" : {
-
-    },
-    "Exit" : {
-
-    },
-    "Fix / Unfix a pointer by indirect tap." : {
-
-    },
-    "Fix a pointer by tap." : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ポインターを逆の手でタップして位置を固定できます。"
+            "value" : "アプリについて"
+          }
+        }
+      }
+    },
+    "Exit" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了"
+          }
+        }
+      }
+    },
+    "Fix / Unfix a pointer by indirect tap." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間接タップでポインターを固定したり固定解除したり出来ます。"
           }
         }
       }
     },
     "Hand tracking authorization:" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ハンドトラッキング認可状況:"
+          }
+        }
+      }
     },
     "HandsWidth" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手がメジャー"
+          }
+        }
+      }
     },
     "Setting" : {
       "localizations" : {
@@ -38,15 +62,11 @@
       }
     },
     "Start" : {
-
-    },
-    "Tip" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "テクニック"
+            "value" : "開始"
           }
         }
       }
