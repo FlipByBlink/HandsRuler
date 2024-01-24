@@ -83,22 +83,18 @@ extension 🥽AppModel {
     }
     
     func run() {
-        do {
 #if targetEnvironment(simulator)
-            print("Not support handTracking in simulator.")
+        print("Not support handTracking in simulator.")
 #else
-            Task { @MainActor in
-                do {
-                    try await self.session.run([self.handTracking])
-                    await self.processHandUpdates()
-                } catch {
-                    print(error)
-                }
+        Task { @MainActor in
+            do {
+                try await self.session.run([self.handTracking])
+                await self.processHandUpdates()
+            } catch {
+                print(error)
             }
-#endif
-        } catch {
-            assertionFailure()
         }
+#endif
     }
 }
 
