@@ -9,7 +9,7 @@
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
-		<string>UISceneSessionRoleImmersiveSpaceApplication</string>
+		<string>UIWindowSceneSessionRoleApplication</string>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<true/>
 		<key>UISceneConfigurations</key>

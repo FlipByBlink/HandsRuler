@@ -5,7 +5,8 @@ import ARKit
 @MainActor
 class 🥽AppModel: ObservableObject {
     @AppStorage("unit") private var unit: 📏Unit = .meters
-    @Published var presentPanel: 🛠️Panel? = .about
+    @Published private(set) var authorizationStatus: ARKitSession.AuthorizationStatus?
+    @Published var presentPanel: 🛠️Panel? = nil
     @Published var selectedLeft: Bool = false
     @Published var selectedRight: Bool = false
     
@@ -63,13 +64,33 @@ extension 🥽AppModel {
         self.lineLength < 1.2 ? 24 : 42
     }
     
-    func run() async {
+    func observeAuthorizationStatus() {
+        Task {
+            self.authorizationStatus = await self.session.queryAuthorization(for: [.handTracking])[.handTracking]
+            
+            for await update in self.session.events {
+                if case .authorizationChanged(let type, let status) = update {
+                    if type == .handTracking { self.authorizationStatus = status }
+                } else {
+                    print("Another session event \(update).")
+                }
+            }
+        }
+    }
+    
+    func run() {
         do {
 #if targetEnvironment(simulator)
             print("Not support handTracking in simulator.")
 #else
-            try await self.session.run([self.handTracking])
-            await self.processHandUpdates()
+            Task { @MainActor in
+                do {
+                    try await self.session.run([self.handTracking])
+                    await self.processHandUpdates()
+                } catch {
+                    print(error)
+                }
+            }
 #endif
         } catch {
             assertionFailure()

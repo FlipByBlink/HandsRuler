@@ -3,7 +3,7 @@ import RealityKit
 import ARKit
 
 struct 🌐RealityView: View {
-    @EnvironmentObject var model: 🥽AppModel
+    @StateObject var model: 🥽AppModel = .init()
     var body: some View {
         RealityView { content, attachments in
             content.add(self.model.rootEntity)
@@ -34,7 +34,12 @@ struct 🌐RealityView: View {
                 .targetedToAnyEntity()
                 .onEnded { self.model.changeSelection($0.entity) }
         )
-        .task { await self.model.run() }
+        .background { 
+            🛠️MenuTop()
+                .environmentObject(self.model)
+        }
+        .task { self.model.run() }
+        .task { self.model.observeAuthorizationStatus() }
     }
     static let attachmentID: String = "resultLabel"
 }

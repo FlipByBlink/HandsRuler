@@ -6,7 +6,7 @@ struct 🛠️AboutPanel: View {
         VStack(spacing: 24) {
             HStack {
                 Spacer()
-                Text("About HandsWidth")
+                Text("HandsWidth")
                     .font(.largeTitle.weight(.semibold))
                 Spacer()
             }
@@ -20,15 +20,12 @@ struct 🛠️AboutPanel: View {
                     .frame(width: 300, height: 200)
             }
             .padding(.horizontal)
-            Button {
-                
-            } label: {
-                Text("Start")
-                    .font(.system(size: 36))
-                    .padding()
+            HStack {
+                Text("Hand tracking authorization:")
+                    .font(.headline)
+                Text(self.model.authorizationStatus?.description ?? "...")
+                    .font(.subheadline)
             }
-            .padding()
-            .frame(minHeight: 60)
         }
     }
 }

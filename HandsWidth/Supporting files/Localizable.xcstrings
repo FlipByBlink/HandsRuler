@@ -4,9 +4,6 @@
     "About" : {
 
     },
-    "About HandsWidth" : {
-
-    },
     "Exit" : {
 
     },
@@ -19,6 +16,12 @@
           }
         }
       }
+    },
+    "Hand tracking authorization:" : {
+
+    },
+    "HandsWidth" : {
+
     },
     "Setting" : {
       "localizations" : {
