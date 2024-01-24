@@ -26,6 +26,8 @@ struct 🛠️AboutPanel: View {
                 Text(self.model.authorizationStatus?.description ?? "...")
                     .font(.subheadline)
             }
+            .foregroundStyle(.secondary)
+            .frame(height: 60)
         }
     }
 }

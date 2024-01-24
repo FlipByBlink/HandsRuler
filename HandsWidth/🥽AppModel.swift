@@ -4,7 +4,7 @@ import ARKit
 
 @MainActor
 class 🥽AppModel: ObservableObject {
-    @AppStorage("unit") private var unit: 📏Unit = .meters
+    @AppStorage("unit") var unit: 📏Unit = .meters
     @Published private(set) var authorizationStatus: ARKitSession.AuthorizationStatus?
     @Published var presentPanel: 🛠️Panel? = nil
     @Published var selectedLeft: Bool = false
