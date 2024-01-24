@@ -11,36 +11,41 @@ struct 🛠️AboutPanel: View {
                 Spacer()
             }
             .frame(height: 60)
-            HStack(spacing: 28) {
-                Image(.graph1)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 280)
-                    .clipShape(.rect(cornerRadius: 24))
+            HStack(spacing: 32) {
+                VStack(spacing: 12) {
+                    Image(.graph1)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 300)
+                        .clipShape(.rect(cornerRadius: 24))
+                    Text("Measurement of the distance between the fingers.")
+                        .font(.caption)
+                        .multilineTextAlignment(.center)
+                }
                 VStack(spacing: 12) {
                     Image(.graph2)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 200)
-                        .clipShape(.rect(cornerRadius: 16))
+                        .frame(width: 300)
+                        .clipShape(.rect(cornerRadius: 24))
                     Text("Fix / Unfix a pointer by indirect tap.")
-                        .font(.subheadline)
+                        .font(.caption)
                         .multilineTextAlignment(.center)
                 }
             }
             .padding(.horizontal)
-            HStack(spacing: 24) {
-                Text("Hand tracking authorization:")
-                    .font(.headline)
-                if let authorizationStatus = self.model.authorizationStatus {
-                    Text(authorizationStatus.description)
-                        .font(.subheadline)
-                } else {
-                    ProgressView()
-                }
+            switch self.model.authorizationStatus {
+                case .notDetermined, .denied:
+                    HStack(spacing: 24) {
+                        Text("Hand tracking authorization:")
+                            .fontWeight(.semibold)
+                        Text(self.model.authorizationStatus?.description ?? "nil")
+                    }
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                default:
+                    EmptyView()
             }
-            .foregroundStyle(.secondary)
-            .frame(height: 60)
         }
     }
 }

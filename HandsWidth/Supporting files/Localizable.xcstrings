@@ -26,7 +26,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "間接タップでポインターを固定したり\n固定解除したり出来ます。"
+            "value" : "間接タップでポインターを固定できます。"
           }
         }
       }
@@ -47,6 +47,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "手がメジャー"
+          }
+        }
+      }
+    },
+    "Measurement of the distance between the fingers." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指と指の間の距離を測ります。"
           }
         }
       }
