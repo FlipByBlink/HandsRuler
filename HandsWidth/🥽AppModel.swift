@@ -35,11 +35,15 @@ extension 🥽AppModel {
             case 🧩Name.fingerLeft:
                 self.selectedLeft.toggle()
                 self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
-                targetedEntity.playAudio(self.selectedLeft ? self.sound1 : self.sound2)
+                let player = targetedEntity.prepareAudio(self.selectedLeft ? self.sound1 : self.sound2)
+                player.gain = -8
+                player.play()
             case 🧩Name.fingerRight:
                 self.selectedRight.toggle()
                 self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
-                targetedEntity.playAudio(self.selectedRight ? self.sound1 : self.sound2)
+                let player = targetedEntity.prepareAudio(self.selectedRight ? self.sound1 : self.sound2)
+                player.gain = -8
+                player.play()
             default:
                 assertionFailure()
                 break
