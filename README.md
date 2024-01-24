@@ -27,7 +27,7 @@ Unit option
 - yards
 
 Sub function
-- Fix a pointer by tap.
+- Fix a pointer by indirect tap.
 
 
 App Store link
