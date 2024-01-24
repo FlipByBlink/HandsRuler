@@ -3,7 +3,7 @@ import SwiftUI
 struct 🛠️SettingPanel: View {
     @EnvironmentObject var model: 🥽AppModel
     var body: some View {
-        VStack(spacing: 48) {
+        VStack(spacing: 32) {
             HStack {
                 Spacer()
                 Text("Unit")

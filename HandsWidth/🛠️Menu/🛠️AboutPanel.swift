@@ -11,15 +11,24 @@ struct 🛠️AboutPanel: View {
                 Spacer()
             }
             .frame(height: 60)
-            HStack(spacing: 32) {
-                Image(systemName: "photo")
+            HStack(spacing: 28) {
+                Image(.graph1)
                     .resizable()
-                    .frame(width: 300, height: 200)
-                Image(systemName: "photo")
-                    .resizable()
-                    .frame(width: 300, height: 200)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 280)
+                    .clipShape(.rect(cornerRadius: 24))
+                VStack(spacing: 12) {
+                    Image(.graph2)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200)
+                        .clipShape(.rect(cornerRadius: 16))
+                    Text("Fix / Unfix a pointer by indirect tap.")
+                        .font(.subheadline)
+                }
             }
             .padding(.horizontal)
+            Divider()
             HStack {
                 Text("Hand tracking authorization:")
                     .font(.headline)

@@ -7,6 +7,9 @@
     "Exit" : {
 
     },
+    "Fix / Unfix a pointer by indirect tap." : {
+
+    },
     "Fix a pointer by tap." : {
       "extractionState" : "stale",
       "localizations" : {
