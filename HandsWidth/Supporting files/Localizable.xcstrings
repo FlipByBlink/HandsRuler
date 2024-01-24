@@ -26,7 +26,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "間接タップでポインターを固定したり固定解除したり出来ます。"
+            "value" : "間接タップでポインターを固定したり\n固定解除したり出来ます。"
           }
         }
       }
@@ -36,7 +36,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ハンドトラッキング認可状況:"
+            "value" : "ハンドトラッキング許可状況:"
           }
         }
       }
