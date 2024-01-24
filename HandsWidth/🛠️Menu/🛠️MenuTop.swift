@@ -61,7 +61,7 @@ struct 🛠️MenuTop: View {
                     .opacity(self.model.presentPanel == .setting ? 1 : 0)
                 🛠️AboutPanel()
                     .overlay(alignment: .topTrailing) { self.hideButton() }
-                    .padding(32)
+                    .padding(24)
                     .padding(.horizontal)
                     .fixedSize()
                     .glassBackgroundEffect()
@@ -69,7 +69,7 @@ struct 🛠️MenuTop: View {
             }
         }
         .animation(.default, value: self.model.presentPanel)
-        .offset(y: -2200)
+        .offset(y: -2000)
         .offset(z: -700)
     }
 }

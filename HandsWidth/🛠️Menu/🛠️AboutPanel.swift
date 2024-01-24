@@ -29,8 +29,7 @@ struct 🛠️AboutPanel: View {
                 }
             }
             .padding(.horizontal)
-            Divider()
-            HStack {
+            HStack(spacing: 24) {
                 Text("Hand tracking authorization:")
                     .font(.headline)
                 if let authorizationStatus = self.model.authorizationStatus {
