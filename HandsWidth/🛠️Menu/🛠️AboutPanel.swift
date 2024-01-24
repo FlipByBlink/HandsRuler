@@ -25,6 +25,7 @@ struct 🛠️AboutPanel: View {
                         .clipShape(.rect(cornerRadius: 16))
                     Text("Fix / Unfix a pointer by indirect tap.")
                         .font(.subheadline)
+                        .multilineTextAlignment(.center)
                 }
             }
             .padding(.horizontal)
@@ -32,8 +33,12 @@ struct 🛠️AboutPanel: View {
             HStack {
                 Text("Hand tracking authorization:")
                     .font(.headline)
-                Text(self.model.authorizationStatus?.description ?? "...")
-                    .font(.subheadline)
+                if let authorizationStatus = self.model.authorizationStatus {
+                    Text(authorizationStatus.description)
+                        .font(.subheadline)
+                } else {
+                    ProgressView()
+                }
             }
             .foregroundStyle(.secondary)
             .frame(height: 60)
