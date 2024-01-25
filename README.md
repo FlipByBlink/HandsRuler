@@ -10,7 +10,7 @@ _Hands is ruler._
     <img src="HandsWidth/Supporting files/README assets/appstore_badge.svg">
 </a>
 
-<img src="HandsWidth/Supporting files/README assets/screenshot1200w.png" width="600">
+<img src="HandsWidth/Supporting files/README assets/screenshot1200w.jpg" width="600">
 
 
 Description
