@@ -10,7 +10,7 @@ _Hands is ruler._
     <img src="HandsWidth/Supporting files/README assets/appstore_badge.svg">
 </a>
 
-<img src="HandsWidth/Supporting files/README assets/screenshot1200w.jpg" width="600">
+<img src="HandsWidth/Supporting files/README assets/screenshot1280w.jpg" width="640">
 
 
 Description
@@ -28,6 +28,10 @@ Unit option
 
 Sub function
 - Fix a pointer by indirect tap.
+
+<img src="HandsWidth/Supporting files/README assets/screenshot1280w2.jpg" width="640">
+
+<img src="HandsWidth/Supporting files/README assets/screenshot1280w3.jpg" width="640">
 
 
 App Store link
