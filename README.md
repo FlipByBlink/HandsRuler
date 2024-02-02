@@ -1,6 +1,6 @@
 HandsWidth
 ===========
-__Measure app for Apple Vision Pro__
+__Measure app by hand tracking for Apple Vision Pro__
 
 _Hands is ruler._
 
