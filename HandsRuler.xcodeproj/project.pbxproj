@@ -45,8 +45,6 @@
 		16C95AE32B5E75D800CF0FED /* 🛠️Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C95AE22B5E75D800CF0FED /* 🛠️Panel.swift */; };
 		16C95AE52B5E762400CF0FED /* 🛠️MenuTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C95AE42B5E762400CF0FED /* 🛠️MenuTop.swift */; };
 		16C95AE72B5E7BFF00CF0FED /* 🛠️AboutPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C95AE62B5E7BFF00CF0FED /* 🛠️AboutPanel.swift */; };
-		16EA6A612B68629100A3A740 /* screenshot1280w3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16EA6A5E2B68629100A3A740 /* screenshot1280w3.jpg */; };
-		16EA6A632B68629200A3A740 /* screenshot1280w2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16EA6A602B68629100A3A740 /* screenshot1280w2.jpg */; };
 		16EE5E992B576DA800D354ED /* 🧩Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE5E982B576DA800D354ED /* 🧩Name.swift */; };
 		16EE5E9B2B576DB000D354ED /* 🧩Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE5E9A2B576DB000D354ED /* 🧩Model.swift */; };
 /* End PBXBuildFile section */
@@ -306,10 +304,8 @@
 				166F7E492B7DBD08005F70D5 /* 🌐VersionHistory.xcstrings in Resources */,
 				166F7E442B7DBBE5005F70D5 /* 🌐AboutApp.xcstrings in Resources */,
 				169D84AF2B5A319500BB5606 /* sound2.m4a in Resources */,
-				16EA6A612B68629100A3A740 /* screenshot1280w3.jpg in Resources */,
 				16891EDC2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets in Resources */,
 				16267B522B57D362000CA8AD /* InfoPlist.xcstrings in Resources */,
-				16EA6A632B68629200A3A740 /* screenshot1280w2.jpg in Resources */,
 				166F7E4A2B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings in Resources */,
 				16267B502B57D172000CA8AD /* Localizable.xcstrings in Resources */,
 				166F7E452B7DBBE5005F70D5 /* 🌐Timeline.xcstrings in Resources */,
@@ -481,7 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.HandsWidth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -508,7 +504,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.HandsWidth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
