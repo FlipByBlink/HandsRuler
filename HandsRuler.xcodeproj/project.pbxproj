@@ -22,6 +22,21 @@
 		166F7E452B7DBBE5005F70D5 /* 🌐Timeline.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 166F7E432B7DBBE5005F70D5 /* 🌐Timeline.xcstrings */; };
 		166F7E492B7DBD08005F70D5 /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 166F7E472B7DBD06005F70D5 /* 🌐VersionHistory.xcstrings */; };
 		166F7E4A2B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 166F7E482B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings */; };
+		166F7E4C2B7DC36C005F70D5 /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 165ADB4E2B4B71B0008A756F /* App.swift */; };
+		166F7E4D2B7DC36C005F70D5 /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 165ADB502B4B71B0008A756F /* ContentView.swift */; };
+		166F7E4E2B7DC36C005F70D5 /* 🥽AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DE52B59F35F004CE12B /* 🥽AppModel.swift */; };
+		166F7E4F2B7DC36C005F70D5 /* 🌐RealityView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1642FAB82B4D6CAA0084F9ED /* 🌐RealityView.swift */; };
+		166F7E502B7DC36C005F70D5 /* 🧩Entity.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 164C78022B5746AD008FF872 /* 🧩Entity.swift */; };
+		166F7E512B7DC36C005F70D5 /* 🧩Name.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16EE5E982B576DA800D354ED /* 🧩Name.swift */; };
+		166F7E522B7DC36C005F70D5 /* 🧩Model.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16EE5E9A2B576DB000D354ED /* 🧩Model.swift */; };
+		166F7E532B7DC36C005F70D5 /* 🧑HeadTrackingComponent&System.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160ED7972B4B74C5002AD987 /* 🧑HeadTrackingComponent&System.swift */; };
+		166F7E542B7DC36C005F70D5 /* 📏Unit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */; };
+		166F7E552B7DC36C005F70D5 /* 🛠️MenuTop.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C95AE42B5E762400CF0FED /* 🛠️MenuTop.swift */; };
+		166F7E562B7DC36C005F70D5 /* 🛠️Panel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C95AE22B5E75D800CF0FED /* 🛠️Panel.swift */; };
+		166F7E572B7DC36C005F70D5 /* 🛠️SettingPanel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1642FAB42B4D54A60084F9ED /* 🛠️SettingPanel.swift */; };
+		166F7E582B7DC36C005F70D5 /* 🛠️AboutPanel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C95AE62B5E7BFF00CF0FED /* 🛠️AboutPanel.swift */; };
+		166F7E592B7DC36C005F70D5 /* 🗒️StaticInfo.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16891ED72B7B2F8C00C6F0B3 /* 🗒️StaticInfo.swift */; };
+		166F7E5A2B7DC36C005F70D5 /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16891ED82B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift */; };
 		16891ED92B7B2F8D00C6F0B3 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16891ED72B7B2F8C00C6F0B3 /* 🗒️StaticInfo.swift */; };
 		16891EDA2B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16891ED82B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift */; };
 		16891EDC2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16891EDB2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets */; };
@@ -35,6 +50,33 @@
 		16EE5E992B576DA800D354ED /* 🧩Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE5E982B576DA800D354ED /* 🧩Name.swift */; };
 		16EE5E9B2B576DB000D354ED /* 🧩Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE5E9A2B576DB000D354ED /* 🧩Model.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		166F7E4B2B7DC35C005F70D5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "📁SourceCode";
+			dstSubfolderSpec = 7;
+			files = (
+				166F7E4C2B7DC36C005F70D5 /* App.swift in CopyFiles */,
+				166F7E4D2B7DC36C005F70D5 /* ContentView.swift in CopyFiles */,
+				166F7E4E2B7DC36C005F70D5 /* 🥽AppModel.swift in CopyFiles */,
+				166F7E4F2B7DC36C005F70D5 /* 🌐RealityView.swift in CopyFiles */,
+				166F7E502B7DC36C005F70D5 /* 🧩Entity.swift in CopyFiles */,
+				166F7E512B7DC36C005F70D5 /* 🧩Name.swift in CopyFiles */,
+				166F7E522B7DC36C005F70D5 /* 🧩Model.swift in CopyFiles */,
+				166F7E532B7DC36C005F70D5 /* 🧑HeadTrackingComponent&System.swift in CopyFiles */,
+				166F7E542B7DC36C005F70D5 /* 📏Unit.swift in CopyFiles */,
+				166F7E552B7DC36C005F70D5 /* 🛠️MenuTop.swift in CopyFiles */,
+				166F7E562B7DC36C005F70D5 /* 🛠️Panel.swift in CopyFiles */,
+				166F7E572B7DC36C005F70D5 /* 🛠️SettingPanel.swift in CopyFiles */,
+				166F7E582B7DC36C005F70D5 /* 🛠️AboutPanel.swift in CopyFiles */,
+				166F7E592B7DC36C005F70D5 /* 🗒️StaticInfo.swift in CopyFiles */,
+				166F7E5A2B7DC36C005F70D5 /* ℹ️AboutApp.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		160ED7972B4B74C5002AD987 /* 🧑HeadTrackingComponent&System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧑HeadTrackingComponent&System.swift"; sourceTree = "<group>"; };
@@ -208,6 +250,7 @@
 				165ADB432B4B71B0008A756F /* Sources */,
 				165ADB442B4B71B0008A756F /* Frameworks */,
 				165ADB452B4B71B0008A756F /* Resources */,
+				166F7E4B2B7DC35C005F70D5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
