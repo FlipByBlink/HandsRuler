@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct HandsWidthApp: App {
+struct HandsRulerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

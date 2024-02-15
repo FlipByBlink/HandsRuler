@@ -1,0 +1,262 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "2013-04" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finished from high school in Okayama Prefecture. Entranced into University-of-the-Ryukyus/faculty-of-engineering in Okinawa Prefecture."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岡山県の高等学校を卒業。沖縄県の琉球大学工学部に入学。"
+          }
+        }
+      }
+    },
+    "2018-06" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Final year as an undergraduate student. Developed an iOS application(FlipByBlink) as software for the purpose of research experiments."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大学学部生として最終学年。研究実験を目的としたiOSアプリ(FlipByBlink)の開発を行う。"
+          }
+        }
+      }
+    },
+    "2019-01" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released ebook reader app \"FlipByBlink\" ver 1.0 on App Store. Special feature is to turn a page by slightly-longish-voluntary-blink."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特殊なまばたきでページめくりができる電子書籍リーダーアプリ「FlipByBlink」をver1.0としてApp Storeにリリース。"
+          }
+        }
+      }
+    },
+    "2019-03" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graduated from University-of-the-Ryukyus."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "琉球大学を卒業。"
+          }
+        }
+      }
+    },
+    "2019-05" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released alarm clock app with taking a long time \"FadeInAlarm\" ver 1.0. First paid app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時間をかけて徐々に音が大きくなるアラームアプリ「FadeInAlarm」ver1.0をリリース。初めてとなる有料アプリ。"
+          }
+        }
+      }
+    },
+    "2019-07" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migrated to Okayama Prefecture."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "岡山に移住。"
+          }
+        }
+      }
+    },
+    "2021-12" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released FlipByBlink ver 3.0 for the first time in three years since ver 2.0."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlipByBlink、ver2.0以来 約3年ぶりとなるver3.0をリリース。"
+          }
+        }
+      }
+    },
+    "2022-02" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released FadeInAlarm ver 2.0 for the first time in three years since ver 1.0."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FadeInAlarm、ver1.0以来 約3年ぶりとなるver2.0をリリース。"
+          }
+        }
+      }
+    },
+    "2022-04" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released simple shogi board app \"PlainShogiBoard\" ver 1.0."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンプルな将棋盤アプリ「Plain将棋盤」ver1.0をリリース。"
+          }
+        }
+      }
+    },
+    "2022-05" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released body weight registration app \"TapWeight\" ver 1.0."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体重登録アプリ「TapWeight」ver1.0をリリース。"
+          }
+        }
+      }
+    },
+    "2022-06" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released body temperature registration app \"TapTemperature\" ver 1.0.\nAdopted In-App Purchase model for the first time on TapWeight ver 1.1.1."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体温登録アプリ「TapTemperature」ver1.0をリリース。\nTapWeight、有料課金モデルを初めて採用したver1.1.1をリリース。"
+          }
+        }
+      }
+    },
+    "2022-09" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released LockInNote and MemorizeWidget on iOS16 release occasion."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS16のリリースに合わせて「ロックノート」と「暗記ウィジェット」をリリース。"
+          }
+        }
+      }
+    },
+    "2023-02" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released Apple Watch app version of \"TapTemperature\"."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「TapTemperature」のApple Watch向けアプリをリリース。"
+          }
+        }
+      }
+    },
+    "2023-04" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released Mac version of \"MemorizeWidget\"."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「暗記ウィジェット」のMac向けアプリをリリース。"
+          }
+        }
+      }
+    },
+    "2023-05" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released Apple TV app version of \"PlainShogiBoard\"."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Plain将棋盤」のApple TV向けアプリをリリース。"
+          }
+        }
+      }
+    },
+    "2024-02" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Released Apple Vision Pro apps on the release occasion."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Vision Pro発売に合わせてApple Vision Pro向けアプリを複数リリース。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -11,6 +11,12 @@
         }
       }
     },
+    "About App" : {
+
+    },
+    "Apple Vision Pro" : {
+
+    },
     "Exit" : {
       "localizations" : {
         "ja" : {
@@ -41,7 +47,11 @@
         }
       }
     },
+    "HandsRuler" : {
+
+    },
     "HandsWidth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

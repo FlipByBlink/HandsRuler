@@ -18,6 +18,13 @@
 		165ADB512B4B71B0008A756F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ADB502B4B71B0008A756F /* ContentView.swift */; };
 		165ADB532B4B71B2008A756F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 165ADB522B4B71B2008A756F /* Assets.xcassets */; };
 		16688DE62B59F35F004CE12B /* 🥽AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DE52B59F35F004CE12B /* 🥽AppModel.swift */; };
+		166F7E442B7DBBE5005F70D5 /* 🌐AboutApp.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 166F7E422B7DBBE4005F70D5 /* 🌐AboutApp.xcstrings */; };
+		166F7E452B7DBBE5005F70D5 /* 🌐Timeline.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 166F7E432B7DBBE5005F70D5 /* 🌐Timeline.xcstrings */; };
+		166F7E492B7DBD08005F70D5 /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 166F7E472B7DBD06005F70D5 /* 🌐VersionHistory.xcstrings */; };
+		166F7E4A2B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 166F7E482B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings */; };
+		16891ED92B7B2F8D00C6F0B3 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16891ED72B7B2F8C00C6F0B3 /* 🗒️StaticInfo.swift */; };
+		16891EDA2B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16891ED82B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift */; };
+		16891EDC2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16891EDB2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets */; };
 		169D84AF2B5A319500BB5606 /* sound2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 169D84AD2B5A319000BB5606 /* sound2.m4a */; };
 		169D84B02B5A319500BB5606 /* sound1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 169D84AE2B5A319400BB5606 /* sound1.m4a */; };
 		16C95AE32B5E75D800CF0FED /* 🛠️Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C95AE22B5E75D800CF0FED /* 🛠️Panel.swift */; };
@@ -47,7 +54,14 @@
 		165ADB522B4B71B2008A756F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		165ADB572B4B71B2008A756F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16688DE52B59F35F004CE12B /* 🥽AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🥽AppModel.swift"; sourceTree = "<group>"; };
+		166F7E422B7DBBE4005F70D5 /* 🌐AboutApp.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AboutApp.xcstrings"; sourceTree = "<group>"; };
+		166F7E432B7DBBE5005F70D5 /* 🌐Timeline.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐Timeline.xcstrings"; sourceTree = "<group>"; };
+		166F7E472B7DBD06005F70D5 /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
+		166F7E482B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		167817E02B61FABE00BE0067 /* screenshot1280w.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot1280w.jpg; sourceTree = "<group>"; };
+		16891ED72B7B2F8C00C6F0B3 /* 🗒️StaticInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🗒️StaticInfo.swift"; sourceTree = "<group>"; };
+		16891ED82B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
+		16891EDB2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Developer_Publisher.xcassets; sourceTree = "<group>"; };
 		169D84AD2B5A319000BB5606 /* sound2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound2.m4a; sourceTree = "<group>"; };
 		169D84AE2B5A319400BB5606 /* sound1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound1.m4a; sourceTree = "<group>"; };
 		16C95AE22B5E75D800CF0FED /* 🛠️Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️Panel.swift"; sourceTree = "<group>"; };
@@ -86,12 +100,9 @@
 		16267B4E2B57D148000CA8AD /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				165ADB522B4B71B2008A756F /* Assets.xcassets */,
-				169D84AE2B5A319400BB5606 /* sound1.m4a */,
-				169D84AD2B5A319000BB5606 /* sound2.m4a */,
 				165ADB572B4B71B2008A756F /* Info.plist */,
-				16267B4F2B57D172000CA8AD /* Localizable.xcstrings */,
-				16267B512B57D362000CA8AD /* InfoPlist.xcstrings */,
+				166F7E462B7DBBF6005F70D5 /* Assets */,
+				166F7E412B7DBBDB005F70D5 /* 🌐Localization */,
 				160F46BA2B5A5613001FE696 /* README assets */,
 				1638F80B2B50BC8800E0CAD2 /* Archive */,
 			);
@@ -142,15 +153,49 @@
 			path = HandsWidth;
 			sourceTree = "<group>";
 		};
+		166F7E412B7DBBDB005F70D5 /* 🌐Localization */ = {
+			isa = PBXGroup;
+			children = (
+				16267B4F2B57D172000CA8AD /* Localizable.xcstrings */,
+				16267B512B57D362000CA8AD /* InfoPlist.xcstrings */,
+				166F7E482B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings */,
+				166F7E472B7DBD06005F70D5 /* 🌐VersionHistory.xcstrings */,
+				166F7E422B7DBBE4005F70D5 /* 🌐AboutApp.xcstrings */,
+				166F7E432B7DBBE5005F70D5 /* 🌐Timeline.xcstrings */,
+			);
+			path = "🌐Localization";
+			sourceTree = "<group>";
+		};
+		166F7E462B7DBBF6005F70D5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				165ADB522B4B71B2008A756F /* Assets.xcassets */,
+				16891EDB2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets */,
+				169D84AE2B5A319400BB5606 /* sound1.m4a */,
+				169D84AD2B5A319000BB5606 /* sound2.m4a */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		16C95ADF2B5E74FD00CF0FED /* 🛠️Menu */ = {
 			isa = PBXGroup;
 			children = (
 				16C95AE42B5E762400CF0FED /* 🛠️MenuTop.swift */,
 				16C95AE22B5E75D800CF0FED /* 🛠️Panel.swift */,
 				1642FAB42B4D54A60084F9ED /* 🛠️SettingPanel.swift */,
-				16C95AE62B5E7BFF00CF0FED /* 🛠️AboutPanel.swift */,
+				16D833122B7CB57F00409943 /* 🛠️About */,
 			);
 			path = "🛠️Menu";
+			sourceTree = "<group>";
+		};
+		16D833122B7CB57F00409943 /* 🛠️About */ = {
+			isa = PBXGroup;
+			children = (
+				16C95AE62B5E7BFF00CF0FED /* 🛠️AboutPanel.swift */,
+				16891ED72B7B2F8C00C6F0B3 /* 🗒️StaticInfo.swift */,
+				16891ED82B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift */,
+			);
+			path = "🛠️About";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,11 +260,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				169D84B02B5A319500BB5606 /* sound1.m4a in Resources */,
+				166F7E492B7DBD08005F70D5 /* 🌐VersionHistory.xcstrings in Resources */,
+				166F7E442B7DBBE5005F70D5 /* 🌐AboutApp.xcstrings in Resources */,
 				169D84AF2B5A319500BB5606 /* sound2.m4a in Resources */,
 				16EA6A612B68629100A3A740 /* screenshot1280w3.jpg in Resources */,
+				16891EDC2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets in Resources */,
 				16267B522B57D362000CA8AD /* InfoPlist.xcstrings in Resources */,
 				16EA6A632B68629200A3A740 /* screenshot1280w2.jpg in Resources */,
+				166F7E4A2B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings in Resources */,
 				16267B502B57D172000CA8AD /* Localizable.xcstrings in Resources */,
+				166F7E452B7DBBE5005F70D5 /* 🌐Timeline.xcstrings in Resources */,
 				165ADB532B4B71B2008A756F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +291,8 @@
 				16EE5E9B2B576DB000D354ED /* 🧩Model.swift in Sources */,
 				164C78032B5746AD008FF872 /* 🧩Entity.swift in Sources */,
 				16688DE62B59F35F004CE12B /* 🥽AppModel.swift in Sources */,
+				16891ED92B7B2F8D00C6F0B3 /* 🗒️StaticInfo.swift in Sources */,
+				16891EDA2B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift in Sources */,
 				165ADB4F2B4B71B0008A756F /* App.swift in Sources */,
 				16C95AE52B5E762400CF0FED /* 🛠️MenuTop.swift in Sources */,
 				16C95AE32B5E75D800CF0FED /* 🛠️Panel.swift in Sources */,
