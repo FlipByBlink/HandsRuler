@@ -1,16 +1,16 @@
-HandsWidth
+HandsRuler
 ===========
 __Measure app by hand tracking for Apple Vision Pro__
 
-_Hands is ruler._
+_Hands is measure._
 
-<img src="HandsWidth/Supporting files/README assets/icon.png" width="64">
+<img src="HandsRuler/Supporting files/README assets/icon.png" width="64">
 
 <a href="https://apps.apple.com/app/id6475769879" target="blank">
-    <img src="HandsWidth/Supporting files/README assets/appstore_badge.svg">
+    <img src="HandsRuler/Supporting files/README assets/appstore_badge.svg">
 </a>
 
-<img src="HandsWidth/Supporting files/README assets/screenshot1280w.jpg" width="640">
+<img src="HandsRuler/Supporting files/README assets/screenshot1280w.jpg" width="640">
 
 
 Description
@@ -29,9 +29,9 @@ Unit option
 Sub function
 - Fix a pointer by indirect tap.
 
-<img src="HandsWidth/Supporting files/README assets/screenshot1280w2.jpg" width="640">
+<img src="HandsRuler/Supporting files/README assets/screenshot1280w2.jpg" width="640">
 
-<img src="HandsWidth/Supporting files/README assets/screenshot1280w3.jpg" width="640">
+<img src="HandsRuler/Supporting files/README assets/screenshot1280w3.jpg" width="640">
 
 
 App Store link
@@ -41,10 +41,10 @@ App Store link
 
 Source code link
 -----------------
-[github.com/FlipByBlink/HandsWidth](https://github.com/FlipByBlink/HandsWidth)
+[github.com/FlipByBlink/HandsRuler](https://github.com/FlipByBlink/HandsRuler)
 
 ### Source code (Mirror) link
-[gitlab.com/FlipByBlink/HandsWidth_Mirror](https://gitlab.com/FlipByBlink/HandsWidth_Mirror)
+[gitlab.com/FlipByBlink/HandsRuler_Mirror](https://gitlab.com/FlipByBlink/HandsRuler_Mirror)
 
 
 Contact
@@ -78,6 +78,6 @@ This application don't collect user infomation.
 
 
 <!-- URL "Support page for App Store" -->
-<!-- https://flipbyblink.github.io/HandsWidth/ -->
+<!-- https://flipbyblink.github.io/HandsRuler/ -->
 <!-- URL "Privacy Policy for App Store" -->
-<!-- https://flipbyblink.github.io/HandsWidth/#privacy-policy-for-app-store -->
+<!-- https://flipbyblink.github.io/HandsRuler/#privacy-policy-for-app-store -->

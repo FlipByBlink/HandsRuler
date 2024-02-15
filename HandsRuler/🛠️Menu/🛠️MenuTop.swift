@@ -53,37 +53,15 @@ struct 🛠️MenuTop: View {
             }
             ZStack(alignment: .top) {
                 🛠️SettingPanel()
-                    .overlay(alignment: .topTrailing) { self.hideButton() }
-                    .padding(32)
-                    .padding(.horizontal)
-                    .fixedSize()
                     .glassBackgroundEffect()
                     .opacity(self.model.presentPanel == .setting ? 1 : 0)
                 🛠️AboutPanel()
-                    .overlay(alignment: .topTrailing) { self.hideButton() }
-                    .padding(24)
-                    .padding(.horizontal)
-                    .fixedSize()
                     .glassBackgroundEffect()
                     .opacity(self.model.presentPanel == .about ? 1 : 0)
             }
         }
         .animation(.default, value: self.model.presentPanel)
-        .offset(y: -2000)
+        .offset(y: -1750)
         .offset(z: -700)
-    }
-}
-
-private extension 🛠️MenuTop {
-    private func hideButton() -> some View {
-        Button {
-            self.model.presentPanel = nil
-        } label: {
-            Image(systemName: "arrow.down.right.and.arrow.up.left")
-                .padding()
-        }
-        .buttonBorderShape(.circle)
-        .buttonStyle(.plain)
-        .frame(width: 60, height: 60)
     }
 }

@@ -1,0 +1,22 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "current" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measure the distance between both hands intuitively.\n\nApp shows the measurement of the distance between the tips of the index fingers, from the left hand to the right hand.\n\nUnit option\n- centiMeters\n- meters\n- inches\n- feet\n- yards\n\nSub function\n- Fix a pointer by indirect tap."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "両手を使って直感的に距離を測定！\n\n両手の人差し指の先端同士の距離を表示します。\n\n単位オプション\n・センチメートル(cm)\n・メートル(m)\n・インチ(in)\n・フィート(ft)\n・ヤード(yd)\n\nおまけ機能\n・ポインターを間接タップして位置を固定する"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

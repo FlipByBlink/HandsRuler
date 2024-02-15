@@ -8,13 +8,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "HandsWidth"
+            "value" : "HandsRuler"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手がメジャー"
+            "value" : "HandsRuler"
           }
         }
       }
