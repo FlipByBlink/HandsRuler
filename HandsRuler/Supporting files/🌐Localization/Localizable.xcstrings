@@ -12,10 +12,24 @@
       }
     },
     "About App" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリについて"
+          }
+        }
+      }
     },
     "Apple Vision Pro" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Exit" : {
       "localizations" : {
@@ -48,15 +62,11 @@
       }
     },
     "HandsRuler" : {
-
-    },
-    "HandsWidth" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手がメジャー"
+            "value" : "HandsRuler"
           }
         }
       }

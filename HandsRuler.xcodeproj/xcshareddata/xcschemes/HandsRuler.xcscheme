@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "165ADB462B4B71B0008A756F"
-               BuildableName = "HandsWidth.app"
-               BlueprintName = "HandsWidth"
-               ReferencedContainer = "container:HandsWidth.xcodeproj">
+               BuildableName = "HandsRuler.app"
+               BlueprintName = "HandsRuler"
+               ReferencedContainer = "container:HandsRuler.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "165ADB462B4B71B0008A756F"
-            BuildableName = "HandsWidth.app"
-            BlueprintName = "HandsWidth"
-            ReferencedContainer = "container:HandsWidth.xcodeproj">
+            BuildableName = "HandsRuler.app"
+            BlueprintName = "HandsRuler"
+            ReferencedContainer = "container:HandsRuler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "165ADB462B4B71B0008A756F"
-            BuildableName = "HandsWidth.app"
-            BlueprintName = "HandsWidth"
-            ReferencedContainer = "container:HandsWidth.xcodeproj">
+            BuildableName = "HandsRuler.app"
+            BlueprintName = "HandsRuler"
+            ReferencedContainer = "container:HandsRuler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -48,7 +48,7 @@
 		1642FAB42B4D54A60084F9ED /* 🛠️SettingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️SettingPanel.swift"; sourceTree = "<group>"; };
 		1642FAB82B4D6CAA0084F9ED /* 🌐RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🌐RealityView.swift"; sourceTree = "<group>"; };
 		164C78022B5746AD008FF872 /* 🧩Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩Entity.swift"; sourceTree = "<group>"; };
-		165ADB472B4B71B0008A756F /* HandsWidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandsWidth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		165ADB472B4B71B0008A756F /* HandsRuler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandsRuler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		165ADB4E2B4B71B0008A756F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		165ADB502B4B71B0008A756F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		165ADB522B4B71B2008A756F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				16267B532B57D387000CA8AD /* README.md */,
-				165ADB492B4B71B0008A756F /* HandsWidth */,
+				165ADB492B4B71B0008A756F /* HandsRuler */,
 				165ADB482B4B71B0008A756F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,12 +130,12 @@
 		165ADB482B4B71B0008A756F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				165ADB472B4B71B0008A756F /* HandsWidth.app */,
+				165ADB472B4B71B0008A756F /* HandsRuler.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		165ADB492B4B71B0008A756F /* HandsWidth */ = {
+		165ADB492B4B71B0008A756F /* HandsRuler */ = {
 			isa = PBXGroup;
 			children = (
 				165ADB4E2B4B71B0008A756F /* App.swift */,
@@ -150,7 +150,7 @@
 				16C95ADF2B5E74FD00CF0FED /* 🛠️Menu */,
 				16267B4E2B57D148000CA8AD /* Supporting files */,
 			);
-			path = HandsWidth;
+			path = HandsRuler;
 			sourceTree = "<group>";
 		};
 		166F7E412B7DBBDB005F70D5 /* 🌐Localization */ = {
@@ -201,9 +201,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		165ADB462B4B71B0008A756F /* HandsWidth */ = {
+		165ADB462B4B71B0008A756F /* HandsRuler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 165ADB5A2B4B71B2008A756F /* Build configuration list for PBXNativeTarget "HandsWidth" */;
+			buildConfigurationList = 165ADB5A2B4B71B2008A756F /* Build configuration list for PBXNativeTarget "HandsRuler" */;
 			buildPhases = (
 				165ADB432B4B71B0008A756F /* Sources */,
 				165ADB442B4B71B0008A756F /* Frameworks */,
@@ -213,11 +213,11 @@
 			);
 			dependencies = (
 			);
-			name = HandsWidth;
+			name = HandsRuler;
 			packageProductDependencies = (
 			);
 			productName = HandsWidth;
-			productReference = 165ADB472B4B71B0008A756F /* HandsWidth.app */;
+			productReference = 165ADB472B4B71B0008A756F /* HandsRuler.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -235,7 +235,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 165ADB422B4B71B0008A756F /* Build configuration list for PBXProject "HandsWidth" */;
+			buildConfigurationList = 165ADB422B4B71B0008A756F /* Build configuration list for PBXProject "HandsRuler" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -249,7 +249,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				165ADB462B4B71B0008A756F /* HandsWidth */,
+				165ADB462B4B71B0008A756F /* HandsRuler */,
 			);
 		};
 /* End PBXProject section */
@@ -478,7 +478,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		165ADB422B4B71B0008A756F /* Build configuration list for PBXProject "HandsWidth" */ = {
+		165ADB422B4B71B0008A756F /* Build configuration list for PBXProject "HandsRuler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				165ADB582B4B71B2008A756F /* Debug */,
@@ -487,7 +487,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		165ADB5A2B4B71B2008A756F /* Build configuration list for PBXNativeTarget "HandsWidth" */ = {
+		165ADB5A2B4B71B2008A756F /* Build configuration list for PBXNativeTarget "HandsRuler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				165ADB5B2B4B71B2008A756F /* Debug */,
