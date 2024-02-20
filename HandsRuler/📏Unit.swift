@@ -16,3 +16,18 @@ extension 📏Unit: CaseIterable, Identifiable {
         }
     }
 }
+
+enum 📏SmallUnitWithYard: String {
+    case none, inches, feet
+}
+
+extension 📏SmallUnitWithYard: CaseIterable, Identifiable {
+    var id: Self { self }
+    var value: UnitLength? {
+        switch self {
+            case .none: nil
+            case .inches: .inches
+            case .feet: .feet
+        }
+    }
+}

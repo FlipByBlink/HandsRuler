@@ -5,6 +5,8 @@ import ARKit
 @MainActor
 class 🥽AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
+    @AppStorage("showInch") var showInchWithFeet: Bool = false
+    @AppStorage("smallUnitWithYard") var smallUnitWithYard: 📏SmallUnitWithYard = .none
     @Published private(set) var authorizationStatus: ARKitSession.AuthorizationStatus?
     @Published var presentPanel: 🛠️Panel? = nil
     @Published var selectedLeft: Bool = false
@@ -56,12 +58,41 @@ extension 🥽AppModel {
     }
     
     var resultText: String {
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .providedUnit
-        formatter.numberFormatter.maximumFractionDigits = 2
-        let measurement = Measurement(value: .init(self.lineLength),
-                                      unit: UnitLength.meters)
-        return formatter.string(from: measurement.converted(to: self.unit.value))
+        let measurement = Measurement(value: .init(self.lineLength), unit: UnitLength.meters)
+        switch self.unit {
+            case .centiMeters, .meters, .inches:
+                let formatter = MeasurementFormatter()
+                formatter.unitOptions = .providedUnit
+                formatter.numberFormatter.maximumFractionDigits = {
+                    switch self.unit {
+                        case .centiMeters, .inches: 1
+                        case .meters: 2
+                        default: fatalError()
+                    }
+                }()
+                return formatter.string(from: measurement.converted(to: self.unit.value))
+            case .feet:
+                if self.showInchWithFeet {
+                    let feetFormatter = MeasurementFormatter()
+                    feetFormatter.unitOptions = .providedUnit
+                    feetFormatter.numberFormatter.maximumFractionDigits = 0
+                    let inchFormatter = MeasurementFormatter()
+                    inchFormatter.unitOptions = .providedUnit
+                    inchFormatter.numberFormatter.maximumFractionDigits = 1
+                    let feetValue = measurement.converted(to: .feet).value
+                    let rounded = feetValue.rounded(.towardZero)
+                    let feetPart = Measurement(value: rounded, unit: UnitLength.feet)
+                    let inchPart = Measurement(value: feetValue - rounded, unit: UnitLength.feet).converted(to: .inches)
+                    return ("\(feetFormatter.string(from: feetPart)) \(inchFormatter.string(from: inchPart))")
+                } else {
+                    let formatter = MeasurementFormatter()
+                    formatter.unitOptions = .providedUnit
+                    formatter.numberFormatter.maximumFractionDigits = 2
+                    return formatter.string(from: measurement.converted(to: self.unit.value))
+                }
+            case .yards:
+                return "placeholder"
+        }
     }
     
     var labelFontSize: Double {
