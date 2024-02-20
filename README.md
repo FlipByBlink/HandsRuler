@@ -38,6 +38,9 @@ App Store link
 ---------------
 [apps.apple.com/app/id6475769879](https://apps.apple.com/app/id6475769879)
 
+Review video (4:30 ~)
+---------------------
+[www.youtube.com/watch?v=4CunoApkfF4&t=270s](https://www.youtube.com/watch?v=4CunoApkfF4&t=270s)
 
 Source code link
 -----------------
