@@ -2,10 +2,6 @@ import RealityKit
 import ARKit
 import SwiftUI
 
-struct 🧑HeadTrackingComponent: Component, Codable {
-    init() {}
-}
-
 struct 🧑HeadTrackingSystem: System {
     private static let query = EntityQuery(where: .has(🧑HeadTrackingComponent.self))
     

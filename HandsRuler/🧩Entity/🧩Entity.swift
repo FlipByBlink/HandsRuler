@@ -16,7 +16,7 @@ enum 🧩Entity {
     }
 }
 
-fileprivate extension 🧩Entity {
+private extension 🧩Entity {
     private static func fingerTip(_ chirality: HandAnchor.Chirality) -> Entity {
         let value = Entity()
         switch chirality {

@@ -1,3 +1,4 @@
 enum 🛠️Panel {
-    case setting, about
+    case setting,
+         about
 }

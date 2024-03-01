@@ -29,45 +29,6 @@ extension 🥽AppModel {
         self.fingerEntities.values.forEach { self.rootEntity.addChild($0) }
     }
     
-    func changeSelection(_ targetedEntity: Entity) {
-        guard !self.coolDownSelection else { return }
-        switch targetedEntity.name {
-            case 🧩Name.fingerLeft:
-                self.selectedLeft.toggle()
-                self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
-                let player = targetedEntity.prepareAudio(self.selectedLeft ? self.sound1 : self.sound2)
-                player.gain = -8
-                player.play()
-            case 🧩Name.fingerRight:
-                self.selectedRight.toggle()
-                self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
-                let player = targetedEntity.prepareAudio(self.selectedRight ? self.sound1 : self.sound2)
-                player.gain = -8
-                player.play()
-            default:
-                assertionFailure()
-                break
-        }
-        Task {
-            self.coolDownSelection = true
-            try? await Task.sleep(for: .seconds(1))
-            self.coolDownSelection = false
-        }
-    }
-    
-    var resultText: String {
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .providedUnit
-        formatter.numberFormatter.maximumFractionDigits = 2
-        let measurement = Measurement(value: .init(self.lineLength),
-                                      unit: UnitLength.meters)
-        return formatter.string(from: measurement.converted(to: self.unit.value))
-    }
-    
-    var labelFontSize: Double {
-        self.lineLength < 1.2 ? 24 : 42
-    }
-    
     func observeAuthorizationStatus() {
         Task {
             self.authorizationStatus = await self.session.queryAuthorization(for: [.handTracking])[.handTracking]
@@ -96,9 +57,48 @@ extension 🥽AppModel {
         }
 #endif
     }
+    
+    var resultText: String {
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.numberFormatter.maximumFractionDigits = 2
+        let measurement = Measurement(value: .init(self.lineLength),
+                                      unit: UnitLength.meters)
+        return formatter.string(from: measurement.converted(to: self.unit.value))
+    }
+    
+    var labelFontSize: Double {
+        self.lineLength < 1.2 ? 24 : 42
+    }
+    
+    func changeSelection(_ targetedEntity: Entity) {
+        guard !self.coolDownSelection else { return }
+        switch targetedEntity.name {
+            case 🧩Name.fingerLeft:
+                self.selectedLeft.toggle()
+                self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
+                let player = targetedEntity.prepareAudio(self.selectedLeft ? self.sound1 : self.sound2)
+                player.gain = -8
+                player.play()
+            case 🧩Name.fingerRight:
+                self.selectedRight.toggle()
+                self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
+                let player = targetedEntity.prepareAudio(self.selectedRight ? self.sound1 : self.sound2)
+                player.gain = -8
+                player.play()
+            default:
+                assertionFailure()
+                break
+        }
+        Task {
+            self.coolDownSelection = true
+            try? await Task.sleep(for: .seconds(1))
+            self.coolDownSelection = false
+        }
+    }
 }
 
-fileprivate extension 🥽AppModel {
+private extension 🥽AppModel {
     private func processHandUpdates() async {
         for await update in self.handTracking.anchorUpdates {
             let handAnchor = update.anchor

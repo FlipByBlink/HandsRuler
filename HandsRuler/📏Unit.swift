@@ -1,7 +1,11 @@
 import Foundation
 
 enum 📏Unit: String {
-    case centiMeters, meters, inches, feet, yards
+    case centiMeters,
+         meters,
+         inches,
+         feet,
+         yards
 }
 
 extension 📏Unit: CaseIterable, Identifiable {

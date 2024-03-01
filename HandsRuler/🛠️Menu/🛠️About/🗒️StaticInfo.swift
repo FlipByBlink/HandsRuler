@@ -32,7 +32,8 @@ extension 🗒️StaticInfo {
                                                                   ("1.0", "2024-02-02")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, 🛠️Menu
+        case main,
+             🛠️Menu
         var id: Self { self }
         var fileNames: [String] {
             switch self {
@@ -44,7 +45,8 @@ extension 🗒️StaticInfo {
                     "🧩Entity.swift",
                     "🧩Name.swift",
                     "🧩Model.swift",
-                    "🧑HeadTrackingComponent&System.swift",
+                    "🧑HeadTrackingComponent.swift",
+                    "🧑HeadTrackingSystem.swift",
                     "📏Unit.swift"
                 ]
                 case .🛠️Menu: [
