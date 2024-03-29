@@ -32,6 +32,7 @@
       }
     },
     "Exit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -71,6 +72,9 @@
         }
       }
     },
+    "Measure" : {
+
+    },
     "Measurement of the distance between the fingers." : {
       "localizations" : {
         "ja" : {
@@ -81,7 +85,11 @@
         }
       }
     },
+    "Option" : {
+
+    },
     "Setting" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -100,6 +108,12 @@
           }
         }
       }
+    },
+    "Start measuring on launch" : {
+
+    },
+    "Stop" : {
+
     },
     "Unit" : {
       "localizations" : {

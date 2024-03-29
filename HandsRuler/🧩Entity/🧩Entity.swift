@@ -14,6 +14,14 @@ enum 🧩Entity {
                                    materials: [OcclusionMaterial()]))
         return value
     }
+    static func fixedPointer(_ worldAnchor: WorldAnchor) -> Entity {
+        let value = ModelEntity(mesh: .generateSphere(radius: 0.01),
+                                materials: [SimpleMaterial(color: .gray,
+                                                           isMetallic: false)])
+        value.name = worldAnchor.id.uuidString
+        value.transform = .init(matrix: worldAnchor.originFromAnchorTransform)
+        return value
+    }
 }
 
 private extension 🧩Entity {

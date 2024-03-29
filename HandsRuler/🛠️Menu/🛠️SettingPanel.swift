@@ -4,31 +4,24 @@ struct 🛠️SettingPanel: View {
     @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         NavigationStack {
-            VStack {
-                Spacer()
-                Picker("Unit", selection: self.$model.unit) {
-                    ForEach(📏Unit.allCases) {
-                        Text($0.value.symbol)
+            List {
+                Section {
+                    Picker(selection: self.$model.unit) {
+                        ForEach(📏Unit.allCases) {
+                            Text($0.value.symbol)
+                        }
+                    } label: {
+                        Label("Unit", systemImage: "lines.measurement.horizontal")
                     }
                 }
-                .pickerStyle(.segmented)
-                .frame(width: 360)
-                .padding(.bottom, 12)
-                Spacer()
-            }
-            .navigationTitle("Unit")
-            .toolbar {
-                Button {
-                    self.model.presentPanel = nil
-                } label: {
-                    Image(systemName: "arrow.down.right.and.arrow.up.left")
-                        .padding(8)
+                Section {
+                    Toggle(isOn: self.$model.measureOnLaunch) {
+                        Label("Start measuring on launch",
+                              systemImage: "wand.and.stars")
+                    }
                 }
-                .buttonBorderShape(.circle)
-                .buttonStyle(.plain)
             }
+            .navigationTitle("Option")
         }
-        .frame(height: 240)
-        .frame(width: 450)
     }
 }

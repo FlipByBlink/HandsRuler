@@ -5,13 +5,17 @@ import ARKit
 @MainActor
 class 🥽AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
+    @AppStorage("measureOnLaunch") var measureOnLaunch: Bool = false
+    
+    @Published var openedImmersiveSpace: Bool = false
     @Published private(set) var authorizationStatus: ARKitSession.AuthorizationStatus?
-    @Published var presentPanel: 🛠️Panel? = nil
     @Published var selectedLeft: Bool = false
     @Published var selectedRight: Bool = false
+    @Published var logs: [💾Log] = []
     
     private let session = ARKitSession()
-    private let handTracking = HandTrackingProvider()
+    private let handTrackingProvider = HandTrackingProvider()
+    private let worldTrackingProvider = WorldTrackingProvider()
     
     let rootEntity = Entity()
     private let lineEntity = 🧩Entity.line()
@@ -49,8 +53,10 @@ extension 🥽AppModel {
 #else
         Task { @MainActor in
             do {
-                try await self.session.run([self.handTracking])
-                await self.processHandUpdates()
+                try await self.session.run([self.handTrackingProvider,
+                                            self.worldTrackingProvider])
+                Task { await self.processHandUpdates() }
+                Task { await self.processWorldAnchorUpdates() }
             } catch {
                 print(error)
             }
@@ -100,7 +106,7 @@ extension 🥽AppModel {
 
 private extension 🥽AppModel {
     private func processHandUpdates() async {
-        for await update in self.handTracking.anchorUpdates {
+        for await update in self.handTrackingProvider.anchorUpdates {
             let handAnchor = update.anchor
             
             guard handAnchor.isTracked,
@@ -121,6 +127,28 @@ private extension 🥽AppModel {
             
             self.updateLine()
             self.updateResultLabelPosition()
+        }
+    }
+    
+    private func processWorldAnchorUpdates() async {
+        for await update in self.worldTrackingProvider.anchorUpdates {
+            switch update.event {
+                case .added:
+                    let entity = 🧩Entity.fixedPointer(update.anchor)
+                case .updated:
+                    guard let entity = self.rootEntity.findEntity(named: update.anchor.id.uuidString) else {
+                        assertionFailure()
+                        return
+                    }
+                    entity.transform = .init(matrix: update.anchor.originFromAnchorTransform)
+                case .removed:
+                    guard let entity = self.rootEntity.findEntity(named: update.anchor.id.uuidString) else {
+                        assertionFailure()
+                        return
+                    }
+                    self.rootEntity.removeChild(entity)
+            }
+            self.updateFixedLines()
         }
     }
     
@@ -151,6 +179,10 @@ private extension 🥽AppModel {
     
     private var rightPosition: SIMD3<Float> {
         self.fingerEntities[.right]?.position ?? .zero
+    }
+    
+    private func updateFixedLines() {
+        //placeholder
     }
 }
 

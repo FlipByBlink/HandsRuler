@@ -54,16 +54,6 @@ struct 🛠️AboutPanel: View {
                 }
             }
             .navigationTitle("About")
-            .toolbar {
-                Button {
-                    self.model.presentPanel = nil
-                } label: {
-                    Image(systemName: "arrow.down.right.and.arrow.up.left")
-                        .padding(8)
-                }
-                .buttonBorderShape(.circle)
-                .buttonStyle(.plain)
-            }
         }
         .frame(width: 640, height: 500)
     }

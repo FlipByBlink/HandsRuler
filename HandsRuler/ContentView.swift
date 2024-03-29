@@ -2,52 +2,51 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
-    @Environment(\.dismissWindow) var dismissWindow
+    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    @Environment(\.scenePhase) var scenePhase
+    @EnvironmentObject var model: 🥽AppModel
     var body: some View {
-        NavigationStack {
-            VStack {
-                Spacer()
-                HStack(spacing: 28) {
-                    Image(.graph1)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 300)
-                        .clipShape(.rect(cornerRadius: 16, style: .continuous))
-                    Image(.graph2)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 300)
-                        .clipShape(.rect(cornerRadius: 16, style: .continuous))
-                }
-                .padding(.horizontal, 8)
-                Spacer()
-                Button {
-                    Task {
-                        await self.openImmersiveSpace(id: "immersiveSpace")
-                        self.dismissWindow()
+        TabView {
+            NavigationStack {
+                Group {
+                    if self.model.logs.isEmpty {
+                        🛠️OnboardView()
+                    } else {
+                        🛠️LogView()
                     }
-                } label: {
-                    Text("Start")
-                        .font(.largeTitle)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, 4)
                 }
-                Spacer()
+                .navigationTitle("HandsRuler")
+                .toolbar {
+                    Button(self.model.openedImmersiveSpace ? "Stop" : "Start") {
+                        Task {
+                            if self.model.openedImmersiveSpace {
+                                await self.dismissImmersiveSpace()
+                            } else {
+                                await self.openImmersiveSpace(id: "immersiveSpace")
+                            }
+                        }
+                    }
+                    .font(.title2)
+                    .buttonStyle(.borderedProminent)
+                    .tint(self.model.openedImmersiveSpace ? .red : .green)
+                    .animation(.default, value: self.model.openedImmersiveSpace)
+                }
             }
-            .navigationTitle("HandsRuler")
-            .toolbar {
-                NavigationLink {
-                    List {
-                        ℹ️AboutAppContent()
-                    }
-                } label: {
-                    Label("About App", systemImage: "info")
-                        .padding(14)
-                }
-                .buttonBorderShape(.circle)
-                .buttonStyle(.plain)
+            .tabItem { Label("Measure", systemImage: "ruler") }
+            🛠️SettingPanel()
+                .tabItem { Label("Option", systemImage: "gearshape") }
+            NavigationStack {
+                List { ℹ️AboutAppContent() }
+            }
+            .tabItem { Label("About", systemImage: "info") }
+        }
+        .frame(width: 600, height: 600)
+        .task { self.model.observeAuthorizationStatus() }
+        .onChange(of: self.scenePhase) { _, newValue in
+            if newValue == .background,
+               self.model.openedImmersiveSpace {
+                Task { await self.dismissImmersiveSpace() }
             }
         }
-        .frame(width: 700, height: 450)
     }
 }
