@@ -17,11 +17,6 @@ struct ContentView: View {
                 }
                 .navigationTitle("HandsRuler")
                 .toolbar { self.startOrStopButton() }
-                .toolbar {
-                    ToolbarItem(placement: .bottomOrnament) {
-                        Button("Set debug value") { 💾Logs.setDebugValue() }
-                    }
-                }
             }
             .tabItem { Label("Measure", systemImage: "ruler") }
             🛠️SettingMenu()

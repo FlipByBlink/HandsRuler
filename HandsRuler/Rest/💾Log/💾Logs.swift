@@ -33,21 +33,3 @@ private extension 💾Logs {
                                        forKey: "logsData")
     }
 }
-
-
-
-//MARK: ==== For debug ====
-extension 💾Logs {
-    static func setDebugValue() {
-        Self.save(Self(elements: [.init(leftID: .init(),
-                                        rightID: .init(),
-                                        lineLength: 1,
-                                        rotationRadians: 0.1,
-                                        date: .now.addingTimeInterval(-20)),
-                                  .init(leftID: .init(),
-                                        rightID: .init(),
-                                        lineLength: 1.3,
-                                        rotationRadians: 0.4,
-                                        date: .now.addingTimeInterval(-100))]))
-    }
-}

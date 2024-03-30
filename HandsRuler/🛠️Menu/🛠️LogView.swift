@@ -9,9 +9,11 @@ struct 🛠️LogView: View {
                     ForEach(self.logs.elements) { log in
                         LabeledContent {
                             Text(log.date, style: .offset)
+                                .monospacedDigit()
                         } label: {
                             Label {
                                 Text(🪧ResultModel(log.lineLength, self.model.unit).label)
+                                    .padding(.horizontal)
                             } icon: {
                                 Image(systemName: "circle.and.line.horizontal")
                                     .rotationEffect(.radians(log.rotationRadians))
