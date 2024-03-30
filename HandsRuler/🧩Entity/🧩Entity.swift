@@ -28,7 +28,6 @@ enum 🧩Entity {
     static func fixedPointer(_ worldAnchor: WorldAnchor) -> Entity {
         let value = Entity()
         value.name = "\(worldAnchor.id)"
-        value.transform = .init(matrix: worldAnchor.originFromAnchorTransform)
         value.components.set([AnchoringComponent(.world(transform: worldAnchor.originFromAnchorTransform)),
                               🧩Model.fixedPointer()])
         return value

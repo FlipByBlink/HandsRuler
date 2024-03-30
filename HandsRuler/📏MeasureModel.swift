@@ -75,11 +75,15 @@ extension 📏MeasureModel {
     }
     
     func createLog() -> 💾Log {
-        .init(leftID: WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix).id,
-              rightID: WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix).id,
-              lineLength: self.lineLength,
-              rotationRadians: self.rotation,
-              date: .now)
+        let leftAnchor = WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix)
+        let rightAnchor = WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix)
+        self.rootEntity.addChild(🧩Entity.fixedPointer(leftAnchor))
+        self.rootEntity.addChild(🧩Entity.fixedPointer(rightAnchor))
+        return .init(leftID: leftAnchor.id,
+                     rightID: rightAnchor.id,
+                     lineLength: self.lineLength,
+                     rotationRadians: self.rotation,
+                     date: .now)
     }
 }
 
@@ -176,10 +180,6 @@ private extension 📏MeasureModel {
         self.leftEntity.components.set(🧩Model.fingerTip(false))
         self.selectedRight = false
         self.rightEntity.components.set(🧩Model.fingerTip(false))
-    }
-    
-    private func setFixedPointer() {
-        //placeholder
     }
     
     private func updateFixedLinesAndResults() {
