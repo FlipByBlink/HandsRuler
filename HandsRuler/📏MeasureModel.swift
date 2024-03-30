@@ -78,7 +78,7 @@ extension 📏MeasureModel {
         .init(leftID: WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix).id,
               rightID: WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix).id,
               lineLength: self.lineLength,
-              rotationRadians: .init(self.rotaion),
+              rotationRadians: self.rotation,
               date: .now)
     }
 }
@@ -153,11 +153,13 @@ private extension 📏MeasureModel {
         (self.leftEntity.position + self.rightEntity.position) / 2
     }
     
-    private var rotaion: Float {
-        asin(
-            (self.rightEntity.position.y - self.leftEntity.position.y)
-            /
-            distance(self.leftEntity.position, self.rightEntity.position)
+    private var rotation: Double {
+        .init(
+            asin(
+                (self.rightEntity.position.y - self.leftEntity.position.y)
+                /
+                distance(self.leftEntity.position, self.rightEntity.position)
+            )
         )
     }
     
