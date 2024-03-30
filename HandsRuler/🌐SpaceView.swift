@@ -17,10 +17,12 @@ struct 🌐SpaceView: View {
             self.model.setUp_simulator()
         } update: { _, attachments in
             self.model.logs.elements.forEach { log in
-                let fixedResultEntity = attachments.entity(for: "\(log.id)")!
-                fixedResultEntity.components.set(🧑HeadTrackingComponent())
-                fixedResultEntity.name = "\(log.id)"
-                self.model.rootEntity.addChild(fixedResultEntity)
+                if self.model.rootEntity.findEntity(named: "\(log.id)") == nil {
+                    let fixedResultEntity = attachments.entity(for: "\(log.id)")!
+                    fixedResultEntity.components.set(🧑HeadTrackingComponent())
+                    fixedResultEntity.name = "\(log.id)"
+                    self.model.rootEntity.addChild(fixedResultEntity)
+                }
             }
         } attachments: {
             Attachment(id: "result") {

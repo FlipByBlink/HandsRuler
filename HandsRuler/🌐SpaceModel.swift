@@ -19,8 +19,7 @@ class 🌐SpaceModel: ObservableObject {
     private let lineEntity = 🧩Entity.line()
     private let fingerEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
     
-    private let sound1: AudioFileResource = try! .load(named: "sound1")
-    private let sound2: AudioFileResource = try! .load(named: "sound2")
+    private let sounds: 📢Sounds = .init()
 }
 
 extension 🌐SpaceModel {
@@ -51,13 +50,13 @@ extension 🌐SpaceModel {
             case 🧩Name.fingerLeft:
                 self.selectedLeft.toggle()
                 self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
-                let player = targetedEntity.prepareAudio(self.selectedLeft ? self.sound1 : self.sound2)
+                let player = targetedEntity.prepareAudio(self.sounds[self.selectedLeft])
                 player.gain = -8
                 player.play()
             case 🧩Name.fingerRight:
                 self.selectedRight.toggle()
                 self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
-                let player = targetedEntity.prepareAudio(self.selectedRight ? self.sound1 : self.sound2)
+                let player = targetedEntity.prepareAudio(self.sounds[self.selectedRight])
                 player.gain = -8
                 player.play()
             default:
