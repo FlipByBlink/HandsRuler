@@ -7,7 +7,7 @@ struct 🛠️SettingMenu: View {
             List {
                 Section {
                     Picker(selection: self.$model.unit) {
-                        ForEach(📏Unit.allCases) {
+                        ForEach(📐Unit.allCases) {
                             Text($0.value.symbol)
                         }
                     } label: {

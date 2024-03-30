@@ -1,6 +1,6 @@
 import Foundation
 
-enum 📏Unit: String {
+enum 📐Unit: String {
     case centiMeters,
          meters,
          inches,
@@ -8,7 +8,7 @@ enum 📏Unit: String {
          yards
 }
 
-extension 📏Unit: CaseIterable, Identifiable {
+extension 📐Unit: CaseIterable, Identifiable {
     var id: Self { self }
     var value: UnitLength {
         switch self {

@@ -3,9 +3,8 @@ import RealityKit
 import ARKit
 
 @MainActor
-class 🌐SpaceModel: ObservableObject {
-    @AppStorage("unit") var unit: 📏Unit = .meters
-    @AppStorage("logsData") var logsData: Data?
+class 📏MeasureModel: ObservableObject {
+    @AppStorage("unit") var unit: 📐Unit = .meters
     
     @Published var resultModel: 🪧ResultModel = .placeholder
     @Published var selectedLeft: Bool = false
@@ -23,7 +22,7 @@ class 🌐SpaceModel: ObservableObject {
     private let sounds = 📢Sounds()
 }
 
-extension 🌐SpaceModel {
+extension 📏MeasureModel {
     func setUpChildEntities() {
         self.rootEntity.addChild(self.lineEntity)
         self.rootEntity.addChild(self.leftEntity)
@@ -66,11 +65,9 @@ extension 🌐SpaceModel {
                 break
         }
     }
-    
-    var logs: 💾Logs { .load(self.logsData) }
 }
 
-private extension 🌐SpaceModel {
+private extension 📏MeasureModel {
     private func processHandUpdates() async {
         for await update in self.handTrackingProvider.anchorUpdates {
             let handAnchor = update.anchor
@@ -153,7 +150,7 @@ private extension 🌐SpaceModel {
 
 
 //MARK: Simulator
-extension 🌐SpaceModel {
+extension 📏MeasureModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
         self.updateLine()

@@ -2,48 +2,49 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct 🌐SpaceView: View {
-    @StateObject private var model: 🌐SpaceModel = .init()
+struct 📏MeasureView: View {
+    @StateObject private var measureModel: 📏MeasureModel = .init()
+    @EnvironmentObject var appModel: 🥽AppModel
     var body: some View {
         RealityView { content, attachments in
-            content.add(self.model.rootEntity)
-            self.model.setUpChildEntities()
+            content.add(self.measureModel.rootEntity)
+            self.measureModel.setUpChildEntities()
             
             let resultEntity = attachments.entity(for: "result")!
             resultEntity.components.set(🧑HeadTrackingComponent())
             resultEntity.name = "result"
-            self.model.rootEntity.addChild(resultEntity)
+            self.measureModel.rootEntity.addChild(resultEntity)
             
-            self.model.setUp_simulator()
+            self.measureModel.setUp_simulator()
         } update: { _, attachments in
-            self.model.logs.elements.forEach { log in
-                if self.model.rootEntity.findEntity(named: "\(log.id)") == nil {
+            self.appModel.logs.elements.forEach { log in
+                if self.measureModel.rootEntity.findEntity(named: "\(log.id)") == nil {
                     let fixedResultEntity = attachments.entity(for: "\(log.id)")!
                     fixedResultEntity.components.set(🧑HeadTrackingComponent())
                     fixedResultEntity.name = "\(log.id)"
-                    self.model.rootEntity.addChild(fixedResultEntity)
+                    self.measureModel.rootEntity.addChild(fixedResultEntity)
                 }
             }
         } attachments: {
             Attachment(id: "result") {
-                self.resultView(self.model.resultModel)
+                self.resultView(self.measureModel.resultModel)
             }
-            ForEach(self.model.logs.elements) { log in
+            ForEach(self.appModel.logs.elements) { log in
                 Attachment(id: "\(log.id)") {
-                    self.resultView(.init(log.lineLength, self.model.unit))
+                    self.resultView(.init(log.lineLength, self.measureModel.unit))
                 }
             }
         }
         .gesture(
             TapGesture()
                 .targetedToAnyEntity()
-                .onEnded { self.model.changeSelection($0.entity) }
+                .onEnded { self.measureModel.changeSelection($0.entity) }
         )
-        .task { self.model.run() }
+        .task { self.measureModel.run() }
     }
 }
 
-private extension 🌐SpaceView {
+private extension 📏MeasureView {
     private func resultView(_ resultModel: 🪧ResultModel) -> some View {
         Text(resultModel.label)
             .font(.system(size: resultModel.size))
@@ -52,7 +53,7 @@ private extension 🌐SpaceView {
             .padding(12)
             .padding(.horizontal, 4)
             .glassBackgroundEffect()
-            .modifier(Self.SetRandomPositionOnSimulator(self.model))
+            .modifier(Self.SetRandomPositionOnSimulator(self.measureModel))
     }
 }
 
@@ -60,16 +61,16 @@ private extension 🌐SpaceView {
 
 
 //MARK: Simulator
-private extension 🌐SpaceView {
+private extension 📏MeasureView {
     private struct SetRandomPositionOnSimulator: ViewModifier {
-        var model: 🌐SpaceModel
+        var model: 📏MeasureModel
         func body(content: Content) -> some View {
             content
 #if targetEnvironment(simulator)
                 .onTapGesture { self.model.setRandomPosition_simulator() }
 #endif
         }
-        init(_ model: 🌐SpaceModel) {
+        init(_ model: 📏MeasureModel) {
             self.model = model
         }
     }

@@ -41,13 +41,13 @@ extension 🗒️StaticInfo {
                     "App.swift",
                     "ContentView.swift",
                     "🥽AppModel.swift",
-                    "🌐SpaceView.swift",
+                    "📏MeasureView.swift",
                     "🧩Entity.swift",
                     "🧩Name.swift",
                     "🧩Model.swift",
                     "🧑HeadTrackingComponent.swift",
                     "🧑HeadTrackingSystem.swift",
-                    "📏Unit.swift"
+                    "📐Unit.swift"
                 ]
                 case .🛠️Menu: [
                     "🛠️MenuTop.swift",
