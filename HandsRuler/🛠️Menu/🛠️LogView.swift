@@ -11,7 +11,7 @@ struct 🛠️LogView: View {
                             Text(log.date, style: .offset)
                         } label: {
                             Label {
-                                Text(log.lineLength.formatted())
+                                Text(🪧ResultModel(log.lineLength, self.model.unit).label)
                             } icon: {
                                 Image(systemName: "circle.and.line.horizontal")
                                     .rotationEffect(.radians(log.rotationRadians))
