@@ -7,6 +7,7 @@ class 🌐SpaceModel: ObservableObject {
     @AppStorage("unit") var unit: 📏Unit = .meters
     @AppStorage("logsData") var logsData: Data?
     
+    @Published var resultModel: 🪧ResultModel = .placeholder
     @Published var selectedLeft: Bool = false
     @Published var selectedRight: Bool = false
     
@@ -43,19 +44,6 @@ extension 🌐SpaceModel {
             }
         }
 #endif
-    }
-    
-    var resultText: String {
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .providedUnit
-        formatter.numberFormatter.maximumFractionDigits = 2
-        let measurement = Measurement(value: .init(self.lineLength),
-                                      unit: UnitLength.meters)
-        return formatter.string(from: measurement.converted(to: self.unit.value))
-    }
-    
-    var labelFontSize: Double {
-        self.lineLength < 1.2 ? 24 : 42
     }
     
     func changeSelection(_ targetedEntity: Entity) {
@@ -103,7 +91,7 @@ private extension 🌐SpaceModel {
                                                                           relativeTo: nil)
             
             self.updateLine()
-            self.updateResultLabelPosition()
+            self.updateResult()
         }
     }
     
@@ -125,7 +113,7 @@ private extension 🌐SpaceModel {
                     }
                     self.rootEntity.removeChild(entity)
             }
-            self.updateFixedLines()
+            self.updateFixedLinesAndResults()
         }
     }
     
@@ -137,9 +125,9 @@ private extension 🌐SpaceModel {
                              relativeTo: nil)
     }
     
-    private func updateResultLabelPosition() {
-        self.rootEntity.findEntity(named: 🌐SpaceView.attachmentID)?
-            .position = self.centerPosition
+    private func updateResult() {
+        self.rootEntity.findEntity(named: 🧩Name.result)?.position = self.centerPosition
+        self.resultModel = .init(self.lineLength, self.unit)
     }
     
     private var lineLength: Float {
@@ -158,7 +146,7 @@ private extension 🌐SpaceModel {
         self.fingerEntities[.right]?.position ?? .zero
     }
     
-    private func updateFixedLines() {
+    private func updateFixedLinesAndResults() {
         //placeholder
     }
 }
@@ -171,7 +159,7 @@ extension 🌐SpaceModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
         self.updateLine()
-        self.updateResultLabelPosition()
+        self.updateResult()
 #endif
     }
     func setRandomPosition_simulator() {
@@ -187,7 +175,7 @@ extension 🌐SpaceModel {
                                                           z: .random(in: -1 ..< -0.5))
         }
         self.updateLine()
-        self.updateResultLabelPosition()
+        self.updateResult()
 #endif
     }
 }
