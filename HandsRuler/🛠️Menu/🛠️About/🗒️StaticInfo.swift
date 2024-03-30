@@ -41,7 +41,7 @@ extension 🗒️StaticInfo {
                     "App.swift",
                     "ContentView.swift",
                     "🥽AppModel.swift",
-                    "🌐RealityView.swift",
+                    "🌐SpaceView.swift",
                     "🧩Entity.swift",
                     "🧩Name.swift",
                     "🧩Model.swift",
@@ -52,8 +52,8 @@ extension 🗒️StaticInfo {
                 case .🛠️Menu: [
                     "🛠️MenuTop.swift",
                     "🛠️Panel.swift",
-                    "🛠️SettingPanel.swift",
-                    "🛠️AboutPanel.swift",
+                    "🛠️SettingMenu.swift",
+                    "🛠️GuideMenu.swift",
                     "🗒️StaticInfo.swift",
                     "ℹ️AboutApp.swift"
                 ]

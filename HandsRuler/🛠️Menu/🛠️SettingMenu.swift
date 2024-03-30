@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 🛠️SettingPanel: View {
+struct 🛠️SettingMenu: View {
     @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         NavigationStack {
@@ -23,5 +23,6 @@ struct 🛠️SettingPanel: View {
             }
             .navigationTitle("Option")
         }
+        .tabItem { Label("Option", systemImage: "gearshape") }
     }
 }

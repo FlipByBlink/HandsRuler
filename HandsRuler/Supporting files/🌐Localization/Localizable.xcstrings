@@ -12,6 +12,7 @@
       }
     },
     "About App" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -30,6 +31,12 @@
           }
         }
       }
+    },
+    "Clear" : {
+
+    },
+    "empty" : {
+
     },
     "Exit" : {
       "extractionState" : "stale",
@@ -52,6 +59,9 @@
         }
       }
     },
+    "Guide" : {
+
+    },
     "Hand tracking authorization:" : {
       "localizations" : {
         "ja" : {
@@ -72,6 +82,9 @@
         }
       }
     },
+    "Log" : {
+
+    },
     "Measure" : {
 
     },
@@ -86,6 +99,9 @@
       }
     },
     "Option" : {
+
+    },
+    "Set debug value" : {
 
     },
     "Setting" : {

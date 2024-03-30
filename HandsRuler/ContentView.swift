@@ -9,44 +9,44 @@ struct ContentView: View {
         TabView {
             NavigationStack {
                 Group {
-                    if self.model.logs.isEmpty {
+                    if self.model.logsData == nil {
                         🛠️OnboardView()
                     } else {
                         🛠️LogView()
                     }
                 }
                 .navigationTitle("HandsRuler")
-                .toolbar {
-                    Button(self.model.openedImmersiveSpace ? "Stop" : "Start") {
-                        Task {
-                            if self.model.openedImmersiveSpace {
-                                await self.dismissImmersiveSpace()
-                            } else {
-                                await self.openImmersiveSpace(id: "immersiveSpace")
-                            }
-                        }
-                    }
-                    .font(.title2)
-                    .buttonStyle(.borderedProminent)
-                    .tint(self.model.openedImmersiveSpace ? .red : .green)
-                    .animation(.default, value: self.model.openedImmersiveSpace)
-                }
+                .toolbar { self.startOrStopButton() }
             }
             .tabItem { Label("Measure", systemImage: "ruler") }
-            🛠️SettingPanel()
-                .tabItem { Label("Option", systemImage: "gearshape") }
-            NavigationStack {
-                List { ℹ️AboutAppContent() }
-            }
-            .tabItem { Label("About", systemImage: "info") }
+            🛠️SettingMenu()
+            🛠️GuideMenu()
+            🛠️AboutMenu()
         }
         .frame(width: 600, height: 600)
-        .task { self.model.observeAuthorizationStatus() }
         .onChange(of: self.scenePhase) { _, newValue in
             if newValue == .background,
                self.model.openedImmersiveSpace {
                 Task { await self.dismissImmersiveSpace() }
             }
         }
+    }
+}
+
+private extension ContentView {
+    private func startOrStopButton() -> some View {
+        Button(self.model.openedImmersiveSpace ? "Stop" : "Start") {
+            Task {
+                if self.model.openedImmersiveSpace {
+                    await self.dismissImmersiveSpace()
+                } else {
+                    await self.openImmersiveSpace(id: "immersiveSpace")
+                }
+            }
+        }
+        .font(.title2)
+        .buttonStyle(.borderedProminent)
+        .tint(self.model.openedImmersiveSpace ? .red : .green)
+        .animation(.default, value: self.model.openedImmersiveSpace)
     }
 }

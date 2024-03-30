@@ -10,7 +10,7 @@ struct HandsRulerApp: App {
         }
         .windowResizability(.contentSize)
         ImmersiveSpace(id: "immersiveSpace") {
-            🌐RealityView()
+            🌐SpaceView()
                 .environmentObject(self.model)
         }
     }

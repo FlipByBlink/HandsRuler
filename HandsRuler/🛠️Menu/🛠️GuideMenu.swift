@@ -1,7 +1,8 @@
 import SwiftUI
+import ARKit
 
-struct 🛠️AboutPanel: View {
-    @EnvironmentObject var model: 🥽AppModel
+struct 🛠️GuideMenu: View {
+    @State private var authorizationStatus: ARKitSession.AuthorizationStatus?
     var body: some View {
         NavigationStack {
             List {
@@ -10,7 +11,7 @@ struct 🛠️AboutPanel: View {
                         Image(.graph1)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 300)
+                            .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                         Text("Measurement of the distance between the fingers.")
                             .font(.caption)
@@ -23,7 +24,7 @@ struct 🛠️AboutPanel: View {
                         Image(.graph2)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 300)
+                            .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                         Text("Fix / Unfix a pointer by indirect tap.")
                             .font(.caption)
@@ -31,30 +32,38 @@ struct 🛠️AboutPanel: View {
                     }
                     .padding(4)
                 }
-                switch self.model.authorizationStatus {
+                switch self.authorizationStatus {
                     case .notDetermined, .denied:
                         HStack(spacing: 24) {
                             Text("Hand tracking authorization:")
                                 .fontWeight(.semibold)
-                            Text(self.model.authorizationStatus?.description ?? "nil")
+                            Text(self.authorizationStatus?.description ?? "nil")
                         }
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     default:
                         EmptyView()
                 }
-                Section {
-                    NavigationLink {
-                        List {
-                            ℹ️AboutAppContent()
-                        }
-                    } label: {
-                        Label("About App", systemImage: "questionmark")
-                    }
+            }
+            .navigationTitle("Guide")
+        }
+        .tabItem { Label("Guide", systemImage: "questionmark") }
+    }
+}
+
+private extension 🛠️GuideMenu {
+    private func observeAuthorizationStatus() {
+        Task {
+            let session = ARKitSession()
+            self.authorizationStatus = await session.queryAuthorization(for: [.handTracking])[.handTracking]
+            
+            for await update in session.events {
+                if case .authorizationChanged(let type, let status) = update {
+                    if type == .handTracking { self.authorizationStatus = status }
+                } else {
+                    print("Another session event \(update).")
                 }
             }
-            .navigationTitle("About")
         }
-        .frame(width: 640, height: 500)
     }
 }

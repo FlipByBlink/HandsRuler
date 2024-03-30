@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct   🛠️OnboardView: View {
+struct 🛠️OnboardView: View {
     var body: some View {
         VStack {
             Spacer()
