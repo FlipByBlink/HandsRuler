@@ -13,4 +13,8 @@ enum 🧩Model {
               materials: [SimpleMaterial(color: selected ? .red : .blue,
                                          isMetallic: false)])
     }
+    static func fixedPointer() -> ModelComponent {
+        .init(mesh: .generateSphere(radius: 0.01),
+              materials: [SimpleMaterial(color: .gray, isMetallic: false)])
+    }
 }

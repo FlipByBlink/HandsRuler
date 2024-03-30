@@ -120,15 +120,11 @@ private extension 📏MeasureModel {
                 case .added:
                     self.rootEntity.addChild(🧩Entity.fixedPointer(update.anchor))
                 case .updated:
-                    guard let entity = self.rootEntity.findEntity(named: "\(update.anchor.id)") else {
-                        assertionFailure()
-                        return
-                    }
-                    entity.transform = .init(matrix: update.anchor.originFromAnchorTransform)
+                    continue
                 case .removed:
                     guard let entity = self.rootEntity.findEntity(named: "\(update.anchor.id)") else {
                         assertionFailure()
-                        return
+                        continue
                     }
                     self.rootEntity.removeChild(entity)
             }
@@ -157,7 +153,7 @@ private extension 📏MeasureModel {
         (self.leftEntity.position + self.rightEntity.position) / 2
     }
     
-    var rotaion: Float {
+    private var rotaion: Float {
         asin(
             (self.rightEntity.position.y - self.leftEntity.position.y)
             /

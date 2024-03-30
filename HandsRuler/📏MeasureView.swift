@@ -3,8 +3,8 @@ import RealityKit
 import ARKit
 
 struct 📏MeasureView: View {
-    @StateObject private var measureModel: 📏MeasureModel = .init()
     @EnvironmentObject var appModel: 🥽AppModel
+    @StateObject private var measureModel: 📏MeasureModel = .init()
     var body: some View {
         RealityView { content, attachments in
             content.add(self.measureModel.rootEntity)

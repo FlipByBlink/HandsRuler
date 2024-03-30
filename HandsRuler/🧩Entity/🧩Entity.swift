@@ -26,11 +26,11 @@ enum 🧩Entity {
         return value
     }
     static func fixedPointer(_ worldAnchor: WorldAnchor) -> Entity {
-        let value = ModelEntity(mesh: .generateSphere(radius: 0.01),
-                                materials: [SimpleMaterial(color: .gray,
-                                                           isMetallic: false)])
+        let value = Entity()
         value.name = "\(worldAnchor.id)"
         value.transform = .init(matrix: worldAnchor.originFromAnchorTransform)
+        value.components.set([AnchoringComponent(.world(transform: worldAnchor.originFromAnchorTransform)),
+                              🧩Model.fixedPointer()])
         return value
     }
 }
