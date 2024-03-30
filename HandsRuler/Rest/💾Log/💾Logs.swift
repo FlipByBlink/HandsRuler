@@ -14,7 +14,7 @@ extension 💾Logs {
     }
     func add(_ newElement: 💾Log) {
         var newValue = self
-        newValue.elements.append(newElement)
+        newValue.elements.insert(newElement, at: 0)
         Self.save(newValue)
     }
     func remove(_ indexSet: IndexSet) {

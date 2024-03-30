@@ -78,7 +78,7 @@ extension 📏MeasureModel {
         .init(leftID: WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix).id,
               rightID: WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix).id,
               lineLength: self.lineLength,
-              rotationRadians: 0.1,
+              rotationRadians: .init(self.rotaion),
               date: .now)
     }
 }
@@ -157,6 +157,14 @@ private extension 📏MeasureModel {
         (self.leftEntity.position + self.rightEntity.position) / 2
     }
     
+    var rotaion: Float {
+        asin(
+            (self.rightEntity.position.y - self.leftEntity.position.y)
+            /
+            distance(self.leftEntity.position, self.rightEntity.position)
+        )
+    }
+    
     private func select(_ entity: Entity, _ selection: inout Bool) {
         selection.toggle()
         entity.components.set(🧩Model.fingerTip(selection))
@@ -170,6 +178,10 @@ private extension 📏MeasureModel {
         self.leftEntity.components.set(🧩Model.fingerTip(false))
         self.selectedRight = false
         self.rightEntity.components.set(🧩Model.fingerTip(false))
+    }
+    
+    private func setFixedPointer() {
+        //placeholder
     }
     
     private func updateFixedLinesAndResults() {
