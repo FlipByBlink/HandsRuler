@@ -214,8 +214,7 @@
 				1642FAB82B4D6CAA0084F9ED /* 🌐SpaceView.swift */,
 				16C4C6A42BB78A06004DB77E /* 🌐SpaceModel.swift */,
 				16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */,
-				16B1E6FD2BB5302A005972CF /* 💾Log.swift */,
-				16C4C6A62BB79F9C004DB77E /* 💾Logs.swift */,
+				16C4C6AA2BB7B17C004DB77E /* 💾Log */,
 				16359E232B91D67E004CC792 /* 🧩Entity */,
 				16359E242B91D691004CC792 /* 🧑HeadTracking */,
 				16C95ADF2B5E74FD00CF0FED /* 🛠️Menu */,
@@ -246,6 +245,15 @@
 				169D84AD2B5A319000BB5606 /* sound2.m4a */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		16C4C6AA2BB7B17C004DB77E /* 💾Log */ = {
+			isa = PBXGroup;
+			children = (
+				16B1E6FD2BB5302A005972CF /* 💾Log.swift */,
+				16C4C6A62BB79F9C004DB77E /* 💾Logs.swift */,
+			);
+			path = "💾Log";
 			sourceTree = "<group>";
 		};
 		16C95ADF2B5E74FD00CF0FED /* 🛠️Menu */ = {

@@ -16,17 +16,20 @@ struct 🌐SpaceView: View {
             self.spaceModel.rootEntity.addChild(resultLabelEntity)
             
             self.spaceModel.setUp_simulator()
+        } update: { _, attachments in
+            self.spaceModel.logs.elements.forEach { log in
+                let resultLabelEntity = attachments.entity(for: "\(log.id)")!
+                resultLabelEntity.components.set(🧑HeadTrackingComponent())
+                resultLabelEntity.name = "\(log.id)"
+                self.spaceModel.rootEntity.addChild(resultLabelEntity)
+            }
         } attachments: {
             Attachment(id: Self.attachmentID) {
-                TimelineView(.periodic(from: .now, by: 0.2)) { _ in
-                    Text(self.spaceModel.resultText)
-                        .font(.system(size: self.spaceModel.labelFontSize))
-                        .fontWeight(.bold)
-                        .monospacedDigit()
-                        .padding(12)
-                        .padding(.horizontal, 4)
-                        .glassBackgroundEffect()
-                        .modifier(Self.SetRandomPositionOnSimulator(self.spaceModel))
+                self.resultLabelView(self.spaceModel.resultText, self.spaceModel.labelFontSize)
+            }
+            ForEach(self.spaceModel.logs.elements) {
+                Attachment(id: "\($0.id)") {
+                    self.resultLabelView("placeholder", 30)
                 }
             }
         }
@@ -40,6 +43,21 @@ struct 🌐SpaceView: View {
         .onDisappear { self.appModel.openedImmersiveSpace = false }
     }
     static let attachmentID: String = "resultLabel"
+}
+
+private extension 🌐SpaceView {
+    private func resultLabelView(_ text: String, _ size: Double) -> some View {
+        TimelineView(.periodic(from: .now, by: 0.2)) { _ in
+            Text(text)
+                .font(.system(size: size))
+                .fontWeight(.bold)
+                .monospacedDigit()
+                .padding(12)
+                .padding(.horizontal, 4)
+                .glassBackgroundEffect()
+                .modifier(Self.SetRandomPositionOnSimulator(self.spaceModel))
+        }
+    }
 }
 
 

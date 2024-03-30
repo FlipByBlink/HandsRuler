@@ -85,6 +85,8 @@ extension 🌐SpaceModel {
             self.coolDownSelection = false
         }
     }
+    
+    var logs: 💾Logs { .load(self.logsData) }
 }
 
 private extension 🌐SpaceModel {
@@ -117,7 +119,7 @@ private extension 🌐SpaceModel {
         for await update in self.worldTrackingProvider.anchorUpdates {
             switch update.event {
                 case .added:
-                    let _ = 🧩Entity.fixedPointer(update.anchor)
+                    let _ = 🧩Entity.fixedFingerTip(update.anchor)
                 case .updated:
                     guard let entity = self.rootEntity.findEntity(named: update.anchor.id.uuidString) else {
                         assertionFailure()

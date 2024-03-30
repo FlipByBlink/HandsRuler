@@ -5,8 +5,8 @@ struct 🛠️LogView: View {
     var body: some View {
         List {
             Section {
-                if !self.logs.value.isEmpty {
-                    ForEach(self.logs.value, id: \.leftID) { log in
+                if !self.logs.elements.isEmpty {
+                    ForEach(self.logs.elements) { log in
                         LabeledContent {
                             Text(log.date, style: .offset)
                         } label: {
@@ -21,16 +21,16 @@ struct 🛠️LogView: View {
                     .onDelete { self.logs.remove($0) }
                 } else {
                     Text("empty")
+                        .frame(maxWidth: .infinity)
                         .foregroundStyle(.tertiary)
                 }
             } header: {
                 Text("Log")
             }
         }
-        .animation(.default, value: self.logs.value.isEmpty)
+        .animation(.default, value: self.logs.elements.isEmpty)
         .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-                Button("Set debug value") { 💾Logs.setDebugValue() }
+            ToolbarItem(placement: .bottomBar) {
                 Button("Clear") { 💾Logs.clear() }
             }
         }
