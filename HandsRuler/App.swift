@@ -12,6 +12,8 @@ struct HandsRulerApp: App {
         ImmersiveSpace(id: "immersiveSpace") {
             🌐SpaceView()
                 .environmentObject(self.model)
+                .onAppear { self.model.openedImmersiveSpace = true }
+                .onDisappear { self.model.openedImmersiveSpace = false }
         }
     }
     init() {

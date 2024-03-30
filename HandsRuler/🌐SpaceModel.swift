@@ -20,8 +20,6 @@ class 🌐SpaceModel: ObservableObject {
     
     private let sound1: AudioFileResource = try! .load(named: "sound1")
     private let sound2: AudioFileResource = try! .load(named: "sound2")
-    
-    private var coolDownSelection: Bool = false
 }
 
 extension 🌐SpaceModel {
@@ -61,7 +59,6 @@ extension 🌐SpaceModel {
     }
     
     func changeSelection(_ targetedEntity: Entity) {
-        guard !self.coolDownSelection else { return }
         switch targetedEntity.name {
             case 🧩Name.fingerLeft:
                 self.selectedLeft.toggle()
@@ -78,11 +75,6 @@ extension 🌐SpaceModel {
             default:
                 assertionFailure()
                 break
-        }
-        Task {
-            self.coolDownSelection = true
-            try? await Task.sleep(for: .seconds(1))
-            self.coolDownSelection = false
         }
     }
     
@@ -119,7 +111,7 @@ private extension 🌐SpaceModel {
         for await update in self.worldTrackingProvider.anchorUpdates {
             switch update.event {
                 case .added:
-                    let _ = 🧩Entity.fixedFingerTip(update.anchor)
+                    let _ = 🧩Entity.fixedPointer(update.anchor)
                 case .updated:
                     guard let entity = self.rootEntity.findEntity(named: update.anchor.id.uuidString) else {
                         assertionFailure()

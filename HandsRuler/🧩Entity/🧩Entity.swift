@@ -14,7 +14,7 @@ enum 🧩Entity {
                                    materials: [OcclusionMaterial()]))
         return value
     }
-    static func fixedFingerTip(_ worldAnchor: WorldAnchor) -> Entity {
+    static func fixedPointer(_ worldAnchor: WorldAnchor) -> Entity {
         let value = ModelEntity(mesh: .generateSphere(radius: 0.01),
                                 materials: [SimpleMaterial(color: .gray,
                                                            isMetallic: false)])

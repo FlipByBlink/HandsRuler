@@ -3,44 +3,41 @@ import RealityKit
 import ARKit
 
 struct 🌐SpaceView: View {
-    @EnvironmentObject var appModel: 🥽AppModel
-    @StateObject private var spaceModel: 🌐SpaceModel = .init()
+    @StateObject private var model: 🌐SpaceModel = .init()
     var body: some View {
         RealityView { content, attachments in
-            content.add(self.spaceModel.rootEntity)
-            self.spaceModel.setUpChildEntities()
+            content.add(self.model.rootEntity)
+            self.model.setUpChildEntities()
             
             let resultLabelEntity = attachments.entity(for: Self.attachmentID)!
             resultLabelEntity.components.set(🧑HeadTrackingComponent())
             resultLabelEntity.name = 🧩Name.resultLabel
-            self.spaceModel.rootEntity.addChild(resultLabelEntity)
+            self.model.rootEntity.addChild(resultLabelEntity)
             
-            self.spaceModel.setUp_simulator()
+            self.model.setUp_simulator()
         } update: { _, attachments in
-            self.spaceModel.logs.elements.forEach { log in
+            self.model.logs.elements.forEach { log in
                 let resultLabelEntity = attachments.entity(for: "\(log.id)")!
                 resultLabelEntity.components.set(🧑HeadTrackingComponent())
                 resultLabelEntity.name = "\(log.id)"
-                self.spaceModel.rootEntity.addChild(resultLabelEntity)
+                self.model.rootEntity.addChild(resultLabelEntity)
             }
         } attachments: {
             Attachment(id: Self.attachmentID) {
-                self.resultLabelView(self.spaceModel.resultText, self.spaceModel.labelFontSize)
+                self.resultLabelView(self.model.resultText, self.model.labelFontSize)
             }
-            ForEach(self.spaceModel.logs.elements) {
-                Attachment(id: "\($0.id)") {
-                    self.resultLabelView("placeholder", 30)
+            ForEach(self.model.logs.elements) { log in
+                Attachment(id: "\(log.id)") {
+                    self.resultLabelView("\(log.lineLength)", 30)
                 }
             }
         }
         .gesture(
             TapGesture()
                 .targetedToAnyEntity()
-                .onEnded { self.spaceModel.changeSelection($0.entity) }
+                .onEnded { self.model.changeSelection($0.entity) }
         )
-        .task { self.spaceModel.run() }
-        .onAppear { self.appModel.openedImmersiveSpace = true }
-        .onDisappear { self.appModel.openedImmersiveSpace = false }
+        .task { self.model.run() }
     }
     static let attachmentID: String = "resultLabel"
 }
@@ -55,7 +52,7 @@ private extension 🌐SpaceView {
                 .padding(12)
                 .padding(.horizontal, 4)
                 .glassBackgroundEffect()
-                .modifier(Self.SetRandomPositionOnSimulator(self.spaceModel))
+                .modifier(Self.SetRandomPositionOnSimulator(self.model))
         }
     }
 }
