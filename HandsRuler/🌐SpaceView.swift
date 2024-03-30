@@ -26,7 +26,7 @@ struct 🌐SpaceView: View {
             Attachment(id: Self.attachmentID) {
                 self.resultLabelView(self.model.resultText, self.model.labelFontSize)
             }
-            ForEach(self.model.logs.elements) { log in
+            ForEach(self.model.logs.elements) { log in //この実装だとTimelineViewが機能しないようだ
                 Attachment(id: "\(log.id)") {
                     self.resultLabelView("\(log.lineLength)", 30)
                 }

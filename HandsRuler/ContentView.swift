@@ -35,6 +35,12 @@ struct ContentView: View {
                 Task { await self.dismissImmersiveSpace() }
             }
         }
+        .task {
+            if self.model.measureOnLaunch,
+               !self.model.openedImmersiveSpace {
+                await self.openImmersiveSpace(id: "immersiveSpace")
+            }
+        }
     }
 }
 

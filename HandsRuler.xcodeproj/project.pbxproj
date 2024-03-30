@@ -147,6 +147,15 @@
 			path = "README assets";
 			sourceTree = "<group>";
 		};
+		16159B882BB7D24000106FD6 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */,
+				16C4C6AA2BB7B17C004DB77E /* 💾Log */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
 		16267B4E2B57D148000CA8AD /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,11 +222,10 @@
 				16688DE52B59F35F004CE12B /* 🥽AppModel.swift */,
 				1642FAB82B4D6CAA0084F9ED /* 🌐SpaceView.swift */,
 				16C4C6A42BB78A06004DB77E /* 🌐SpaceModel.swift */,
-				16253CFA2B4E2FCB0028F0E2 /* 📏Unit.swift */,
-				16C4C6AA2BB7B17C004DB77E /* 💾Log */,
 				16359E232B91D67E004CC792 /* 🧩Entity */,
 				16359E242B91D691004CC792 /* 🧑HeadTracking */,
 				16C95ADF2B5E74FD00CF0FED /* 🛠️Menu */,
+				16159B882BB7D24000106FD6 /* Rest */,
 				16267B4E2B57D148000CA8AD /* Supporting files */,
 			);
 			path = HandsRuler;
