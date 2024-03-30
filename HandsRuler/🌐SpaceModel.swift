@@ -17,15 +17,17 @@ class 🌐SpaceModel: ObservableObject {
     
     let rootEntity = Entity()
     private let lineEntity = 🧩Entity.line()
-    private let fingerEntities: [HandAnchor.Chirality: Entity] = 🧩Entity.fingerTips()
+    private let leftEntity = 🧩Entity.fingerTip(.left)
+    private let rightEntity = 🧩Entity.fingerTip(.right)
     
-    private let sounds: 📢Sounds = .init()
+    private let sounds = 📢Sounds()
 }
 
 extension 🌐SpaceModel {
     func setUpChildEntities() {
         self.rootEntity.addChild(self.lineEntity)
-        self.fingerEntities.values.forEach { self.rootEntity.addChild($0) }
+        self.rootEntity.addChild(self.leftEntity)
+        self.rootEntity.addChild(self.rightEntity)
     }
     
     func run() {
@@ -47,15 +49,15 @@ extension 🌐SpaceModel {
     
     func changeSelection(_ targetedEntity: Entity) {
         switch targetedEntity.name {
-            case 🧩Name.fingerLeft:
+            case "left":
                 self.selectedLeft.toggle()
-                self.fingerEntities[.left]?.components.set(🧩Model.fingerTip(self.selectedLeft))
+                self.leftEntity.components.set(🧩Model.fingerTip(self.selectedLeft))
                 let player = targetedEntity.prepareAudio(self.sounds[self.selectedLeft])
                 player.gain = -8
                 player.play()
-            case 🧩Name.fingerRight:
+            case "right":
                 self.selectedRight.toggle()
-                self.fingerEntities[.right]?.components.set(🧩Model.fingerTip(self.selectedRight))
+                self.rightEntity.components.set(🧩Model.fingerTip(self.selectedRight))
                 let player = targetedEntity.prepareAudio(self.sounds[self.selectedRight])
                 player.gain = -8
                 player.play()
@@ -86,8 +88,13 @@ private extension 🌐SpaceModel {
             
             let wristFromIndex = fingerTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
-            self.fingerEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,
-                                                                          relativeTo: nil)
+            
+            switch handAnchor.chirality {
+                case .left:
+                    self.leftEntity.setTransformMatrix(originFromIndex, relativeTo: nil)
+                case .right:
+                    self.rightEntity.setTransformMatrix(originFromIndex, relativeTo: nil)
+            }
             
             self.updateLine()
             self.updateResult()
@@ -98,15 +105,15 @@ private extension 🌐SpaceModel {
         for await update in self.worldTrackingProvider.anchorUpdates {
             switch update.event {
                 case .added:
-                    let _ = 🧩Entity.fixedPointer(update.anchor)
+                    self.rootEntity.addChild(🧩Entity.fixedPointer(update.anchor))
                 case .updated:
-                    guard let entity = self.rootEntity.findEntity(named: update.anchor.id.uuidString) else {
+                    guard let entity = self.rootEntity.findEntity(named: "\(update.anchor.id)") else {
                         assertionFailure()
                         return
                     }
                     entity.transform = .init(matrix: update.anchor.originFromAnchorTransform)
                 case .removed:
-                    guard let entity = self.rootEntity.findEntity(named: update.anchor.id.uuidString) else {
+                    guard let entity = self.rootEntity.findEntity(named: "\(update.anchor.id)") else {
                         assertionFailure()
                         return
                     }
@@ -119,30 +126,22 @@ private extension 🌐SpaceModel {
     private func updateLine() {
         self.lineEntity.position = self.centerPosition
         self.lineEntity.components.set(🧩Model.line(self.lineLength))
-        self.lineEntity.look(at: self.leftPosition,
+        self.lineEntity.look(at: self.leftEntity.position,
                              from: self.centerPosition,
                              relativeTo: nil)
     }
     
     private func updateResult() {
-        self.rootEntity.findEntity(named: 🧩Name.result)?.position = self.centerPosition
+        self.rootEntity.findEntity(named: "result")?.position = self.centerPosition
         self.resultModel = .init(self.lineLength, self.unit)
     }
     
     private var lineLength: Float {
-        distance(self.leftPosition, self.rightPosition)
+        distance(self.leftEntity.position, self.rightEntity.position)
     }
     
     private var centerPosition: SIMD3<Float> {
-        (self.leftPosition + self.rightPosition) / 2
-    }
-    
-    private var leftPosition: SIMD3<Float> {
-        self.fingerEntities[.left]?.position ?? .zero
-    }
-    
-    private var rightPosition: SIMD3<Float> {
-        self.fingerEntities[.right]?.position ?? .zero
+        (self.leftEntity.position + self.rightEntity.position) / 2
     }
     
     private func updateFixedLinesAndResults() {
@@ -164,14 +163,14 @@ extension 🌐SpaceModel {
     func setRandomPosition_simulator() {
 #if targetEnvironment(simulator)
         if !self.selectedLeft {
-            self.fingerEntities[.left]?.position = .init(x: .random(in: -0.8 ..< -0.05),
-                                                         y: .random(in: 1 ..< 1.5),
-                                                         z: .random(in: -1 ..< -0.5))
+            self.leftEntity.position = .init(x: .random(in: -0.8 ..< -0.05),
+                                             y: .random(in: 1 ..< 1.5),
+                                             z: .random(in: -1 ..< -0.5))
         }
         if !self.selectedRight {
-            self.fingerEntities[.right]?.position = .init(x: .random(in: 0.05 ..< 0.8),
-                                                          y: .random(in: 1 ..< 1.5),
-                                                          z: .random(in: -1 ..< -0.5))
+            self.rightEntity.position = .init(x: .random(in: 0.05 ..< 0.8),
+                                              y: .random(in: 1 ..< 1.5),
+                                              z: .random(in: -1 ..< -0.5))
         }
         self.updateLine()
         self.updateResult()

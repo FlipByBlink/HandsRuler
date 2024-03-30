@@ -11,7 +11,7 @@ struct 🌐SpaceView: View {
             
             let resultEntity = attachments.entity(for: "result")!
             resultEntity.components.set(🧑HeadTrackingComponent())
-            resultEntity.name = 🧩Name.result
+            resultEntity.name = "result"
             self.model.rootEntity.addChild(resultEntity)
             
             self.model.setUp_simulator()
