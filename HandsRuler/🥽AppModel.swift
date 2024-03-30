@@ -10,4 +10,10 @@ class 🥽AppModel: ObservableObject {
 
 extension 🥽AppModel {
     var logs: 💾Logs { .load(self.logsData) }
+    func add(_ log: 💾Log) {
+        self.logs.add(log)
+        AudioServicesPlaySystemSound(1057) //TODO: あとで再実装
+    }
 }
+
+import AudioToolbox

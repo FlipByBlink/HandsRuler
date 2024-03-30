@@ -38,7 +38,12 @@ struct 📏MeasureView: View {
         .gesture(
             TapGesture()
                 .targetedToAnyEntity()
-                .onEnded { self.measureModel.changeSelection($0.entity) }
+                .onEnded {
+                    if self.measureModel.shouldLog($0.entity) {
+                        self.appModel.add(self.measureModel.createLog())
+                    }
+                    self.measureModel.tap($0.entity)
+                }
         )
         .task { self.measureModel.run() }
     }

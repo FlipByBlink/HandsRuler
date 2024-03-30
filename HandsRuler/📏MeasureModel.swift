@@ -46,24 +46,40 @@ extension 📏MeasureModel {
 #endif
     }
     
-    func changeSelection(_ targetedEntity: Entity) {
-        switch targetedEntity.name {
+    func tap(_ entity: Entity) {
+        switch entity.name {
             case "left":
-                self.selectedLeft.toggle()
-                self.leftEntity.components.set(🧩Model.fingerTip(self.selectedLeft))
-                let player = targetedEntity.prepareAudio(self.sounds[self.selectedLeft])
-                player.gain = -8
-                player.play()
+                if self.selectedRight {
+                    self.unselectAll()
+                } else {
+                    self.select(entity, &self.selectedLeft)
+                }
             case "right":
-                self.selectedRight.toggle()
-                self.rightEntity.components.set(🧩Model.fingerTip(self.selectedRight))
-                let player = targetedEntity.prepareAudio(self.sounds[self.selectedRight])
-                player.gain = -8
-                player.play()
+                if self.selectedLeft {
+                    self.unselectAll()
+                } else {
+                    self.select(entity, &self.selectedRight)
+                }
             default:
                 assertionFailure()
                 break
         }
+    }
+    
+    func shouldLog(_ entity: Entity) -> Bool {
+        switch entity.name {
+            case "left": self.selectedRight
+            case "right": self.selectedLeft
+            default: fatalError()
+        }
+    }
+    
+    func createLog() -> 💾Log {
+        .init(leftID: WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix).id,
+              rightID: WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix).id,
+              lineLength: self.lineLength,
+              rotationRadians: 0.1,
+              date: .now)
     }
 }
 
@@ -139,6 +155,21 @@ private extension 📏MeasureModel {
     
     private var centerPosition: SIMD3<Float> {
         (self.leftEntity.position + self.rightEntity.position) / 2
+    }
+    
+    private func select(_ entity: Entity, _ selection: inout Bool) {
+        selection.toggle()
+        entity.components.set(🧩Model.fingerTip(selection))
+        let player = entity.prepareAudio(self.sounds[selection])
+        player.gain = -8
+        player.play()
+    }
+    
+    private func unselectAll() {
+        self.selectedLeft = false
+        self.leftEntity.components.set(🧩Model.fingerTip(false))
+        self.selectedRight = false
+        self.rightEntity.components.set(🧩Model.fingerTip(false))
     }
     
     private func updateFixedLinesAndResults() {
