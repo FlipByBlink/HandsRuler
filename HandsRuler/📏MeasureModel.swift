@@ -146,7 +146,7 @@ private extension 📏MeasureModel {
         self.lineEntity.look(at: self.leftEntity.position,
                              from: self.centerPosition,
                              relativeTo: nil)
-        let occlusionEntity = self.lineEntity.children.first!
+        let occlusionEntity = self.lineEntity.findEntity(named: "lineOcclusion")!
         occlusionEntity.components[ModelComponent.self] = 🧩Model.lineOcclusion(self.lineLength)
     }
     

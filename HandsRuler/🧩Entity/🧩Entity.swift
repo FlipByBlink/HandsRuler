@@ -10,8 +10,8 @@ enum 🧩Entity {
     }
     static func lineOcclusion(_ lineLength: Float) -> Entity {
         let value = Entity()
-        value.components.set([OpacityComponent(opacity: 0.75),
-                              🧩Model.lineOcclusion(lineLength)])
+        value.name = "lineOcclusion"
+        value.components.set(🧩Model.lineOcclusion(lineLength))
         return value
     }
     static func fingerTip(_ chirality: HandAnchor.Chirality) -> Entity {
