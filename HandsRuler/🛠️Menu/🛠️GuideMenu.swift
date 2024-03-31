@@ -32,6 +32,32 @@ struct 🛠️GuideMenu: View {
                     }
                     .padding(4)
                 }
+                Section {
+                    HStack(spacing: 20) {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 240)
+                            .clipShape(.rect(cornerRadius: 8, style: .continuous))
+                        Text("Copy log value.")
+                            .font(.caption)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(4)
+                }
+                Section {
+                    HStack(spacing: 20) {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 240)
+                            .clipShape(.rect(cornerRadius: 8, style: .continuous))
+                        Text("Delete a log by swiping.")
+                            .font(.caption)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(4)
+                }
                 switch self.authorizationStatus {
                     case .notDetermined, .denied:
                         HStack(spacing: 24) {
