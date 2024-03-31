@@ -16,7 +16,7 @@ struct 🛠️LogView: View {
                         }
                     } label: {
                         Label {
-                            Text(🪧ResultModel(log.lineLength, self.model.unit).label)
+                            Text(🪧ResultFormatter.string(log.lineLength, self.model.unit))
                                 .textSelection(.enabled)
                                 .padding(.horizontal)
                         } icon: {

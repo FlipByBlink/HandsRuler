@@ -6,7 +6,7 @@ import ARKit
 class 📏MeasureModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
     
-    @Published var resultModel: 🪧ResultModel = .placeholder
+    @Published var resultValue: Float = 0.4
     @Published var selectedLeft: Bool = false
     @Published var selectedRight: Bool = false
     
@@ -152,7 +152,7 @@ private extension 📏MeasureModel {
     
     private func updateResult() {
         self.rootEntity.findEntity(named: "result")?.position = self.centerPosition
-        self.resultModel = .init(self.lineLength, self.unit)
+        self.resultValue = self.lineLength
     }
     
     private var lineLength: Float {

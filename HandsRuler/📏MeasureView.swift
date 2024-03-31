@@ -28,11 +28,11 @@ struct 📏MeasureView: View {
             //重複してentityが追加されてないか後日チェックする
         } attachments: {
             Attachment(id: "result") {
-                self.resultView(self.measureModel.resultModel)
+                self.resultView(self.measureModel.resultValue)
             }
             ForEach(self.appModel.logs.elements) { log in
                 Attachment(id: "\(log.id)") {
-                    self.resultView(.init(log.lineLength, self.measureModel.unit))
+                    self.resultView(log.lineLength)
                 }
             }
         }
@@ -51,9 +51,9 @@ struct 📏MeasureView: View {
 }
 
 private extension 📏MeasureView {
-    private func resultView(_ resultModel: 🪧ResultModel) -> some View {
-        Text(resultModel.label)
-            .font(.system(size: resultModel.size))
+    private func resultView(_ lineLength: Float) -> some View {
+        Text(🪧ResultFormatter.string(lineLength, self.measureModel.unit))
+            .font(.system(size: max(.init(lineLength * 30), 20)))
             .fontWeight(.bold)
             .monospacedDigit()
             .padding(12)

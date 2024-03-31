@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		160ED7982B4B74C5002AD987 /* 🧑HeadTrackingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ED7972B4B74C5002AD987 /* 🧑HeadTrackingSystem.swift */; };
-		16159B8A2BB7D82C00106FD6 /* 🪧ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16159B892BB7D82C00106FD6 /* 🪧ResultModel.swift */; };
+		16159B8A2BB7D82C00106FD6 /* 🪧ResultFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16159B892BB7D82C00106FD6 /* 🪧ResultFormatter.swift */; };
 		16159B8C2BB7E31C00106FD6 /* 📢Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16159B8B2BB7E31B00106FD6 /* 📢Sounds.swift */; };
 		16253CFB2B4E2FCB0028F0E2 /* 📐Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16253CFA2B4E2FCB0028F0E2 /* 📐Unit.swift */; };
 		16267B502B57D172000CA8AD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16267B4F2B57D172000CA8AD /* Localizable.xcstrings */; };
@@ -82,7 +82,7 @@
 		160ED7972B4B74C5002AD987 /* 🧑HeadTrackingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧑HeadTrackingSystem.swift"; sourceTree = "<group>"; };
 		160F46BB2B5A57AF001FE696 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		160F46BC2B5A57D4001FE696 /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
-		16159B892BB7D82C00106FD6 /* 🪧ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧ResultModel.swift"; sourceTree = "<group>"; };
+		16159B892BB7D82C00106FD6 /* 🪧ResultFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧ResultFormatter.swift"; sourceTree = "<group>"; };
 		16159B8B2BB7E31B00106FD6 /* 📢Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📢Sounds.swift"; sourceTree = "<group>"; };
 		16253CFA2B4E2FCB0028F0E2 /* 📐Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📐Unit.swift"; sourceTree = "<group>"; };
 		16267B4F2B57D172000CA8AD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				16253CFA2B4E2FCB0028F0E2 /* 📐Unit.swift */,
-				16159B892BB7D82C00106FD6 /* 🪧ResultModel.swift */,
+				16159B892BB7D82C00106FD6 /* 🪧ResultFormatter.swift */,
 				16159B8B2BB7E31B00106FD6 /* 📢Sounds.swift */,
 				16359E242B91D691004CC792 /* 🧑HeadTracking */,
 				16C4C6AA2BB7B17C004DB77E /* 💾Log */,
@@ -385,7 +385,7 @@
 				165ADB4F2B4B71B0008A756F /* App.swift in Sources */,
 				16C4C6A92BB7AF0B004DB77E /* 🛠️AboutMenu.swift in Sources */,
 				16359E262B91D6AC004CC792 /* 🧑HeadTrackingComponent.swift in Sources */,
-				16159B8A2BB7D82C00106FD6 /* 🪧ResultModel.swift in Sources */,
+				16159B8A2BB7D82C00106FD6 /* 🪧ResultFormatter.swift in Sources */,
 				16B1E7022BB560A5005972CF /* 🛠️OnboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
