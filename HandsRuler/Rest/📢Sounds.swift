@@ -1,9 +1,11 @@
 import RealityKit
 
 struct 📢Sounds {
-    private let sound1: AudioFileResource = try! .load(named: "sound1")
-    private let sound2: AudioFileResource = try! .load(named: "sound2")
+    private let select: AudioFileResource = try! .load(named: "select")
+    private let unselect: AudioFileResource = try! .load(named: "unselect")
     subscript(selected: Bool) -> AudioFileResource {
-        selected ? self.sound1 : self.sound2
+        selected ? self.select : self.unselect
     }
+    
+    let fix: AudioFileResource = try! .load(named: "fix")
 }

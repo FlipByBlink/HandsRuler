@@ -19,7 +19,7 @@ class 📏MeasureModel: ObservableObject {
     private let leftEntity = 🧩Entity.fingerTip(.left)
     private let rightEntity = 🧩Entity.fingerTip(.right)
     
-    private let sounds = 📢Sounds()
+    let sounds = 📢Sounds()
 }
 
 extension 📏MeasureModel {
@@ -176,9 +176,7 @@ private extension 📏MeasureModel {
     private func select(_ entity: Entity, _ selection: inout Bool) {
         selection.toggle()
         entity.components.set(🧩Model.fingerTip(selection))
-        let player = entity.prepareAudio(self.sounds[selection])
-        player.gain = -8
-        player.play()
+        entity.playAudio(self.sounds[selection])
     }
     
     private func unselectAll() {
