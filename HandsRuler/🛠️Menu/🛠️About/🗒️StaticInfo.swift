@@ -52,7 +52,7 @@ extension 🗒️StaticInfo {
                 case .🛠️Menu: [
                     "🛠️MenuTop.swift",
                     "🛠️Panel.swift",
-                    "🛠️SettingMenu.swift",
+                    "🛠️OptionMenu.swift",
                     "🛠️GuideMenu.swift",
                     "🗒️StaticInfo.swift",
                     "ℹ️AboutApp.swift"

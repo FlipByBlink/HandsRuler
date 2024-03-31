@@ -19,7 +19,7 @@ struct ContentView: View {
                 .toolbar { self.startOrStopButton() }
             }
             .tabItem { Label("Measure", systemImage: "ruler") }
-            🛠️SettingMenu()
+            🛠️OptionMenu()
             🛠️GuideMenu()
             🛠️AboutMenu()
         }

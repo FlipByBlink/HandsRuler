@@ -5,7 +5,8 @@ enum 📐Unit: String {
          meters,
          inches,
          feet,
-         yards
+         yards,
+         feetAndInches
 }
 
 extension 📐Unit: CaseIterable, Identifiable {
@@ -17,6 +18,15 @@ extension 📐Unit: CaseIterable, Identifiable {
             case .inches: .inches
             case .feet: .feet
             case .yards: .yards
+            case .feetAndInches: fatalError()
+        }
+    }
+    var symbol: String {
+        switch self {
+            case .feetAndInches:
+                "\(Self.feet.symbol) & \(Self.inches.symbol)"
+            default:
+                self.value.symbol
         }
     }
 }
