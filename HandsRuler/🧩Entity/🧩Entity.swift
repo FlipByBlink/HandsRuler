@@ -5,8 +5,13 @@ enum 🧩Entity {
     static func line() -> Entity {
         let value = Entity()
         value.components.set(OpacityComponent(opacity: 0.75))
-        value.addChild(ModelEntity(mesh: .generateSphere(radius: 0.06),
-                                   materials: [OcclusionMaterial()]))
+        value.addChild(Self.lineOcclusion(0.4))
+        return value
+    }
+    static func lineOcclusion(_ lineLength: Float) -> Entity {
+        let value = Entity()
+        value.components.set([OpacityComponent(opacity: 0.75),
+                              🧩Model.lineOcclusion(lineLength)])
         return value
     }
     static func fingerTip(_ chirality: HandAnchor.Chirality) -> Entity {

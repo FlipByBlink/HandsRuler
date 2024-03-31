@@ -146,6 +146,8 @@ private extension 📏MeasureModel {
         self.lineEntity.look(at: self.leftEntity.position,
                              from: self.centerPosition,
                              relativeTo: nil)
+        let occlusionEntity = self.lineEntity.children.first!
+        occlusionEntity.components[ModelComponent.self] = 🧩Model.lineOcclusion(self.lineLength)
     }
     
     private func updateResult() {
