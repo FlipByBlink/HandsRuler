@@ -30,7 +30,7 @@ struct 🛠️LogView: View {
                 Text("Log")
             }
         }
-        .animation(.default, value: self.logs.elements.isEmpty)
+        .animation(.default, value: self.logs.elements)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Button {
@@ -41,6 +41,7 @@ struct 🛠️LogView: View {
                 }
                 .buttonStyle(.plain)
                 .disabled(self.logs.elements.isEmpty)
+                .animation(.default, value: self.logs.elements.isEmpty)
             }
         }
     }
