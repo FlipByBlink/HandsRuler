@@ -9,5 +9,5 @@ struct 💾Log: Codable {
 }
 
 extension 💾Log: Identifiable, Hashable {
-    var id: UUID { self.leftID }
+    var id: String { "\(self.leftID)\(self.rightID)" }
 }

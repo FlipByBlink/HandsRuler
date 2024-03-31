@@ -12,6 +12,7 @@ extension 💾Logs {
             .init(elements: [])
         }
     }
+    static var current: Self { .load(UserDefaults.standard.data(forKey: "logsData")) }
     func add(_ newElement: 💾Log) {
         var newValue = self
         newValue.elements.insert(newElement, at: 0)
