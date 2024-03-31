@@ -26,7 +26,9 @@ struct 🧑HeadTrackingSystem: System {
         let entities = context.scene.performQuery(Self.query).map { $0 }
         
         guard !entities.isEmpty,
-              let deviceAnchor = self.provider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else { return }
+              let deviceAnchor = self.provider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else {
+            return
+        }
         
         let cameraTransform = Transform(matrix: deviceAnchor.originFromAnchorTransform)
         
