@@ -7,8 +7,13 @@ struct 🛠️LogView: View {
             Section {
                 ForEach(self.logs.elements) { log in
                     LabeledContent {
-                        Text(log.date, style: .offset)
+                        TimelineView(.periodic(from: .now, by: 1)) { _ in
+                            Text(
+                                RelativeDateTimeFormatter()
+                                    .localizedString(for: log.date, relativeTo: .now)
+                            )
                             .monospacedDigit()
+                        }
                     } label: {
                         Label {
                             Text(🪧ResultModel(log.lineLength, self.model.unit).label)
