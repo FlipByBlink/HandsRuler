@@ -41,10 +41,12 @@ struct 🛠️LogView: View {
                 Button {
                     💾Logs.clear()
                 } label: {
-                    Label("Clear", systemImage: "trash")
-                        .padding(12)
+                    Image(systemName: "trash")
+                        .padding(14)
                 }
                 .buttonStyle(.plain)
+                .buttonBorderShape(.circle)
+                .help("Clear")
                 .disabled(self.logs.elements.isEmpty)
                 .animation(.default, value: self.logs.elements.isEmpty)
             }
