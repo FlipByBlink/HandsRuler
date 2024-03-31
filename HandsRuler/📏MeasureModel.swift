@@ -5,6 +5,7 @@ import ARKit
 @MainActor
 class 📏MeasureModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
+    @AppStorage("logsData") var logsData: Data?
     
     @Published private(set) var resultValue: Float = 0.4
     
@@ -46,6 +47,7 @@ extension 📏MeasureModel {
     }
     
     func tap(_ entity: Entity) {
+        self.logIfNeeded(entity)
         switch entity.name {
             case "left":
                 switch self.selection {
@@ -64,36 +66,7 @@ extension 📏MeasureModel {
         }
     }
     
-    func shouldLog(_ entity: Entity) -> Bool {
-        switch entity.name {
-            case "left": self.selection.isRight
-            case "right": self.selection.isLeft
-            default: fatalError()
-        }
-    }
-    
-    func createLog() -> 💾Log {
-        let leftAnchor = WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix)
-        let rightAnchor = WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix)
-        let centerMatrix = Transform(translation: self.centerPosition).matrix
-        let centerAnchor = WorldAnchor(originFromAnchorTransform: centerMatrix)
-        let fixedLeftEntity = 🧩Entity.fixedPointer(leftAnchor)
-        let fixedRightEntity = 🧩Entity.fixedPointer(rightAnchor)
-        self.rootEntity.addChild(fixedLeftEntity)
-        self.rootEntity.addChild(fixedRightEntity)
-        self.rootEntity.addChild(🧩Entity.fixedCenter(centerAnchor))
-        switch self.selection {
-            case .left: fixedRightEntity.playAudio(self.sounds.fix)
-            case .right: fixedLeftEntity.playAudio(self.sounds.fix)
-            case .noSelect: fatalError()
-        }
-        return .init(leftID: leftAnchor.id,
-                     rightID: rightAnchor.id,
-                     centerID: centerAnchor.id,
-                     lineLength: self.lineLength,
-                     rotationRadians: self.rotation,
-                     date: .now)
-    }
+    var logs: 💾Logs { .load(self.logsData) }
 }
 
 //MARK: private
@@ -216,6 +189,42 @@ private extension 📏MeasureModel {
             try await Task.sleep(for: .seconds(3))
             entities.forEach { $0.isEnabled = true }
         }
+    }
+    
+    private func logIfNeeded(_ entity: Entity) {
+        let condition: Bool = {
+            switch entity.name {
+                case "left": self.selection.isRight
+                case "right": self.selection.isLeft
+                default: fatalError()
+            }
+        }()
+        if condition {
+            💾Logs.current.add(self.createLog())
+        }
+    }
+    
+    private func createLog() -> 💾Log {
+        let leftAnchor = WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix)
+        let rightAnchor = WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix)
+        let centerMatrix = Transform(translation: self.centerPosition).matrix
+        let centerAnchor = WorldAnchor(originFromAnchorTransform: centerMatrix)
+        let fixedLeftEntity = 🧩Entity.fixedPointer(leftAnchor)
+        let fixedRightEntity = 🧩Entity.fixedPointer(rightAnchor)
+        self.rootEntity.addChild(fixedLeftEntity)
+        self.rootEntity.addChild(fixedRightEntity)
+        self.rootEntity.addChild(🧩Entity.fixedCenter(centerAnchor))
+        switch self.selection {
+            case .left: fixedRightEntity.playAudio(self.sounds.fix)
+            case .right: fixedLeftEntity.playAudio(self.sounds.fix)
+            case .noSelect: fatalError()
+        }
+        return .init(leftID: leftAnchor.id,
+                     rightID: rightAnchor.id,
+                     centerID: centerAnchor.id,
+                     lineLength: self.lineLength,
+                     rotationRadians: self.rotation,
+                     date: .now)
     }
     
     private func updateFixedLinesAndResults() {

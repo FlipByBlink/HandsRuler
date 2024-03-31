@@ -3,34 +3,33 @@ import RealityKit
 import ARKit
 
 struct 📏MeasureView: View {
-    @EnvironmentObject var appModel: 🥽AppModel
-    @StateObject private var measureModel: 📏MeasureModel = .init()
+    @StateObject private var model: 📏MeasureModel = .init()
     var body: some View {
         RealityView { content, attachments in
-            content.add(self.measureModel.rootEntity)
-            self.measureModel.setUpChildEntities()
+            content.add(self.model.rootEntity)
+            self.model.setUpChildEntities()
             
             let resultEntity = attachments.entity(for: "result")!
             resultEntity.components.set(🧑HeadTrackingComponent())
             resultEntity.name = "result"
-            self.measureModel.rootEntity.addChild(resultEntity)
+            self.model.rootEntity.addChild(resultEntity)
             
-            self.measureModel.setUp_simulator()
+            self.model.setUp_simulator()
         } update: { _, attachments in
-            self.appModel.logs.elements.forEach { log in
+            self.model.logs.elements.forEach { log in
                 let fixedResultEntity = attachments.entity(for: "\(log.id)")!
 //                fixedResultEntity.components.set(🧑HeadTrackingComponent())
                 fixedResultEntity.name = "fixedResult\(log.id)"
-                if let centerEntity = self.measureModel.rootEntity.findEntity(named: "\(log.centerID)") {
+                if let centerEntity = self.model.rootEntity.findEntity(named: "\(log.centerID)") {
                     centerEntity.addChild(fixedResultEntity)
                 }
             }
             //重複してentityが追加されてないか後日チェックする
         } attachments: {
             Attachment(id: "result") {
-                self.resultView(self.measureModel.resultValue)
+                self.resultView(self.model.resultValue)
             }
-            ForEach(self.appModel.logs.elements) { log in
+            ForEach(self.model.logs.elements) { log in
                 Attachment(id: "\(log.id)") {
                     self.resultView(log.lineLength)
                 }
@@ -39,27 +38,22 @@ struct 📏MeasureView: View {
         .gesture(
             TapGesture()
                 .targetedToAnyEntity()
-                .onEnded {
-                    if self.measureModel.shouldLog($0.entity) {
-                        self.appModel.logs.add(self.measureModel.createLog())
-                    }
-                    self.measureModel.tap($0.entity)
-                }
+                .onEnded { self.model.tap($0.entity) }
         )
-        .task { self.measureModel.run() }
+        .task { self.model.run() }
     }
 }
 
 private extension 📏MeasureView {
     private func resultView(_ lineLength: Float) -> some View {
-        Text(🪧ResultFormatter.string(lineLength, self.measureModel.unit))
+        Text(🪧ResultFormatter.string(lineLength, self.model.unit))
             .font(.system(size: max(.init(lineLength * 30), 20)))
             .fontWeight(.bold)
             .monospacedDigit()
             .padding(12)
             .padding(.horizontal, 4)
             .glassBackgroundEffect()
-            .modifier(Self.SetRandomPosition_Simulator(self.measureModel))
+            .modifier(Self.SetRandomPosition_Simulator(self.model))
     }
 }
 
