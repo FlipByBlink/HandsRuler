@@ -23,6 +23,11 @@ extension 💾Logs {
         newValue.elements.remove(atOffsets: indexSet)
         Self.save(newValue)
     }
+    func remove(_ log: 💾Log) {
+        var newValue = self
+        newValue.elements.removeAll { $0 == log }
+        Self.save(newValue)
+    }
     static func clear() {
         Self.save(Self(elements: []))
     }
