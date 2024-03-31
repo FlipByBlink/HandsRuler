@@ -6,9 +6,7 @@ import ARKit
 class 📏MeasureModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
     
-    @Published var resultValue: Float = 0.4
-    @Published var selectedLeft: Bool = false
-    @Published var selectedRight: Bool = false
+    @Published private(set) var resultValue: Float = 0.4
     
     private let session = ARKitSession()
     private let handTrackingProvider = HandTrackingProvider()
@@ -19,7 +17,8 @@ class 📏MeasureModel: ObservableObject {
     private let leftEntity = 🧩Entity.fingerTip(.left)
     private let rightEntity = 🧩Entity.fingerTip(.right)
     
-    let sounds = 📢Sounds()
+    private var selection: 🔵Selection = .noSelect
+    private let sounds = 📢Sounds()
 }
 
 extension 📏MeasureModel {
@@ -49,27 +48,26 @@ extension 📏MeasureModel {
     func tap(_ entity: Entity) {
         switch entity.name {
             case "left":
-                if self.selectedRight {
-                    self.unselectAll()
-                } else {
-                    self.select(entity, &self.selectedLeft)
+                switch self.selection {
+                    case .left: self.unselect(entity)
+                    case .right: self.reset()
+                    case .noSelect: self.select(entity)
                 }
             case "right":
-                if self.selectedLeft {
-                    self.unselectAll()
-                } else {
-                    self.select(entity, &self.selectedRight)
+                switch self.selection {
+                    case .left: self.reset()
+                    case .right: self.unselect(entity)
+                    case .noSelect: self.select(entity)
                 }
             default:
-                assertionFailure()
-                break
+                fatalError()
         }
     }
     
     func shouldLog(_ entity: Entity) -> Bool {
         switch entity.name {
-            case "left": self.selectedRight
-            case "right": self.selectedLeft
+            case "left": self.selection.isRight
+            case "right": self.selection.isLeft
             default: fatalError()
         }
     }
@@ -84,10 +82,10 @@ extension 📏MeasureModel {
         self.rootEntity.addChild(fixedLeftEntity)
         self.rootEntity.addChild(fixedRightEntity)
         self.rootEntity.addChild(🧩Entity.fixedCenter(centerAnchor))
-        switch (self.selectedLeft, self.selectedRight) {
-            case (false, true): fixedLeftEntity.playAudio(self.sounds.fix)
-            case (true, false): fixedRightEntity.playAudio(self.sounds.fix)
-            default: fatalError()
+        switch self.selection {
+            case .left: fixedRightEntity.playAudio(self.sounds.fix)
+            case .right: fixedLeftEntity.playAudio(self.sounds.fix)
+            case .noSelect: fatalError()
         }
         return .init(leftID: leftAnchor.id,
                      rightID: rightAnchor.id,
@@ -98,6 +96,7 @@ extension 📏MeasureModel {
     }
 }
 
+//MARK: private
 private extension 📏MeasureModel {
     private func processHandUpdates() async {
         for await update in self.handTrackingProvider.anchorUpdates {
@@ -109,8 +108,8 @@ private extension 📏MeasureModel {
                 continue
             }
             
-            if self.selectedLeft, handAnchor.chirality == .left { continue }
-            if self.selectedRight, handAnchor.chirality == .right { continue }
+            if self.selection.isLeft, handAnchor.chirality == .left { continue }
+            if self.selection.isRight, handAnchor.chirality == .right { continue }
             
             let originFromWrist = handAnchor.originFromAnchorTransform
             
@@ -180,17 +179,26 @@ private extension 📏MeasureModel {
         )
     }
     
-    private func select(_ entity: Entity, _ selection: inout Bool) {
-        selection.toggle()
-        entity.components.set(🧩Model.fingerTip(selection))
-        entity.playAudio(self.sounds[selection])
+    private func select(_ entity: Entity) {
+        switch entity.name {
+            case "left": self.selection = .left
+            case "right": self.selection = .right
+            default: fatalError()
+        }
+        entity.components.set(🧩Model.fingerTip(.red))
+        entity.playAudio(self.sounds.select)
     }
     
-    private func unselectAll() {
-        self.selectedLeft = false
-        self.leftEntity.components.set(🧩Model.fingerTip(false))
-        self.selectedRight = false
-        self.rightEntity.components.set(🧩Model.fingerTip(false))
+    private func unselect(_ entity: Entity) {
+        self.selection = .noSelect
+        entity.components.set(🧩Model.fingerTip(.blue))
+        entity.playAudio(self.sounds.unselect)
+    }
+    
+    private func reset() {
+        self.selection = .noSelect
+        self.leftEntity.components.set(🧩Model.fingerTip(.blue))
+        self.rightEntity.components.set(🧩Model.fingerTip(.blue))
         
         self.resetPosition_simulator()
         self.hideAndFadeIn()
@@ -205,7 +213,7 @@ private extension 📏MeasureModel {
                 self.rootEntity.findEntity(named: "result")!
             ]
             entities.forEach { $0.isEnabled = false }
-            try await Task.sleep(for: .seconds(2))
+            try await Task.sleep(for: .seconds(3))
             entities.forEach { $0.isEnabled = true }
         }
     }
@@ -218,7 +226,7 @@ private extension 📏MeasureModel {
 
 
 
-//MARK: Simulator
+//MARK: simulator
 extension 📏MeasureModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
@@ -228,12 +236,12 @@ extension 📏MeasureModel {
     }
     func setRandomPosition_simulator() {
 #if targetEnvironment(simulator)
-        if !self.selectedLeft {
+        if !self.selection.isLeft {
             self.leftEntity.position = .init(x: .random(in: -0.8 ..< -0.05),
                                              y: .random(in: 1 ..< 1.5),
                                              z: .random(in: -1 ..< -0.5))
         }
-        if !self.selectedRight {
+        if !self.selection.isRight {
             self.rightEntity.position = .init(x: .random(in: 0.05 ..< 0.8),
                                               y: .random(in: 1 ..< 1.5),
                                               z: .random(in: -1 ..< -0.5))

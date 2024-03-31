@@ -44,6 +44,7 @@
 		169F10412BB94C3D00BAF363 /* unselect.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 169F103E2BB94C1900BAF363 /* unselect.m4a */; };
 		169F10422BB94C3D00BAF363 /* fix.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 169F103F2BB94C1900BAF363 /* fix.m4a */; };
 		169F10432BB94C3D00BAF363 /* select.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 169F103D2BB94C1800BAF363 /* select.m4a */; };
+		169F10452BB976C300BAF363 /* 🔵Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F10442BB976C300BAF363 /* 🔵Selection.swift */; };
 		16B1E6FE2BB5302A005972CF /* 💾Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1E6FD2BB5302A005972CF /* 💾Log.swift */; };
 		16B1E7002BB5600D005972CF /* 🛠️LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1E6FF2BB5600D005972CF /* 🛠️LogView.swift */; };
 		16B1E7022BB560A5005972CF /* 🛠️OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1E7012BB560A5005972CF /* 🛠️OnboardView.swift */; };
@@ -111,6 +112,7 @@
 		169F103D2BB94C1800BAF363 /* select.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = select.m4a; sourceTree = "<group>"; };
 		169F103E2BB94C1900BAF363 /* unselect.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = unselect.m4a; sourceTree = "<group>"; };
 		169F103F2BB94C1900BAF363 /* fix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fix.m4a; sourceTree = "<group>"; };
+		169F10442BB976C300BAF363 /* 🔵Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔵Selection.swift"; sourceTree = "<group>"; };
 		16B1E6FD2BB5302A005972CF /* 💾Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💾Log.swift"; sourceTree = "<group>"; };
 		16B1E6FF2BB5600D005972CF /* 🛠️LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️LogView.swift"; sourceTree = "<group>"; };
 		16B1E7012BB560A5005972CF /* 🛠️OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️OnboardView.swift"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				16253CFA2B4E2FCB0028F0E2 /* 📐Unit.swift */,
 				16159B892BB7D82C00106FD6 /* 🪧ResultFormatter.swift */,
+				169F10442BB976C300BAF363 /* 🔵Selection.swift */,
 				16159B8B2BB7E31B00106FD6 /* 📢Sounds.swift */,
 				16359E242B91D691004CC792 /* 🧑HeadTracking */,
 				16C4C6AA2BB7B17C004DB77E /* 💾Log */,
@@ -394,6 +397,7 @@
 				16C4C6A52BB78A06004DB77E /* 📏MeasureModel.swift in Sources */,
 				16891EDA2B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift in Sources */,
 				16159B8C2BB7E31C00106FD6 /* 📢Sounds.swift in Sources */,
+				169F10452BB976C300BAF363 /* 🔵Selection.swift in Sources */,
 				165ADB4F2B4B71B0008A756F /* App.swift in Sources */,
 				16C4C6A92BB7AF0B004DB77E /* 🛠️AboutMenu.swift in Sources */,
 				16359E262B91D6AC004CC792 /* 🧑HeadTrackingComponent.swift in Sources */,
