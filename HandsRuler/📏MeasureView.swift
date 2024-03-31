@@ -18,13 +18,14 @@ struct 📏MeasureView: View {
             self.measureModel.setUp_simulator()
         } update: { _, attachments in
             self.appModel.logs.elements.forEach { log in
-                if self.measureModel.rootEntity.findEntity(named: "\(log.id)") == nil {
-                    let fixedResultEntity = attachments.entity(for: "\(log.id)")!
-                    fixedResultEntity.components.set(🧑HeadTrackingComponent())
-                    fixedResultEntity.name = "\(log.id)"
-                    self.measureModel.rootEntity.addChild(fixedResultEntity)
+                let fixedResultEntity = attachments.entity(for: "\(log.id)")!
+//                fixedResultEntity.components.set(🧑HeadTrackingComponent())
+                fixedResultEntity.name = "fixedResult\(log.id)"
+                if let centerEntity = self.measureModel.rootEntity.findEntity(named: "\(log.centerID)") {
+                    centerEntity.addChild(fixedResultEntity)
                 }
             }
+            //重複してentityが追加されてないか後日チェックする
         } attachments: {
             Attachment(id: "result") {
                 self.resultView(self.measureModel.resultModel)

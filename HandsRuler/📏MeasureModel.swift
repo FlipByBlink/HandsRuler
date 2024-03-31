@@ -77,10 +77,14 @@ extension 📏MeasureModel {
     func createLog() -> 💾Log {
         let leftAnchor = WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix)
         let rightAnchor = WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix)
+        let centerMatrix = Transform(translation: self.centerPosition).matrix
+        let centerAnchor = WorldAnchor(originFromAnchorTransform: centerMatrix)
         self.rootEntity.addChild(🧩Entity.fixedPointer(leftAnchor))
         self.rootEntity.addChild(🧩Entity.fixedPointer(rightAnchor))
+        self.rootEntity.addChild(🧩Entity.fixedCenter(centerAnchor))
         return .init(leftID: leftAnchor.id,
                      rightID: rightAnchor.id,
+                     centerID: centerAnchor.id,
                      lineLength: self.lineLength,
                      rotationRadians: self.rotation,
                      date: .now)

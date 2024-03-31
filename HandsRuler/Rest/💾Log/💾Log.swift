@@ -3,6 +3,7 @@ import Foundation
 struct 💾Log: Codable {
     let leftID: UUID
     let rightID: UUID
+    let centerID: UUID
     let lineLength: Float
     let rotationRadians: Double
     let date: Date

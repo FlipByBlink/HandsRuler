@@ -32,4 +32,10 @@ enum 🧩Entity {
                               🧩Model.fixedPointer()])
         return value
     }
+    static func fixedCenter(_ worldAnchor: WorldAnchor) -> Entity {
+        let value = Entity()
+        value.name = "\(worldAnchor.id)"
+        value.components.set(AnchoringComponent(.world(transform: worldAnchor.originFromAnchorTransform)))
+        return value
+    }
 }
