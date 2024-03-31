@@ -79,9 +79,16 @@ extension 📏MeasureModel {
         let rightAnchor = WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix)
         let centerMatrix = Transform(translation: self.centerPosition).matrix
         let centerAnchor = WorldAnchor(originFromAnchorTransform: centerMatrix)
-        self.rootEntity.addChild(🧩Entity.fixedPointer(leftAnchor))
-        self.rootEntity.addChild(🧩Entity.fixedPointer(rightAnchor))
+        let fixedLeftEntity = 🧩Entity.fixedPointer(leftAnchor)
+        let fixedRightEntity = 🧩Entity.fixedPointer(rightAnchor)
+        self.rootEntity.addChild(fixedLeftEntity)
+        self.rootEntity.addChild(fixedRightEntity)
         self.rootEntity.addChild(🧩Entity.fixedCenter(centerAnchor))
+        switch (self.selectedLeft, self.selectedRight) {
+            case (false, true): fixedLeftEntity.playAudio(self.sounds.fix)
+            case (true, false): fixedRightEntity.playAudio(self.sounds.fix)
+            default: fatalError()
+        }
         return .init(leftID: leftAnchor.id,
                      rightID: rightAnchor.id,
                      centerID: centerAnchor.id,
@@ -184,6 +191,23 @@ private extension 📏MeasureModel {
         self.leftEntity.components.set(🧩Model.fingerTip(false))
         self.selectedRight = false
         self.rightEntity.components.set(🧩Model.fingerTip(false))
+        
+        self.resetPosition_simulator()
+        self.hideAndFadeIn()
+    }
+    
+    private func hideAndFadeIn() {
+        Task {
+            let entities = [
+                self.lineEntity,
+                self.leftEntity,
+                self.rightEntity,
+                self.rootEntity.findEntity(named: "result")!
+            ]
+            entities.forEach { $0.isEnabled = false }
+            try await Task.sleep(for: .seconds(2))
+            entities.forEach { $0.isEnabled = true }
+        }
     }
     
     private func updateFixedLinesAndResults() {
@@ -214,6 +238,14 @@ extension 📏MeasureModel {
                                               y: .random(in: 1 ..< 1.5),
                                               z: .random(in: -1 ..< -0.5))
         }
+        self.updateLine()
+        self.updateResult()
+#endif
+    }
+    private func resetPosition_simulator() {
+#if targetEnvironment(simulator)
+        self.leftEntity.position = .init(x: -0.2, y: 1.5, z: -0.7)
+        self.rightEntity.position = .init(x: 0.2, y: 1.5, z: -0.7)
         self.updateLine()
         self.updateResult()
 #endif

@@ -42,7 +42,6 @@ struct 📏MeasureView: View {
                 .onEnded {
                     if self.measureModel.shouldLog($0.entity) {
                         self.appModel.logs.add(self.measureModel.createLog())
-                        $0.entity.playAudio(self.measureModel.sounds.fix)
                     }
                     self.measureModel.tap($0.entity)
                 }
@@ -60,7 +59,7 @@ private extension 📏MeasureView {
             .padding(12)
             .padding(.horizontal, 4)
             .glassBackgroundEffect()
-            .modifier(Self.SetRandomPositionOnSimulator(self.measureModel))
+            .modifier(Self.SetRandomPosition_Simulator(self.measureModel))
     }
 }
 
@@ -69,7 +68,7 @@ private extension 📏MeasureView {
 
 //MARK: Simulator
 private extension 📏MeasureView {
-    private struct SetRandomPositionOnSimulator: ViewModifier {
+    private struct SetRandomPosition_Simulator: ViewModifier {
         var model: 📏MeasureModel
         func body(content: Content) -> some View {
             content
