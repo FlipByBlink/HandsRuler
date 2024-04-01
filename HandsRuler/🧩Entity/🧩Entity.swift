@@ -11,7 +11,7 @@ enum 🧩Entity {
         value.addChild(occlusionEntity)
         return value
     }
-    static func updateLine(_ entity: Entity, _ leftPosition: SIMD3<Float>,_ rightPosition: SIMD3<Float>) {
+    static func updateLine(_ entity: Entity, _ leftPosition: SIMD3<Float>, _ rightPosition: SIMD3<Float>) {
         let centerPosition = (leftPosition + rightPosition) / 2
         entity.position = centerPosition
         let lineLength = distance(leftPosition, rightPosition)
@@ -42,4 +42,21 @@ enum 🧩Entity {
         value.components.set(🧩Model.fixedPointer())
         return value
     }
+    static func fixedLine(_ log: 💾Log) -> Entity {
+        let lineEntity = Self.line()
+        Self.updateLine(lineEntity, log.leftPosition, log.rightPosition)
+        return lineEntity
+    }
+//    static func fixedRuler(_ leftPosition: SIMD3<Float>, _ rightPosition: SIMD3<Float>) -> Entity {
+//        let value = Entity()
+//        let lineEntity = Self.line()
+//        Self.updateLine(lineEntity, leftPosition, rightPosition)
+//        value.addChild(lineEntity)
+//        let fixedLeftEntity = Self.fixedPointer(leftPosition)
+//        value.addChild(fixedLeftEntity)
+//        let fixedRightEntity = Self.fixedPointer(rightPosition)
+//        value.addChild(fixedRightEntity)
+//        value.components.set(AnchoringComponent(.world(transform: Transform().matrix)))
+//        return value
+//    }
 }

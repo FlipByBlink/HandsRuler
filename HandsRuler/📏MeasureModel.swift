@@ -110,6 +110,7 @@ private extension 📏MeasureModel {
                 case .added:
                     self.rootEntity.addChild(🧩Entity.fixedPointer(log.leftPosition))
                     self.rootEntity.addChild(🧩Entity.fixedPointer(log.rightPosition))
+                    self.rootEntity.addChild(🧩Entity.fixedLine(log))
                 case .updated:
                     continue
                 case .removed:
