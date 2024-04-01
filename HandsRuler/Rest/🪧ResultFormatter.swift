@@ -10,6 +10,7 @@ enum 🪧ResultFormatter {
             let inchFormatter = MeasurementFormatter()
             inchFormatter.unitOptions = .providedUnit
             inchFormatter.numberFormatter.maximumFractionDigits = 0
+            inchFormatter.numberFormatter.minimumIntegerDigits = 2
             let feetValue = measurement.converted(to: .feet).value
             let rounded = feetValue.rounded(.towardZero)
             let feetPart = Measurement(value: rounded, unit: UnitLength.feet)

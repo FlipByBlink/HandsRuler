@@ -18,6 +18,7 @@ struct 🛠️LogView: View {
                         Label {
                             Text(🪧ResultFormatter.string(log.lineLength, self.model.unit))
                                 .textSelection(.enabled)
+                                .monospacedDigit()
                                 .padding(.horizontal)
                         } icon: {
                             Image(systemName: "circle.and.line.horizontal")
