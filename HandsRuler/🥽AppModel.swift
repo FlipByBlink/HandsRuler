@@ -7,7 +7,3 @@ class 🥽AppModel: ObservableObject {
     @AppStorage("logsData") var logsData: Data?
     @Published var openedImmersiveSpace: Bool = false
 }
-
-extension 🥽AppModel {
-    var logs: 💾Logs { .load(self.logsData) }
-}
