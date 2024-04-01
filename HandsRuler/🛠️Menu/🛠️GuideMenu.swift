@@ -18,8 +18,6 @@ struct 🛠️GuideMenu: View {
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
-                }
-                Section {
                     HStack(spacing: 20) {
                         Image(.graph2)
                             .resizable()
@@ -44,8 +42,6 @@ struct 🛠️GuideMenu: View {
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
-                }
-                Section {
                     HStack(spacing: 20) {
                         Image(systemName: "photo")
                             .resizable()
@@ -57,6 +53,8 @@ struct 🛠️GuideMenu: View {
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
+                } header: {
+                    Text("Log")
                 }
                 switch self.authorizationStatus {
                     case .notDetermined, .denied:

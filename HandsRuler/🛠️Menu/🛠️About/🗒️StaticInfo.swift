@@ -1,8 +1,8 @@
 import SwiftUI
 
 enum 🗒️StaticInfo {
-    static let appName: LocalizedStringKey = "HandsRuler"
-    static var appSubTitle: LocalizedStringKey { "Apple Vision Pro" }
+    static let appName: LocalizedStringResource = "HandsRuler"
+    static var appSubTitle: LocalizedStringResource { "Apple Vision Pro" }
     
     static let appStoreProductURL: URL = .init(string: "https://apps.apple.com/app/id6475769879")!
     static var appStoreUserReviewURL: URL { .init(string: "\(Self.appStoreProductURL)?action=write-review")! }
@@ -25,10 +25,9 @@ enum 🗒️StaticInfo {
     
     static let webRepositoryURL: URL = .init(string: "https://github.com/FlipByBlink/HandsRuler")!
     static let webMirrorRepositoryURL: URL = .init(string: "https://gitlab.com/FlipByBlink/HandsRuler_Mirror")!
-}
 
-extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.0.1", "2024-02-15"),
+    static let versionInfos: [(version: String, date: String)] = [("1.1", "2024-04-??"),
+                                                                  ("1.0.1", "2024-02-15"),
                                                                   ("1.0", "2024-02-02")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {

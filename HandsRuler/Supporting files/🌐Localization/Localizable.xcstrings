@@ -11,17 +11,6 @@
         }
       }
     },
-    "About App" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリについて"
-          }
-        }
-      }
-    },
     "Apple Vision Pro" : {
       "localizations" : {
         "ja" : {
@@ -33,24 +22,41 @@
       }
     },
     "Clear" : {
-
-    },
-    "Copy log value." : {
-
-    },
-    "Delete a log by swiping." : {
-
-    },
-    "empty" : {
-
-    },
-    "Exit" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "終了"
+            "value" : "クリア"
+          }
+        }
+      }
+    },
+    "Copy log value." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログの数値を長押しでコピー。"
+          }
+        }
+      }
+    },
+    "Delete a log by swiping." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スワイプでログを削除。"
+          }
+        }
+      }
+    },
+    "empty" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "なし"
           }
         }
       }
@@ -66,7 +72,14 @@
       }
     },
     "Guide" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガイド"
+          }
+        }
+      }
     },
     "Hand tracking authorization:" : {
       "localizations" : {
@@ -89,10 +102,24 @@
       }
     },
     "Log" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログ"
+          }
+        }
+      }
     },
     "Measure" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "測定"
+          }
+        }
+      }
     },
     "Measurement of the distance between the fingers." : {
       "localizations" : {
@@ -105,15 +132,11 @@
       }
     },
     "Option" : {
-
-    },
-    "Setting" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定"
+            "value" : "オプション"
           }
         }
       }
@@ -129,10 +152,24 @@
       }
     },
     "Start measuring on launch" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ起動時に測定開始"
+          }
+        }
+      }
     },
     "Stop" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止"
+          }
+        }
+      }
     },
     "Unit" : {
       "localizations" : {

@@ -34,6 +34,17 @@
           }
         }
       }
+    },
+    "1.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ADD fixed ruler\nADD multi ruler\nADD world anchoring\nADD log data\nADD option to show feet&inch\nADD option to launch immediately ruler\nseveral improvement and fix"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

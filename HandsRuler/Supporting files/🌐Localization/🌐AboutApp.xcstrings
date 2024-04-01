@@ -1,6 +1,26 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " feedback" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " フィードバック"
+          }
+        }
+      }
+    },
+    "(Input here)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(ここに入力してください)"
+          }
+        }
+      }
+    },
     "(Mirror)" : {
       "localizations" : {
         "en" : {
