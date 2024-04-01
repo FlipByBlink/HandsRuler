@@ -101,11 +101,15 @@ private extension 📏MeasureModel {
         }
     }
     
-    private func processWorldAnchorUpdates() async {
+    private func processWorldAnchorUpdates() async { //TODO: implement on real device
         for await update in self.worldTrackingProvider.anchorUpdates {
+            guard let log = self.logs.elements.first(where: { $0.id == update.anchor.id }) else {
+                continue
+            }
             switch update.event {
                 case .added:
-                    self.rootEntity.addChild(🧩Entity.fixedPointer(update.anchor))
+                    self.rootEntity.addChild(🧩Entity.fixedPointer(log.leftPosition))
+                    self.rootEntity.addChild(🧩Entity.fixedPointer(log.rightPosition))
                 case .updated:
                     continue
                 case .removed:
@@ -140,16 +144,6 @@ private extension 📏MeasureModel {
     
     private var centerPosition: SIMD3<Float> {
         (self.leftEntity.position + self.rightEntity.position) / 2
-    }
-    
-    private var rotation: Double {
-        .init(
-            asin(
-                (self.rightEntity.position.y - self.leftEntity.position.y)
-                /
-                distance(self.leftEntity.position, self.rightEntity.position)
-            )
-        )
     }
     
     private func select(_ entity: Entity) {
@@ -200,31 +194,35 @@ private extension 📏MeasureModel {
             }
         }()
         if condition {
+            self.setFixedRuler()
             💾Logs.current.add(self.createLog())
         }
     }
     
     private func createLog() -> 💾Log {
-        let leftAnchor = WorldAnchor(originFromAnchorTransform: self.leftEntity.transform.matrix)
-        let rightAnchor = WorldAnchor(originFromAnchorTransform: self.rightEntity.transform.matrix)
-        let centerMatrix = Transform(translation: self.centerPosition).matrix
-        let centerAnchor = WorldAnchor(originFromAnchorTransform: centerMatrix)
-        let fixedLeftEntity = 🧩Entity.fixedPointer(leftAnchor)
-        let fixedRightEntity = 🧩Entity.fixedPointer(rightAnchor)
-        self.rootEntity.addChild(fixedLeftEntity)
-        self.rootEntity.addChild(fixedRightEntity)
-        self.rootEntity.addChild(🧩Entity.fixedCenter(centerAnchor))
+        .init(anchorID: WorldAnchor(originFromAnchorTransform: self.rootEntity.transform.matrix).id,
+              leftPosition: self.leftEntity.position,
+              rightPosition: self.rightEntity.position,
+              date: .now)
+    }
+    
+    private func setFixedRuler() {
+        let fixedRulerEntity = Entity()
+        fixedRulerEntity.addChild(self.lineEntity.clone(recursive: true))
+        let fixedLeftEntity = 🧩Entity.fixedPointer(self.leftEntity.position)
+        fixedRulerEntity.addChild(fixedLeftEntity)
+        let fixedRightEntity = 🧩Entity.fixedPointer(self.rightEntity.position)
+        fixedRulerEntity.addChild(fixedRightEntity)
+        fixedRulerEntity.addChild(self.rootEntity.findEntity(named: "result")!.clone(recursive: false))
+        fixedRulerEntity.components.set(
+            AnchoringComponent(.world(transform: self.rootEntity.transform.matrix))
+        )
+        self.rootEntity.addChild(fixedRulerEntity)
         switch self.selection {
             case .left: fixedRightEntity.playAudio(self.sounds.fix)
             case .right: fixedLeftEntity.playAudio(self.sounds.fix)
             case .noSelect: fatalError()
         }
-        return .init(leftID: leftAnchor.id,
-                     rightID: rightAnchor.id,
-                     centerID: centerAnchor.id,
-                     lineLength: self.lineLength,
-                     rotationRadians: self.rotation,
-                     date: .now)
     }
     
     private func updateFixedLinesAndResults() {

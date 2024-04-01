@@ -20,7 +20,7 @@ struct 📏MeasureView: View {
                 let fixedResultEntity = attachments.entity(for: "\(log.id)")!
 //                fixedResultEntity.components.set(🧑HeadTrackingComponent())
                 fixedResultEntity.name = "fixedResult\(log.id)"
-                if let centerEntity = self.model.rootEntity.findEntity(named: "\(log.centerID)") {
+                if let centerEntity = self.model.rootEntity.findEntity(named: "\(log.id)") {
                     centerEntity.addChild(fixedResultEntity)
                 }
             }

@@ -21,7 +21,7 @@ struct 🛠️LogView: View {
                                 .padding(.horizontal)
                         } icon: {
                             Image(systemName: "circle.and.line.horizontal")
-                                .rotationEffect(.radians(log.rotationRadians))
+                                .rotationEffect(.radians(-log.rotationRadians))
                         }
                     }
                 }

@@ -30,17 +30,10 @@ enum 🧩Entity {
                               🧩Model.fingerTip()])
         return value
     }
-    static func fixedPointer(_ worldAnchor: WorldAnchor) -> Entity {
+    static func fixedPointer(_ position: SIMD3<Float>) -> Entity {
         let value = Entity()
-        value.name = "\(worldAnchor.id)"
-        value.components.set([AnchoringComponent(.world(transform: worldAnchor.originFromAnchorTransform)),
-                              🧩Model.fixedPointer()])
-        return value
-    }
-    static func fixedCenter(_ worldAnchor: WorldAnchor) -> Entity {
-        let value = Entity()
-        value.name = "\(worldAnchor.id)"
-        value.components.set(AnchoringComponent(.world(transform: worldAnchor.originFromAnchorTransform)))
+        value.position = position
+        value.components.set(🧩Model.fixedPointer())
         return value
     }
 }
