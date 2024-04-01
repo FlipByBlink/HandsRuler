@@ -124,26 +124,15 @@ private extension 📏MeasureModel {
     }
     
     private func updateLine() {
-        self.lineEntity.position = self.centerPosition
-        self.lineEntity.components.set(🧩Model.line(self.lineLength))
-        self.lineEntity.look(at: self.leftEntity.position,
-                             from: self.centerPosition,
-                             relativeTo: nil)
-        let occlusionEntity = self.lineEntity.findEntity(named: "lineOcclusion")!
-        occlusionEntity.components[ModelComponent.self] = 🧩Model.lineOcclusion(self.lineLength)
+        🧩Entity.updateLine(self.lineEntity,
+                            self.leftEntity.position,
+                            self.rightEntity.position)
     }
     
     private func updateResult() {
-        self.rootEntity.findEntity(named: "result")?.position = self.centerPosition
-        self.resultValue = self.lineLength
-    }
-    
-    private var lineLength: Float {
-        distance(self.leftEntity.position, self.rightEntity.position)
-    }
-    
-    private var centerPosition: SIMD3<Float> {
-        (self.leftEntity.position + self.rightEntity.position) / 2
+        let centerPosition = (self.leftEntity.position + self.rightEntity.position) / 2
+        self.rootEntity.findEntity(named: "result")?.position = centerPosition
+        self.resultValue = distance(self.leftEntity.position, self.rightEntity.position)
     }
     
     private func select(_ entity: Entity) {
