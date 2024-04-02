@@ -40,7 +40,7 @@ enum 🗒️StaticInfo {
                     "App.swift",
                     "ContentView.swift",
                     "🥽AppModel.swift",
-                    "📏MeasureView.swift",
+                    "📏RulerView.swift",
                     "🧩Entity.swift",
                     "🧩Name.swift",
                     "🧩Model.swift",

@@ -3,7 +3,7 @@ import RealityKit
 import ARKit
 
 @MainActor
-class 📏MeasureModel: ObservableObject {
+class 📏RulerModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
     @AppStorage("logsData") var logsData: Data?
     
@@ -22,7 +22,7 @@ class 📏MeasureModel: ObservableObject {
     private let sounds = 📢Sounds()
 }
 
-extension 📏MeasureModel {
+extension 📏RulerModel {
     func setUpChildEntities() {
         self.rootEntity.addChild(self.lineEntity)
         self.rootEntity.addChild(self.leftEntity)
@@ -70,7 +70,7 @@ extension 📏MeasureModel {
 }
 
 //MARK: private
-private extension 📏MeasureModel {
+private extension 📏RulerModel {
     private func processHandUpdates() async {
         for await update in self.handTrackingProvider.anchorUpdates {
             let handAnchor = update.anchor
@@ -224,7 +224,7 @@ private extension 📏MeasureModel {
 
 
 //MARK: simulator
-extension 📏MeasureModel {
+extension 📏RulerModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
         self.updateLine()

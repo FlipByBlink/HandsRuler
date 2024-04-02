@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct 🛠️LogView: View {
-    @EnvironmentObject var model: 🥽AppModel
+    @AppStorage("logsData") var logsData: Data?
+    @AppStorage("unit") var unit: 📐Unit = .meters
     var body: some View {
         List {
             Section {
@@ -16,7 +17,7 @@ struct 🛠️LogView: View {
                         }
                     } label: {
                         Label {
-                            Text(🪧ResultFormatter.string(log.lineLength, self.model.unit))
+                            Text(🪧ResultFormatter.string(log.lineLength, self.unit))
                                 .textSelection(.enabled)
                                 .monospacedDigit()
                                 .padding(.horizontal)
@@ -56,5 +57,5 @@ struct 🛠️LogView: View {
 }
 
 private extension 🛠️LogView {
-    private var logs: 💾Logs { .load(self.model.logsData) }
+    private var logs: 💾Logs { .load(self.logsData) }
 }
