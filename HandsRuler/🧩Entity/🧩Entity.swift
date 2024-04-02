@@ -7,7 +7,7 @@ enum 🧩Entity {
         value.components.set(OpacityComponent(opacity: 0.75))
         let occlusionEntity = Entity()
         occlusionEntity.name = "lineOcclusion"
-        occlusionEntity.components.set(🧩Model.lineOcclusion(0.4))
+        occlusionEntity.components.set(🧩Model.lineOcclusion(Self.Placeholder.lineLength))
         value.addChild(occlusionEntity)
         return value
     }
@@ -25,10 +25,10 @@ enum 🧩Entity {
         switch chirality {
             case .left:
                 value.name = "left"
-                value.position = .init(x: -0.2, y: 1.5, z: -0.7)
+                value.position = Self.Placeholder.leftPosition
             case .right:
                 value.name = "right"
-                value.position = .init(x: 0.2, y: 1.5, z: -0.7)
+                value.position = Self.Placeholder.rightPosition
         }
         value.components.set([InputTargetComponent(allowedInputTypes: .indirect),
                               CollisionComponent(shapes: [.generateSphere(radius: 0.04)]),
@@ -59,4 +59,9 @@ enum 🧩Entity {
 //        value.components.set(AnchoringComponent(.world(transform: Transform().matrix)))
 //        return value
 //    }
+    enum Placeholder {
+        static let leftPosition: SIMD3<Float> = .init(x: -0.2, y: 1.5, z: -0.7)
+        static let rightPosition: SIMD3<Float> = .init(x: 0.2, y: 1.5, z: -0.7)
+        static var lineLength: Float { distance(Self.leftPosition, Self.rightPosition) }
+    }
 }

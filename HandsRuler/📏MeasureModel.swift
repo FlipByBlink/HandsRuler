@@ -249,8 +249,8 @@ extension 📏MeasureModel {
     }
     private func resetPosition_simulator() {
 #if targetEnvironment(simulator)
-        self.leftEntity.position = .init(x: -0.2, y: 1.5, z: -0.7)
-        self.rightEntity.position = .init(x: 0.2, y: 1.5, z: -0.7)
+        self.leftEntity.position = 🧩Entity.Placeholder.leftPosition
+        self.rightEntity.position = 🧩Entity.Placeholder.rightPosition
         self.updateLine()
         self.updateResult()
 #endif
