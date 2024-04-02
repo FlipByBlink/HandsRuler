@@ -34,6 +34,7 @@ struct ContentView: View {
             if self.model.measureOnLaunch,
                !self.model.openedImmersiveSpace {
                 await self.openImmersiveSpace(id: "immersiveSpace")
+                self.model.openedImmersiveSpace = true
             }
         }
     }
@@ -47,6 +48,7 @@ private extension ContentView {
                     await self.dismissImmersiveSpace()
                 } else {
                     await self.openImmersiveSpace(id: "immersiveSpace")
+                    self.model.openedImmersiveSpace = true
                 }
             }
         }
