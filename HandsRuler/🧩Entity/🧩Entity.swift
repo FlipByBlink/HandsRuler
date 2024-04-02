@@ -19,6 +19,7 @@ enum 🧩Entity {
         entity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
         let occlusionEntity = entity.findEntity(named: "lineOcclusion")!
         occlusionEntity.components[ModelComponent.self] = 🧩Model.lineOcclusion(lineLength)
+        occlusionEntity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
     }
     static func fingerTip(_ chirality: HandAnchor.Chirality) -> Entity {
         let value = Entity()
