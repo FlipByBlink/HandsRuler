@@ -32,29 +32,40 @@ enum 🗒️StaticInfo {
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
         case main,
-             🛠️Menu
+             Entity,
+             Menu,
+             Rest
         var id: Self { self }
         var fileNames: [String] {
             switch self {
                 case .main: [
                     "App.swift",
                     "ContentView.swift",
-                    "🥽AppModel.swift",
                     "📏RulerView.swift",
-                    "🧩Entity.swift",
-                    "🧩Name.swift",
-                    "🧩Model.swift",
-                    "🧑HeadTrackingComponent.swift",
-                    "🧑HeadTrackingSystem.swift",
-                    "📐Unit.swift"
+                    "📏RulerModel.swift"
                 ]
-                case .🛠️Menu: [
-                    "🛠️MenuTop.swift",
-                    "🛠️Panel.swift",
+                case .Entity: [
+                    "🧩Entity.swift",
+                    "🧩Model.swift"
+                ]
+                case .Menu: [
+                    "🛠️OnboardView.swift",
+                    "🛠️LogView.swift",
                     "🛠️OptionMenu.swift",
                     "🛠️GuideMenu.swift",
+                    "🛠️AboutMenu.swift",
                     "🗒️StaticInfo.swift",
                     "ℹ️AboutApp.swift"
+                ]
+                case .Rest: [
+                    "📐Unit.swift",
+                    "🪧ResultFormatter.swift",
+                    "🔵Selection.swift",
+                    "📢Sounds.swift",
+                    "🧑HeadTrackingComponent.swift",
+                    "🧑HeadTrackingSystem.swift",
+                    "💾Log.swift",
+                    "💾Logs.swift"
                 ]
             }
         }

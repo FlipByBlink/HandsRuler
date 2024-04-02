@@ -17,6 +17,15 @@
 		16359E272B91D7E1004CC792 /* 🧑HeadTrackingComponent.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16359E252B91D6AC004CC792 /* 🧑HeadTrackingComponent.swift */; };
 		1642FAB52B4D54A60084F9ED /* 🛠️OptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1642FAB42B4D54A60084F9ED /* 🛠️OptionMenu.swift */; };
 		1642FAB92B4D6CAA0084F9ED /* 📏RulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1642FAB82B4D6CAA0084F9ED /* 📏RulerView.swift */; };
+		164435782BBC0B91004E9199 /* 📏RulerModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C4C6A42BB78A06004DB77E /* 📏RulerModel.swift */; };
+		164435792BBC0B91004E9199 /* 🛠️OnboardView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16B1E7012BB560A5005972CF /* 🛠️OnboardView.swift */; };
+		1644357A2BBC0B91004E9199 /* 🛠️LogView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16B1E6FF2BB5600D005972CF /* 🛠️LogView.swift */; };
+		1644357B2BBC0B91004E9199 /* 🛠️AboutMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C4C6A82BB7AF0B004DB77E /* 🛠️AboutMenu.swift */; };
+		1644357C2BBC0B91004E9199 /* 🪧ResultFormatter.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16159B892BB7D82C00106FD6 /* 🪧ResultFormatter.swift */; };
+		1644357D2BBC0B91004E9199 /* 🔵Selection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169F10442BB976C300BAF363 /* 🔵Selection.swift */; };
+		1644357E2BBC0B91004E9199 /* 📢Sounds.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16159B8B2BB7E31B00106FD6 /* 📢Sounds.swift */; };
+		1644357F2BBC0B91004E9199 /* 💾Log.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16B1E6FD2BB5302A005972CF /* 💾Log.swift */; };
+		164435802BBC0B91004E9199 /* 💾Logs.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C4C6A62BB79F9C004DB77E /* 💾Logs.swift */; };
 		164C78032B5746AD008FF872 /* 🧩Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C78022B5746AD008FF872 /* 🧩Entity.swift */; };
 		165ADB4F2B4B71B0008A756F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ADB4E2B4B71B0008A756F /* App.swift */; };
 		165ADB512B4B71B0008A756F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ADB502B4B71B0008A756F /* ContentView.swift */; };
@@ -60,6 +69,15 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				164435782BBC0B91004E9199 /* 📏RulerModel.swift in CopyFiles */,
+				164435792BBC0B91004E9199 /* 🛠️OnboardView.swift in CopyFiles */,
+				1644357A2BBC0B91004E9199 /* 🛠️LogView.swift in CopyFiles */,
+				1644357B2BBC0B91004E9199 /* 🛠️AboutMenu.swift in CopyFiles */,
+				1644357C2BBC0B91004E9199 /* 🪧ResultFormatter.swift in CopyFiles */,
+				1644357D2BBC0B91004E9199 /* 🔵Selection.swift in CopyFiles */,
+				1644357E2BBC0B91004E9199 /* 📢Sounds.swift in CopyFiles */,
+				1644357F2BBC0B91004E9199 /* 💾Log.swift in CopyFiles */,
+				164435802BBC0B91004E9199 /* 💾Logs.swift in CopyFiles */,
 				16359E272B91D7E1004CC792 /* 🧑HeadTrackingComponent.swift in CopyFiles */,
 				166F7E4C2B7DC36C005F70D5 /* App.swift in CopyFiles */,
 				166F7E4D2B7DC36C005F70D5 /* ContentView.swift in CopyFiles */,
