@@ -157,11 +157,11 @@ private extension 📏RulerModel {
         self.leftEntity.components.set(🧩Model.fingerTip(.blue))
         self.rightEntity.components.set(🧩Model.fingerTip(.blue))
         
+        self.hideAndShow()
         self.resetPosition_simulator()
-        self.hideAndFadeIn()
     }
     
-    private func hideAndFadeIn() {
+    private func hideAndShow() {
         Task {
             let entities = [
                 self.lineEntity,
