@@ -31,7 +31,7 @@ extension 📏RulerModel {
     
     func run() {
 #if targetEnvironment(simulator)
-        print("Not support handTracking in simulator.")
+        print("Not support ARKit tracking in simulator.")
 #else
         Task { @MainActor in
             do {
