@@ -18,10 +18,10 @@ struct 📏RulerView: View {
         } update: { _, attachments in
             self.model.logs.elements.forEach { log in
                 let fixedResultEntity = attachments.entity(for: "\(log.id)")!
-//                fixedResultEntity.components.set(🧑HeadTrackingComponent())
-                fixedResultEntity.name = "fixedResult\(log.id)"
-                if let centerEntity = self.model.rootEntity.findEntity(named: "\(log.id)") {
-                    centerEntity.addChild(fixedResultEntity)
+                fixedResultEntity.components.set(🧑HeadTrackingComponent())
+                fixedResultEntity.position = (log.leftPosition + log.rightPosition) / 2
+                if let fixedRulerEntity = self.model.rootEntity.findEntity(named: "\(log.id)") {
+                    fixedRulerEntity.addChild(fixedResultEntity)
                 }
             }
             //重複してentityが追加されてないか後日チェックする

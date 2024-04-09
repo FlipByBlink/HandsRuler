@@ -37,29 +37,17 @@ enum 🧩Entity {
                               🧩Model.fingerTip()])
         return value
     }
+    static func fixedLine(_ log: 💾Log) -> Entity {
+        let lineEntity = Self.line()
+        Self.updateLine(lineEntity, log.leftPosition, log.rightPosition)
+        return lineEntity
+    }
     static func fixedPointer(_ position: SIMD3<Float>) -> Entity {
         let value = Entity()
         value.position = position
         value.components.set(🧩Model.fixedPointer())
         return value
     }
-    static func fixedLine(_ log: 💾Log) -> Entity {
-        let lineEntity = Self.line()
-        Self.updateLine(lineEntity, log.leftPosition, log.rightPosition)
-        return lineEntity
-    }
-//    static func fixedRuler(_ leftPosition: SIMD3<Float>, _ rightPosition: SIMD3<Float>) -> Entity {
-//        let value = Entity()
-//        let lineEntity = Self.line()
-//        Self.updateLine(lineEntity, leftPosition, rightPosition)
-//        value.addChild(lineEntity)
-//        let fixedLeftEntity = Self.fixedPointer(leftPosition)
-//        value.addChild(fixedLeftEntity)
-//        let fixedRightEntity = Self.fixedPointer(rightPosition)
-//        value.addChild(fixedRightEntity)
-//        value.components.set(AnchoringComponent(.world(transform: Transform().matrix)))
-//        return value
-//    }
     enum Placeholder {
         static let leftPosition: SIMD3<Float> = .init(x: -0.2, y: 1.5, z: -0.7)
         static let rightPosition: SIMD3<Float> = .init(x: 0.2, y: 1.5, z: -0.7)

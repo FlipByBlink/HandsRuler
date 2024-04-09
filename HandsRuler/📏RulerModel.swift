@@ -184,29 +184,30 @@ private extension 📏RulerModel {
             }
         }()
         if condition {
-            self.setFixedRuler()
-            💾Logs.current.add(self.createLog())
+            let log = self.createLog()
+            self.setFixedRuler(log)
+            💾Logs.current.add(log)
         }
     }
     
     private func createLog() -> 💾Log {
-        .init(anchorID: WorldAnchor(originFromAnchorTransform: self.rootEntity.transform.matrix).id,
+        .init(anchorID: WorldAnchor(originFromAnchorTransform: Transform().matrix).id,
               leftPosition: self.leftEntity.position,
               rightPosition: self.rightEntity.position,
               date: .now)
     }
     
-    private func setFixedRuler() {
+    private func setFixedRuler(_ log: 💾Log) {
         let fixedRulerEntity = Entity()
-        fixedRulerEntity.addChild(self.lineEntity.clone(recursive: true))
-        let fixedLeftEntity = 🧩Entity.fixedPointer(self.leftEntity.position)
+        fixedRulerEntity.name = "\(log.id)"
+        let lineEntity = 🧩Entity.line()
+        🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
+        fixedRulerEntity.addChild(lineEntity)
+        let fixedLeftEntity = 🧩Entity.fixedPointer(log.leftPosition)
         fixedRulerEntity.addChild(fixedLeftEntity)
-        let fixedRightEntity = 🧩Entity.fixedPointer(self.rightEntity.position)
+        let fixedRightEntity = 🧩Entity.fixedPointer(log.rightPosition)
         fixedRulerEntity.addChild(fixedRightEntity)
-        fixedRulerEntity.addChild(self.rootEntity.findEntity(named: "result")!.clone(recursive: false))
-        fixedRulerEntity.components.set(
-            AnchoringComponent(.world(transform: self.rootEntity.transform.matrix))
-        )
+        fixedRulerEntity.components.set(AnchoringComponent(.world(transform: Transform().matrix)))
         self.rootEntity.addChild(fixedRulerEntity)
         switch self.selection {
             case .left: fixedRightEntity.playAudio(self.sounds.fix)
