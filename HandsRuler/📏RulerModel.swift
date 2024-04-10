@@ -103,9 +103,6 @@ private extension 📏RulerModel {
     
     private func processWorldAnchorUpdates() async { //TODO: implement on real device
         for await update in self.worldTrackingProvider.anchorUpdates {
-            guard let log = self.logs.elements.first(where: { $0.id == update.anchor.id }) else {
-                continue
-            }
             switch update.event {
                 case .added:
                     self.setFixedRuler(update.anchor)
@@ -179,8 +176,8 @@ private extension 📏RulerModel {
         }()
         if condition {
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-            self.setFixedRuler(worldAnchor)
             💾Logs.current.add(self.createLog(worldAnchor))
+            self.setFixedRuler(worldAnchor)
         }
     }
     
