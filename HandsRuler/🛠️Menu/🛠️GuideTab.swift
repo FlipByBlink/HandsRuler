@@ -30,17 +30,17 @@ struct 🛠️GuideTab: View {
                 }
                 Section {
                     HStack(spacing: 20) {
-                        Image(systemName: "photo")
+                        Image(.copy)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
-                        Text("Copy log value.")
+                        Text("Copy log value by long press.")
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
                     HStack(spacing: 20) {
-                        Image(systemName: "photo")
+                        Image(.delete)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 240)
@@ -65,23 +65,22 @@ struct 🛠️GuideTab: View {
                 }
             }
             .navigationTitle("Guide")
+            .task { await self.observeAuthorizationStatus() }
         }
         .tabItem { Label("Guide", systemImage: "questionmark") }
     }
 }
 
 private extension 🛠️GuideTab {
-    private func observeAuthorizationStatus() {
-        Task {
-            let session = ARKitSession()
-            self.authorizationStatus = await session.queryAuthorization(for: [.handTracking])[.handTracking]
-            
-            for await update in session.events {
-                if case .authorizationChanged(let type, let status) = update {
-                    if type == .handTracking { self.authorizationStatus = status }
-                } else {
-                    print("Another session event \(update).")
-                }
+    private func observeAuthorizationStatus() async {
+        let session = ARKitSession()
+        self.authorizationStatus = await session.queryAuthorization(for: [.handTracking])[.handTracking]
+        
+        for await update in session.events {
+            if case .authorizationChanged(let type, let status) = update {
+                if type == .handTracking { self.authorizationStatus = status }
+            } else {
+                print("Another session event \(update).")
             }
         }
     }

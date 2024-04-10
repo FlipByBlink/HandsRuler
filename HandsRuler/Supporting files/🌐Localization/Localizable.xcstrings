@@ -12,7 +12,14 @@
       }
     },
     "App Store\nreview\nPLEASE!!!" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Storeで\nレビュー\nしてください！"
+          }
+        }
+      }
     },
     "Apple Vision Pro" : {
       "localizations" : {
@@ -34,7 +41,7 @@
         }
       }
     },
-    "Copy log value." : {
+    "Copy log value by long press." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -75,7 +82,14 @@
       }
     },
     "Go to App Store" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Storeに移動"
+          }
+        }
+      }
     },
     "Guide" : {
       "localizations" : {
@@ -148,7 +162,14 @@
       }
     },
     "Request" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お願い"
+          }
+        }
+      }
     },
     "Start" : {
       "localizations" : {
