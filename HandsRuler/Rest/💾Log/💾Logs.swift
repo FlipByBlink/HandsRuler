@@ -4,7 +4,7 @@ struct 💾Logs: Codable {
     private(set) var elements: [💾Log]
 }
 
-extension 💾Logs {
+extension 💾Logs: Equatable {
     static func load(_ data: Data?) -> Self {
         if let data {
             try! JSONDecoder().decode(Self.self, from: data)

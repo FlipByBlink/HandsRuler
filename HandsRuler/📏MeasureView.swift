@@ -41,6 +41,13 @@ struct 📏MeasureView: View {
                 .onEnded { self.model.tap($0.entity) }
         )
         .task { self.model.run() }
+        .onChange(of: self.model.logs) { oldValue, newValue in
+            oldValue.elements.forEach { log in
+                if !newValue.elements.contains(log) {
+                    self.model.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
+                }
+            }
+        }
     }
 }
 
