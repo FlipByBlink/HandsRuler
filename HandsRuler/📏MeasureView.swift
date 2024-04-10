@@ -31,7 +31,7 @@ struct 📏MeasureView: View {
             }
             ForEach(self.model.logs.elements) { log in
                 Attachment(id: "\(log.id)") {
-                    self.resultView(log.lineLength)
+                    self.resultView(log.lineLength, log)
                 }
             }
         }
@@ -46,7 +46,7 @@ struct 📏MeasureView: View {
 }
 
 private extension 📏MeasureView {
-    private func resultView(_ lineLength: Float) -> some View {
+    private func resultView(_ lineLength: Float, _ log: 💾Log? = nil) -> some View {
         Text(🪧ResultFormatter.string(lineLength, self.model.unit))
             .font(.system(size: max(.init(lineLength * 30), 20)))
             .fontWeight(.bold)
@@ -54,7 +54,13 @@ private extension 📏MeasureView {
             .padding(12)
             .padding(.horizontal, 4)
             .glassBackgroundEffect()
-            .modifier(Self.SetRandomPosition_Simulator(self.model))
+            .onTapGesture {
+                if let log {
+                    self.model.logs.remove(log)
+                } else {
+                    self.setRandomPosition_simulator()
+                }
+            }
     }
     private func updateRemovedFixedRuler(_ oldValue: 💾Logs, _ newValue: 💾Logs) {
         //TODO: これはworldTrackingProviderが動く実機なら必要ないかも。要確認
@@ -71,16 +77,9 @@ private extension 📏MeasureView {
 
 //MARK: Simulator
 private extension 📏MeasureView {
-    private struct SetRandomPosition_Simulator: ViewModifier {
-        var model: 📏MeasureModel
-        func body(content: Content) -> some View {
-            content
+    private func setRandomPosition_simulator() {
 #if targetEnvironment(simulator)
-                .onTapGesture { self.model.setRandomPosition_simulator() }
+        self.model.setRandomPosition_simulator()
 #endif
-        }
-        init(_ model: 📏MeasureModel) {
-            self.model = model
-        }
     }
 }
