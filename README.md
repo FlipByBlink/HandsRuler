@@ -25,9 +25,12 @@ Unit option
 - inches
 - feet
 - yards
+- feet and inches
 
 Sub function
 - Fix a pointer by indirect tap.
+- Multi measurements.
+- Log feature.
 
 <img src="HandsRuler/Supporting files/README assets/screenshot1280w2.jpg" width="640">
 
