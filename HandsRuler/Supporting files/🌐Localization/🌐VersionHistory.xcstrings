@@ -41,7 +41,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ADD fixed ruler\nADD multi ruler\nADD world anchoring\nADD log data\nADD option to show feet&inch\nADD option to launch immediately ruler\nseveral improvement and fix"
+            "value" : "ADD multi fixed ruler\nADD world anchoring\nADD log data\nADD option to show feet&inch\nADD option to launch immediately ruler\nseveral improvement and fix"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "複数回測定できる機能の追加。\nワールドトラッキングの追加。\nログ機能の追加。\nフィートとインチで表示するオプションの追加。\nアプリ起動時にすぐに測定する機能の追加。\n軽微な改善や修正。"
           }
         }
       }
