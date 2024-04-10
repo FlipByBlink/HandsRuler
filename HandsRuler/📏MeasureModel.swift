@@ -175,6 +175,7 @@ private extension 📏MeasureModel {
         }()
         if condition {
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
+            Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
             💾Logs.current.add(self.createLog(worldAnchor))
             self.setFixedRuler(worldAnchor)
         }
