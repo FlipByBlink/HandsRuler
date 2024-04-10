@@ -35,7 +35,7 @@ struct ContentView: View {
         .task {
             if self.measureOnLaunch,
                !self.openedImmersiveSpace {
-                await self.openImmersiveSpace(id: "ruler")
+                await self.openImmersiveSpace(id: "measure")
                 self.openedImmersiveSpace = true
             }
         }
@@ -52,7 +52,7 @@ private extension ContentView {
                 if self.openedImmersiveSpace {
                     await self.dismissImmersiveSpace()
                 } else {
-                    await self.openImmersiveSpace(id: "ruler")
+                    await self.openImmersiveSpace(id: "measure")
                     self.openedImmersiveSpace = true
                 }
             }

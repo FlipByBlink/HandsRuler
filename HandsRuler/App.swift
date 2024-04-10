@@ -8,8 +8,8 @@ struct HandsRulerApp: App {
             ContentView(self.$openedImmersiveSpace)
         }
         .windowResizability(.contentSize)
-        ImmersiveSpace(id: "ruler") {
-            📏RulerView()
+        ImmersiveSpace(id: "measure") {
+            📏MeasureView()
                 .onDisappear {
                     self.openedImmersiveSpace = false
                 }

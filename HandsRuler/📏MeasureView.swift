@@ -2,8 +2,8 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct 📏RulerView: View {
-    @StateObject private var model: 📏RulerModel = .init()
+struct 📏MeasureView: View {
+    @StateObject private var model: 📏MeasureModel = .init()
     var body: some View {
         RealityView { content, attachments in
             content.add(self.model.rootEntity)
@@ -44,7 +44,7 @@ struct 📏RulerView: View {
     }
 }
 
-private extension 📏RulerView {
+private extension 📏MeasureView {
     private func resultView(_ lineLength: Float) -> some View {
         Text(🪧ResultFormatter.string(lineLength, self.model.unit))
             .font(.system(size: max(.init(lineLength * 30), 20)))
@@ -61,16 +61,16 @@ private extension 📏RulerView {
 
 
 //MARK: Simulator
-private extension 📏RulerView {
+private extension 📏MeasureView {
     private struct SetRandomPosition_Simulator: ViewModifier {
-        var model: 📏RulerModel
+        var model: 📏MeasureModel
         func body(content: Content) -> some View {
             content
 #if targetEnvironment(simulator)
                 .onTapGesture { self.model.setRandomPosition_simulator() }
 #endif
         }
-        init(_ model: 📏RulerModel) {
+        init(_ model: 📏MeasureModel) {
             self.model = model
         }
     }
