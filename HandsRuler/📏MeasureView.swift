@@ -57,6 +57,7 @@ private extension 📏MeasureView {
             .modifier(Self.SetRandomPosition_Simulator(self.model))
     }
     private func updateRemovedFixedRuler(_ oldValue: 💾Logs, _ newValue: 💾Logs) {
+        //これはworldTrackingProviderが動く実機なら必要ないかも
         oldValue.elements.forEach { log in
             if !newValue.elements.contains(log) {
                 self.model.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
