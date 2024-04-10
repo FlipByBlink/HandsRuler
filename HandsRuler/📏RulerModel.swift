@@ -108,19 +108,13 @@ private extension 📏RulerModel {
             }
             switch update.event {
                 case .added:
-                    self.rootEntity.addChild(🧩Entity.fixedPointer(log.leftPosition))
-                    self.rootEntity.addChild(🧩Entity.fixedPointer(log.rightPosition))
-                    self.rootEntity.addChild(🧩Entity.fixedLine(log))
+                    self.setFixedRuler(update.anchor)
                 case .updated:
-                    continue
+                    self.rootEntity.findEntity(named: "\(update.anchor.id)")?.removeFromParent()
+                    self.setFixedRuler(update.anchor)
                 case .removed:
-                    guard let entity = self.rootEntity.findEntity(named: "\(update.anchor.id)") else {
-                        assertionFailure()
-                        continue
-                    }
-                    self.rootEntity.removeChild(entity)
+                    self.rootEntity.findEntity(named: "\(update.anchor.id)")?.removeFromParent()
             }
-            self.updateFixedLinesAndResults()
         }
     }
     
@@ -184,20 +178,23 @@ private extension 📏RulerModel {
             }
         }()
         if condition {
-            let log = self.createLog()
-            self.setFixedRuler(log)
-            💾Logs.current.add(log)
+            let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
+            self.setFixedRuler(worldAnchor)
+            💾Logs.current.add(self.createLog(worldAnchor))
         }
     }
     
-    private func createLog() -> 💾Log {
-        .init(anchorID: WorldAnchor(originFromAnchorTransform: Transform().matrix).id,
+    private func createLog(_ worldAnchor: WorldAnchor) -> 💾Log {
+        .init(anchorID: worldAnchor.id,
               leftPosition: self.leftEntity.position,
               rightPosition: self.rightEntity.position,
               date: .now)
     }
     
-    private func setFixedRuler(_ log: 💾Log) {
+    private func setFixedRuler(_ worldAnchor: WorldAnchor) {
+        guard let log = self.logs.elements.first(where: { $0.id == worldAnchor.id }) else {
+            return
+        }
         let fixedRulerEntity = Entity()
         fixedRulerEntity.name = "\(log.id)"
         let lineEntity = 🧩Entity.line()
@@ -214,10 +211,6 @@ private extension 📏RulerModel {
             case .right: fixedLeftEntity.playAudio(self.sounds.fix)
             case .noSelect: fatalError()
         }
-    }
-    
-    private func updateFixedLinesAndResults() {
-        //placeholder
     }
 }
 
