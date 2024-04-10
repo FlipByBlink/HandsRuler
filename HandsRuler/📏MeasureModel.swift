@@ -107,8 +107,7 @@ private extension 📏MeasureModel {
                 case .added:
                     self.setFixedRuler(update.anchor)
                 case .updated:
-                    self.rootEntity.findEntity(named: "\(update.anchor.id)")?.removeFromParent()
-                    self.setFixedRuler(update.anchor)
+                    continue
                 case .removed:
                     self.rootEntity.findEntity(named: "\(update.anchor.id)")?.removeFromParent()
             }

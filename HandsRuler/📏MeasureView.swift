@@ -41,13 +41,7 @@ struct 📏MeasureView: View {
                 .onEnded { self.model.tap($0.entity) }
         )
         .task { self.model.run() }
-        .onChange(of: self.model.logs) { oldValue, newValue in
-            oldValue.elements.forEach { log in
-                if !newValue.elements.contains(log) {
-                    self.model.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
-                }
-            }
-        }
+        .onChange(of: self.model.logs, self.updateRemovedFixedRuler(_:_:))
     }
 }
 
@@ -61,6 +55,13 @@ private extension 📏MeasureView {
             .padding(.horizontal, 4)
             .glassBackgroundEffect()
             .modifier(Self.SetRandomPosition_Simulator(self.model))
+    }
+    private func updateRemovedFixedRuler(_ oldValue: 💾Logs, _ newValue: 💾Logs) {
+        oldValue.elements.forEach { log in
+            if !newValue.elements.contains(log) {
+                self.model.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
+            }
+        }
     }
 }
 
