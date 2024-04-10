@@ -24,7 +24,7 @@ struct 📏MeasureView: View {
                     fixedRulerEntity.addChild(fixedResultEntity)
                 }
             }
-            //重複してentityが追加されてないか後日チェックする
+            //TODO: 重複してentityが追加されてないか後日チェックする
         } attachments: {
             Attachment(id: "result") {
                 self.resultView(self.model.resultValue)
@@ -57,7 +57,7 @@ private extension 📏MeasureView {
             .modifier(Self.SetRandomPosition_Simulator(self.model))
     }
     private func updateRemovedFixedRuler(_ oldValue: 💾Logs, _ newValue: 💾Logs) {
-        //これはworldTrackingProviderが動く実機なら必要ないかも
+        //TODO: これはworldTrackingProviderが動く実機なら必要ないかも。要確認
         oldValue.elements.forEach { log in
             if !newValue.elements.contains(log) {
                 self.model.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()

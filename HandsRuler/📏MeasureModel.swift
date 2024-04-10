@@ -69,7 +69,7 @@ extension 📏MeasureModel {
     var logs: 💾Logs { .load(self.logsData) }
 }
 
-//MARK: private
+//MARK: ======== private ========
 private extension 📏MeasureModel {
     private func processHandUpdates() async {
         for await update in self.handTrackingProvider.anchorUpdates {
@@ -214,7 +214,7 @@ private extension 📏MeasureModel {
 
 
 
-//MARK: simulator
+//MARK: ======== simulator ========
 extension 📏MeasureModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
