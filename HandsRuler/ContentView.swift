@@ -21,9 +21,10 @@ struct ContentView: View {
                 .toolbar { self.startOrStopButton() }
             }
             .tabItem { Label("Measure", systemImage: "ruler") }
-            🛠️OptionMenu()
-            🛠️GuideMenu()
-            🛠️AboutMenu()
+            🛠️OptionTab()
+            🛠️GuideTab()
+            🛠️AboutTab()
+            🛠️RequestTab()
         }
         .frame(width: 600, height: 600)
         .onChange(of: self.scenePhase) { _, newValue in

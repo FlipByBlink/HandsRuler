@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 🛠️OptionMenu: View {
+struct 🛠️OptionTab: View {
     @AppStorage("unit") var unit: 📐Unit = .meters
     @AppStorage("measureOnLaunch") var measureOnLaunch: Bool = false
     var body: some View {

@@ -1,7 +1,7 @@
 import SwiftUI
 import ARKit
 
-struct 🛠️GuideMenu: View {
+struct 🛠️GuideTab: View {
     @State private var authorizationStatus: ARKitSession.AuthorizationStatus?
     var body: some View {
         NavigationStack {
@@ -14,7 +14,6 @@ struct 🛠️GuideMenu: View {
                             .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                         Text("Measurement of the distance between the fingers.")
-                            .font(.caption)
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
@@ -25,7 +24,6 @@ struct 🛠️GuideMenu: View {
                             .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                         Text("Fix / Unfix a pointer by indirect tap.")
-                            .font(.caption)
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
@@ -38,7 +36,6 @@ struct 🛠️GuideMenu: View {
                             .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                         Text("Copy log value.")
-                            .font(.caption)
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
@@ -49,7 +46,6 @@ struct 🛠️GuideMenu: View {
                             .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                         Text("Delete a log by swiping.")
-                            .font(.caption)
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
@@ -63,7 +59,6 @@ struct 🛠️GuideMenu: View {
                                 .fontWeight(.semibold)
                             Text(self.authorizationStatus?.description ?? "nil")
                         }
-                        .font(.caption)
                         .foregroundStyle(.secondary)
                     default:
                         EmptyView()
@@ -75,7 +70,7 @@ struct 🛠️GuideMenu: View {
     }
 }
 
-private extension 🛠️GuideMenu {
+private extension 🛠️GuideTab {
     private func observeAuthorizationStatus() {
         Task {
             let session = ARKitSession()

@@ -11,6 +11,9 @@
         }
       }
     },
+    "App Store\nreview\nPLEASE!!!" : {
+
+    },
     "Apple Vision Pro" : {
       "localizations" : {
         "ja" : {
@@ -70,6 +73,9 @@
           }
         }
       }
+    },
+    "Go to App Store" : {
+
     },
     "Guide" : {
       "localizations" : {
@@ -140,6 +146,9 @@
           }
         }
       }
+    },
+    "Request" : {
+
     },
     "Start" : {
       "localizations" : {

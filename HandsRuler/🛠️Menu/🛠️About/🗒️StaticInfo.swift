@@ -51,9 +51,10 @@ enum 🗒️StaticInfo {
                 case .Menu: [
                     "🛠️OnboardView.swift",
                     "🛠️LogView.swift",
-                    "🛠️OptionMenu.swift",
-                    "🛠️GuideMenu.swift",
-                    "🛠️AboutMenu.swift",
+                    "🛠️OptionTab.swift",
+                    "🛠️GuideTab.swift",
+                    "🛠️RequestTab.swift",
+                    "🛠️AboutTab.swift",
                     "🗒️StaticInfo.swift",
                     "ℹ️AboutApp.swift"
                 ]
