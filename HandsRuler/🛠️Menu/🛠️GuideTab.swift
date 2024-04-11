@@ -40,12 +40,22 @@ struct 🛠️GuideTab: View {
                     }
                     .padding(4)
                     HStack(spacing: 20) {
-                        Image(.delete)
+                        Image(.deleteRow)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 240)
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                         Text("Delete a log by swiping.")
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(4)
+                    HStack(spacing: 20) {
+                        Image(.deleteDirectly)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 240)
+                            .clipShape(.rect(cornerRadius: 8, style: .continuous))
+                        Text("Delete a log by tap the result view.")
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)

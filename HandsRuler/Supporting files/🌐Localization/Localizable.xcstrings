@@ -61,6 +61,16 @@
         }
       }
     },
+    "Delete a log by tap the result view." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "固定された結果表示をタップして削除。"
+          }
+        }
+      }
+    },
     "empty" : {
       "localizations" : {
         "ja" : {

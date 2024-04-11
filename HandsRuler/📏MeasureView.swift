@@ -53,6 +53,8 @@ private extension 📏MeasureView {
             .monospacedDigit()
             .padding(12)
             .padding(.horizontal, 4)
+            .contentShape(.capsule)
+            .hoverEffect(isEnabled: log != nil)
             .glassBackgroundEffect()
             .onTapGesture {
                 if let log {
