@@ -206,7 +206,7 @@ private extension 📏MeasureModel {
         switch self.selection {
             case .left: fixedRightEntity.playAudio(self.sounds.fix)
             case .right: fixedLeftEntity.playAudio(self.sounds.fix)
-            case .noSelect: fatalError()
+            case .noSelect: break //TODO: 再検討
         }
     }
 }
