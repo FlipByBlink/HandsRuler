@@ -107,9 +107,10 @@ private extension 📏MeasureModel {
                 case .added:
                     self.setFixedRuler(update.anchor)
                 case .updated:
+                    self.updateFixedRuler(update.anchor)
                     continue
                 case .removed:
-                    self.rootEntity.findEntity(named: "\(update.anchor.id)")?.removeFromParent()
+                    self.removeFixedRuler(update.anchor)
             }
         }
     }
@@ -175,9 +176,8 @@ private extension 📏MeasureModel {
         }()
         if condition {
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-            Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
             💾Logs.current.add(self.createLog(worldAnchor))
-            self.setFixedRuler(worldAnchor)
+            Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
         }
     }
     
@@ -193,21 +193,53 @@ private extension 📏MeasureModel {
             return
         }
         let fixedRulerEntity = Entity()
+        fixedRulerEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform,
+                                            relativeTo: nil)
         fixedRulerEntity.name = "\(log.id)"
         let lineEntity = 🧩Entity.line()
         🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
         fixedRulerEntity.addChild(lineEntity)
         let fixedLeftEntity = 🧩Entity.fixedPointer(log.leftPosition)
+        fixedLeftEntity.position = log.leftPosition
         fixedRulerEntity.addChild(fixedLeftEntity)
         let fixedRightEntity = 🧩Entity.fixedPointer(log.rightPosition)
+        fixedRightEntity.position = log.rightPosition
         fixedRulerEntity.addChild(fixedRightEntity)
-        fixedRulerEntity.components.set(AnchoringComponent(.world(transform: Transform().matrix)))
         self.rootEntity.addChild(fixedRulerEntity)
         switch self.selection {
             case .left: fixedRightEntity.playAudio(self.sounds.fix)
             case .right: fixedLeftEntity.playAudio(self.sounds.fix)
             case .noSelect: break //TODO: 再検討
         }
+    }
+    private func updateFixedRuler(_ worldAnchor: WorldAnchor) {
+        guard let log = self.logs.elements.first(where: { $0.id == worldAnchor.id }) else {
+            return
+        }
+        guard let fixedRulerEntity = self.rootEntity.findEntity(named: "\(log.id)") else {
+            return
+        }
+        fixedRulerEntity.children.forEach { $0.removeFromParent() }
+        fixedRulerEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform,
+                                            relativeTo: nil)
+        let lineEntity = 🧩Entity.line()
+        🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
+        fixedRulerEntity.addChild(lineEntity)
+        let fixedLeftEntity = 🧩Entity.fixedPointer(log.leftPosition)
+        fixedLeftEntity.position = log.leftPosition
+        fixedRulerEntity.addChild(fixedLeftEntity)
+        let fixedRightEntity = 🧩Entity.fixedPointer(log.rightPosition)
+        fixedRightEntity.position = log.rightPosition
+        fixedRulerEntity.addChild(fixedRightEntity)
+    }
+    private func removeFixedRuler(_ worldAnchor: WorldAnchor) {
+        guard let log = self.logs.elements.first(where: { $0.id == worldAnchor.id }) else {
+            return
+        }
+        guard let fixedRulerEntity = self.rootEntity.findEntity(named: "\(log.id)") else {
+            return
+        }
+        fixedRulerEntity.removeFromParent()
     }
 }
 

@@ -15,15 +15,13 @@ struct 📏MeasureView: View {
             self.model.rootEntity.addChild(resultEntity)
             
             self.model.setUp_simulator()
-        } update: { _, attachments in
-            self.model.logs.elements.forEach { log in
-                let fixedResultEntity = attachments.entity(for: "\(log.id)")!
-                fixedResultEntity.components.set(🧑HeadTrackingComponent()) //TODO: 再検討
-                fixedResultEntity.position = (log.leftPosition + log.rightPosition) / 2
-                if let fixedRulerEntity = self.model.rootEntity.findEntity(named: "\(log.id)") {
-                    fixedRulerEntity.addChild(fixedResultEntity)
-                }
-            }
+//        } update: { _, attachments in
+        } update: { _, _ in
+//            self.model.logs.elements.forEach { log in //TODO: Work in progress
+//                let fixedResultEntity = attachments.entity(for: "\(log.id)")!
+//                fixedResultEntity.components.set(🪧FixedResultComponent(worldAnchorID: log.id))
+//                self.model.rootEntity.addChild(fixedResultEntity)
+//            }
         } attachments: {
             Attachment(id: "result") {
                 self.resultView(self.model.resultValue)
@@ -40,7 +38,6 @@ struct 📏MeasureView: View {
                 .onEnded { self.model.tap($0.entity) }
         )
         .task { self.model.run() }
-        .onChange(of: self.model.logs, self.updateRemovedFixedRuler(_:_:))
     }
 }
 
@@ -62,14 +59,6 @@ private extension 📏MeasureView {
                     self.setRandomPosition_simulator()
                 }
             }
-    }
-    private func updateRemovedFixedRuler(_ oldValue: 💾Logs, _ newValue: 💾Logs) {
-        //TODO: これはworldTrackingProviderが動く実機なら必要ないかも。要確認
-        oldValue.elements.forEach { log in
-            if !newValue.elements.contains(log) {
-                self.model.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
-            }
-        }
     }
 }
 
