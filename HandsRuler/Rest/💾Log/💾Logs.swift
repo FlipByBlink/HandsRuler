@@ -1,10 +1,13 @@
-import Foundation
+import ARKit
 
 struct 💾Logs: Codable {
     private(set) var elements: [💾Log]
 }
 
 extension 💾Logs: Equatable {
+    subscript(worldAnchorID: UUID) -> 💾Log? {
+        self.elements.first(where: { $0.id == worldAnchorID })
+    }
     static func load(_ data: Data?) -> Self {
         if let data {
             try! JSONDecoder().decode(Self.self, from: data)

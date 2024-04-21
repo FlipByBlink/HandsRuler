@@ -104,11 +104,10 @@ private extension 📏MeasureModel {
     private func processWorldAnchorUpdates() async { //TODO: implement on real device
         for await update in self.worldTrackingProvider.anchorUpdates {
             switch update.event {
-                case .added:
+                case .added: 
                     self.setFixedRuler(update.anchor)
                 case .updated:
                     self.updateFixedRuler(update.anchor)
-                    continue
                 case .removed:
                     self.removeFixedRuler(update.anchor)
             }
@@ -189,7 +188,7 @@ private extension 📏MeasureModel {
     }
     
     private func setFixedRuler(_ worldAnchor: WorldAnchor) {
-        guard let log = self.logs.elements.first(where: { $0.id == worldAnchor.id }) else {
+        guard let log = self.logs[worldAnchor.id] else {
             return
         }
         let fixedRulerEntity = Entity()
@@ -212,11 +211,10 @@ private extension 📏MeasureModel {
             case .noSelect: break //TODO: 再検討
         }
     }
+    
     private func updateFixedRuler(_ worldAnchor: WorldAnchor) {
-        guard let log = self.logs.elements.first(where: { $0.id == worldAnchor.id }) else {
-            return
-        }
-        guard let fixedRulerEntity = self.rootEntity.findEntity(named: "\(log.id)") else {
+        guard let log = self.logs[worldAnchor.id],
+              let fixedRulerEntity = self.rootEntity.findEntity(named: "\(log.id)") else {
             return
         }
         fixedRulerEntity.children.forEach { $0.removeFromParent() }
@@ -232,11 +230,10 @@ private extension 📏MeasureModel {
         fixedRightEntity.position = log.rightPosition
         fixedRulerEntity.addChild(fixedRightEntity)
     }
+    
     private func removeFixedRuler(_ worldAnchor: WorldAnchor) {
-        guard let log = self.logs.elements.first(where: { $0.id == worldAnchor.id }) else {
-            return
-        }
-        guard let fixedRulerEntity = self.rootEntity.findEntity(named: "\(log.id)") else {
+        guard let log = self.logs[worldAnchor.id],
+              let fixedRulerEntity = self.rootEntity.findEntity(named: "\(log.id)") else {
             return
         }
         fixedRulerEntity.removeFromParent()
