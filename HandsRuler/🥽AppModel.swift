@@ -69,7 +69,7 @@ extension 🥽AppModel {
     }
     
     func removeLog(_ log: 💾Log) {
-        self.logs.edit(.remove(log))
+        self.logs.remove(log)
         self.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
         Task { try? await self.worldTrackingProvider.removeAnchor(forID: log.id) }
     }
@@ -84,7 +84,7 @@ extension 🥽AppModel {
                 try? await self.worldTrackingProvider.removeAnchor(forID: log.id)
             }
         }
-        self.logs.edit(.clear)
+        self.logs.clear()
     }
 }
 
@@ -195,7 +195,10 @@ private extension 🥽AppModel {
         if condition {
             self.playSecondFixingSound()
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-            self.logs.edit(.add(newElement: self.createLog(worldAnchor)))
+            self.logs.add(💾Log(anchorID: worldAnchor.id,
+                                leftPosition: self.leftEntity.position,
+                                rightPosition: self.rightEntity.position,
+                                date: .now))
             Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
         }
     }
@@ -213,13 +216,6 @@ private extension 🥽AppModel {
             try? await Task.sleep(for: .seconds(2))
             entity.removeFromParent()
         }
-    }
-    
-    private func createLog(_ worldAnchor: WorldAnchor) -> 💾Log {
-        .init(anchorID: worldAnchor.id,
-              leftPosition: self.leftEntity.position,
-              rightPosition: self.rightEntity.position,
-              date: .now)
     }
     
     private func setFixedRuler(_ worldAnchor: WorldAnchor) {
