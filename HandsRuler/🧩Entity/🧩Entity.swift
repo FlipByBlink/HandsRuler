@@ -48,6 +48,12 @@ enum 🧩Entity {
         value.components.set(🧩Model.fixedPointer())
         return value
     }
+    static func fixedRuler(_ log: 💾Log, _ worldAnchor: WorldAnchor) -> Entity {
+        let value = Entity()
+        value.name = "fixedRuler\(log.id)"
+        value.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
+        return value
+    }
     enum Placeholder {
         static let leftPosition: SIMD3<Float> = .init(x: -0.2, y: 1.5, z: -0.7)
         static let rightPosition: SIMD3<Float> = .init(x: 0.2, y: 1.5, z: -0.7)

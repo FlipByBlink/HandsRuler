@@ -15,12 +15,13 @@ struct 📏MeasureView: View {
             self.model.rootEntity.addChild(resultBoardEntity)
             
             self.model.setUp_simulator()
-//        } update: { _, attachments in
         } update: { _, _ in
+//        } update: { _, attachments in
 //            self.model.logs.elements.forEach { log in //TODO: Work in progress
-//                let fixedResultEntity = attachments.entity(for: "\(log.id)")!
-//                fixedResultEntity.components.set(🪧FixedResultComponent(worldAnchorID: log.id))
-//                self.model.rootEntity.addChild(fixedResultEntity)
+//                if let fixedResultEntity = attachments.entity(for: "\(log.id)") {
+//                    fixedResultEntity.components.set(🪧FixedResultBoardComponent(log.id))
+//                    self.model.rootEntity.addChild(fixedResultEntity)
+//                }
 //            }
         } attachments: {
             Attachment(id: "resultBoard") {
