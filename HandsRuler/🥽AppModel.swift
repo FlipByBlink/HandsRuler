@@ -11,7 +11,7 @@ class 🥽AppModel: ObservableObject {
     @Published var openedImmersiveSpace: Bool = false
     @Published var logs: 💾Logs = .load()
     
-    private let session = ARKitSession()
+    private let arKitSession = ARKitSession()
     private let handTrackingProvider = HandTrackingProvider()
     private let worldTrackingProvider = WorldTrackingProvider()
     
@@ -31,13 +31,13 @@ extension 🥽AppModel {
         self.rootEntity.addChild(self.rightEntity)
     }
     
-    func run() {
+    func runARKitSession() {
 #if targetEnvironment(simulator)
         print("Not support ARKit tracking in simulator.")
 #else
         Task { @MainActor in
             do {
-                try await self.session.run([self.handTrackingProvider,
+                try await self.arKitSession.runARKitSession([self.handTrackingProvider,
                                             self.worldTrackingProvider])
                 Task { await self.processHandUpdates() }
                 Task { await self.processWorldAnchorUpdates() }
@@ -114,34 +114,25 @@ private extension 🥽AppModel {
                     self.rightEntity.setTransformMatrix(originFromIndex, relativeTo: nil)
             }
             
-            self.updateLine()
-            self.updateResultBoard()
+            self.updateRuler()
         }
     }
     
     private func processWorldAnchorUpdates() async {
         for await update in self.worldTrackingProvider.anchorUpdates {
             switch update.event {
-                case .added:
-                    self.setFixedRuler(update.anchor)
-                    self.setFixedResultBoard(update.anchor)
-                case .updated:
-                    self.updateFixedRuler(update.anchor)
-                    self.updateFixedResultBoard(update.anchor)
-                case .removed:
-                    self.removeFixedRuler(update.anchor)
-                    self.removeFixedResultBoard(update.anchor)
+                case .added: self.setFixedRuler(update.anchor)
+                case .updated: self.updateFixedRuler(update.anchor)
+                case .removed: self.removeFixedRuler(update.anchor)
             }
         }
     }
     
-    private func updateLine() {
+    private func updateRuler() {
         🧩Entity.updateLine(self.lineEntity,
                             self.leftEntity.position,
                             self.rightEntity.position)
-    }
-    
-    private func updateResultBoard() {
+        
         let centerPosition = (self.leftEntity.position + self.rightEntity.position) / 2
         self.rootEntity.findEntity(named: "resultBoard")?.position = centerPosition
         self.resultValue = distance(self.leftEntity.position, self.rightEntity.position)
@@ -223,6 +214,12 @@ private extension 🥽AppModel {
     private func setFixedRuler(_ worldAnchor: WorldAnchor) {
         if let log = self.logs[worldAnchor.id] {
             self.rootEntity.addChild(🧩Entity.fixedRuler(log, worldAnchor))
+            
+            if let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
+                fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
+                fixedResultBoardEntity.setPosition(log.centerPosition, relativeTo: fixedResultBoardEntity)
+                self.rootEntity.addChild(fixedResultBoardEntity)
+            }
         }
     }
     
@@ -231,6 +228,11 @@ private extension 🥽AppModel {
            let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") {
             fixedRulerEntity.removeFromParent()
             self.rootEntity.addChild(🧩Entity.fixedRuler(log, worldAnchor))
+            
+            if let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
+                fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
+                fixedResultBoardEntity.setPosition(log.centerPosition, relativeTo: fixedResultBoardEntity)
+            }
         }
     }
     
@@ -238,32 +240,10 @@ private extension 🥽AppModel {
         if let log = self.logs[worldAnchor.id],
            let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") {
             fixedRulerEntity.removeFromParent()
-        }
-    }
-    
-    private func setFixedResultBoard(_ worldAnchor: WorldAnchor) {//TODO: Work in progress
-        if let log = self.logs[worldAnchor.id],
-           let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
-            fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
-            fixedResultBoardEntity.setPosition(log.centerPosition,
-                                               relativeTo: fixedResultBoardEntity)
-            self.rootEntity.addChild(fixedResultBoardEntity)
-        }
-    }
-    
-    private func updateFixedResultBoard(_ worldAnchor: WorldAnchor) {//TODO: Work in progress
-        if let log = self.logs[worldAnchor.id],
-           let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
-            fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
-            fixedResultBoardEntity.setPosition(log.centerPosition,
-                                               relativeTo: fixedResultBoardEntity)
-        }
-    }
-    
-    private func removeFixedResultBoard(_ worldAnchor: WorldAnchor) {//TODO: Work in progress
-        if let log = self.logs[worldAnchor.id],
-           let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
-            fixedResultBoardEntity.removeFromParent()
+            
+            if let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
+                fixedResultBoardEntity.removeFromParent()
+            }
         }
     }
 }
@@ -275,8 +255,7 @@ private extension 🥽AppModel {
 extension 🥽AppModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
-        self.updateLine()
-        self.updateResultBoard()
+        self.updateRuler()
 #endif
     }
     func setRandomPosition_simulator() {
@@ -291,16 +270,14 @@ extension 🥽AppModel {
                                               y: .random(in: 1 ..< 1.5),
                                               z: .random(in: -1 ..< -0.5))
         }
-        self.updateLine()
-        self.updateResultBoard()
+        self.updateRuler()
 #endif
     }
     private func resetPosition_simulator() {
 #if targetEnvironment(simulator)
         self.leftEntity.position = 🧩Entity.Placeholder.leftPosition
         self.rightEntity.position = 🧩Entity.Placeholder.rightPosition
-        self.updateLine()
-        self.updateResultBoard()
+        self.updateRuler()
 #endif
     }
 }

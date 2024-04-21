@@ -38,7 +38,7 @@ struct 📏MeasureView: View {
                 .targetedToAnyEntity()
                 .onEnded { self.model.tap($0.entity) }
         )
-        .task { self.model.run() }
+        .task { self.model.runARKitSession() }
         .onDisappear { self.model.openedImmersiveSpace = false }
     }
 }
