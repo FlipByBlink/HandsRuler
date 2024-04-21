@@ -29,9 +29,9 @@ struct 🛠️LogView: View {
                                 }
                             } label: {
                                 Label("Menu", systemImage: "ellipsis.circle")
-                                    .padding(4)
+                                    .padding(2)
                             }
-                            .padding(4)
+                            .padding(6)
                             .foregroundStyle(.secondary)
                             .labelStyle(.iconOnly)
                             .buttonStyle(.plain)

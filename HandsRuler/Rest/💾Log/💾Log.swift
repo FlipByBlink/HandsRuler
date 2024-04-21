@@ -12,6 +12,9 @@ extension 💾Log: Identifiable, Hashable {
     var lineLength: Float {
         distance(self.leftPosition, self.rightPosition)
     }
+    var centerPosition: SIMD3<Float> {
+        (self.leftPosition + self.rightPosition) / 2
+    }
     var rotationRadians: Double {
         .init(
             asin(

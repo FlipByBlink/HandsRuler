@@ -124,10 +124,13 @@ private extension 🥽AppModel {
             switch update.event {
                 case .added:
                     self.setFixedRuler(update.anchor)
+                    self.setFixedResultBoard(update.anchor)
                 case .updated:
                     self.updateFixedRuler(update.anchor)
+                    self.updateFixedResultBoard(update.anchor)
                 case .removed:
                     self.removeFixedRuler(update.anchor)
+                    self.removeFixedResultBoard(update.anchor)
             }
         }
     }
@@ -235,6 +238,32 @@ private extension 🥽AppModel {
         if let log = self.logs[worldAnchor.id],
            let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") {
             fixedRulerEntity.removeFromParent()
+        }
+    }
+    
+    private func setFixedResultBoard(_ worldAnchor: WorldAnchor) {//TODO: Work in progress
+        if let log = self.logs[worldAnchor.id],
+           let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
+            fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
+            fixedResultBoardEntity.setPosition(log.centerPosition,
+                                               relativeTo: fixedResultBoardEntity)
+            self.rootEntity.addChild(fixedResultBoardEntity)
+        }
+    }
+    
+    private func updateFixedResultBoard(_ worldAnchor: WorldAnchor) {//TODO: Work in progress
+        if let log = self.logs[worldAnchor.id],
+           let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
+            fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
+            fixedResultBoardEntity.setPosition(log.centerPosition,
+                                               relativeTo: fixedResultBoardEntity)
+        }
+    }
+    
+    private func removeFixedResultBoard(_ worldAnchor: WorldAnchor) {//TODO: Work in progress
+        if let log = self.logs[worldAnchor.id],
+           let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
+            fixedResultBoardEntity.removeFromParent()
         }
     }
 }

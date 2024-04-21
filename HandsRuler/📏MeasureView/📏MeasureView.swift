@@ -15,14 +15,14 @@ struct 📏MeasureView: View {
             self.model.rootEntity.addChild(resultBoardEntity)
             
             self.model.setUp_simulator()
-        } update: { _, _ in
-//        } update: { _, attachments in
-//            self.model.logs.elements.forEach { log in //TODO: Work in progress
-//                if let fixedResultEntity = attachments.entity(for: "\(log.id)") {
-//                    fixedResultEntity.components.set(🪧FixedResultBoardComponent(log.id))
-//                    self.model.rootEntity.addChild(fixedResultEntity)
-//                }
-//            }
+        } update: { _, attachments in
+            self.model.logs.elements.forEach { log in //TODO: Work in progress
+                if let fixedResultBoardEntity = attachments.entity(for: "\(log.id)") {
+                    fixedResultBoardEntity.components.set(🧑HeadTrackingComponent())
+                    fixedResultBoardEntity.name = "fixedResultBoard\(log.id)"
+                    self.model.rootEntity.addChild(fixedResultBoardEntity)
+                }
+            }
         } attachments: {
             Attachment(id: "resultBoard") {
                 📏ResultBoardView(self.model.resultValue)

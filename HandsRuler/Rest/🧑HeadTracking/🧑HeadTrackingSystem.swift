@@ -38,21 +38,6 @@ struct 🧑HeadTrackingSystem: System {
                         relativeTo: nil,
                         forward: .positiveZ)
         }
-        
-        self.updateFixedResultBoardView(context, cameraTransform)
-    }
-}
-
-private extension 🧑HeadTrackingSystem {
-    private func updateFixedResultBoardView(_ context: SceneUpdateContext, _ cameraTransform: Transform) { //TODO: Work in progress
-        let entities = context.scene.performQuery(EntityQuery(where: .has(🪧FixedResultBoardComponent.self))).map { $0 }
-        
-        for entity in entities {
-            entity.look(at: cameraTransform.translation,
-                        from: entity.position(relativeTo: nil),
-                        relativeTo: nil,
-                        forward: .positiveZ)
-        }
     }
 }
 
