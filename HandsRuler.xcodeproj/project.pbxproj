@@ -197,8 +197,7 @@
 				165ADB572B4B71B2008A756F /* Info.plist */,
 				166F7E462B7DBBF6005F70D5 /* Assets */,
 				166F7E412B7DBBDB005F70D5 /* 🌐Localization */,
-				160F46BA2B5A5613001FE696 /* README assets */,
-				1638F80B2B50BC8800E0CAD2 /* Archive */,
+				16B0E7DB2BD4E8010069B221 /* Rest */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -312,6 +311,15 @@
 				16B0E7D82BD4E0960069B221 /* 📏ResultValueView.swift */,
 			);
 			path = "📏MeasureView";
+			sourceTree = "<group>";
+		};
+		16B0E7DB2BD4E8010069B221 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				160F46BA2B5A5613001FE696 /* README assets */,
+				1638F80B2B50BC8800E0CAD2 /* Archive */,
+			);
+			path = Rest;
 			sourceTree = "<group>";
 		};
 		16C4C6AA2BB7B17C004DB77E /* 💾Log */ = {

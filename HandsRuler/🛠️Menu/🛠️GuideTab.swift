@@ -28,40 +28,6 @@ struct 🛠️GuideTab: View {
                     }
                     .padding(4)
                 }
-                Section {
-                    HStack(spacing: 20) {
-                        Image(.copy)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 240)
-                            .clipShape(.rect(cornerRadius: 8, style: .continuous))
-                        Text("Copy log value by long press.")
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding(4)
-                    HStack(spacing: 20) {
-                        Image(.deleteRow)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 240)
-                            .clipShape(.rect(cornerRadius: 8, style: .continuous))
-                        Text("Delete a log by swiping.")
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding(4)
-                    HStack(spacing: 20) {
-                        Image(.deleteDirectly)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 240)
-                            .clipShape(.rect(cornerRadius: 8, style: .continuous))
-                        Text("Delete a log by tap the result view.")
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding(4)
-                } header: {
-                    Text("Log")
-                }
                 switch self.authorizationStatus {
                     case .notDetermined, .denied:
                         HStack(spacing: 24) {
