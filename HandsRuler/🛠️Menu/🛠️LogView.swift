@@ -1,12 +1,11 @@
 import SwiftUI
 
 struct 🛠️LogView: View {
-    @AppStorage("logsData") var logsData: Data?
-    @AppStorage("unit") var unit: 📐Unit = .meters
+    @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         List {
             Section {
-                ForEach(self.logs.elements) { log in
+                ForEach(self.model.logs.elements) { log in
                     LabeledContent {
                         TimelineView(.periodic(from: .now, by: 1)) { _ in
                             Text(
@@ -17,7 +16,7 @@ struct 🛠️LogView: View {
                         }
                     } label: {
                         Label {
-                            Text(🪧ResultFormatter.string(log.lineLength, self.unit))
+                            Text(🪧ResultFormatter.string(log.lineLength, self.model.unit))
                                 .textSelection(.enabled)
                                 .monospacedDigit()
                                 .padding(.horizontal)
@@ -27,8 +26,8 @@ struct 🛠️LogView: View {
                         }
                     }
                 }
-                .onDelete { self.logs.remove($0) }
-                if self.logs.elements.isEmpty {
+                .onDelete { self.model.logs.remove($0) }
+                if self.model.logs.elements.isEmpty {
                     Text("empty")
                         .frame(maxWidth: .infinity)
                         .foregroundStyle(.tertiary)
@@ -37,7 +36,7 @@ struct 🛠️LogView: View {
                 Text("Log")
             }
         }
-        .animation(.default, value: self.logs.elements)
+        .animation(.default, value: self.model.logs.elements)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Button {
@@ -49,13 +48,9 @@ struct 🛠️LogView: View {
                 .buttonStyle(.plain)
                 .buttonBorderShape(.circle)
                 .help("Clear")
-                .disabled(self.logs.elements.isEmpty)
-                .animation(.default, value: self.logs.elements.isEmpty)
+                .disabled(self.model.logs.elements.isEmpty)
+                .animation(.default, value: self.model.logs.elements.isEmpty)
             }
         }
     }
-}
-
-private extension 🛠️LogView {
-    private var logs: 💾Logs { .load(self.logsData) }
 }

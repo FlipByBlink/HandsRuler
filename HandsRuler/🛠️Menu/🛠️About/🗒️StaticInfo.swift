@@ -41,8 +41,8 @@ enum 🗒️StaticInfo {
                 case .main: [
                     "App.swift",
                     "ContentView.swift",
-                    "📏MeasureView.swift",
-                    "📏MeasureModel.swift"
+                    "🥽AppModel.swift",
+                    "📏MeasureView.swift"
                 ]
                 case .Entity: [
                     "🧩Entity.swift",

@@ -2,17 +2,16 @@ import SwiftUI
 
 @main
 struct HandsRulerApp: App {
-    @State private var openedImmersiveSpace: Bool = false
+    @StateObject private var model = 🥽AppModel()
     var body: some Scene {
         WindowGroup {
-            ContentView(self.$openedImmersiveSpace)
+            ContentView()
+                .environmentObject(self.model)
         }
         .windowResizability(.contentSize)
         ImmersiveSpace(id: "measure") {
             📏MeasureView()
-                .onDisappear {
-                    self.openedImmersiveSpace = false
-                }
+                .environmentObject(self.model)
         }
     }
     init() {

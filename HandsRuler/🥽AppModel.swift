@@ -3,11 +3,13 @@ import RealityKit
 import ARKit
 
 @MainActor
-class 📏MeasureModel: ObservableObject {
+class 🥽AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
     @AppStorage("logsData") var logsData: Data?
+    @AppStorage("measureOnLaunch") var measureOnLaunch: Bool = false
     
     @Published private(set) var resultValue: Float = 0.4
+    @Published var openedImmersiveSpace: Bool = false
     
     private let session = ARKitSession()
     private let handTrackingProvider = HandTrackingProvider()
@@ -22,7 +24,7 @@ class 📏MeasureModel: ObservableObject {
     private let sounds = 📢Sounds()
 }
 
-extension 📏MeasureModel {
+extension 🥽AppModel {
     func setUpChildEntities() {
         self.rootEntity.addChild(self.lineEntity)
         self.rootEntity.addChild(self.leftEntity)
@@ -70,7 +72,7 @@ extension 📏MeasureModel {
 }
 
 //MARK: ====== private ======
-private extension 📏MeasureModel {
+private extension 🥽AppModel {
     private func processHandUpdates() async {
         for await update in self.handTrackingProvider.anchorUpdates {
             let handAnchor = update.anchor
@@ -247,7 +249,7 @@ private extension 📏MeasureModel {
 
 
 //MARK: ====== simulator ======
-extension 📏MeasureModel {
+extension 🥽AppModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
         self.updateLine()

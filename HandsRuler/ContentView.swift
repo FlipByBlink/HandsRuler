@@ -1,17 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var model: 🥽AppModel
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.scenePhase) var scenePhase
-    @Binding var openedImmersiveSpace: Bool
-    @AppStorage("logsData") var logsData: Data?
-    @AppStorage("measureOnLaunch") var measureOnLaunch: Bool = false
     var body: some View {
         TabView {
             NavigationStack {
                 Group {
-                    if self.logsData == nil {
+                    if self.model.logsData == nil {
                         🛠️OnboardView()
                     } else {
                         🛠️LogView()
@@ -29,38 +27,35 @@ struct ContentView: View {
         .frame(width: 600, height: 600)
         .onChange(of: self.scenePhase) { _, newValue in
             if newValue == .background,
-               self.openedImmersiveSpace {
+               self.model.openedImmersiveSpace {
                 Task { await self.dismissImmersiveSpace() }
             }
         }
         .task {
-            if self.measureOnLaunch,
-               !self.openedImmersiveSpace {
+            if self.model.measureOnLaunch,
+               !self.model.openedImmersiveSpace {
                 await self.openImmersiveSpace(id: "measure")
-                self.openedImmersiveSpace = true
+                self.model.openedImmersiveSpace = true
             }
         }
-    }
-    init(_ openedImmersiveSpace: Binding<Bool>) {
-        self._openedImmersiveSpace = openedImmersiveSpace
     }
 }
 
 private extension ContentView {
     private func startOrStopButton() -> some View {
-        Button(self.openedImmersiveSpace ? "Stop" : "Start") {
+        Button(self.model.openedImmersiveSpace ? "Stop" : "Start") {
             Task { @MainActor in
-                if self.openedImmersiveSpace {
+                if self.model.openedImmersiveSpace {
                     await self.dismissImmersiveSpace()
                 } else {
                     await self.openImmersiveSpace(id: "measure")
-                    self.openedImmersiveSpace = true
+                    self.model.openedImmersiveSpace = true
                 }
             }
         }
         .font(.title2)
         .buttonStyle(.borderedProminent)
-        .tint(self.openedImmersiveSpace ? .red : .green)
-        .animation(.default, value: self.openedImmersiveSpace)
+        .tint(self.model.openedImmersiveSpace ? .red : .green)
+        .animation(.default, value: self.model.openedImmersiveSpace)
     }
 }

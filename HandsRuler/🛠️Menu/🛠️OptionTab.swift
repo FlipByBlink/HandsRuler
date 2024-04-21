@@ -1,20 +1,19 @@
 import SwiftUI
 
 struct 🛠️OptionTab: View {
-    @AppStorage("unit") var unit: 📐Unit = .meters
-    @AppStorage("measureOnLaunch") var measureOnLaunch: Bool = false
+    @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         NavigationStack {
             List {
                 Section {
-                    Picker(selection: self.$unit) {
+                    Picker(selection: self.$model.unit) {
                         ForEach(📐Unit.allCases) { Text($0.symbol) }
                     } label: {
                         Label("Unit", systemImage: "lines.measurement.horizontal")
                     }
                 }
                 Section {
-                    Toggle(isOn: self.$measureOnLaunch) {
+                    Toggle(isOn: self.$model.measureOnLaunch) {
                         Label("Start measuring on launch",
                               systemImage: "wand.and.stars")
                     }

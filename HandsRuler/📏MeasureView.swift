@@ -3,7 +3,7 @@ import RealityKit
 import ARKit
 
 struct 📏MeasureView: View {
-    @StateObject private var model: 📏MeasureModel = .init()
+    @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         RealityView { content, attachments in
             content.add(self.model.rootEntity)
@@ -38,6 +38,7 @@ struct 📏MeasureView: View {
                 .onEnded { self.model.tap($0.entity) }
         )
         .task { self.model.run() }
+        .onDisappear { self.model.openedImmersiveSpace = false }
         .onChange(of: self.model.logs, self.updateRemovedFixedRuler(_:_:))
     }
 }
