@@ -6,17 +6,17 @@ struct 📏ResultBoardView: View {
     private var lineLength: Float
     private var log: 💾Log?
     var body: some View {
-        Text(🪧ResultFormatter.string(lineLength, self.model.unit))
-            .font(.system(size: max(.init(min(lineLength * 30, 36)), 20)))
+        Text(🪧ResultFormatter.string(self.lineLength, self.model.unit))
+            .font(.system(size: max(.init(min(self.lineLength * 30, 36)), 20)))
             .fontWeight(.bold)
             .monospacedDigit()
             .padding(12)
             .padding(.horizontal, 4)
             .contentShape(.capsule)
-            .hoverEffect(isEnabled: log != nil)
+            .hoverEffect(isEnabled: self.log != nil)
             .glassBackgroundEffect()
             .onTapGesture {
-                if log != nil {
+                if self.log != nil {
                     self.presentSubMenu.toggle()
                 } else {
                     self.setRandomPosition_simulator()
