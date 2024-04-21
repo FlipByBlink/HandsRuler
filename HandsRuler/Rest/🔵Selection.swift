@@ -1,5 +1,3 @@
-import Foundation
-
 enum 🔵Selection {
     case left,
          right,

@@ -11,7 +11,7 @@ class 📏MeasureModel: ObservableObject {
     
     private let session = ARKitSession()
     private let handTrackingProvider = HandTrackingProvider()
-    private let worldTrackingProvider = WorldTrackingProvider()
+    let worldTrackingProvider = WorldTrackingProvider()
     
     let rootEntity = Entity()
     private let lineEntity = 🧩Entity.line()
