@@ -69,7 +69,7 @@ extension 📏MeasureModel {
     var logs: 💾Logs { .load(self.logsData) }
 }
 
-//MARK: ======== private ========
+//MARK: ====== private ======
 private extension 📏MeasureModel {
     private func processHandUpdates() async {
         for await update in self.handTrackingProvider.anchorUpdates {
@@ -174,9 +174,25 @@ private extension 📏MeasureModel {
             }
         }()
         if condition {
+            self.playSecondFixingSound()
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
             💾Logs.current.add(self.createLog(worldAnchor))
             Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
+        }
+    }
+    
+    private func playSecondFixingSound() {
+        let entity = Entity()
+        self.rootEntity.addChild(entity)
+        switch self.selection {
+            case .left: entity.position = self.rightEntity.position
+            case .right: entity.position = self.leftEntity.position
+            case .noSelect: break
+        }
+        entity.playAudio(self.sounds.fix)
+        Task {
+            try? await Task.sleep(for: .seconds(2))
+            entity.removeFromParent()
         }
     }
     
@@ -198,18 +214,9 @@ private extension 📏MeasureModel {
         let lineEntity = 🧩Entity.line()
         🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
         fixedRulerEntity.addChild(lineEntity)
-        let fixedLeftEntity = 🧩Entity.fixedPointer(log.leftPosition)
-        fixedLeftEntity.position = log.leftPosition
-        fixedRulerEntity.addChild(fixedLeftEntity)
-        let fixedRightEntity = 🧩Entity.fixedPointer(log.rightPosition)
-        fixedRightEntity.position = log.rightPosition
-        fixedRulerEntity.addChild(fixedRightEntity)
+        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.leftPosition))
+        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.rightPosition))
         self.rootEntity.addChild(fixedRulerEntity)
-        switch self.selection {
-            case .left: fixedRightEntity.playAudio(self.sounds.fix)
-            case .right: fixedLeftEntity.playAudio(self.sounds.fix)
-            case .noSelect: break //TODO: 再検討
-        }
     }
     
     private func updateFixedRuler(_ worldAnchor: WorldAnchor) {
@@ -223,12 +230,8 @@ private extension 📏MeasureModel {
         let lineEntity = 🧩Entity.line()
         🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
         fixedRulerEntity.addChild(lineEntity)
-        let fixedLeftEntity = 🧩Entity.fixedPointer(log.leftPosition)
-        fixedLeftEntity.position = log.leftPosition
-        fixedRulerEntity.addChild(fixedLeftEntity)
-        let fixedRightEntity = 🧩Entity.fixedPointer(log.rightPosition)
-        fixedRightEntity.position = log.rightPosition
-        fixedRulerEntity.addChild(fixedRightEntity)
+        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.leftPosition))
+        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.rightPosition))
     }
     
     private func removeFixedRuler(_ worldAnchor: WorldAnchor) {
@@ -243,7 +246,7 @@ private extension 📏MeasureModel {
 
 
 
-//MARK: ======== simulator ========
+//MARK: ====== simulator ======
 extension 📏MeasureModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
