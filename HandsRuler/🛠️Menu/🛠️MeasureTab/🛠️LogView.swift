@@ -20,12 +20,12 @@ struct 🛠️LogView: View {
                                     UIPasteboard.general.string = 🪧ResultFormatter.string(log.lineLength, 
                                                                                            self.model.unit)
                                 } label: {
-                                    Label("Copy value as text", systemImage: "doc.on.doc")
+                                    Label("Copy as text", systemImage: "doc.on.doc")
                                 }
                                 Button(role: .destructive) {
                                     self.model.removeLog(log)
                                 } label: {
-                                    Label("Remove a log", systemImage: "delete.left")
+                                    Label("Remove", systemImage: "delete.left")
                                 }
                             } label: {
                                 Label("Menu", systemImage: "ellipsis.circle")

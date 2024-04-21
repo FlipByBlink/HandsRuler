@@ -24,11 +24,11 @@ struct 📏MeasureView: View {
 //            }
         } attachments: {
             Attachment(id: "result") {
-                self.resultView(self.model.resultValue)
+                📏ResultValueView(self.model.resultValue)
             }
             ForEach(self.model.logs.elements) { log in
                 Attachment(id: "\(log.id)") {
-                    self.resultView(log.lineLength, log)
+                    📏ResultValueView(log.lineLength, log)
                 }
             }
         }
@@ -39,38 +39,5 @@ struct 📏MeasureView: View {
         )
         .task { self.model.run() }
         .onDisappear { self.model.openedImmersiveSpace = false }
-    }
-}
-
-private extension 📏MeasureView {
-    private func resultView(_ lineLength: Float, _ log: 💾Log? = nil) -> some View {
-        Text(🪧ResultFormatter.string(lineLength, self.model.unit))
-            .font(.system(size: max(.init(min(lineLength * 30, 36)), 20)))
-            .fontWeight(.bold)
-            .monospacedDigit()
-            .padding(12)
-            .padding(.horizontal, 4)
-            .contentShape(.capsule)
-            .hoverEffect(isEnabled: log != nil)
-            .glassBackgroundEffect()
-            .onTapGesture {
-                if let log {
-                    self.model.removeLog(log)
-                } else {
-                    self.setRandomPosition_simulator()
-                }
-            }
-    }
-}
-
-
-
-
-//MARK: Simulator
-private extension 📏MeasureView {
-    private func setRandomPosition_simulator() {
-#if targetEnvironment(simulator)
-        self.model.setRandomPosition_simulator()
-#endif
     }
 }

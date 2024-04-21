@@ -41,6 +41,9 @@
         }
       }
     },
+    "Copy as text" : {
+
+    },
     "Copy log value by long press." : {
       "localizations" : {
         "ja" : {
@@ -50,9 +53,6 @@
           }
         }
       }
-    },
-    "Copy value as text" : {
-
     },
     "Delete a log by swiping." : {
       "localizations" : {
@@ -177,7 +177,7 @@
         }
       }
     },
-    "Remove a log" : {
+    "Remove" : {
 
     },
     "Request" : {

@@ -32,6 +32,7 @@ enum 🗒️StaticInfo {
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
         case main,
+             MeasureView,
              Entity,
              Menu,
              Rest
@@ -42,7 +43,10 @@ enum 🗒️StaticInfo {
                     "App.swift",
                     "ContentView.swift",
                     "🥽AppModel.swift",
-                    "📏MeasureView.swift"
+                ]
+                case .MeasureView: [
+                    "📏MeasureView.swift",
+                    "📏ResultValueView.swift"
                 ]
                 case .Entity: [
                     "🧩Entity.swift",
