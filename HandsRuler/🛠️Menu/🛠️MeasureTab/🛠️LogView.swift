@@ -7,12 +7,34 @@ struct 🛠️LogView: View {
             Section {
                 ForEach(self.model.logs.elements) { log in
                     LabeledContent {
-                        TimelineView(.periodic(from: .now, by: 1)) { _ in
-                            Text(
-                                RelativeDateTimeFormatter()
-                                    .localizedString(for: log.date, relativeTo: .now)
-                            )
-                            .monospacedDigit()
+                        HStack(spacing: 12) {
+                            TimelineView(.periodic(from: .now, by: 1)) { _ in
+                                Text(
+                                    RelativeDateTimeFormatter()
+                                        .localizedString(for: log.date, relativeTo: .now)
+                                )
+                                .monospacedDigit()
+                            }
+                            Menu {
+                                Button {
+                                    UIPasteboard.general.string = 🪧ResultFormatter.string(log.lineLength, 
+                                                                                           self.model.unit)
+                                } label: {
+                                    Label("Copy value as text", systemImage: "doc.on.doc")
+                                }
+                                Button(role: .destructive) {
+                                    self.model.removeLog(log)
+                                } label: {
+                                    Label("Remove a log", systemImage: "delete.left")
+                                }
+                            } label: {
+                                Label("Menu", systemImage: "ellipsis.circle")
+                                    .padding(4)
+                            }
+                            .padding(4)
+                            .foregroundStyle(.secondary)
+                            .labelStyle(.iconOnly)
+                            .buttonStyle(.plain)
                         }
                     } label: {
                         Label {

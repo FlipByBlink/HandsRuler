@@ -51,6 +51,9 @@
         }
       }
     },
+    "Copy value as text" : {
+
+    },
     "Delete a log by swiping." : {
       "localizations" : {
         "ja" : {
@@ -161,6 +164,9 @@
         }
       }
     },
+    "Menu" : {
+
+    },
     "Option" : {
       "localizations" : {
         "ja" : {
@@ -170,6 +176,9 @@
           }
         }
       }
+    },
+    "Remove a log" : {
+
     },
     "Request" : {
       "localizations" : {
