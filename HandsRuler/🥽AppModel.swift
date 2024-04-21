@@ -15,22 +15,13 @@ class 🥽AppModel: ObservableObject {
     private let handTrackingProvider = HandTrackingProvider()
     private let worldTrackingProvider = WorldTrackingProvider()
     
-    let rootEntity = Entity()
-    private let lineEntity = 🧩Entity.line()
-    private let leftEntity = 🧩Entity.fingerTip(.left)
-    private let rightEntity = 🧩Entity.fingerTip(.right)
+    let entities = 🧩Entities()
     
     private var selection: 🔵Selection = .noSelect
     private let sounds = 📢Sounds()
 }
 
 extension 🥽AppModel {
-    func setUpChildEntities() {
-        self.rootEntity.addChild(self.lineEntity)
-        self.rootEntity.addChild(self.leftEntity)
-        self.rootEntity.addChild(self.rightEntity)
-    }
-    
     func runARKitSession() {
 #if targetEnvironment(simulator)
         print("Not support ARKit tracking in simulator.")
@@ -109,9 +100,9 @@ private extension 🥽AppModel {
             
             switch handAnchor.chirality {
                 case .left:
-                    self.leftEntity.setTransformMatrix(originFromIndex, relativeTo: nil)
+                    self.entities.left.setTransformMatrix(originFromIndex, relativeTo: nil)
                 case .right:
-                    self.rightEntity.setTransformMatrix(originFromIndex, relativeTo: nil)
+                    self.entities.right.setTransformMatrix(originFromIndex, relativeTo: nil)
             }
             
             self.updateRuler()
@@ -120,22 +111,13 @@ private extension 🥽AppModel {
     
     private func processWorldAnchorUpdates() async {
         for await update in self.worldTrackingProvider.anchorUpdates {
-            switch update.event {
-                case .added: self.setFixedRuler(update.anchor)
-                case .updated: self.updateFixedRuler(update.anchor)
-                case .removed: self.removeFixedRuler(update.anchor)
-            }
+            self.entities.applyWorldAnchorUpdates(self.logs, update)
         }
     }
     
     private func updateRuler() {
-        🧩Entity.updateLine(self.lineEntity,
-                            self.leftEntity.position,
-                            self.rightEntity.position)
-        
-        let centerPosition = (self.leftEntity.position + self.rightEntity.position) / 2
-        self.rootEntity.findEntity(named: "resultBoard")?.position = centerPosition
-        self.resultValue = distance(self.leftEntity.position, self.rightEntity.position)
+        self.entities.updateRuler()
+        self.resultValue = distance(self.entities.left.position, self.entities.right.position)
     }
     
     private func select(_ entity: Entity) {
@@ -156,25 +138,11 @@ private extension 🥽AppModel {
     
     private func reset() {
         self.selection = .noSelect
-        self.leftEntity.components.set(🧩Model.fingerTip(.blue))
-        self.rightEntity.components.set(🧩Model.fingerTip(.blue))
+        self.entities.left.components.set(🧩Model.fingerTip(.blue))
+        self.entities.right.components.set(🧩Model.fingerTip(.blue))
         
-        self.hideAndShow()
+        self.entities.hideAndShow()
         self.resetPosition_simulator()
-    }
-    
-    private func hideAndShow() {
-        Task {
-            let entities = [
-                self.lineEntity,
-                self.leftEntity,
-                self.rightEntity,
-                self.rootEntity.findEntity(named: "resultBoard")!
-            ]
-            entities.forEach { $0.isEnabled = false }
-            try await Task.sleep(for: .seconds(2.5))
-            entities.forEach { $0.isEnabled = true }
-        }
     }
     
     private func logIfNeeded(_ entity: Entity) {
@@ -189,8 +157,8 @@ private extension 🥽AppModel {
             self.playSecondFixingSound()
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
             self.logs.add(💾Log(anchorID: worldAnchor.id,
-                                leftPosition: self.leftEntity.position,
-                                rightPosition: self.rightEntity.position,
+                                leftPosition: self.entities.left.position,
+                                rightPosition: self.entities.right.position,
                                 date: .now))
             Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
         }
@@ -198,52 +166,16 @@ private extension 🥽AppModel {
     
     private func playSecondFixingSound() {
         let entity = Entity()
-        self.rootEntity.addChild(entity)
+        self.entities.root.addChild(entity)
         switch self.selection {
-            case .left: entity.position = self.rightEntity.position
-            case .right: entity.position = self.leftEntity.position
+            case .left: entity.position = self.entities.right.position
+            case .right: entity.position = self.entities.left.position
             case .noSelect: break
         }
         entity.playAudio(self.sounds.fix)
         Task {
             try? await Task.sleep(for: .seconds(2))
             entity.removeFromParent()
-        }
-    }
-    
-    private func setFixedRuler(_ worldAnchor: WorldAnchor) {
-        if let log = self.logs[worldAnchor.id] {
-            self.rootEntity.addChild(🧩Entity.fixedRuler(log, worldAnchor))
-            
-            if let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
-                fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
-                fixedResultBoardEntity.setPosition(log.centerPosition, relativeTo: fixedResultBoardEntity)
-                self.rootEntity.addChild(fixedResultBoardEntity)
-            }
-        }
-    }
-    
-    private func updateFixedRuler(_ worldAnchor: WorldAnchor) {
-        if let log = self.logs[worldAnchor.id],
-           let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") {
-            fixedRulerEntity.removeFromParent()
-            self.rootEntity.addChild(🧩Entity.fixedRuler(log, worldAnchor))
-            
-            if let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
-                fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
-                fixedResultBoardEntity.setPosition(log.centerPosition, relativeTo: fixedResultBoardEntity)
-            }
-        }
-    }
-    
-    private func removeFixedRuler(_ worldAnchor: WorldAnchor) {
-        if let log = self.logs[worldAnchor.id],
-           let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") {
-            fixedRulerEntity.removeFromParent()
-            
-            if let fixedResultBoardEntity = self.rootEntity.findEntity(named: "fixedResultBoard\(log.id)") {
-                fixedResultBoardEntity.removeFromParent()
-            }
         }
     }
 }
@@ -261,12 +193,12 @@ extension 🥽AppModel {
     func setRandomPosition_simulator() {
 #if targetEnvironment(simulator)
         if !self.selection.isLeft {
-            self.leftEntity.position = .init(x: .random(in: -0.8 ..< -0.05),
+            self.entities.left.position = .init(x: .random(in: -0.8 ..< -0.05),
                                              y: .random(in: 1 ..< 1.5),
                                              z: .random(in: -1 ..< -0.5))
         }
         if !self.selection.isRight {
-            self.rightEntity.position = .init(x: .random(in: 0.05 ..< 0.8),
+            self.entities.right.position = .init(x: .random(in: 0.05 ..< 0.8),
                                               y: .random(in: 1 ..< 1.5),
                                               z: .random(in: -1 ..< -0.5))
         }
@@ -275,8 +207,8 @@ extension 🥽AppModel {
     }
     private func resetPosition_simulator() {
 #if targetEnvironment(simulator)
-        self.leftEntity.position = 🧩Entity.Placeholder.leftPosition
-        self.rightEntity.position = 🧩Entity.Placeholder.rightPosition
+        self.entities.left.position = 🧩Entity.Placeholder.leftPosition
+        self.entities.right.position = 🧩Entity.Placeholder.rightPosition
         self.updateRuler()
 #endif
     }

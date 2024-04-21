@@ -49,6 +49,7 @@ enum 🗒️StaticInfo {
                     "📏ResultBoardView.swift"
                 ]
                 case .Entity: [
+                    "🧩Entities.swift",
                     "🧩Entity.swift",
                     "🧩Model.swift"
                 ]

@@ -6,13 +6,13 @@ struct 📏MeasureView: View {
     @EnvironmentObject var model: 🥽AppModel
     var body: some View {
         RealityView { content, attachments in
-            content.add(self.model.rootEntity)
-            self.model.setUpChildEntities()
+            content.add(self.model.entities.root)
+            self.model.entities.setUpChildren()
             
             let resultBoardEntity = attachments.entity(for: "resultBoard")!
             resultBoardEntity.components.set(🧑HeadTrackingComponent())
             resultBoardEntity.name = "resultBoard"
-            self.model.rootEntity.addChild(resultBoardEntity)
+            self.model.entities.add(resultBoardEntity)
             
             self.model.setUp_simulator()
         } update: { _, attachments in
@@ -20,7 +20,7 @@ struct 📏MeasureView: View {
                 if let fixedResultBoardEntity = attachments.entity(for: "\(log.id)") {
                     fixedResultBoardEntity.components.set(🧑HeadTrackingComponent())
                     fixedResultBoardEntity.name = "fixedResultBoard\(log.id)"
-                    self.model.rootEntity.addChild(fixedResultBoardEntity)
+                    self.model.entities.add(fixedResultBoardEntity)
                 }
             }
         } attachments: {
