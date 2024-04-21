@@ -218,39 +218,24 @@ private extension 🥽AppModel {
     }
     
     private func setFixedRuler(_ worldAnchor: WorldAnchor) {
-        guard let log = self.logs[worldAnchor.id] else {
-            return
+        if let log = self.logs[worldAnchor.id] {
+            self.rootEntity.addChild(🧩Entity.fixedRuler(log, worldAnchor))
         }
-        let fixedRulerEntity = 🧩Entity.fixedRuler(log, worldAnchor)
-        let lineEntity = 🧩Entity.line()
-        🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
-        fixedRulerEntity.addChild(lineEntity)
-        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.leftPosition))
-        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.rightPosition))
-        self.rootEntity.addChild(fixedRulerEntity)
     }
     
     private func updateFixedRuler(_ worldAnchor: WorldAnchor) {
-        guard let log = self.logs[worldAnchor.id],
-              let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") else {
-            return
+        if let log = self.logs[worldAnchor.id],
+           let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") {
+            fixedRulerEntity.removeFromParent()
+            self.rootEntity.addChild(🧩Entity.fixedRuler(log, worldAnchor))
         }
-        fixedRulerEntity.children.forEach { $0.removeFromParent() }
-        fixedRulerEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform,
-                                            relativeTo: nil)
-        let lineEntity = 🧩Entity.line()
-        🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
-        fixedRulerEntity.addChild(lineEntity)
-        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.leftPosition))
-        fixedRulerEntity.addChild(🧩Entity.fixedPointer(log.rightPosition))
     }
     
     private func removeFixedRuler(_ worldAnchor: WorldAnchor) {
-        guard let log = self.logs[worldAnchor.id],
-              let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") else {
-            return
+        if let log = self.logs[worldAnchor.id],
+           let fixedRulerEntity = self.rootEntity.findEntity(named: "fixedRuler\(log.id)") {
+            fixedRulerEntity.removeFromParent()
         }
-        fixedRulerEntity.removeFromParent()
     }
 }
 

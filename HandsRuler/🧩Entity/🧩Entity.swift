@@ -52,6 +52,11 @@ enum 🧩Entity {
         let value = Entity()
         value.name = "fixedRuler\(log.id)"
         value.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
+        let lineEntity = 🧩Entity.line()
+        🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
+        value.addChild(lineEntity)
+        value.addChild(🧩Entity.fixedPointer(log.leftPosition))
+        value.addChild(🧩Entity.fixedPointer(log.rightPosition))
         return value
     }
     enum Placeholder {
