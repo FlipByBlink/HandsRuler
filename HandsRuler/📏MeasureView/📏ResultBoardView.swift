@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 📏ResultValueView: View {
+struct 📏ResultBoardView: View {
     @EnvironmentObject var model: 🥽AppModel
     @State private var presentSubMenu: Bool = false
     private var lineLength: Float
@@ -62,7 +62,7 @@ struct 📏ResultValueView: View {
 
 
 //MARK: ====== simulator ======
-private extension 📏ResultValueView {
+private extension 📏ResultBoardView {
     private func setRandomPosition_simulator() {
 #if targetEnvironment(simulator)
         self.model.setRandomPosition_simulator()

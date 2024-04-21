@@ -9,10 +9,10 @@ struct 📏MeasureView: View {
             content.add(self.model.rootEntity)
             self.model.setUpChildEntities()
             
-            let resultEntity = attachments.entity(for: "result")!
-            resultEntity.components.set(🧑HeadTrackingComponent())
-            resultEntity.name = "result"
-            self.model.rootEntity.addChild(resultEntity)
+            let resultBoardEntity = attachments.entity(for: "resultBoard")!
+            resultBoardEntity.components.set(🧑HeadTrackingComponent())
+            resultBoardEntity.name = "resultBoard"
+            self.model.rootEntity.addChild(resultBoardEntity)
             
             self.model.setUp_simulator()
 //        } update: { _, attachments in
@@ -23,12 +23,12 @@ struct 📏MeasureView: View {
 //                self.model.rootEntity.addChild(fixedResultEntity)
 //            }
         } attachments: {
-            Attachment(id: "result") {
-                📏ResultValueView(self.model.resultValue)
+            Attachment(id: "resultBoard") {
+                📏ResultBoardView(self.model.resultValue)
             }
             ForEach(self.model.logs.elements) { log in
                 Attachment(id: "\(log.id)") {
-                    📏ResultValueView(log.lineLength, log)
+                    📏ResultBoardView(log.lineLength, log)
                 }
             }
         }

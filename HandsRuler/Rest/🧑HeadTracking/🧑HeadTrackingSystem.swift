@@ -39,13 +39,13 @@ struct 🧑HeadTrackingSystem: System {
                         forward: .positiveZ)
         }
         
-        self.updateFixedResultView(context, cameraTransform)
+        self.updateFixedResultBoardView(context, cameraTransform)
     }
 }
 
 private extension 🧑HeadTrackingSystem {
-    private func updateFixedResultView(_ context: SceneUpdateContext, _ cameraTransform: Transform) { //TODO: Work in progress
-        let entities = context.scene.performQuery(EntityQuery(where: .has(🪧FixedResultComponent.self))).map { $0 }
+    private func updateFixedResultBoardView(_ context: SceneUpdateContext, _ cameraTransform: Transform) { //TODO: Work in progress
+        let entities = context.scene.performQuery(EntityQuery(where: .has(🪧FixedResultBoardComponent.self))).map { $0 }
         
         for entity in entities {
             entity.look(at: cameraTransform.translation,

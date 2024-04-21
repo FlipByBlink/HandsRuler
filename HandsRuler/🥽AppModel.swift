@@ -116,7 +116,7 @@ private extension 🥽AppModel {
             }
             
             self.updateLine()
-            self.updateResult()
+            self.updateResultBoard()
         }
     }
     
@@ -139,9 +139,9 @@ private extension 🥽AppModel {
                             self.rightEntity.position)
     }
     
-    private func updateResult() {
+    private func updateResultBoard() {
         let centerPosition = (self.leftEntity.position + self.rightEntity.position) / 2
-        self.rootEntity.findEntity(named: "result")?.position = centerPosition
+        self.rootEntity.findEntity(named: "resultBoard")?.position = centerPosition
         self.resultValue = distance(self.leftEntity.position, self.rightEntity.position)
     }
     
@@ -176,10 +176,10 @@ private extension 🥽AppModel {
                 self.lineEntity,
                 self.leftEntity,
                 self.rightEntity,
-                self.rootEntity.findEntity(named: "result")!
+                self.rootEntity.findEntity(named: "resultBoard")!
             ]
             entities.forEach { $0.isEnabled = false }
-            try await Task.sleep(for: .seconds(3))
+            try await Task.sleep(for: .seconds(2.5))
             entities.forEach { $0.isEnabled = true }
         }
     }
@@ -266,7 +266,7 @@ extension 🥽AppModel {
     func setUp_simulator() {
 #if targetEnvironment(simulator)
         self.updateLine()
-        self.updateResult()
+        self.updateResultBoard()
 #endif
     }
     func setRandomPosition_simulator() {
@@ -282,7 +282,7 @@ extension 🥽AppModel {
                                               z: .random(in: -1 ..< -0.5))
         }
         self.updateLine()
-        self.updateResult()
+        self.updateResultBoard()
 #endif
     }
     private func resetPosition_simulator() {
@@ -290,7 +290,7 @@ extension 🥽AppModel {
         self.leftEntity.position = 🧩Entity.Placeholder.leftPosition
         self.rightEntity.position = 🧩Entity.Placeholder.rightPosition
         self.updateLine()
-        self.updateResult()
+        self.updateResultBoard()
 #endif
     }
 }
