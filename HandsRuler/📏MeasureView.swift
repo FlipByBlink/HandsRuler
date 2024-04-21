@@ -45,7 +45,7 @@ struct 📏MeasureView: View {
 private extension 📏MeasureView {
     private func resultView(_ lineLength: Float, _ log: 💾Log? = nil) -> some View {
         Text(🪧ResultFormatter.string(lineLength, self.model.unit))
-            .font(.system(size: max(.init(lineLength * 30), 20)))
+            .font(.system(size: max(.init(min(lineLength * 30, 36)), 20)))
             .fontWeight(.bold)
             .monospacedDigit()
             .padding(12)
