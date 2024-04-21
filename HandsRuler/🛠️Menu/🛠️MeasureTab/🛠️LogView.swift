@@ -26,7 +26,7 @@ struct 🛠️LogView: View {
                         }
                     }
                 }
-                .onDelete { self.model.logs.remove($0) }
+                .onDelete { self.model.removeLog($0) }
                 if self.model.logs.elements.isEmpty {
                     Text("empty")
                         .frame(maxWidth: .infinity)
@@ -40,7 +40,7 @@ struct 🛠️LogView: View {
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Button {
-                    💾Logs.clear()
+                    self.model.clearLogs()
                 } label: {
                     Image(systemName: "trash")
                         .padding(14)

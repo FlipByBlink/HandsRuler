@@ -39,7 +39,6 @@ struct 📏MeasureView: View {
         )
         .task { self.model.run() }
         .onDisappear { self.model.openedImmersiveSpace = false }
-        .onChange(of: self.model.logs, self.updateRemovedFixedRuler(_:_:))
     }
 }
 
@@ -56,21 +55,11 @@ private extension 📏MeasureView {
             .glassBackgroundEffect()
             .onTapGesture {
                 if let log {
-                    self.model.logs.remove(log)
+                    self.model.removeLog(log)
                 } else {
                     self.setRandomPosition_simulator()
                 }
             }
-    }
-    private func updateRemovedFixedRuler(_ oldValue: 💾Logs, _ newValue: 💾Logs) { //TODO: 実装再検討
-        oldValue.elements.forEach { log in
-            if !newValue.elements.contains(log) {
-                self.model.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
-                Task {
-                    try? await self.model.worldTrackingProvider.removeAnchor(forID: log.id)
-                }
-            }
-        }
     }
 }
 

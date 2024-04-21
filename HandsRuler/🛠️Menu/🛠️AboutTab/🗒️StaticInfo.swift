@@ -49,6 +49,7 @@ enum 🗒️StaticInfo {
                     "🧩Model.swift"
                 ]
                 case .Menu: [
+                    "🛠️MeasureTab.swift",
                     "🛠️OnboardView.swift",
                     "🛠️LogView.swift",
                     "🛠️OptionTab.swift",

@@ -7,18 +7,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     var body: some View {
         TabView {
-            NavigationStack {
-                Group {
-                    if self.model.logsData == nil {
-                        🛠️OnboardView()
-                    } else {
-                        🛠️LogView()
-                    }
-                }
-                .navigationTitle("HandsRuler")
-                .toolbar { self.startOrStopButton() }
-            }
-            .tabItem { Label("Measure", systemImage: "ruler") }
+            🛠️MeasureTab()
             🛠️OptionTab()
             🛠️GuideTab()
             🛠️AboutTab()
@@ -38,24 +27,5 @@ struct ContentView: View {
                 self.model.openedImmersiveSpace = true
             }
         }
-    }
-}
-
-private extension ContentView {
-    private func startOrStopButton() -> some View {
-        Button(self.model.openedImmersiveSpace ? "Stop" : "Start") {
-            Task { @MainActor in
-                if self.model.openedImmersiveSpace {
-                    await self.dismissImmersiveSpace()
-                } else {
-                    await self.openImmersiveSpace(id: "measure")
-                    self.model.openedImmersiveSpace = true
-                }
-            }
-        }
-        .font(.title2)
-        .buttonStyle(.borderedProminent)
-        .tint(self.model.openedImmersiveSpace ? .red : .green)
-        .animation(.default, value: self.model.openedImmersiveSpace)
     }
 }

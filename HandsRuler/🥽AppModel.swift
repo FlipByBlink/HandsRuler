@@ -5,15 +5,15 @@ import ARKit
 @MainActor
 class 🥽AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
-    @AppStorage("logsData") var logsData: Data?
     @AppStorage("measureOnLaunch") var measureOnLaunch: Bool = false
     
     @Published private(set) var resultValue: Float = 0.4
     @Published var openedImmersiveSpace: Bool = false
+    @Published var logs: 💾Logs = .load()
     
     private let session = ARKitSession()
     private let handTrackingProvider = HandTrackingProvider()
-    let worldTrackingProvider = WorldTrackingProvider()
+    private let worldTrackingProvider = WorldTrackingProvider()
     
     let rootEntity = Entity()
     private let lineEntity = 🧩Entity.line()
@@ -48,27 +48,44 @@ extension 🥽AppModel {
 #endif
     }
     
-    func tap(_ entity: Entity) {
-        self.logIfNeeded(entity)
-        switch entity.name {
+    func tap(_ fingerTipEntity: Entity) {
+        self.logIfNeeded(fingerTipEntity)
+        switch fingerTipEntity.name {
             case "left":
                 switch self.selection {
-                    case .left: self.unselect(entity)
+                    case .left: self.unselect(fingerTipEntity)
                     case .right: self.reset()
-                    case .noSelect: self.select(entity)
+                    case .noSelect: self.select(fingerTipEntity)
                 }
             case "right":
                 switch self.selection {
                     case .left: self.reset()
-                    case .right: self.unselect(entity)
-                    case .noSelect: self.select(entity)
+                    case .right: self.unselect(fingerTipEntity)
+                    case .noSelect: self.select(fingerTipEntity)
                 }
             default:
                 fatalError()
         }
     }
     
-    var logs: 💾Logs { .load(self.logsData) }
+    func removeLog(_ log: 💾Log) {
+        self.logs.edit(.remove(log))
+        self.rootEntity.findEntity(named: "\(log.id)")?.removeFromParent()
+        Task { try? await self.worldTrackingProvider.removeAnchor(forID: log.id) }
+    }
+    
+    func removeLog(_ indexSet: IndexSet) {
+        indexSet.forEach { self.removeLog(self.logs.elements[$0]) }
+    }
+    
+    func clearLogs() {
+        Task {
+            for log in self.logs.elements {
+                try? await self.worldTrackingProvider.removeAnchor(forID: log.id)
+            }
+        }
+        self.logs.edit(.clear)
+    }
 }
 
 //MARK: ====== private ======
@@ -178,7 +195,7 @@ private extension 🥽AppModel {
         if condition {
             self.playSecondFixingSound()
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-            💾Logs.current.add(self.createLog(worldAnchor))
+            self.logs.edit(.add(newElement: self.createLog(worldAnchor)))
             Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
         }
     }
