@@ -39,6 +39,7 @@ extension 🥽AppModel {
                                     leftPosition: .init(x: 0.74, y: 0.7, z: -1.4),
                                     rightPosition: .init(x: -0.65, y: 0.7, z: -1.4),
                                     date: .now))
+                self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
                 try? await Task.sleep(for: .seconds(0.1))
                 self.entities.setFixedRuler(self.logs, worldAnchor)
             }
@@ -48,6 +49,7 @@ extension 🥽AppModel {
                                     leftPosition: .init(x: 0.745, y: 0.71, z: -1.4),
                                     rightPosition: .init(x: 0.745, y: 0.7, z: -1.85),
                                     date: .now))
+                self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
                 try? await Task.sleep(for: .seconds(0.1))
                 self.entities.setFixedRuler(self.logs, worldAnchor)
             }
@@ -57,6 +59,7 @@ extension 🥽AppModel {
                                     leftPosition: .init(x: 0.74, y: 0, z: -1.4),
                                     rightPosition: .init(x: 0.745, y: 0.685, z: -1.4),
                                     date: .now))
+                self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
                 try? await Task.sleep(for: .seconds(0.1))
                 self.entities.setFixedRuler(self.logs, worldAnchor)
             }

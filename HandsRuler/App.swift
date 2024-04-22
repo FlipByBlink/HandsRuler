@@ -12,7 +12,7 @@ struct HandsRulerApp: App {
         ImmersiveSpace(id: "measure") {
             📏MeasureView()
                 .environmentObject(self.model)
-//                .task { self.model.setPlaceholderFixedRulers_simulator() }
+                .task { self.model.setPlaceholderFixedRulers_simulator() }//TODO: 消す
         }
     }
     init() {

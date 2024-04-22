@@ -42,13 +42,6 @@ extension 🧩Entities {
             entities.forEach { $0.isEnabled = true }
         }
     }
-    func applyWorldAnchorUpdates(_ logs: 💾Logs, _ update: AnchorUpdate<WorldAnchor>) {
-        switch update.event {
-            case .added: self.setFixedRuler(logs, update.anchor)
-            case .updated: self.updateFixedRuler(logs, update.anchor)
-            case .removed: self.removeFixedRuler(logs, update.anchor)
-        }
-    }
     func setFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
         if let log = logs[worldAnchor.id] {
             self.root.addChild(🧩Entity.fixedRuler(log, worldAnchor))
@@ -72,7 +65,6 @@ extension 🧩Entities {
         }
     }
     func removeFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
-        //TODO: 再検討
         if let log = logs[worldAnchor.id],
            let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(log.id)") {
             fixedRulerEntity.removeFromParent()

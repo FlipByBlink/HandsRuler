@@ -16,10 +16,10 @@ struct 📏MeasureView: View {
             
             self.model.setUp_simulator()
         } update: { _, attachments in
-            self.model.logs.elements.forEach { log in //TODO: Work in progress
-                if let fixedResultBoardEntity = attachments.entity(for: "\(log.id)") {
+            self.model.activeFixedRulerAnchorIDs.forEach { id in //TODO: Work in progress
+                if let fixedResultBoardEntity = attachments.entity(for: "\(id)") {
                     fixedResultBoardEntity.components.set(🧑HeadTrackingComponent())
-                    fixedResultBoardEntity.name = "fixedResultBoard\(log.id)"
+                    fixedResultBoardEntity.name = "fixedResultBoard\(id)"
                     self.model.entities.add(fixedResultBoardEntity)
                 }
             }
@@ -27,9 +27,9 @@ struct 📏MeasureView: View {
             Attachment(id: "resultBoard") {
                 📏ResultBoardView(self.model.resultValue)
             }
-            ForEach(self.model.logs.elements) { log in
-                Attachment(id: "\(log.id)") {
-                    📏ResultBoardView(log.lineLength, log)
+            ForEach(self.model.activeFixedRulerAnchorIDs, id: \.self) { id in
+                Attachment(id: "\(id)") {
+                    📏ResultBoardView.FixedRuler(id)
                 }
             }
         }

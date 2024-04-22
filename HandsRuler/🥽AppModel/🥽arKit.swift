@@ -51,7 +51,16 @@ private extension 🥽AppModel {
     
     private func processWorldAnchorUpdates() async {
         for await update in self.worldTrackingProvider.anchorUpdates {
-            self.entities.applyWorldAnchorUpdates(self.logs, update)
+            switch update.event {
+                case .added:
+                    self.activeFixedRulerAnchorIDs.append(update.anchor.id)
+                    self.entities.setFixedRuler(logs, update.anchor)
+                case .updated:
+                    self.entities.updateFixedRuler(logs, update.anchor)
+                case .removed:
+                    self.activeFixedRulerAnchorIDs.removeAll { $0 == update.anchor.id }
+                    self.entities.removeFixedRuler(logs, update.anchor)
+            }
         }
     }
 }
