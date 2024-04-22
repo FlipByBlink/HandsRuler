@@ -19,7 +19,7 @@ struct 📏ResultBoardView: View {
                 if self.log != nil {
                     self.presentSubMenu.toggle()
                 } else {
-                    self.setRandomPosition_simulator()
+                    self.model.setRandomPosition_simulator()
                 }
             }
             .overlay(alignment: .bottom) {
@@ -55,17 +55,5 @@ struct 📏ResultBoardView: View {
     init(_ lineLength: Float, _ log: 💾Log? = nil) {
         self.lineLength = lineLength
         self.log = log
-    }
-}
-
-
-
-
-//MARK: ====== simulator ======
-private extension 📏ResultBoardView {
-    private func setRandomPosition_simulator() {
-#if targetEnvironment(simulator)
-        self.model.setRandomPosition_simulator()
-#endif
     }
 }

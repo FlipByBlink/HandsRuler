@@ -21,7 +21,7 @@ extension 🧩Entities {
     func add(_ entity: Entity) {
         self.root.addChild(entity)
     }
-    func updateRuler() {
+    func applyPointersUpdateToLineAndResultBoard() {
         🧩Entity.updateLine(self.line,
                             self.left.position,
                             self.right.position)
