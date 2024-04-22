@@ -49,21 +49,17 @@ extension 🧩Entities {
             case .removed: self.removeFixedRuler(logs, update.anchor)
         }
     }
-}
-
-private extension 🧩Entities {
-    private func setFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
+    func setFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
         if let log = logs[worldAnchor.id] {
             self.root.addChild(🧩Entity.fixedRuler(log, worldAnchor))
             
             if let fixedResultBoardEntity = self.root.findEntity(named: "fixedResultBoard\(log.id)") {
                 fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
                 fixedResultBoardEntity.setPosition(log.centerPosition, relativeTo: fixedResultBoardEntity)
-                self.root.addChild(fixedResultBoardEntity)
             }
         }
     }
-    private func updateFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
+    func updateFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
         if let log = logs[worldAnchor.id],
            let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(log.id)") {
             fixedRulerEntity.removeFromParent()
@@ -75,7 +71,8 @@ private extension 🧩Entities {
             }
         }
     }
-    private func removeFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
+    func removeFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
+        //TODO: 再検討
         if let log = logs[worldAnchor.id],
            let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(log.id)") {
             fixedRulerEntity.removeFromParent()
