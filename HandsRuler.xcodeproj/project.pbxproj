@@ -67,6 +67,10 @@
 		16B1E6FE2BB5302A005972CF /* 💾Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1E6FD2BB5302A005972CF /* 💾Log.swift */; };
 		16B1E7002BB5600D005972CF /* 🛠️LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1E6FF2BB5600D005972CF /* 🛠️LogView.swift */; };
 		16B1E7022BB560A5005972CF /* 🛠️OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1E7012BB560A5005972CF /* 🛠️OnboardView.swift */; };
+		16BA63E72BD64C00003777D0 /* 🥽userAction.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 168179E92BD52ADE00BFD40F /* 🥽userAction.swift */; };
+		16BA63E82BD64C00003777D0 /* 🥽arKit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 168179E52BD52A0D00BFD40F /* 🥽arKit.swift */; };
+		16BA63E92BD64C00003777D0 /* 🥽updateRuler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 168179EB2BD52B6D00BFD40F /* 🥽updateRuler.swift */; };
+		16BA63EA2BD64C00003777D0 /* 🥽simulator.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 168179E72BD52A5500BFD40F /* 🥽simulator.swift */; };
 		16C4C6A52BB78A06004DB77E /* 🥽AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4C6A42BB78A06004DB77E /* 🥽AppModel.swift */; };
 		16C4C6A72BB79F9C004DB77E /* 💾Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4C6A62BB79F9C004DB77E /* 💾Logs.swift */; };
 		16C4C6A92BB7AF0B004DB77E /* 🛠️AboutTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4C6A82BB7AF0B004DB77E /* 🛠️AboutTab.swift */; };
@@ -81,6 +85,10 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				16BA63E72BD64C00003777D0 /* 🥽userAction.swift in CopyFiles */,
+				16BA63E82BD64C00003777D0 /* 🥽arKit.swift in CopyFiles */,
+				16BA63E92BD64C00003777D0 /* 🥽updateRuler.swift in CopyFiles */,
+				16BA63EA2BD64C00003777D0 /* 🥽simulator.swift in CopyFiles */,
 				168179E32BD5291A00BFD40F /* 🧩Entities.swift in CopyFiles */,
 				16B0E7DA2BD4E78A0069B221 /* 📏ResultBoardView.swift in CopyFiles */,
 				16B0E7D62BD4D8980069B221 /* 🛠️MeasureTab.swift in CopyFiles */,

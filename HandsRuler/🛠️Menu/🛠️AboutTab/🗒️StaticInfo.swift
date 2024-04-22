@@ -26,12 +26,13 @@ enum 🗒️StaticInfo {
     static let webRepositoryURL: URL = .init(string: "https://github.com/FlipByBlink/HandsRuler")!
     static let webMirrorRepositoryURL: URL = .init(string: "https://gitlab.com/FlipByBlink/HandsRuler_Mirror")!
 
-    static let versionInfos: [(version: String, date: String)] = [("1.1", "2024-04-??"),
+    static let versionInfos: [(version: String, date: String)] = [("1.1", "2024-04-22"),
                                                                   ("1.0.1", "2024-02-15"),
                                                                   ("1.0", "2024-02-02")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
         case main,
+             AppModel,
              MeasureView,
              Entity,
              Menu,
@@ -42,7 +43,13 @@ enum 🗒️StaticInfo {
                 case .main: [
                     "App.swift",
                     "ContentView.swift",
+                ]
+                case .AppModel: [
                     "🥽AppModel.swift",
+                    "🥽userAction.swift",
+                    "🥽arKit.swift",
+                    "🥽updateRuler.swift",
+                    "🥽simulator.swift"
                 ]
                 case .MeasureView: [
                     "📏MeasureView.swift",
