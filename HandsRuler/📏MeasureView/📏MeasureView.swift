@@ -27,9 +27,9 @@ struct 📏MeasureView: View {
             Attachment(id: "resultBoard") {
                 📏ResultBoardView(self.model.resultValue)
             }
-            ForEach(self.model.activeFixedRulerAnchorIDs, id: \.self) { id in
-                Attachment(id: "\(id)") {
-                    📏ResultBoardView.FixedRuler(id)
+            ForEach(self.model.activeFixedRulerAnchorIDs, id: \.self) { anchorID in
+                Attachment(id: "\(anchorID)") {
+                    📏ResultBoardView.FixedRuler(anchorID)
                 }
             }
         }

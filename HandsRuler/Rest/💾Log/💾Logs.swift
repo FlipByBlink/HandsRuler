@@ -7,7 +7,7 @@ struct 💾Logs: Codable {
 
 extension 💾Logs: Equatable {
     subscript(worldAnchorID: UUID) -> 💾Log? {
-        self.elements.first(where: { $0.id == worldAnchorID })
+        self.elements.first(where: { $0.worldAnchorID == worldAnchorID })
     }
     static func load() -> Self {
         if let data = UserDefaults.standard.data(forKey: "logsData"),

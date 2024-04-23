@@ -1,14 +1,13 @@
 import SwiftUI
 
 struct 💾Log: Codable {
-    let anchorID: UUID
+    let worldAnchorID: UUID
     let leftPosition: SIMD3<Float>
     let rightPosition: SIMD3<Float>
     let date: Date
 }
 
-extension 💾Log: Identifiable, Hashable {
-    var id: UUID { self.anchorID }
+extension 💾Log: Hashable {
     var lineLength: Float {
         distance(self.leftPosition, self.rightPosition)
     }

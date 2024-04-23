@@ -25,7 +25,7 @@ extension 🥽AppModel {
     
     func removeLog(_ log: 💾Log) {
         self.logs.remove(log)
-        Task { try? await self.worldTrackingProvider.removeAnchor(forID: log.id) }
+        Task { try? await self.worldTrackingProvider.removeAnchor(forID: log.worldAnchorID) }
     }
     
     func removeLog(_ indexSet: IndexSet) {
@@ -35,7 +35,7 @@ extension 🥽AppModel {
     func clearLogs() {
         Task {
             for log in self.logs.elements {
-                try? await self.worldTrackingProvider.removeAnchor(forID: log.id)
+                try? await self.worldTrackingProvider.removeAnchor(forID: log.worldAnchorID)
             }
         }
         self.logs.clear()
@@ -79,7 +79,7 @@ private extension 🥽AppModel {
         if condition {
             self.playSecondFixingSound()
             let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-            self.logs.add(💾Log(anchorID: worldAnchor.id,
+            self.logs.add(💾Log(worldAnchorID: worldAnchor.id,
                                 leftPosition: self.entities.left.position,
                                 rightPosition: self.entities.right.position,
                                 date: .now))

@@ -5,7 +5,7 @@ struct 🛠️LogView: View {
     var body: some View {
         List {
             Section {
-                ForEach(self.model.logs.elements) { log in
+                ForEach(self.model.logs.elements, id: \.worldAnchorID) { log in
                     LabeledContent {
                         HStack(spacing: 12) {
                             TimelineView(.periodic(from: .now, by: 1)) { _ in

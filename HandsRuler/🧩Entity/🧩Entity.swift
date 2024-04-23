@@ -50,7 +50,7 @@ enum 🧩Entity {
     }
     static func fixedRuler(_ log: 💾Log, _ worldAnchor: WorldAnchor) -> Entity {
         let value = Entity()
-        value.name = "fixedRuler\(log.id)"
+        value.name = "fixedRuler\(log.worldAnchorID)"
         value.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
         let lineEntity = 🧩Entity.line()
         🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)

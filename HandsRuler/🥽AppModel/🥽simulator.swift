@@ -35,7 +35,7 @@ extension 🥽AppModel {
             try? await Task.sleep(for: .seconds(1))
             do {
                 let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-                self.logs.add(💾Log(anchorID: worldAnchor.id,
+                self.logs.add(💾Log(worldAnchorID: worldAnchor.id,
                                     leftPosition: .init(x: 0.74, y: 0.7, z: -1.4),
                                     rightPosition: .init(x: -0.65, y: 0.7, z: -1.4),
                                     date: .now))
@@ -45,7 +45,7 @@ extension 🥽AppModel {
             }
             do {
                 let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-                self.logs.add(💾Log(anchorID: worldAnchor.id,
+                self.logs.add(💾Log(worldAnchorID: worldAnchor.id,
                                     leftPosition: .init(x: 0.745, y: 0.71, z: -1.4),
                                     rightPosition: .init(x: 0.745, y: 0.7, z: -1.85),
                                     date: .now))
@@ -55,7 +55,7 @@ extension 🥽AppModel {
             }
             do {
                 let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
-                self.logs.add(💾Log(anchorID: worldAnchor.id,
+                self.logs.add(💾Log(worldAnchorID: worldAnchor.id,
                                     leftPosition: .init(x: 0.74, y: 0, z: -1.4),
                                     rightPosition: .init(x: 0.745, y: 0.685, z: -1.4),
                                     date: .now))
