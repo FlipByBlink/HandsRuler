@@ -3,6 +3,7 @@ import SwiftUI
 struct 📏ResultBoardView: View {
     @EnvironmentObject var model: 🥽AppModel
     private var lineLength: Float
+    private var isFixedRuler: Bool
     var body: some View {
         Text(🪧ResultFormatter.string(self.lineLength, self.model.unit))
             .font(.system(size: max(.init(min(self.lineLength * 30, 36)), 20)))
@@ -11,11 +12,13 @@ struct 📏ResultBoardView: View {
             .padding(12)
             .padding(.horizontal, 4)
             .contentShape(.capsule)
+            .hoverEffect(isEnabled: self.isFixedRuler)
             .glassBackgroundEffect()
-            .onTapGesture { self.model.setRandomPosition_simulator() }
+            .onTapGesture(count: 2) { self.model.setRandomPosition_simulator() }
     }
-    init(_ lineLength: Float) {
+    init(_ lineLength: Float, isFixedRuler: Bool = false) {
         self.lineLength = lineLength
+        self.isFixedRuler = isFixedRuler
     }
 }
 
@@ -26,8 +29,7 @@ extension 📏ResultBoardView {
         private var id: UUID
         var body: some View {
             if let log = self.model.logs[self.id] {
-                📏ResultBoardView(log.lineLength)
-                    .hoverEffect()
+                📏ResultBoardView(log.lineLength, isFixedRuler: true)
                     .onTapGesture { self.presentSubMenu.toggle() }
                     .overlay(alignment: .bottom) {
                         VStack {
@@ -47,7 +49,8 @@ extension 📏ResultBoardView {
                             }
                             .fixedSize()
                         }
-                        .padding()
+                        .font(.title2)
+                        .padding(24)
                         .font(.subheadline)
                         .glassBackgroundEffect()
                         .visualEffect { $0.offset(y: $1.size.height + 12) }
