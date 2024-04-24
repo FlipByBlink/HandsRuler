@@ -9,7 +9,7 @@ class 🥽AppModel: ObservableObject {
     @Published var resultValue: Float = 0.4
     @Published var openedImmersiveSpace: Bool = false
     @Published var logs: 💾Logs = .load()
-    @Published var activeFixedRulerAnchorIDs: [UUID] = []
+    @Published var activeWorldAnchors: [WorldAnchor] = []
     
     let arKitSession = ARKitSession()
     let handTrackingProvider = HandTrackingProvider()

@@ -16,20 +16,25 @@ struct 📏MeasureView: View {
             
             self.model.setUp_simulator()
         } update: { _, attachments in
-            self.model.activeFixedRulerAnchorIDs.forEach { id in //TODO: Work in progress
-                if let fixedResultBoardEntity = attachments.entity(for: "\(id)") {
-                    fixedResultBoardEntity.components.set(🧑HeadTrackingComponent())
-                    fixedResultBoardEntity.name = "fixedResultBoard\(id)"
-                    self.model.entities.add(fixedResultBoardEntity)
+            for worldAnchor in self.model.activeWorldAnchors {
+                guard let fixedResultBoardEntity = attachments.entity(for: "\(worldAnchor.id)"),
+                      let log = self.model.logs[worldAnchor.id] else {
+                    continue
                 }
+                fixedResultBoardEntity.components.set(🧑HeadTrackingComponent())
+                fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform,
+                                                          relativeTo: nil)
+                fixedResultBoardEntity.setPosition(log.centerPosition,
+                                                   relativeTo: fixedResultBoardEntity)
+                self.model.entities.add(fixedResultBoardEntity)
             }
         } attachments: {
             Attachment(id: "resultBoard") {
                 📏ResultBoardView(self.model.resultValue)
             }
-            ForEach(self.model.activeFixedRulerAnchorIDs, id: \.self) { anchorID in
-                Attachment(id: "\(anchorID)") {
-                    📏ResultBoardView.FixedRuler(anchorID)
+            ForEach(self.model.activeWorldAnchors, id: \.id) { worldAnchor in
+                Attachment(id: "\(worldAnchor.id)") {
+                    📏ResultBoardView.FixedRuler(worldAnchor.id)
                 }
             }
         }

@@ -53,13 +53,15 @@ private extension 🥽AppModel {
         for await update in self.worldTrackingProvider.anchorUpdates {
             switch update.event {
                 case .added:
-                    self.activeFixedRulerAnchorIDs.append(update.anchor.id)
-                    self.entities.setFixedRuler(logs, update.anchor)
+                    self.activeWorldAnchors.append(update.anchor)
+                    self.entities.setFixedRuler(self.logs, update.anchor)
                 case .updated:
-                    self.entities.updateFixedRuler(logs, update.anchor)
+                    self.activeWorldAnchors.removeAll { $0.id == update.anchor.id }
+                    self.activeWorldAnchors.append(update.anchor)
+                    self.entities.updateFixedRuler(self.logs, update.anchor)
                 case .removed:
-                    self.activeFixedRulerAnchorIDs.removeAll { $0 == update.anchor.id }
-                    self.entities.removeFixedRuler(logs, update.anchor)
+                    self.activeWorldAnchors.removeAll { $0.id == update.anchor.id }
+                    self.entities.removeFixedRuler(self.logs, update.anchor)
             }
         }
     }

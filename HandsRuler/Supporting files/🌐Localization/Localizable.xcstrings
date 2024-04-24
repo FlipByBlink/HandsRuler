@@ -42,37 +42,11 @@
       }
     },
     "Copy as text" : {
-
-    },
-    "Copy log value by long press." : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ログの数値を長押しでコピー。"
-          }
-        }
-      }
-    },
-    "Delete a log by swiping." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スワイプでログを削除。"
-          }
-        }
-      }
-    },
-    "Delete a log by tap the result view." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "固定された結果表示をタップして削除。"
+            "value" : "テキストとしてコピー"
           }
         }
       }
@@ -168,7 +142,14 @@
       }
     },
     "Menu" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニュー"
+          }
+        }
+      }
     },
     "Option" : {
       "localizations" : {
@@ -181,7 +162,14 @@
       }
     },
     "Remove" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
+          }
+        }
+      }
     },
     "Request" : {
       "localizations" : {

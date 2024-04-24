@@ -38,8 +38,7 @@ extension 🥽AppModel {
                                 leftPosition: .init(x: 0.24, y: 1.3, z: -1),
                                 rightPosition: .init(x: -0.25, y: 1.43, z: -0.9),
                                 date: .now))
-            self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
-            try? await Task.sleep(for: .seconds(0.1))
+            self.activeWorldAnchors.append(worldAnchor)
             self.entities.setFixedRuler(self.logs, worldAnchor)
         }
 #endif
@@ -54,8 +53,7 @@ extension 🥽AppModel {
                                     leftPosition: .init(x: 0.74, y: 0.7, z: -1.4),
                                     rightPosition: .init(x: -0.65, y: 0.7, z: -1.4),
                                     date: .now))
-                self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
-                try? await Task.sleep(for: .seconds(0.1))
+                self.activeWorldAnchors.append(worldAnchor)
                 self.entities.setFixedRuler(self.logs, worldAnchor)
             }
             do {
@@ -64,8 +62,7 @@ extension 🥽AppModel {
                                     leftPosition: .init(x: 0.745, y: 0.71, z: -1.4),
                                     rightPosition: .init(x: 0.745, y: 0.7, z: -1.85),
                                     date: .now))
-                self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
-                try? await Task.sleep(for: .seconds(0.1))
+                self.activeWorldAnchors.append(worldAnchor)
                 self.entities.setFixedRuler(self.logs, worldAnchor)
             }
             do {
@@ -74,8 +71,7 @@ extension 🥽AppModel {
                                     leftPosition: .init(x: 0.74, y: 0, z: -1.4),
                                     rightPosition: .init(x: 0.745, y: 0.685, z: -1.4),
                                     date: .now))
-                self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
-                try? await Task.sleep(for: .seconds(0.1))
+                self.activeWorldAnchors.append(worldAnchor)
                 self.entities.setFixedRuler(self.logs, worldAnchor)
             }
         }

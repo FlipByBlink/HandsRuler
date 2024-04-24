@@ -36,7 +36,10 @@ extension 📏ResultBoardView {
                             Button {
                                 UIPasteboard.general.string = 🪧ResultFormatter.string(log.lineLength,
                                                                                        self.model.unit)
-                                self.presentSubMenu = false
+                                Task {
+                                    try? await Task.sleep(for: .seconds(0.3))
+                                    self.presentSubMenu = false
+                                }
                             } label: {
                                 Label("Copy as text", systemImage: "doc.on.doc")
                             }
