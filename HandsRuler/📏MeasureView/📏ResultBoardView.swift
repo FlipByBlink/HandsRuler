@@ -6,7 +6,7 @@ struct 📏ResultBoardView: View {
     private var isFixedRuler: Bool
     var body: some View {
         Text(🪧ResultFormatter.string(self.lineLength, self.model.unit))
-            .font(.system(size: max(.init(min(self.lineLength * 30, 36)), 20)))
+            .font(.system(size: max(.init(min(self.lineLength * 22, 36)), 20)))
             .fontWeight(.bold)
             .monospacedDigit()
             .padding(12)
