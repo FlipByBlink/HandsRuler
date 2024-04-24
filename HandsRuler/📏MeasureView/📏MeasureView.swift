@@ -43,7 +43,9 @@ struct 📏MeasureView: View {
                 .targetedToAnyEntity()
                 .onEnded { self.model.tap($0.entity) }
         )
-        .task { self.model.runARKitSession() }
+        .task { await self.model.runARKitSession() }
+        .task { await self.model.processHandUpdates() }
+        .task { await self.model.processWorldAnchorUpdates() }
         .onDisappear {
             self.model.clearSelection()
             self.model.openedImmersiveSpace = false

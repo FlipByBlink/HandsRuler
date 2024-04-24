@@ -1,26 +1,20 @@
 import ARKit
 
 extension 🥽AppModel {
-    func runARKitSession() {
+    func runARKitSession() async {
 #if targetEnvironment(simulator)
         print("Not support ARKit tracking in simulator.")
 #else
-        Task { @MainActor in
-            do {
-                try await self.arKitSession.run([self.handTrackingProvider,
-                                                 self.worldTrackingProvider])
-                Task { await self.processHandUpdates() }
-                Task { await self.processWorldAnchorUpdates() }
-            } catch {
-                print(error)
-            }
+        do {
+            try await self.arKitSession.run([self.handTrackingProvider,
+                                             self.worldTrackingProvider])
+        } catch {
+            print(error)
         }
 #endif
     }
-}
-
-private extension 🥽AppModel {
-    private func processHandUpdates() async {
+    
+    func processHandUpdates() async {
         for await update in self.handTrackingProvider.anchorUpdates {
             let handAnchor = update.anchor
             
@@ -49,7 +43,7 @@ private extension 🥽AppModel {
         }
     }
     
-    private func processWorldAnchorUpdates() async {
+    func processWorldAnchorUpdates() async {
         for await update in self.worldTrackingProvider.anchorUpdates {
             switch update.event {
                 case .added:
