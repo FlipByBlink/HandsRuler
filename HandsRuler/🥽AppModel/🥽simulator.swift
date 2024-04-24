@@ -29,6 +29,21 @@ extension 🥽AppModel {
         self.updateRuler()
 #endif
     }
+    func setPlaceholder1FixedRuler_simulator() {
+#if targetEnvironment(simulator)
+        Task {
+            try? await Task.sleep(for: .seconds(1))
+            let worldAnchor = WorldAnchor(originFromAnchorTransform: Transform().matrix)
+            self.logs.add(💾Log(worldAnchorID: worldAnchor.id,
+                                leftPosition: .init(x: 0.24, y: 1.3, z: -1),
+                                rightPosition: .init(x: -0.25, y: 1.43, z: -0.9),
+                                date: .now))
+            self.activeFixedRulerAnchorIDs.append(worldAnchor.id)
+            try? await Task.sleep(for: .seconds(0.1))
+            self.entities.setFixedRuler(self.logs, worldAnchor)
+        }
+#endif
+    }
     func setPlaceholderFixedRulers_simulator() {
 #if targetEnvironment(simulator)
         Task {
