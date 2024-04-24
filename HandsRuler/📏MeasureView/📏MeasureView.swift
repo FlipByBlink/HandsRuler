@@ -44,6 +44,9 @@ struct 📏MeasureView: View {
                 .onEnded { self.model.tap($0.entity) }
         )
         .task { self.model.runARKitSession() }
-        .onDisappear { self.model.openedImmersiveSpace = false }
+        .onDisappear {
+            self.model.clearSelection()
+            self.model.openedImmersiveSpace = false
+        }
     }
 }

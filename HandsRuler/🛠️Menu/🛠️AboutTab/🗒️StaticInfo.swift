@@ -49,6 +49,7 @@ enum 🗒️StaticInfo {
                     "🥽userAction.swift",
                     "🥽arKit.swift",
                     "🥽updateRuler.swift",
+                    "🥽rest.swift",
                     "🥽simulator.swift"
                 ]
                 case .MeasureView: [
