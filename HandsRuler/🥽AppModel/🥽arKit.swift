@@ -7,8 +7,8 @@ extension 🥽AppModel {
 #else
         Task { @MainActor in
             do {
-                try await self.arKitSession.runARKitSession([self.handTrackingProvider,
-                                                             self.worldTrackingProvider])
+                try await self.arKitSession.run([self.handTrackingProvider,
+                                                 self.worldTrackingProvider])
                 Task { await self.processHandUpdates() }
                 Task { await self.processWorldAnchorUpdates() }
             } catch {
