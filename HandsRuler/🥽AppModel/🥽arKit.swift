@@ -55,7 +55,7 @@ extension 🥽AppModel {
                     self.entities.updateFixedRuler(self.logs, update.anchor)
                 case .removed:
                     self.activeWorldAnchors.removeAll { $0.id == update.anchor.id }
-                    self.entities.removeFixedRuler(self.logs, update.anchor)
+                    self.entities.removeFixedRuler(update.anchor.id)
             }
         }
     }

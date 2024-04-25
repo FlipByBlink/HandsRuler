@@ -49,14 +49,13 @@ extension 🧩Entities {
     }
     func updateFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
         if let log = logs[worldAnchor.id],
-           let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(log.worldAnchorID)") {
+           let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(worldAnchor.id)") {
             fixedRulerEntity.removeFromParent()
             self.root.addChild(🧩Entity.fixedRuler(log, worldAnchor))
         }
     }
-    func removeFixedRuler(_ logs: 💾Logs, _ worldAnchor: WorldAnchor) {
-        if let log = logs[worldAnchor.id],
-           let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(log.worldAnchorID)") {
+    func removeFixedRuler(_ worldAnchorID: UUID) {
+        if let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(worldAnchorID)") {
             fixedRulerEntity.removeFromParent()
         }
     }
