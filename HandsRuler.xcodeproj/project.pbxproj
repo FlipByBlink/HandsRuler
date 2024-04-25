@@ -47,6 +47,7 @@
 		166F7E5A2B7DC36C005F70D5 /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16891ED82B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift */; };
 		167855BA2BD92A8A0064044E /* 🥽rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167855B92BD92A8A0064044E /* 🥽rest.swift */; };
 		167855BB2BD92BDF0064044E /* 🥽rest.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 167855B92BD92A8A0064044E /* 🥽rest.swift */; };
+		167855BF2BD9E25F0064044E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 167855BE2BD9E25F0064044E /* PrivacyInfo.xcprivacy */; };
 		167948B72BC67B6C004DFF4B /* 🛠️RequestTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167948B62BC67B6B004DFF4B /* 🛠️RequestTab.swift */; };
 		167948B82BC67C30004DFF4B /* 🛠️RequestTab.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 167948B62BC67B6B004DFF4B /* 🛠️RequestTab.swift */; };
 		168179E22BD5237300BFD40F /* 🧩Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168179E12BD5237300BFD40F /* 🧩Entities.swift */; };
@@ -148,6 +149,7 @@
 		166F7E482B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		167817E02B61FABE00BE0067 /* screenshot1280w.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot1280w.jpg; sourceTree = "<group>"; };
 		167855B92BD92A8A0064044E /* 🥽rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🥽rest.swift"; sourceTree = "<group>"; };
+		167855BE2BD9E25F0064044E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		167948B62BC67B6B004DFF4B /* 🛠️RequestTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠️RequestTab.swift"; sourceTree = "<group>"; };
 		168179E12BD5237300BFD40F /* 🧩Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩Entities.swift"; sourceTree = "<group>"; };
 		168179E52BD52A0D00BFD40F /* 🥽arKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🥽arKit.swift"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				165ADB572B4B71B2008A756F /* Info.plist */,
+				167855BE2BD9E25F0064044E /* PrivacyInfo.xcprivacy */,
 				166F7E462B7DBBF6005F70D5 /* Assets */,
 				166F7E412B7DBBDB005F70D5 /* 🌐Localization */,
 				16B0E7DB2BD4E8010069B221 /* Rest */,
@@ -456,6 +459,7 @@
 				16267B522B57D362000CA8AD /* InfoPlist.xcstrings in Resources */,
 				166F7E4A2B7DBD08005F70D5 /* 🌐AppStoreDescription.xcstrings in Resources */,
 				16267B502B57D172000CA8AD /* Localizable.xcstrings in Resources */,
+				167855BF2BD9E25F0064044E /* PrivacyInfo.xcprivacy in Resources */,
 				166F7E452B7DBBE5005F70D5 /* 🌐Timeline.xcstrings in Resources */,
 				165ADB532B4B71B2008A756F /* Assets.xcassets in Resources */,
 				169F10412BB94C3D00BAF363 /* unselect.m4a in Resources */,
