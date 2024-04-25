@@ -36,6 +36,8 @@ Sub function
 
 <img src="HandsRuler/Supporting files/Rest/README assets/screenshot1280w3.jpg" width="640">
 
+<img src="HandsRuler/Supporting files/Rest/README assets/screenshot1280w4.jpg" width="640">
+
 
 App Store link
 ---------------
