@@ -32,7 +32,7 @@ extension 📏ResultBoardView {
                 📏ResultBoardView(log.lineLength, isFixedRuler: true)
                     .onTapGesture { self.presentSubMenu.toggle() }
                     .overlay(alignment: .bottom) {
-                        VStack {
+                        VStack(spacing: 20) {
                             Button {
                                 UIPasteboard.general.string = 🪧ResultFormatter.string(log.lineLength,
                                                                                        self.model.unit)
@@ -42,6 +42,7 @@ extension 📏ResultBoardView {
                                 }
                             } label: {
                                 Label("Copy as text", systemImage: "doc.on.doc")
+                                    .padding(.vertical, 8)
                             }
                             .fixedSize()
                             Button(role: .destructive) {
@@ -49,14 +50,14 @@ extension 📏ResultBoardView {
                                 self.presentSubMenu = false
                             } label: {
                                 Label("Remove", systemImage: "delete.left")
+                                    .padding(.vertical, 8)
                             }
                             .fixedSize()
                         }
                         .font(.title2)
                         .padding(24)
-                        .font(.subheadline)
                         .glassBackgroundEffect()
-                        .visualEffect { $0.offset(y: $1.size.height + 12) }
+                        .visualEffect { $0.offset(y: $1.size.height + 16) }
                         .opacity(self.presentSubMenu ? 1 : 0)
                         .animation(.default.speed(2), value: self.presentSubMenu)
                     }
