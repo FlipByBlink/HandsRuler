@@ -160,6 +160,9 @@
 		16891ED72B7B2F8C00C6F0B3 /* 🗒️StaticInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🗒️StaticInfo.swift"; sourceTree = "<group>"; };
 		16891ED82B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		16891EDB2B7B2FB800C6F0B3 /* Developer_Publisher.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Developer_Publisher.xcassets; sourceTree = "<group>"; };
+		169DA3A12BF8CDC80002B836 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
+		169DA3A32BF8CDD70002B836 /* Example.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Example.jpg; sourceTree = "<group>"; };
+		169DA3A42BF8CDD70002B836 /* Info.plist Screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info.plist Screenshot.png"; sourceTree = "<group>"; };
 		169F103D2BB94C1800BAF363 /* select.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = select.m4a; sourceTree = "<group>"; };
 		169F103E2BB94C1900BAF363 /* unselect.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = unselect.m4a; sourceTree = "<group>"; };
 		169F103F2BB94C1900BAF363 /* fix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fix.m4a; sourceTree = "<group>"; };
@@ -324,6 +327,24 @@
 			path = "🥽AppModel";
 			sourceTree = "<group>";
 		};
+		169DA3A02BF8CD760002B836 /* Sample code */ = {
+			isa = PBXGroup;
+			children = (
+				169DA3A12BF8CDC80002B836 /* index.md */,
+				169DA3A22BF8CDCC0002B836 /* images */,
+			);
+			path = "Sample code";
+			sourceTree = "<group>";
+		};
+		169DA3A22BF8CDCC0002B836 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				169DA3A32BF8CDD70002B836 /* Example.jpg */,
+				169DA3A42BF8CDD70002B836 /* Info.plist Screenshot.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		169F10402BB94C2E00BAF363 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +377,7 @@
 		16B0E7DB2BD4E8010069B221 /* Rest */ = {
 			isa = PBXGroup;
 			children = (
+				169DA3A02BF8CD760002B836 /* Sample code */,
 				160F46BA2B5A5613001FE696 /* README assets */,
 				1638F80B2B50BC8800E0CAD2 /* Archive */,
 			);
