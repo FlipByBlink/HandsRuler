@@ -1,4 +1,4 @@
-# Sample code: HandsRuler minimal version
+# Sample code: minimal version
 
 ![Example](https://flipbyblink.github.io/HandsRuler/HandsRuler/Supporting%20files/Rest/Sample%20code/images/Example.jpg)
 
@@ -190,7 +190,7 @@ class AppModel: ObservableObject {
 
 Receive a latest hand joint data from anchorUpdates of HandTrackingProvider. Next, the position data of the index finger tip is applied to the Entity. Next, other Entities and text are updated based on the position.
 
-### The text is displayed in View of SwiftUI
+### The text is displayed in SwiftUI's View
 ```swift
 RealityView { content, attachments in
     ...
@@ -224,24 +224,10 @@ func getResultString() -> String {
 }
 ```
 
-The user experience will be very poor if the numerical values of the measurement results are displayed without adjustment. When the numerical values change, the entire text will be out of alignment, or the entire view will change size, making it difficult to see.
+The user experience will be very poor if the numerical values of the measurement results are displayed without adjustment. When the numerical values change, the entire text will be out of alignment, or the entire view will change size, making it difficult to read.
 
-Therefore, we made the text easier to read by using a monospaced font with monospacedDigit and fixed the number of digits after the decimal point with MeasurementFormatter.
+Therefore, I made the text easier to read by using a monospaced font with monospacedDigit and fixed the number of digits after the decimal point with MeasurementFormatter.
 
 
 ## Notice: Required actual device
 Required an actual Apple Vision Pro device to try ARKit hand tracking. It does not work at all in the simulator.
-
-
-## Links
-https://apps.apple.com/app/id6475769879
-<!--HandsRuler on the App Store-->
-
-https://github.com/FlipByBlink/HandsRuler
-<!--FlipByBlink/HandsRuler: Measure app by hand tracking for Apple Vision Pro-->
-
-https://developer.apple.com/wwdc23/10082
-<!--Meet ARKit for spatial computing - WWDC23 - Videos - Apple Developer-->
-
-https://developer.apple.com/documentation/arkit/arkit_in_visionos
-<!--ARKit in visionOS | Apple Developer Documentation-->

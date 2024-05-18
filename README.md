@@ -62,7 +62,6 @@ Source code link
 [gitlab.com/FlipByBlink/HandsRuler_Mirror](https://gitlab.com/FlipByBlink/HandsRuler_Mirror)
 
 ### Sample code link
-----------------------------
 [flipbyblink.github.io/HandsRuler/HandsRuler/Supporting files/Rest/Sample code](https://flipbyblink.github.io/HandsRuler/HandsRuler/Supporting%20files/Rest/Sample%20code)
 
 
