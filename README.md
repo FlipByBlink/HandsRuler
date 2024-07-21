@@ -10,7 +10,7 @@ _Hands is measure._
     <img src="HandsRuler/Supporting files/Rest/README assets/appstore_badge.svg">
 </a>
 
-<img src="HandsRuler/Supporting files/Rest/README assets/screenshot1280w.jpg" width="640">
+<img src="HandsRuler/Supporting files/Rest/README assets/video 480w.gif" width="480">
 
 
 Description
@@ -32,26 +32,18 @@ Sub function
 - Multi measurements.
 - Log feature.
 
-<img src="HandsRuler/Supporting files/Rest/README assets/screenshot1280w2.jpg" width="640">
+<img src="HandsRuler/Supporting files/Rest/README assets/screenshot1 640w.jpg" width="640">
 
-<img src="HandsRuler/Supporting files/Rest/README assets/screenshot1280w3.jpg" width="640">
+<img src="HandsRuler/Supporting files/Rest/README assets/screenshot2 640w.jpg" width="640">
 
-<img src="HandsRuler/Supporting files/Rest/README assets/screenshot1280w4.jpg" width="640">
+<img src="HandsRuler/Supporting files/Rest/README assets/screenshot3 640w.jpg" width="640">
+
+<img src="HandsRuler/Supporting files/Rest/README assets/screenshot4 1015w.jpg" width="640">
 
 
 App Store link
 ---------------
 [apps.apple.com/app/id6475769879](https://apps.apple.com/app/id6475769879)
-
-
-Review video① (4:30 - 5:24)
-----------------------------
-[www.youtube.com/watch?v=4CunoApkfF4&t=270s](https://www.youtube.com/watch?v=4CunoApkfF4&t=270s)
-
-
-Review video② (4:07 - 5:40)
-----------------------------
-[www.youtube.com/watch?v=AMPNzEvqaEE&t=247s](https://www.youtube.com/watch?v=AMPNzEvqaEE&t=247s)
 
 
 Source code link
@@ -61,7 +53,7 @@ Source code link
 ### Source code (Mirror) link
 [gitlab.com/FlipByBlink/HandsRuler_Mirror](https://gitlab.com/FlipByBlink/HandsRuler_Mirror)
 
-### Sample code link
+### Minimal sample code link
 [flipbyblink.github.io/HandsRuler/HandsRuler/Supporting files/Rest/Sample code](https://flipbyblink.github.io/HandsRuler/HandsRuler/Supporting%20files/Rest/Sample%20code)
 
 
