@@ -55,7 +55,8 @@ enum 🗒️StaticInfo {
                 ]
                 case .MeasureView: [
                     "📏MeasureView.swift",
-                    "📏ResultBoardView.swift"
+                    "📏ResultBoardView.swift",
+                    "📏ResultBoardViewForFixedRuler.swift"
                 ]
                 case .Entity: [
                     "🧩Entities.swift",

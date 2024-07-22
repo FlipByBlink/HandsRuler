@@ -18,6 +18,8 @@
 		162F89182C4D2CEA002BF20A /* screenshot4 1015w.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 162F89132C4D2CEA002BF20A /* screenshot4 1015w.jpg */; };
 		162F89192C4D2CEA002BF20A /* screenshot2 640w.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 162F89142C4D2CEA002BF20A /* screenshot2 640w.jpg */; };
 		162F891A2C4D2CEA002BF20A /* screenshot1 640w.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 162F89152C4D2CEA002BF20A /* screenshot1 640w.jpg */; };
+		162F891C2C4E2DD3002BF20A /* 📏ResultBoardViewForFixedRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162F891B2C4E2DD3002BF20A /* 📏ResultBoardViewForFixedRuler.swift */; };
+		162F891E2C4E2F0D002BF20A /* 📏ResultBoardViewForFixedRuler.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 162F891B2C4E2DD3002BF20A /* 📏ResultBoardViewForFixedRuler.swift */; };
 		16359E262B91D6AC004CC792 /* 🪧BillboardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16359E252B91D6AC004CC792 /* 🪧BillboardComponent.swift */; };
 		16359E272B91D7E1004CC792 /* 🪧BillboardComponent.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16359E252B91D6AC004CC792 /* 🪧BillboardComponent.swift */; };
 		1642FAB52B4D54A60084F9ED /* 🛠️UnitTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1642FAB42B4D54A60084F9ED /* 🛠️UnitTab.swift */; };
@@ -93,6 +95,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				162F891E2C4E2F0D002BF20A /* 📏ResultBoardViewForFixedRuler.swift in CopyFiles */,
 				167855BB2BD92BDF0064044E /* 🥽rest.swift in CopyFiles */,
 				16BA63E72BD64C00003777D0 /* 🥽userAction.swift in CopyFiles */,
 				16BA63E82BD64C00003777D0 /* 🥽arKit.swift in CopyFiles */,
@@ -143,6 +146,7 @@
 		162F89132C4D2CEA002BF20A /* screenshot4 1015w.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "screenshot4 1015w.jpg"; sourceTree = "<group>"; };
 		162F89142C4D2CEA002BF20A /* screenshot2 640w.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "screenshot2 640w.jpg"; sourceTree = "<group>"; };
 		162F89152C4D2CEA002BF20A /* screenshot1 640w.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "screenshot1 640w.jpg"; sourceTree = "<group>"; };
+		162F891B2C4E2DD3002BF20A /* 📏ResultBoardViewForFixedRuler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏ResultBoardViewForFixedRuler.swift"; sourceTree = "<group>"; };
 		16359E252B91D6AC004CC792 /* 🪧BillboardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧BillboardComponent.swift"; sourceTree = "<group>"; };
 		1638F80C2B50BC9700E0CAD2 /* DebugView.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DebugView.md; sourceTree = "<group>"; };
 		1642FAB42B4D54A60084F9ED /* 🛠️UnitTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️UnitTab.swift"; sourceTree = "<group>"; };
@@ -236,6 +240,14 @@
 				16B0E7DB2BD4E8010069B221 /* Rest */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		162F891D2C4E2E11002BF20A /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				162F891B2C4E2DD3002BF20A /* 📏ResultBoardViewForFixedRuler.swift */,
+			);
+			path = Rest;
 			sourceTree = "<group>";
 		};
 		16359E232B91D67E004CC792 /* 🧩Entity */ = {
@@ -377,6 +389,7 @@
 			children = (
 				1642FAB82B4D6CAA0084F9ED /* 📏MeasureView.swift */,
 				16B0E7D82BD4E0960069B221 /* 📏ResultBoardView.swift */,
+				162F891D2C4E2E11002BF20A /* Rest */,
 			);
 			path = "📏MeasureView";
 			sourceTree = "<group>";
@@ -534,6 +547,7 @@
 				167948B72BC67B6C004DFF4B /* 🛠️RequestTab.swift in Sources */,
 				16159B8C2BB7E31C00106FD6 /* 📢Sounds.swift in Sources */,
 				169F10452BB976C300BAF363 /* 🔵Selection.swift in Sources */,
+				162F891C2C4E2DD3002BF20A /* 📏ResultBoardViewForFixedRuler.swift in Sources */,
 				165ADB4F2B4B71B0008A756F /* App.swift in Sources */,
 				16C4C6A92BB7AF0B004DB77E /* 🛠️AboutTab.swift in Sources */,
 				16359E262B91D6AC004CC792 /* 🪧BillboardComponent.swift in Sources */,

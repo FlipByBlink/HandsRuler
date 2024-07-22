@@ -34,7 +34,7 @@ struct 📏MeasureView: View {
             }
             ForEach(self.model.activeWorldAnchors, id: \.id) { worldAnchor in
                 Attachment(id: "\(worldAnchor.id)") {
-                    📏ResultBoardView.FixedRuler(worldAnchor.id)
+                    📏ResultBoardViewForFixedRuler(worldAnchor.id)
                 }
             }
         }

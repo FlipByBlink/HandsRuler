@@ -7,14 +7,13 @@ struct 🛠️UnitTab: View {
             List {
                 Picker("Unit", selection: self.$model.unit) {
                     ForEach(📐Unit.allCases) { unit in
-                        HStack(alignment: .firstTextBaseline, spacing: 14) {
+                        HStack(alignment: .firstTextBaseline, spacing: 16) {
                             Text(unit.title)
-                                .font(.title)
+                                .font(.title2)
                                 .fontWeight(.semibold)
                             Text(unit.symbol)
                                 .font(.title3)
                                 .fontWeight(.bold)
-                                .fontDesign(.rounded)
                                 .foregroundStyle(.tertiary)
                         }
                     }
