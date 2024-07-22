@@ -4,7 +4,6 @@ import ARKit
 @MainActor
 class 🥽AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
-    @AppStorage("measureOnLaunch") var measureOnLaunch: Bool = false
     
     @Published var resultValue: Float = 0.4
     @Published var openedImmersiveSpace: Bool = false

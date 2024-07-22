@@ -191,16 +191,6 @@
         }
       }
     },
-    "Start measuring on launch" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリ起動時に測定開始"
-          }
-        }
-      }
-    },
     "Stop" : {
       "localizations" : {
         "ja" : {

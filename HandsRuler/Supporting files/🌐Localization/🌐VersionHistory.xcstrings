@@ -58,13 +58,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Several improvement and fix"
+            "value" : "Fix \"00 in 12 ft\" bug on feet&inch option.\nRemove option to launch immediately ruler."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "軽微な改善や修正を行いました。"
+            "value" : "「単位をフィート&インチに設定している際に\"00 in 12 ft\"と表示される不具合」を修正しました。\n「アプリ起動時にすぐに測定する機能」を削除しました。"
           }
         }
       }

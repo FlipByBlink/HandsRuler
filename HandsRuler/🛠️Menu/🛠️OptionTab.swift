@@ -12,12 +12,6 @@ struct 🛠️OptionTab: View {
                         Label("Unit", systemImage: "lines.measurement.horizontal")
                     }
                 }
-                Section {
-                    Toggle(isOn: self.$model.measureOnLaunch) {
-                        Label("Start measuring on launch",
-                              systemImage: "wand.and.stars")
-                    }
-                }
             }
             .navigationTitle("Option")
         }
