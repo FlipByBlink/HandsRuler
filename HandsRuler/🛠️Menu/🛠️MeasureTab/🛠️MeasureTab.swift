@@ -33,7 +33,7 @@ private extension 🛠️MeasureTab {
                 }
             }
         }
-        .font(.title2)
+        .font(.largeTitle)
         .buttonStyle(.borderedProminent)
         .tint(self.model.openedImmersiveSpace ? .red : .green)
         .animation(.default, value: self.model.openedImmersiveSpace)
