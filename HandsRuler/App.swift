@@ -15,7 +15,7 @@ struct HandsRulerApp: App {
         }
     }
     init() {
-        🧑HeadTrackingComponent.registerComponent()
-        🧑HeadTrackingSystem.registerSystem()
+        🪧BillboardComponent.registerComponent()
+        🪧BillboardSystem.registerSystem()
     }
 }

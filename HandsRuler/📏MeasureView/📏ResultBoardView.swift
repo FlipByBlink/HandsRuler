@@ -5,7 +5,7 @@ struct 📏ResultBoardView: View {
     private var lineLength: Float
     private var isFixedRuler: Bool
     var body: some View {
-        Text(🪧ResultFormatter.string(self.lineLength, self.model.unit))
+        Text(🧾ResultFormatter.string(self.lineLength, self.model.unit))
             .font(.system(size: max(.init(min(self.lineLength * 22, 36)), 20)))
             .fontWeight(.bold)
             .monospacedDigit()
@@ -34,7 +34,7 @@ extension 📏ResultBoardView {
                     .overlay(alignment: .bottom) {
                         VStack(spacing: 20) {
                             Button {
-                                UIPasteboard.general.string = 🪧ResultFormatter.string(log.lineLength,
+                                UIPasteboard.general.string = 🧾ResultFormatter.string(log.lineLength,
                                                                                        self.model.unit)
                                 Task {
                                     try? await Task.sleep(for: .seconds(0.3))

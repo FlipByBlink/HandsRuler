@@ -17,7 +17,7 @@ struct 🛠️LogView: View {
                             }
                             Menu {
                                 Button {
-                                    UIPasteboard.general.string = 🪧ResultFormatter.string(log.lineLength, 
+                                    UIPasteboard.general.string = 🧾ResultFormatter.string(log.lineLength, 
                                                                                            self.model.unit)
                                 } label: {
                                     Label("Copy as text", systemImage: "doc.on.doc")
@@ -38,7 +38,7 @@ struct 🛠️LogView: View {
                         }
                     } label: {
                         Label {
-                            Text(🪧ResultFormatter.string(log.lineLength, self.model.unit))
+                            Text(🧾ResultFormatter.string(log.lineLength, self.model.unit))
                                 .textSelection(.enabled)
                                 .monospacedDigit()
                                 .padding(.horizontal)

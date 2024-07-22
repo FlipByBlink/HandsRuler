@@ -41,9 +41,15 @@ Sub function
 <img src="HandsRuler/Supporting files/Rest/README assets/screenshot4 1015w.jpg" width="640">
 
 
+<br>
+
+
 App Store link
 ---------------
 [apps.apple.com/app/id6475769879](https://apps.apple.com/app/id6475769879)
+
+
+<br>
 
 
 Source code link
@@ -55,6 +61,9 @@ Source code link
 
 ### Minimal sample code link
 [flipbyblink.github.io/HandsRuler/HandsRuler/Supporting files/Rest/Sample code](https://flipbyblink.github.io/HandsRuler/HandsRuler/Supporting%20files/Rest/Sample%20code)
+
+
+<br>
 
 
 Contact

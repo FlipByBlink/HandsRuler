@@ -2,8 +2,8 @@ import RealityKit
 import ARKit
 import SwiftUI
 
-struct 🧑HeadTrackingSystem: System {
-    private static let query = EntityQuery(where: .has(🧑HeadTrackingComponent.self))
+struct 🪧BillboardSystem: System {
+    private static let query = EntityQuery(where: .has(🪧BillboardComponent.self))
     
     private let session = ARKitSession()
     private let provider = WorldTrackingProvider()

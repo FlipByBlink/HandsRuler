@@ -10,7 +10,7 @@ struct 📏MeasureView: View {
             self.model.entities.setUpChildren()
             
             let resultBoardEntity = attachments.entity(for: "resultBoard")!
-            resultBoardEntity.components.set(🧑HeadTrackingComponent())
+            resultBoardEntity.components.set(🪧BillboardComponent())
             resultBoardEntity.name = "resultBoard"
             self.model.entities.add(resultBoardEntity)
             
@@ -21,7 +21,7 @@ struct 📏MeasureView: View {
                       let log = self.model.logs[worldAnchor.id] else {
                     continue
                 }
-                fixedResultBoardEntity.components.set(🧑HeadTrackingComponent())
+                fixedResultBoardEntity.components.set(🪧BillboardComponent())
                 fixedResultBoardEntity.setTransformMatrix(worldAnchor.originFromAnchorTransform,
                                                           relativeTo: nil)
                 fixedResultBoardEntity.setPosition(log.centerPosition,

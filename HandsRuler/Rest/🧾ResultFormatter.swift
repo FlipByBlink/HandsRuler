@@ -1,6 +1,6 @@
 import Foundation
 
-enum 🪧ResultFormatter {
+enum 🧾ResultFormatter {
     static func string(_ lineLength: Float, _ unit: 📐Unit) -> String {
         if unit == .feetAndInches {
             let measurement = Measurement(value: .init(lineLength), unit: UnitLength.meters)
