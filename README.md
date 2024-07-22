@@ -20,11 +20,11 @@ Measure the distance between both hands intuitively.
 App shows the measurement of the distance between the tips of the index fingers, from the left hand to the right hand.
 
 Unit option
-- centiMeters
 - meters
-- inches
-- feet
+- centiMeters
 - yards
+- feet
+- inches
 - feet and inches
 
 Sub function

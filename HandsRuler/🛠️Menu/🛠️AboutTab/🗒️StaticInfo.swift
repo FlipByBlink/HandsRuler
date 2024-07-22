@@ -66,7 +66,7 @@ enum 🗒️StaticInfo {
                     "🛠️MeasureTab.swift",
                     "🛠️OnboardView.swift",
                     "🛠️LogView.swift",
-                    "🛠️OptionTab.swift",
+                    "🛠️UnitTab.swift",
                     "🛠️GuideTab.swift",
                     "🛠️RequestTab.swift",
                     "🛠️AboutTab.swift",

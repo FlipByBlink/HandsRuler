@@ -31,6 +31,16 @@
         }
       }
     },
+    "Centimeters" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "センチメートル"
+          }
+        }
+      }
+    },
     "Clear" : {
       "localizations" : {
         "ja" : {
@@ -57,6 +67,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "なし"
+          }
+        }
+      }
+    },
+    "Feet" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィート"
+          }
+        }
+      }
+    },
+    "Feet & Inches" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィート&インチ"
           }
         }
       }
@@ -111,6 +141,16 @@
         }
       }
     },
+    "Inches" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インチ"
+          }
+        }
+      }
+    },
     "Log" : {
       "localizations" : {
         "ja" : {
@@ -151,12 +191,12 @@
         }
       }
     },
-    "Option" : {
+    "Meters" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "オプション"
+            "value" : "メートル"
           }
         }
       }
@@ -207,6 +247,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "単位"
+          }
+        }
+      }
+    },
+    "Yards" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヤード"
           }
         }
       }
