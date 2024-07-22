@@ -38,7 +38,9 @@ Sub function
 
 <img src="HandsRuler/Supporting files/Rest/README assets/screenshot3 640w.jpg" width="640">
 
-<img src="HandsRuler/Supporting files/Rest/README assets/screenshot4 1015w.jpg" width="640">
+<img src="HandsRuler/Supporting files/Rest/README assets/screenshot4 640w.jpg" width="640">
+
+<img src="HandsRuler/Supporting files/Rest/README assets/screenshot5 1015w.jpg" width="640">
 
 
 <br>
