@@ -5,22 +5,49 @@ enum 🧩Entity {
     static func line() -> Entity {
         let value = Entity()
         value.components.set(OpacityComponent(opacity: 0.75))
-        let occlusionEntity = Entity()
-        occlusionEntity.name = "lineOcclusion"
-        occlusionEntity.components.set(🧩Model.lineOcclusion(Self.Placeholder.lineLength))
-        value.addChild(occlusionEntity)
+        
+        ["1", "2"].forEach {
+            let partEntity = Entity()
+            partEntity.name = $0
+            partEntity.orientation = .init(angle: .pi / 2, axis: [1, 0, 0])
+            value.addChild(partEntity)
+        }
+        
         return value
     }
-    static func updateLine(_ entity: Entity, _ leftPosition: SIMD3<Float>, _ rightPosition: SIMD3<Float>) {
+    static func updateLine(_ entity: Entity,
+                           _ leftPosition: SIMD3<Float>,
+                           _ rightPosition: SIMD3<Float>) {
         let centerPosition = (leftPosition + rightPosition) / 2
         entity.position = centerPosition
         let lineLength = distance(leftPosition, rightPosition)
-        entity.components.set(🧩Model.line(lineLength))
+        
+        //let lineModel = ModelComponent(mesh: .generateBox(width: 0.01,
+        //                                                  height: 0.01,
+        //                                                  depth: (lineLength / 3),
+        //                                                  cornerRadius: 0.005),
+        //                               materials: [SimpleMaterial(color: .white,
+        //                                                          isMetallic: false)])//これだとOKだが端が丸い
+        //
+        //let lineModel = ModelComponent(mesh: .generateCylinder(height: (lineLength / 3),
+        //                                                        radius: 0.005),
+        //                                materials: [SimpleMaterial(color: .white,
+        //                                                           isMetallic: false)])//これだとダメ
+        
+        let lineModel = ModelComponent(mesh: Self.meterLine,
+                                       materials: [SimpleMaterial(color: .white,
+                                                                  isMetallic: false)])//Workaround
+        
+        ["1", "2"].forEach {
+            let partEntity = entity.findEntity(named: $0)!
+            partEntity.position.z = (lineLength / 3) * ($0 == "1" ? 1 : -1)
+            partEntity.scale.y = (lineLength / 3)//Workaround
+            partEntity.components.set(lineModel)
+        }
+        
         entity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
-        let occlusionEntity = entity.findEntity(named: "lineOcclusion")!
-        occlusionEntity.components[ModelComponent.self] = 🧩Model.lineOcclusion(lineLength)
-        occlusionEntity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
     }
+    static let meterLine = MeshResource.generateCylinder(height: 1, radius: 0.005)//Workaround
     static func fingerTip(_ chirality: HandAnchor.Chirality) -> Entity {
         let value = Entity()
         switch chirality {
