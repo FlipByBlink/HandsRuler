@@ -6,12 +6,10 @@ enum 🧩Entity {
         let value = Entity()
         value.components.set(OpacityComponent(opacity: 0.75))
         
-        ["1", "2"].forEach {
-            let partEntity = ModelEntity(mesh: .generateCylinder(height: 1,
-                                                                 radius: 0.005),
-                                         materials: [SimpleMaterial(color: .white,
-                                                                    isMetallic: false)])
+        ["pieceA", "pieceB"].forEach {
+            let partEntity = Entity()
             partEntity.name = $0
+            partEntity.components.set(🧩Model.oneMeterCylinder())
             partEntity.orientation = .init(angle: .pi / 2, axis: [1, 0, 0])
             value.addChild(partEntity)
         }
@@ -26,10 +24,11 @@ enum 🧩Entity {
         entity.position = centerPosition
         let lineLength = distance(leftPosition, rightPosition)
         
-        ["1", "2"].forEach {
+        ["pieceA", "pieceB"].forEach {
             let partEntity = entity.findEntity(named: $0)!
-            partEntity.position.z = (lineLength / 3) * ($0 == "1" ? 1 : -1)
-            partEntity.scale.y = (lineLength / 3)//Workaround
+            partEntity.position.z = lineLength / 3
+            if $0 == "pieceB" { partEntity.position.z *= -1 }
+            partEntity.scale.y = lineLength / 3
         }
         
         entity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
