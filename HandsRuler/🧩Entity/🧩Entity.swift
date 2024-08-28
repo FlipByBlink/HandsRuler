@@ -7,7 +7,10 @@ enum 🧩Entity {
         value.components.set(OpacityComponent(opacity: 0.75))
         
         ["1", "2"].forEach {
-            let partEntity = Entity()
+            let partEntity = ModelEntity(mesh: .generateCylinder(height: 1,
+                                                                 radius: 0.005),
+                                         materials: [SimpleMaterial(color: .white,
+                                                                    isMetallic: false)])
             partEntity.name = $0
             partEntity.orientation = .init(angle: .pi / 2, axis: [1, 0, 0])
             value.addChild(partEntity)
@@ -22,27 +25,10 @@ enum 🧩Entity {
         entity.position = centerPosition
         let lineLength = distance(leftPosition, rightPosition)
         
-        //let lineModel = ModelComponent(mesh: .generateBox(width: 0.01,
-        //                                                  height: 0.01,
-        //                                                  depth: (lineLength / 3),
-        //                                                  cornerRadius: 0.005),
-        //                               materials: [SimpleMaterial(color: .white,
-        //                                                          isMetallic: false)])//これだとOKだが端が丸い
-        //
-        //let lineModel = ModelComponent(mesh: .generateCylinder(height: (lineLength / 3),
-        //                                                        radius: 0.005),
-        //                                materials: [SimpleMaterial(color: .white,
-        //                                                           isMetallic: false)])//これだとダメ
-        
-        let lineModel = ModelComponent(mesh: Self.meterLine,
-                                       materials: [SimpleMaterial(color: .white,
-                                                                  isMetallic: false)])//Workaround
-        
         ["1", "2"].forEach {
             let partEntity = entity.findEntity(named: $0)!
             partEntity.position.z = (lineLength / 3) * ($0 == "1" ? 1 : -1)
             partEntity.scale.y = (lineLength / 3)//Workaround
-            partEntity.components.set(lineModel)
         }
         
         entity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
