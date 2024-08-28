@@ -39,7 +39,7 @@ extension 🥽AppModel {
                     self.entities.right.setTransformMatrix(originFromIndex, relativeTo: nil)
             }
             
-            self.updateRuler()
+            self.entities.applyPointersUpdateToLineAndResultBoard()
         }
     }
     

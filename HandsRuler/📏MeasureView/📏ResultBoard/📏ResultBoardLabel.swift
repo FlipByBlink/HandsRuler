@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 📏ResultBoardView: View {
+struct 📏ResultBoardLabel: View {
     @EnvironmentObject var model: 🥽AppModel
     private var lineLength: Float
     private var isFixedRuler: Bool

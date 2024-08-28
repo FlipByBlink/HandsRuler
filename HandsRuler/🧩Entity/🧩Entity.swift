@@ -18,6 +18,7 @@ enum 🧩Entity {
         
         return value
     }
+    
     static func updateLine(_ entity: Entity,
                            _ leftPosition: SIMD3<Float>,
                            _ rightPosition: SIMD3<Float>) {
@@ -33,7 +34,7 @@ enum 🧩Entity {
         
         entity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
     }
-    static let meterLine = MeshResource.generateCylinder(height: 1, radius: 0.005)//Workaround
+    
     static func fingerTip(_ chirality: HandAnchor.Chirality) -> Entity {
         let value = Entity()
         switch chirality {
@@ -50,17 +51,20 @@ enum 🧩Entity {
                               🧩Model.fingerTip()])
         return value
     }
+    
     static func fixedLine(_ log: 💾Log) -> Entity {
         let lineEntity = Self.line()
         Self.updateLine(lineEntity, log.leftPosition, log.rightPosition)
         return lineEntity
     }
+    
     static func fixedPointer(_ position: SIMD3<Float>) -> Entity {
         let value = Entity()
         value.position = position
         value.components.set(🧩Model.fixedPointer())
         return value
     }
+    
     static func fixedRuler(_ log: 💾Log, _ worldAnchor: WorldAnchor) -> Entity {
         let value = Entity()
         value.name = "fixedRuler\(log.worldAnchorID)"
@@ -72,6 +76,7 @@ enum 🧩Entity {
         value.addChild(🧩Entity.fixedPointer(log.rightPosition))
         return value
     }
+    
     enum Placeholder {
         static let leftPosition: SIMD3<Float> = .init(x: -0.2, y: 1.5, z: -0.7)
         static let rightPosition: SIMD3<Float> = .init(x: 0.2, y: 1.5, z: -0.7)
