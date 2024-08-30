@@ -4,16 +4,14 @@ import RealityKit
 extension 🥽AppModel {
     func isSelected(_ handAnchor: HandAnchor) -> Bool {
         switch handAnchor.chirality {
-            case .left:
-                return self.selection == .left
-            case .right:
-                return self.selection == .right
+            case .left: self.selection.isLeft
+            case .right: self.selection.isRight
         }
     }
     
     func setCooldownState() {
-        self.isCooldownActive = true
         Task {
+            self.isCooldownActive = true
             try? await Task.sleep(for: .seconds(1.5))
             self.isCooldownActive = false
         }
@@ -21,6 +19,7 @@ extension 🥽AppModel {
     
     func processRestoreAction(_ handAnchor: HandAnchor) {
         guard !self.isCooldownActive else { return }
+        
         guard let fingerTip = handAnchor.handSkeleton?.joint(.indexFingerTip) else {
             assertionFailure()
             return
@@ -28,12 +27,13 @@ extension 🥽AppModel {
         
         guard self.selection != .noSelect else { return }
         
-        if self.selection == .left, handAnchor.chirality == .right { return }
-        if self.selection == .right, handAnchor.chirality == .left { return }
+        if self.selection.isLeft, handAnchor.chirality == .right { return }
+        if self.selection.isRight, handAnchor.chirality == .left { return }
         
         let originFromWrist = handAnchor.originFromAnchorTransform
         let wristFromIndex = fingerTip.anchorFromJointTransform
         let originFromIndex = originFromWrist * wristFromIndex
+        let handAnchorPosition = Transform(matrix: originFromIndex).translation
         
         let entity = {
             switch handAnchor.chirality {
@@ -42,7 +42,7 @@ extension 🥽AppModel {
             }
         }()
         
-        if distance(entity.position, Transform(matrix: originFromIndex).translation) < 0.01 {
+        if distance(entity.position, handAnchorPosition) < 0.01 {
             self.selection = .noSelect
             entity.components.set(🧩Model.fingerTip(.blue))
             entity.playAudio(self.sounds.unselect)
