@@ -26,7 +26,8 @@ enum 🗒️StaticInfo {
     static let webRepositoryURL: URL = .init(string: "https://github.com/FlipByBlink/HandsRuler")!
     static let webMirrorRepositoryURL: URL = .init(string: "https://gitlab.com/FlipByBlink/HandsRuler_Mirror")!
 
-    static let versionInfos: [(version: String, date: String)] = [("1.1.1", "2024-07-22"),
+    static let versionInfos: [(version: String, date: String)] = [("1.2", "2024-08-30"),
+                                                                  ("1.1.1", "2024-07-22"),
                                                                   ("1.1", "2024-04-26"),
                                                                   ("1.0.1", "2024-02-15"),
                                                                   ("1.0", "2024-02-02")] //降順。先頭の方が新しい
@@ -49,13 +50,14 @@ enum 🗒️StaticInfo {
                     "🥽AppModel.swift",
                     "🥽userAction.swift",
                     "🥽arKit.swift",
-                    "🥽updateRuler.swift",
+                    "🥽log.swift",
                     "🥽rest.swift",
                     "🥽simulator.swift"
                 ]
                 case .MeasureView: [
                     "📏MeasureView.swift",
                     "📏ResultBoardView.swift",
+                    "📏ResultBoardLabel.swift",
                     "📏ResultBoardViewForFixedRuler.swift"
                 ]
                 case .Entity: [
@@ -66,7 +68,7 @@ enum 🗒️StaticInfo {
                 case .Menu: [
                     "🛠️MeasureTab.swift",
                     "🛠️OnboardView.swift",
-                    "🛠️LogView.swift",
+                    "🛠️LogsView.swift",
                     "🛠️UnitTab.swift",
                     "🛠️GuideTab.swift",
                     "🛠️RequestTab.swift",

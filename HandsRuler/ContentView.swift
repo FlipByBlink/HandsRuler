@@ -4,6 +4,7 @@ struct ContentView: View {
     @EnvironmentObject var model: 🥽AppModel
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.scenePhase) var scenePhase
+    
     var body: some View {
         TabView {
             🛠️MeasureTab()

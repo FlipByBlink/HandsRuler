@@ -75,11 +75,11 @@ enum 🧩Entity {
         let value = Entity()
         value.name = "fixedRuler\(log.worldAnchorID)"
         value.setTransformMatrix(worldAnchor.originFromAnchorTransform, relativeTo: nil)
-        let lineEntity = 🧩Entity.line()
-        🧩Entity.updateLine(lineEntity, log.leftPosition, log.rightPosition)
+        let lineEntity = Self.line()
+        Self.updateLine(lineEntity, log.leftPosition, log.rightPosition)
         value.addChild(lineEntity)
-        value.addChild(🧩Entity.fixedPointer(log.leftPosition))
-        value.addChild(🧩Entity.fixedPointer(log.rightPosition))
+        value.addChild(Self.fixedPointer(log.leftPosition))
+        value.addChild(Self.fixedPointer(log.rightPosition))
         return value
     }
 }

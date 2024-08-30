@@ -1,6 +1,6 @@
 HandsRuler
 ===========
-__Measure app by hand tracking for Apple Vision Pro__
+__Tape Measure app by hand tracking for Apple Vision Pro__
 
 _Hands is measure._
 

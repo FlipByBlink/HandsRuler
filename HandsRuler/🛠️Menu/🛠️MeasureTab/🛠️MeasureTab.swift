@@ -4,13 +4,14 @@ struct 🛠️MeasureTab: View {
     @EnvironmentObject var model: 🥽AppModel
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    
     var body: some View {
         NavigationStack {
             Group {
                 if self.model.logs.hasNeverLogged {
                     🛠️OnboardView()
                 } else {
-                    🛠️LogView()
+                    🛠️LogsView()
                 }
             }
             .navigationTitle("HandsRuler")

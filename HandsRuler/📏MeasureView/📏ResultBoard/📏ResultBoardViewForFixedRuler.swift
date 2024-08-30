@@ -4,6 +4,7 @@ struct 📏ResultBoardViewForFixedRuler: View {
     @EnvironmentObject var model: 🥽AppModel
     @State private var presentSubMenu: Bool = false
     private var id: UUID
+    
     var body: some View {
         if let log = self.model.logs[self.id] {
             📏ResultBoardLabel(log.lineLength, isFixedRuler: true)
@@ -40,6 +41,7 @@ struct 📏ResultBoardViewForFixedRuler: View {
                 }
         }
     }
+    
     init(_ id: UUID) {
         self.id = id
     }

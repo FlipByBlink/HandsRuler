@@ -43,9 +43,7 @@ extension 🥽AppModel {
         }()
         
         if distance(entity.position, handAnchorPosition) < 0.01 {
-            self.selection = .noSelect
-            entity.components.set(🧩Model.fingerTip(.blue))
-            entity.playAudio(self.sounds.unselect)
+            self.unselect(entity)
         }
     }
     

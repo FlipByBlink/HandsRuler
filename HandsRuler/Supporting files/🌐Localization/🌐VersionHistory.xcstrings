@@ -68,6 +68,9 @@
           }
         }
       }
+    },
+    "1.2" : {
+      "extractionState" : "manual"
     }
   },
   "version" : "1.0"

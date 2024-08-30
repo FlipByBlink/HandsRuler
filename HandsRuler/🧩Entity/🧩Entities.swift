@@ -18,6 +18,9 @@ extension 🧩Entities {
     var resultBoard: Entity? {
         self.root.findEntity(named: "resultBoard")
     }
+    var currentLineLength: Float {
+        distance(self.left.position, self.right.position)
+    }
     func add(_ entity: Entity) {
         self.root.addChild(entity)
     }

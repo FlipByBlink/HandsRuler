@@ -4,6 +4,7 @@ struct 📏ResultBoardLabel: View {
     @EnvironmentObject var model: 🥽AppModel
     private var lineLength: Float
     private var isFixedRuler: Bool
+    
     var body: some View {
         Text(🧾ResultFormatter.string(self.lineLength, self.model.unit))
             .font(.system(size: CGFloat(max(min(self.lineLength * 32, 44), 20))))
@@ -16,6 +17,7 @@ struct 📏ResultBoardLabel: View {
             .glassBackgroundEffect()
             .onTapGesture(count: 2) { self.model.setRandomPosition_simulator() }
     }
+    
     init(_ lineLength: Float, isFixedRuler: Bool = false) {
         self.lineLength = lineLength
         self.isFixedRuler = isFixedRuler
