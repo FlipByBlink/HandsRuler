@@ -31,12 +31,10 @@ extension 🧩Entities {
     }
     func hideAndShow() {
         Task {
-            let entities = [
-                self.line,
-                self.left,
-                self.right,
-                self.root.findEntity(named: "resultBoard")!
-            ]
+            let entities = [self.line,
+                            self.left,
+                            self.right,
+                            self.resultBoard!]
             entities.forEach { $0.isEnabled = false }
             try await Task.sleep(for: .seconds(2.5))
             entities.forEach { $0.isEnabled = true }
