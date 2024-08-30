@@ -30,7 +30,7 @@ struct 📏MeasureView: View {
             }
         } attachments: {
             Attachment(id: "resultBoard") {
-                📏ResultBoardView(self.model.resultValue)
+                📏ResultBoardView()
             }
             ForEach(self.model.activeWorldAnchors, id: \.id) { worldAnchor in
                 Attachment(id: "\(worldAnchor.id)") {

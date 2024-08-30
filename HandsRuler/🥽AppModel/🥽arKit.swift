@@ -24,8 +24,8 @@ extension 🥽AppModel {
                 continue
             }
             
-            if self.selection.isLeft, handAnchor.chirality == .left { continue }
-            if self.selection.isRight, handAnchor.chirality == .right { continue }
+            self.processRestoreAction(handAnchor)
+            if self.isSelected(handAnchor) { continue }
             
             let originFromWrist = handAnchor.originFromAnchorTransform
             
@@ -39,7 +39,7 @@ extension 🥽AppModel {
                     self.entities.right.setTransformMatrix(originFromIndex, relativeTo: nil)
             }
             
-            self.updateRuler()
+            self.entities.applyPointersUpdateToLineAndResultBoard()
         }
     }
     

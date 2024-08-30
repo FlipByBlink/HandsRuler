@@ -48,6 +48,7 @@ extension 🥽AppModel {
 
 private extension 🥽AppModel {
     private func select(_ entity: Entity) {
+        self.setCooldownState()
         switch entity.name {
             case "left": self.selection = .left
             case "right": self.selection = .right

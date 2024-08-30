@@ -5,7 +5,6 @@ import ARKit
 class 🥽AppModel: ObservableObject {
     @AppStorage("unit") var unit: 📐Unit = .meters
     
-    @Published var resultValue: Float = 0.4
     @Published var openedImmersiveSpace: Bool = false
     @Published var logs: 💾Logs = .load()
     @Published var activeWorldAnchors: [WorldAnchor] = []
@@ -17,5 +16,6 @@ class 🥽AppModel: ObservableObject {
     let entities = 🧩Entities()
     
     var selection: 🔵Selection = .noSelect
+    var isCooldownActive: Bool = false
     let sounds = 📢Sounds()
 }

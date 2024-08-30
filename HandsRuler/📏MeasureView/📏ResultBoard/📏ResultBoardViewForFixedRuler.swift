@@ -6,7 +6,7 @@ struct 📏ResultBoardViewForFixedRuler: View {
     private var id: UUID
     var body: some View {
         if let log = self.model.logs[self.id] {
-            📏ResultBoardView(log.lineLength, isFixedRuler: true)
+            📏ResultBoardLabel(log.lineLength, isFixedRuler: true)
                 .onTapGesture { self.presentSubMenu.toggle() }
                 .overlay(alignment: .bottom) {
                     VStack(spacing: 20) {
