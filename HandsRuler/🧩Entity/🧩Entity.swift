@@ -4,7 +4,7 @@ import ARKit
 enum 🧩Entity {
     static func line() -> Entity {
         let value = Entity()
-        value.components.set(OpacityComponent(opacity: 0.75))
+        value.components.set(OpacityComponent(opacity: Self.lineOpacity))
         
         ["pieceA", "pieceB"].forEach {
             let partEntity = Entity()
@@ -29,6 +29,13 @@ enum 🧩Entity {
             partEntity.position.z = lineLength / 3
             if $0 == "pieceB" { partEntity.position.z *= -1 }
             partEntity.scale.y = lineLength / 3
+        }
+        
+        if lineLength < 0.12 {
+            let newOpacity = Self.lineOpacity * (lineLength / 0.12)
+            entity.components.set(OpacityComponent(opacity: newOpacity))
+        } else {
+            entity.components.set(OpacityComponent(opacity: Self.lineOpacity))
         }
         
         entity.look(at: leftPosition, from: centerPosition, relativeTo: nil)
@@ -75,8 +82,12 @@ enum 🧩Entity {
         value.addChild(🧩Entity.fixedPointer(log.rightPosition))
         return value
     }
+}
+
+private extension 🧩Entity {
+    private static let lineOpacity: Float = 0.75
     
-    enum Placeholder {
+    private enum Placeholder {
         static let leftPosition: SIMD3<Float> = .init(x: -0.2, y: 1.5, z: -0.7)
         static let rightPosition: SIMD3<Float> = .init(x: 0.2, y: 1.5, z: -0.7)
         static var lineLength: Float { distance(Self.leftPosition, Self.rightPosition) }
