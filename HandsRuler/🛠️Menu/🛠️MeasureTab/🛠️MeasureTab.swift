@@ -15,7 +15,17 @@ struct 🛠️MeasureTab: View {
                 }
             }
             .navigationTitle("HandsRuler")
-            .toolbar { self.startOrStopButton() }
+            .toolbar {
+                self.startOrStopButton()
+                Picker("Mode", selection: self.$model.mode) {
+                    ForEach(🎚️Mode.allCases) {
+                        Text("\($0)")
+                    }
+                }
+                .onChange(of: self.model.mode) { _, _ in
+                    self.model.applyModeState()
+                }
+            }
         }
         .animation(.default, value: self.model.logs)
         .tabItem { Label("Measure", systemImage: "ruler") }

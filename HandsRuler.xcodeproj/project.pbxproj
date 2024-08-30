@@ -88,6 +88,7 @@
 		16D088722C818C6900BA6A24 /* 🥽log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D088712C818C6900BA6A24 /* 🥽log.swift */; };
 		16D088732C81923500BA6A24 /* 🥽log.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16D088712C818C6900BA6A24 /* 🥽log.swift */; };
 		16D088742C81923500BA6A24 /* 📏ResultBoardLabel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16D0886F2C81886500BA6A24 /* 📏ResultBoardLabel.swift */; };
+		16D088782C81BC3400BA6A24 /* 🎚️Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D088772C81BC3400BA6A24 /* 🎚️Mode.swift */; };
 		16EE5E9B2B576DB000D354ED /* 🧩Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE5E9A2B576DB000D354ED /* 🧩Model.swift */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +195,7 @@
 		16C95AE62B5E7BFF00CF0FED /* 🛠️GuideTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠️GuideTab.swift"; sourceTree = "<group>"; };
 		16D0886F2C81886500BA6A24 /* 📏ResultBoardLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏ResultBoardLabel.swift"; sourceTree = "<group>"; };
 		16D088712C818C6900BA6A24 /* 🥽log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🥽log.swift"; sourceTree = "<group>"; };
+		16D088772C81BC3400BA6A24 /* 🎚️Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️Mode.swift"; sourceTree = "<group>"; };
 		16EE5E962B576B9F00D354ED /* HandToGround.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HandToGround.md; sourceTree = "<group>"; };
 		16EE5E9A2B576DB000D354ED /* 🧩Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩Model.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				16253CFA2B4E2FCB0028F0E2 /* 📐Unit.swift */,
+				16D088772C81BC3400BA6A24 /* 🎚️Mode.swift */,
 				16159B892BB7D82C00106FD6 /* 🧾ResultFormatter.swift */,
 				169F10442BB976C300BAF363 /* 🔵Selection.swift */,
 				16159B8B2BB7E31B00106FD6 /* 📢Sounds.swift */,
@@ -553,6 +556,7 @@
 				164C78032B5746AD008FF872 /* 🧩Entity.swift in Sources */,
 				16891ED92B7B2F8D00C6F0B3 /* 🗒️StaticInfo.swift in Sources */,
 				16C4C6A52BB78A06004DB77E /* 🥽AppModel.swift in Sources */,
+				16D088782C81BC3400BA6A24 /* 🎚️Mode.swift in Sources */,
 				16891EDA2B7B2F8D00C6F0B3 /* ℹ️AboutApp.swift in Sources */,
 				167948B72BC67B6C004DFF4B /* 🛠️RequestTab.swift in Sources */,
 				16159B8C2BB7E31C00106FD6 /* 📢Sounds.swift in Sources */,

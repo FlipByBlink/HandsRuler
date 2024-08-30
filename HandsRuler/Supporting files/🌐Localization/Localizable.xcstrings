@@ -201,6 +201,9 @@
         }
       }
     },
+    "Mode" : {
+
+    },
     "Remove" : {
       "localizations" : {
         "ja" : {

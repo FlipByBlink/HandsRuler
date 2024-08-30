@@ -7,6 +7,7 @@ class 🧩Entities {
     let line = 🧩Entity.line()
     let left = 🧩Entity.fingerTip(.left)
     let right = 🧩Entity.fingerTip(.right)
+    var surrounding: [UUID: Entity] = [:]
 }
 
 extension 🧩Entities {
@@ -59,5 +60,12 @@ extension 🧩Entities {
         if let fixedRulerEntity = self.root.findEntity(named: "fixedRuler\(worldAnchorID)") {
             fixedRulerEntity.removeFromParent()
         }
+    }
+    func raycast() -> CollisionCastHit? {
+        var hits = self.root.scene?.raycast(from: self.right.position,
+                                            to: self.root.convert(position: [-5, 0, 0],
+                                                                  from: self.right))
+        hits?.removeAll(where: { $0.entity == self.left })
+        return hits?.first
     }
 }

@@ -6,6 +6,8 @@
 	<false/>
 	<key>NSHandsTrackingUsageDescription</key>
 	<string>Track your hands to measure.</string>
+	<key>NSWorldSensingUsageDescription</key>
+	<string>fjouerhfoue fuoehu2he feh2oe2uhfo</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>

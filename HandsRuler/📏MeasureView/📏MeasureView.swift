@@ -46,6 +46,7 @@ struct 📏MeasureView: View {
         .task { await self.model.runARKitSession() }
         .task { await self.model.processHandUpdates() }
         .task { await self.model.processWorldAnchorUpdates() }
+        .task { await self.model.processSceneUpdates() }
         .onDisappear {
             self.model.clearSelection()
             self.model.openedImmersiveSpace = false
