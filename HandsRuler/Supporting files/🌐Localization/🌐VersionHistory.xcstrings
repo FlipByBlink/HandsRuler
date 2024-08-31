@@ -70,7 +70,21 @@
       }
     },
     "1.2" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Added a feature to unfix a pointer using direct touch.\n- Increased the size of numeric labels.\n- Various improvements and bug fixes."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- ダイレクトタッチによる固定解除機能を追加しました。\n- 数値表示ラベルのサイズを大きくしました。\n- 様々な軽微な改善や修正をしました。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -255,22 +255,6 @@
         }
       }
     },
-    "If you are interested in hiring or acquiring, please contact me." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "If you are interested in hiring or acquiring, please contact me."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もし雇用や買収に興味がある場合は、下記のメールアドレスに連絡してください"
-          }
-        }
-      }
-    },
     "Image" : {
       "localizations" : {
         "en" : {
@@ -331,22 +315,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日本語"
-          }
-        }
-      }
-    },
-    "Job hunting now!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Job hunting now!"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "職探し中！"
           }
         }
       }

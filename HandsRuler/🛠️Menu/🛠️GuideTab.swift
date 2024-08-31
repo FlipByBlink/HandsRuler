@@ -6,6 +6,7 @@ struct 🛠️GuideTab: View {
     var body: some View {
         NavigationStack {
             List {
+                self.authAlertView()
                 Section {
                     HStack(spacing: 20) {
                         Image(.graph1)
@@ -27,17 +28,16 @@ struct 🛠️GuideTab: View {
                             .multilineTextAlignment(.center)
                     }
                     .padding(4)
-                }
-                switch self.authorizationStatus {
-                    case .notDetermined, .denied:
-                        HStack(spacing: 24) {
-                            Text("Hand tracking authorization:")
-                                .fontWeight(.semibold)
-                            Text(self.authorizationStatus?.description ?? "nil")
-                        }
-                        .foregroundStyle(.secondary)
-                    default:
-                        EmptyView()
+                    HStack(spacing: 20) {
+                        Image(.graph3)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 240)
+                            .clipShape(.rect(cornerRadius: 8, style: .continuous))
+                        Text("Unfix red pointer by direct tap.")
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(4)
                 }
             }
             .navigationTitle("Guide")
@@ -48,6 +48,23 @@ struct 🛠️GuideTab: View {
 }
 
 private extension 🛠️GuideTab {
+    private func authAlertView() -> some View {
+        Group {
+            switch self.authorizationStatus {
+                case .notDetermined, .denied:
+                    LabeledContent {
+                        Text(self.authorizationStatus?.description ?? "nil")
+                    } label: {
+                        Label("Hand tracking authorization:",
+                              systemImage: "exclamationmark.triangle")
+                        .fontWeight(.semibold)
+                    }
+                    .foregroundStyle(.secondary)
+                default:
+                    EmptyView()
+            }
+        }
+    }
     private func observeAuthorizationStatus() async {
         let session = ARKitSession()
         self.authorizationStatus = await session.queryAuthorization(for: [.handTracking])[.handTracking]

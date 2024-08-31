@@ -241,6 +241,16 @@
         }
       }
     },
+    "Unfix red pointer by direct tap." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赤いポインターを直接タップして固定を解除する"
+          }
+        }
+      }
+    },
     "Unit" : {
       "localizations" : {
         "ja" : {

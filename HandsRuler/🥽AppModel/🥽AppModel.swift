@@ -15,7 +15,7 @@ class 🥽AppModel: ObservableObject {
     
     let entities = 🧩Entities()
     
-    var selection: 🔵Selection = .noSelect
+    var selection: 🔴Selection = .noSelect
     var isCooldownActive: Bool = false
     let sounds = 📢Sounds()
 }
