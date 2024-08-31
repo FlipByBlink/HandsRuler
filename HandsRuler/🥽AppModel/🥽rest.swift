@@ -12,7 +12,7 @@ extension 🥽AppModel {
     func setCooldownState() {
         Task {
             self.isCooldownActive = true
-            try? await Task.sleep(for: .seconds(1.5))
+            try? await Task.sleep(for: .seconds(2.5))
             self.isCooldownActive = false
         }
     }
