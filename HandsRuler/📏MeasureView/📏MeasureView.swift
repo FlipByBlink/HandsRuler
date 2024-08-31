@@ -48,7 +48,7 @@ struct 📏MeasureView: View {
         .task { await self.model.processWorldAnchorUpdates() }
         .task { await self.model.processSceneUpdates() }
         .onDisappear {
-            self.model.clearSelection()
+            self.model.resetStates()
             self.model.openedImmersiveSpace = false
         }
     }

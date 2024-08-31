@@ -18,7 +18,10 @@ extension 🥽AppModel {
     }
     
     func processRestoreAction(_ handAnchor: HandAnchor) {
-        guard !self.isCooldownActive else { return }
+        guard !self.isCooldownActive,
+              self.mode == .normal else {
+            return
+        }
         
         guard let fingerTip = handAnchor.handSkeleton?.joint(.indexFingerTip) else {
             assertionFailure()
@@ -47,31 +50,19 @@ extension 🥽AppModel {
         }
     }
     
-    func clearSelection() {
+    func resetStates() {
         self.selection = .noSelect
-        self.entities.left.components.set(🧩Model.fingerTip(.blue))
-        self.entities.right.components.set(🧩Model.fingerTip(.blue))
-    }
-    
-    func applyModeState() {
         switch self.mode {
             case .normal:
+                self.entities.left.components.set(🧩Model.fingerTip(.blue))
                 self.entities.right.components.set([
                     CollisionComponent(shapes: [.generateSphere(radius: 0.04)]),
                     🧩Model.fingerTip(.blue)
                 ])
             case .raycast:
+                self.entities.left.components.set(🧩Model.fingerTip(.blue))
                 self.entities.right.components.remove(CollisionComponent.self)
                 self.entities.right.components.set(🧩Model.fingerTip(.white))
         }
-    }
-    
-    func updateRaycastedPointer() {
-        guard !self.selection.isLeft else { return }
-        if let hit = self.entities.raycast() {
-            self.currentHits.append(hit.position)
-            if currentHits.count > 10 { currentHits.removeFirst() }
-        }
-        self.entities.left.position = currentHits.reduce(.zero, +) / 10
     }
 }

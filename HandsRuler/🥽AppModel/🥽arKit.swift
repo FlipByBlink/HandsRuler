@@ -20,48 +20,21 @@ extension 🥽AppModel {
         for await update in self.handTrackingProvider.anchorUpdates {
             let handAnchor = update.anchor
             
+            self.processRestoreAction(handAnchor)
+            if self.isSelected(handAnchor) { continue }
+            
             switch self.mode {
                 case .normal:
-                    guard handAnchor.isTracked,
-                          let fingerTip = handAnchor.handSkeleton?.joint(.indexFingerTip),
-                          fingerTip.isTracked else {
-                        continue
-                    }
-                    
-                    self.processRestoreAction(handAnchor)
-                    if self.isSelected(handAnchor) { continue }
-                    
-                    let originFromWrist = handAnchor.originFromAnchorTransform
-                    let wristFromIndex = fingerTip.anchorFromJointTransform
-                    let originFromIndex = originFromWrist * wristFromIndex
-                    
+                    self.updateFingerTipPosition(handAnchor)
+                    self.entities.updateLineAndResultBoard()
+                case .raycast:
                     switch handAnchor.chirality {
                         case .right:
-                            self.entities.right.setTransformMatrix(originFromIndex,
-                                                                   relativeTo: nil)
+                            self.updateFingerTipPosition(handAnchor)
                         case .left:
-                            self.entities.left.setTransformMatrix(originFromIndex,
-                                                                  relativeTo: nil)
+                            self.updateRaycastedPointer()
                     }
-                    
-                    self.entities.applyPointersUpdateToLineAndResultBoard()
-                case .raycast:
-                    guard handAnchor.isTracked,
-                          handAnchor.chirality == .right,
-                          let fingerTip = handAnchor.handSkeleton?.joint(.indexFingerTip),
-                          fingerTip.isTracked else {
-                        continue
-                    }
-                    
-                    let originFromWrist = handAnchor.originFromAnchorTransform
-                    let wristFromIndex = fingerTip.anchorFromJointTransform
-                    let originFromIndex = originFromWrist * wristFromIndex
-                    
-                    self.entities.right.setTransformMatrix(originFromIndex,
-                                                           relativeTo: nil)
-                    self.updateRaycastedPointer()
-                    
-                    self.entities.applyPointersUpdateToLineAndResultBoard()
+                    self.entities.updateLineAndResultBoard()
             }
         }
     }

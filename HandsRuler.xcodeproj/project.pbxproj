@@ -89,6 +89,7 @@
 		16D088732C81923500BA6A24 /* 🥽log.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16D088712C818C6900BA6A24 /* 🥽log.swift */; };
 		16D088742C81923500BA6A24 /* 📏ResultBoardLabel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16D0886F2C81886500BA6A24 /* 📏ResultBoardLabel.swift */; };
 		16D088782C81BC3400BA6A24 /* 🎚️Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D088772C81BC3400BA6A24 /* 🎚️Mode.swift */; };
+		16D0887A2C828FE700BA6A24 /* 🥽updatePointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D088792C828FE700BA6A24 /* 🥽updatePointer.swift */; };
 		16EE5E9B2B576DB000D354ED /* 🧩Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE5E9A2B576DB000D354ED /* 🧩Model.swift */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,7 @@
 		16D0886F2C81886500BA6A24 /* 📏ResultBoardLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏ResultBoardLabel.swift"; sourceTree = "<group>"; };
 		16D088712C818C6900BA6A24 /* 🥽log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🥽log.swift"; sourceTree = "<group>"; };
 		16D088772C81BC3400BA6A24 /* 🎚️Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️Mode.swift"; sourceTree = "<group>"; };
+		16D088792C828FE700BA6A24 /* 🥽updatePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🥽updatePointer.swift"; sourceTree = "<group>"; };
 		16EE5E962B576B9F00D354ED /* HandToGround.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HandToGround.md; sourceTree = "<group>"; };
 		16EE5E9A2B576DB000D354ED /* 🧩Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩Model.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,6 +353,7 @@
 				16C4C6A42BB78A06004DB77E /* 🥽AppModel.swift */,
 				168179E92BD52ADE00BFD40F /* 🥽userAction.swift */,
 				168179E52BD52A0D00BFD40F /* 🥽arKit.swift */,
+				16D088792C828FE700BA6A24 /* 🥽updatePointer.swift */,
 				16D088712C818C6900BA6A24 /* 🥽log.swift */,
 				167855B92BD92A8A0064044E /* 🥽rest.swift */,
 				168179E72BD52A5500BFD40F /* 🥽simulator.swift */,
@@ -549,6 +552,7 @@
 				16253CFB2B4E2FCB0028F0E2 /* 📐Unit.swift in Sources */,
 				168179EA2BD52ADE00BFD40F /* 🥽userAction.swift in Sources */,
 				16B0E7D92BD4E0960069B221 /* 📏ResultBoardView.swift in Sources */,
+				16D0887A2C828FE700BA6A24 /* 🥽updatePointer.swift in Sources */,
 				16C95AE72B5E7BFF00CF0FED /* 🛠️GuideTab.swift in Sources */,
 				168179E62BD52A0D00BFD40F /* 🥽arKit.swift in Sources */,
 				165ADB512B4B71B0008A756F /* ContentView.swift in Sources */,

@@ -25,7 +25,7 @@ extension 🧩Entities {
     func add(_ entity: Entity) {
         self.root.addChild(entity)
     }
-    func applyPointersUpdateToLineAndResultBoard() {
+    func updateLineAndResultBoard() {
         🧩Entity.updateLine(self.line,
                             self.left.position,
                             self.right.position)

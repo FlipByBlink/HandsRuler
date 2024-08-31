@@ -23,7 +23,7 @@ struct 🛠️MeasureTab: View {
                     }
                 }
                 .onChange(of: self.model.mode) { _, _ in
-                    self.model.applyModeState()
+                    self.model.resetStates()
                 }
             }
         }
