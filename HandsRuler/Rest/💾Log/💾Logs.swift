@@ -39,8 +39,8 @@ private extension 💾Logs {
             case .clear:
                 self.elements.removeAll()
         }
-        self.save()
         self.hasNeverLogged = false
+        self.save()
     }
     private enum Action {
         case add(💾Log),
