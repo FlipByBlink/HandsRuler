@@ -25,21 +25,17 @@ extension 🥽AppModel {
             }
             
             self.processRestoreAction(handAnchor)
+            
             if self.isSelected(handAnchor) { continue }
             
             let originFromWrist = handAnchor.originFromAnchorTransform
-            
             let wristFromIndex = fingerTip.anchorFromJointTransform
             let originFromIndex = originFromWrist * wristFromIndex
             
-            switch handAnchor.chirality {
-                case .left:
-                    self.entities.left.setTransformMatrix(originFromIndex, relativeTo: nil)
-                case .right:
-                    self.entities.right.setTransformMatrix(originFromIndex, relativeTo: nil)
-            }
+            self.entities[handAnchor].setTransformMatrix(originFromIndex,
+                                                         relativeTo: nil)
             
-            self.entities.applyPointersUpdateToLineAndResultBoard()
+            self.entities.updateLineAndResultBoard()
         }
     }
     

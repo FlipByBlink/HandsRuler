@@ -18,13 +18,19 @@ extension 🧩Entities {
     var resultBoard: Entity? {
         self.root.findEntity(named: "resultBoard")
     }
+    subscript (_ handAnchor: HandAnchor) -> Entity {
+        switch handAnchor.chirality {
+            case .left: self.left
+            case .right: self.right
+        }
+    }
     var currentLineLength: Float {
         distance(self.left.position, self.right.position)
     }
     func add(_ entity: Entity) {
         self.root.addChild(entity)
     }
-    func applyPointersUpdateToLineAndResultBoard() {
+    func updateLineAndResultBoard() {
         🧩Entity.updateLine(self.line,
                             self.left.position,
                             self.right.position)

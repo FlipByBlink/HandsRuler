@@ -2,8 +2,6 @@ HandsRuler
 ===========
 __Tape Measure app by hand tracking for Apple Vision Pro__
 
-_Hands is measure._
-
 <img src="HandsRuler/Supporting files/Rest/README assets/icon.png" width="64">
 
 <a href="https://apps.apple.com/app/id6475769879" target="blank">
