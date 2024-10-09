@@ -30,6 +30,7 @@ struct MyApp: App {
                         .monospacedDigit()
                         .padding()
                         .glassBackgroundEffect()
+                        .offset(y: -80)
                 }
             }
             .task { await model.runSession() }
@@ -88,10 +89,7 @@ class MyEntities {
         fingerTips.values.forEach { root.addChild($0) }
         
         line.components.set(OpacityComponent(opacity: 0.75))
-        let lineOcclusionEntity = Entity()
-        lineOcclusionEntity.components.set(ModelComponent(mesh: .generateSphere(radius: 0.06),
-                                                          materials: [OcclusionMaterial()]))
-        line.addChild(lineOcclusionEntity)
+        
         root.addChild(line)
     }
     
@@ -201,6 +199,7 @@ RealityView { content, attachments in
             .monospacedDigit()
             .padding()
             .glassBackgroundEffect()
+            .offset(y: -80)
     }
 }
 ```
