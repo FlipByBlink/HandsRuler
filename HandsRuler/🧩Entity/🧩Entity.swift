@@ -86,8 +86,13 @@ enum 🧩Entity {
 
 private extension 🧩Entity {
     private static let lineOpacity: Float = 0.75
-    
-    private enum Placeholder {
+}
+
+
+
+
+extension 🧩Entity {
+    enum Placeholder {
         static let leftPosition: SIMD3<Float> = .init(x: -0.2, y: 1.5, z: -0.7)
         static let rightPosition: SIMD3<Float> = .init(x: 0.2, y: 1.5, z: -0.7)
         static var lineLength: Float { distance(Self.leftPosition, Self.rightPosition) }

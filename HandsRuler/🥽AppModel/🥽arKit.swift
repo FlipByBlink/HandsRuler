@@ -55,4 +55,13 @@ extension 🥽AppModel {
             }
         }
     }
+    
+    func addTracking(_ worldAnchor: WorldAnchor) {
+        Task {
+            try? await self.worldTrackingProvider.addAnchor(worldAnchor)
+        }
+#if targetEnvironment(simulator)
+        self.addTracking_simulatior(worldAnchor)
+#endif
+    }
 }

@@ -66,7 +66,7 @@ private extension 🥽AppModel {
                                 leftPosition: self.entities.left.position,
                                 rightPosition: self.entities.right.position,
                                 date: .now))
-            Task { try? await self.worldTrackingProvider.addAnchor(worldAnchor) }
+            self.addTracking(worldAnchor)
         }
     }
     
